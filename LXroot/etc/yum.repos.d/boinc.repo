@@ -1,0 +1,10 @@
+[boinc]
+name=T Science United
+baseurl=https://boinc.berkeley.edu/dl/linux/nightly/fc42
+enabled=1
+gpgcheck=1
+gpgkey=https://boinc.berkeley.edu/dl/linux/nightly/fc42/boinc.gpg
+priority = 100
+skip_if_unavailable=True
+fastestmirror=True
+max_parallel_downloads=20

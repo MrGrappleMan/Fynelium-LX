@@ -1,0 +1,145 @@
+# Fynelium
+Ascend your device to the realm of High Performance Computing and Productivity
+
+![Updated on](https://img.shields.io/github/last-commit/MrGrappleMan/Fynelium?style=for-the-badge)
+
+# 📜 Key features:
+ 1. 📦 Automatic updates, avoiding dependency hell ( RPM-OSTree )
+ 2. ⚡ Better power management ( TLP )
+ 3. ⭐ Modern protocols and programs ( Wayland, PipeWire, WirePlumber )
+ 4. 🛑 AD-Blocking ( AdGuard DNS and hBlock )
+ 5. 🌌 The COSMIC desktop experience, modified for productivity
+ 6. 🚀 All-round system optimization ( sysctl.conf )
+ 7. 🌏 Access to a wide range of software
+ 8. ♾️ Autonomous handling of packages and the entire system ( RPM-OSTree )
+ 9. 🛡️ Hardened Security by default by pre-hardened SELinux
+10. 🛑 Prevent manual modification of core system parts
+11. ⛓️‍💥 Reduced risk of a broken system due to atomic behaviour
+12. ✒️ Professional system software support backed by RedHat and the community
+13. 🔁 Rollback to a previous system state 
+14. 🌐 A productive browsing experience with Microsoft Edge
+15. ✴️ Modern kernel improvements with the latest kernel
+16. 🕸️ Anonymized telemetry enabled for betterment of the ecosystem
+
+# Get started
+
+## For regular devices
+(Macs released before 2020 should be modified by the OpenCore Legacy Patcher)
+
+Get [Bazzite](https://bazzite.gg/#image-picker) GNOME with no Steam Gaming Mode's ISO file
+Move the file ending with ".iso" to a spare USB Drive taken over by Ventoy.
+Mac users...you are on your own 🫡
+
+Within the installer,
+Back up ALL your data on the disk. In the Bazzite installer, wipe out your entire system disk, encrypt it with LUKS.
+After installing and getting to the desktop, run this script in the "Terminal" app to get started.
+
+```
+sudo -A curl https://raw.githubusercontent.com/MrGrappleMan/Fynelium/refs/heads/main/tmp/Fynelium.fish | sudo -A fish
+```
+Getting some errors is normal. Allow inhibiting shortcuts if requested.
+
+Included apps:
+| App Name | Description | Source | Technical Package IDs |
+|:---:|:---:|:---:|:---:|
+| BOINC | Help with contributing to science with idle power | R | boinc-client boinc-client-static boinc-manager |
+| Docker | For BOINC and containerization | R | docker-cli |
+| Tor | Access the unrestricted internet and get around censorship, and help others do the same | F | org.torproject.torbrowser-launcher io.frama.tractor.carburetor |
+| Microsoft Edge | Truly the best brower for everyday usage and productivity | F | com.microsoft.EdgeDev |
+| TLP | A daemon that makes system calls to actively save power, while keeping the same system performance | R | tlp tlp-rdw |
+| Free Download Manager |  Faster downloads and passive lightweight torrenting | | |
+| Speedtest, by Ookla | Test internet speed from your CLI OR just use [fast.com](https://fast.com) | R | speedtest-cli |
+
+Windows environment »→ use Bottles
+Linux environments »→ use BoxBuddy/DistroShelf
+
+It expects that you have read this paragraph carefully and it claims no responsibilty to any damage done to your system, but I can try helping!
+
+My take: Prioritize Flatpaks over Native packages. Why?
+Flatpaks are for user apps, mainly GUIs. It makes sens for things like libreoffice, Blanket or something like that.
+They just get installed, work fine, do not require a reboot.
+However, if you need system integration go with RPM-OSTree at your own risk, or try a Distrobox container.
+They allow for better system integration and performance, but you risk dependancy hell and more complex system updates.
+Keep it mainly for things the user doesn't see, like daemons.
+Are you a developer, just go ahead with a Distrobox container for your dev envioroment.
+Don't hold back from using proprietary software, Stallman won't haunt you if you use it to contribute to OSS.
+
+Same base/framework, yet no limit to visual theming/customization, one of the things I belive in. Make hundreds of rices, but maintain the same code base/framework.
+
+This project's intended purpose is to have your system in a state with files preconfigured for a great user experience,
+For a unified distribution with the intent of fulfilling consumer/user usage without having technical experience or using terminals
+Asahi Linux support not confirmed(could use unc work macbook, maybe. defaults is just like gsettings by experience).
+
+In the GNOME Display Manager, change your desktop environment to COSMIC.
+
+Bazzite is used as it has access to a wide range of
+### supported hardware
+### user friendly software
+### community support greater than that of regular atomic Fedora alone
+
+#
+# Extra Tips:
+
+### [Tailscale](https://tailscale.com)
+Provides a seamless networking experience. You can MoSH, host servers and even access your home network with it.
+Best for home-labbing, server hosting and remotely accessing your home internet.
+Use it with Sunshine / Moonlight to use your desktop from anywhere as long as you 
+
+### [PlayIt.gg](https://playit.gg/)
+Port forwarding made simple for all.
+Allows for a public IP that can be accessed/used by anyone on the internet.
+
+Ensure the executable file's location is /opt/playit/playit
+There should be no file at /etc/playit/playit.toml prior to execution of the command below.
+For first time setup run this:
+```
+/opt/playit/playit --secret_path /etc/playit/playit.toml start
+```
+Get an error? Delete /etc/playit/playit.toml and try first time setup again.
+The service autostarts at startup if the executable is found.
+
+### Sunshine/Moonlight
+Access your device from everywhere with high performance. Pair it with Tailscale and you have an easily accessible desktop!
+Best for screen sharing + remote gaming. Better than Steam Remote Play and not restricted to just games.
+
+### Minecraft Server
+Host your own Minecraft Server on your PC.
+
+Note: Using Bedrock edition is heavily recommended.
+It is faster, scalable, efficient and the language used for it is significantly better.
+Want a great vanilla experience? Use this!
+You can infact get mods, worlds and skins for free! The marketplace is just an optional way to support Mojang and UGC creators
+There are plenty of mods here that can satisfy your needs.
+Move the contents inside the server folder to
+```
+/opt/mc-server/
+```
+such that the server executable is located at and named as
+```
+/opt/mc-server/mc-server
+```
+
+Want mods only possible to use on Java? Use server software like FabricMC
+alongside mods like Lithium, GeyserMC and Floodgate to get started.
+
+### Running other Linux distributions
+
+Use tools like DistroShelf or BoxBuddy to get started with containers.
+Or run something in podman. You are all by yourself in this case.
+Prefer installing RPM package by GNOME Software over using RPM packages you manually download over the internet.
+Unlike LayeredPackages, LocalPackages do not get any updates.
+
+### Running Windows programs
+
+Although not providing a full fledged environment, Bottles and Lutris do the job well
+
+### Running Android apps
+
+Use Waydroid
+
+## Preserved MacOS tweaks
+
+May NOT be comming soon. Because it might brick your system, and I don't own a Mac. The Bazzite developers are already trying to port it to Apple Silicon 🤩, keeping the Linux framework
+
+
+

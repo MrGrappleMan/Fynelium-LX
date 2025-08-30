@@ -1,0 +1,22 @@
+[Unit]
+Description=Minecraft server starter
+After=network-online.target
+Wants=network-online.target
+
+# You can also try exploring Bedrock Server software that utilizes Rust
+# rather than using the official server
+
+[Service]
+Type=simple
+ExecStart=/opt/mc-server/mc-server
+IOSchedulingPriority=5
+Restart=always
+Nice=10
+User=root
+
+# Use the contents below for drop in
+#WorkingDirectory=/opt/mcje-server
+#ExecStart=/usr/bin/java -Xmx6G -Xms256m -XX:+UseZGC -XX:+UnlockExperimentalVMOptions -XX:+UseCompressedOops -XX:+OptimizeStringConcat -XX:+UseNUMA -XX:MaxRAMPercentage=75.0 -jar server.jar 
+
+[Install]
+WantedBy=multi-user.target

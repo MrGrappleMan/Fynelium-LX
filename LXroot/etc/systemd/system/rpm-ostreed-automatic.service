@@ -1,0 +1,19 @@
+[Unit]
+Description=Auto-updater exclusive for RPM-OSTree
+After=network-online.target
+Wants=network-online.target
+Documentation=man:rpm-ostree(1) man:rpm-ostreed.conf(5)
+ConditionPathExists=/run/ostree-booted
+StartLimitBurst=3
+StartLimitIntervalSec=600
+
+[Service]
+Type=oneshot
+User=root
+ExecStart=/usr/bin/rpm-ostree upgrade -q --peer --trigger-automatic-update-policy --allow-downgrade --bypass-driver
+Nice=19
+IOSchedulingClass=best-effort
+IOSchedulingPriority=7
+
+[Install]
+WantedBy=multi-user.target

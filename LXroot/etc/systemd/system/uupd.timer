@@ -1,0 +1,12 @@
+[Unit]
+Description=Universal Blue All in one Update enforcer
+After=network-online.target
+Wants=network-online.target
+
+[Timer]
+OnCalendar=hourly
+Persistent=true
+AccuracySec=1h
+
+[Install]
+WantedBy=timers.target
