@@ -7,6 +7,6 @@ There is nothing much to advertise on this page, but you won't regret getting st
 
 # Get started
 
-[Linux]()
-[MacOS]()
+[Linux](/LXroot/tmp/FyneliumCoreSet/main.zsh)
+[MacOS](/DWroot/tmp/FyneliumCoreSet/main.zsh)
 [Windows]()
