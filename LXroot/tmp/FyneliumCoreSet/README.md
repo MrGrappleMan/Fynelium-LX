@@ -1,28 +1,3 @@
-# Fynelium
-Ascend your device to the realm of High Performance Computing and Productivity
-
-![Updated on](https://img.shields.io/github/last-commit/MrGrappleMan/Fynelium?style=for-the-badge)
-
-# 📜 Key features:
- 1. 📦 Automatic updates, avoiding dependency hell ( RPM-OSTree )
- 2. ⚡ Better power management ( TLP )
- 3. ⭐ Modern protocols and programs ( Wayland, PipeWire, WirePlumber )
- 4. 🛑 AD-Blocking ( AdGuard DNS and hBlock )
- 5. 🌌 The COSMIC desktop experience, modified for productivity
- 6. 🚀 All-round system optimization ( sysctl.conf )
- 7. 🌏 Access to a wide range of software
- 8. ♾️ Autonomous handling of packages and the entire system ( RPM-OSTree )
- 9. 🛡️ Hardened Security by default by pre-hardened SELinux
-10. 🛑 Prevent manual modification of core system parts
-11. ⛓️‍💥 Reduced risk of a broken system due to atomic behaviour
-12. ✒️ Professional system software support backed by RedHat and the community
-13. 🔁 Rollback to a previous system state 
-14. 🌐 A productive browsing experience with Microsoft Edge
-15. ✴️ Modern kernel improvements with the latest kernel
-16. 🕸️ Anonymized telemetry enabled for betterment of the ecosystem
-
-# Get started
-
 ## For regular devices
 (Macs released before 2020 should be modified by the OpenCore Legacy Patcher)
 
