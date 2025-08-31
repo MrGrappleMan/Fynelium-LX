@@ -8,6 +8,8 @@ This is Operating System Specific, I will probably NOT be making device specific
 
 # Get started
 
-[Linux, recommended](/LXroot/tmp/FyneliumCoreSet/README.md),
-[MacOS](/DWroot/tmp/FyneliumCoreSet/README.md),
-[Windows](/NTroot/Windows/Temp/FyneliumCoreSet/README.md)
+![Linux, recommended](/LXroot/tmp/FyneliumCoreSet/README.md)
+
+![MacOS](/DWroot/tmp/FyneliumCoreSet/README.md)
+
+![Windows](/NTroot/Windows/Temp/FyneliumCoreSet/README.md)
