@@ -10,7 +10,11 @@ Back up ALL your data on the disk. In the Bazzite installer, wipe out your entir
 After installing and getting to the desktop, run this script in the "Terminal" app to get started.
 
 ```
-sudo -A curl https://raw.githubusercontent.com/MrGrappleMan/Fynelium/refs/heads/main/tmp/Fynelium.fish | sudo -A fish
+rm -rf /tmp/Fynelium
+mkdir /tmp/Fynelium
+git clone https://github.com/MrGrappleMan/Fynelium.git /tmp/Fynelium/
+cd /tmp/Fynelium/LXroot
+sudo -A /tmp/LXroot/tmp/FyneliumCoreSet/m.fish
 ```
 Getting some errors is normal. Allow inhibiting shortcuts if requested.
 
