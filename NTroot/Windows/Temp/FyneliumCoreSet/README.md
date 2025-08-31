@@ -1,9 +1,5 @@
-# ProductiWinty - Enhance your Windows productivity and performance
-
-![Updated on](https://img.shields.io/github/last-commit/MrGrappleMan/Fynelium-NT?style=for-the-badge)
-
 ### 1. Better performance
-1. Avoid virtual memory at all costs
+1. Avoid virtual memory and enable RAM content compression
 2. No useless animations
 3. Exclusive Tweaks for lightweight High Performance Computing and Gaming
 
@@ -72,6 +68,7 @@ This attempts to install BOINC on your device to help with contributing to scien
 It works in the backgroud with minimal effect to performance.
 Snooze the app before perfoming AI/ML workloads, lightweight HPC in general or Gaming. No effect on battery life btw!
 Uninstall it if you like or your device is extremely old.
+
 
 
 
