@@ -22,9 +22,10 @@ set svcset="if !el!==1 (sc stop "!svcnme!" ^& sc config "!svcnme!" start=disable
 set userask="echo Options: ^& echo X. Skip ^& echo 1. No ^& echo 2. Yes ^& choice /C 12X /N"
 
 winget install Git.Git
-rmdir /s /q %windir%\Temp\Fynelium-NT\>nul
-mkdir %windir%\Temp\Fynelium-NT\
-cd %windir%\Temp\Fynelium-NT\
+rmdir /s /q %windir%\Temp\Fynelium\>nul
+mkdir %windir%\Temp\Fynelium\
+cd %windir%\Temp\Fynelium\
+git clone
 color 07
 cls
 
@@ -204,7 +205,7 @@ bcdedit /deletevalue useplatformclock
 
 w32tm /config /syncfromflags:manual /manualpeerlist:"time.google.com time.windows.com time.cloudflare.com pool.ntp.org time.facebook.com time.apple.com time.aws.com" /reliable:YES /update & net stop w32time & net start w32time & w32tm /resync /force
 
-regedit /s registry.reg
+regedit /s r.reg
 
 :: Power plan. idk if this works, last tried it in 2022, did not work across PCs
 :: powercfg.exe -import "!cd!\powerplan.pow">nul
@@ -229,15 +230,10 @@ curl -L "https://dl.google.com/drive-file-stream/GoogleDriveSetup.exe" -o Google
 BOINCSetup.exe
 GoLangSetup.exe
 EdgeSetup.exe
-msiexec.exe /i %windir%\Temp\Fynelium-NT\GitHubDesktopSetup.msi /qn
+msiexec.exe /i %windir%\Temp\Fynelium\GitHubDesktopSetup.msi /qn
 GoogleDriveSetup.exe
 
-echo After you set up everything, spam any key(s) 10 times to clean up and reboot...
-pause>nul
-pause>nul
-pause>nul
-pause>nul
-pause>nul
+echo After you set up everything, you may exit
 pause>nul
 pause>nul
 pause>nul
@@ -248,6 +244,7 @@ rmdir /s /q %windir%\Temp\>nul
 
 exit
 endlocal
+
 
 
 
