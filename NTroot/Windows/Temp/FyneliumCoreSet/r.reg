@@ -344,6 +344,11 @@ Windows Registry Editor Version 5.00
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Sudo]
 "Enabled"=dword:00000001
 
+; Dim the desktop as it alerts the user, and the user can use arrow keys to quick switch between yes or no
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System]
+"PromptOnSecureDesktop"=dword:00000001
+
 ; See advanced information if system crashes
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CrashControl]
@@ -371,6 +376,7 @@ Windows Registry Editor Version 5.00
 [HKEY_CLASSES_ROOT\Directory\shell\runas\command]
 @="cmd.exe /c takeown /f \"%1\" /r /d y && icacls \"%1\" /grant administrators:F /t"
 "IsolatedCommand"="cmd.exe /c takeown /f \"%1\" /r /d y && icacls \"%1\" /grant administrators:F /t"
+
 
 
 
