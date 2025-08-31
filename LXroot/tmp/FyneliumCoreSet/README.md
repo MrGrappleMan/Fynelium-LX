@@ -1,9 +1,7 @@
-## For regular devices
-(Macs released before 2020 should be modified by the OpenCore Legacy Patcher)
+## For Bazzite Linux
 
 Get [Bazzite](https://bazzite.gg/#image-picker) GNOME with no Steam Gaming Mode's ISO file
 Move the file ending with ".iso" to a spare USB Drive taken over by Ventoy.
-Mac users...you are on your own 🫡
 
 Within the installer,
 Back up ALL your data on the disk. In the Bazzite installer, wipe out your entire system disk, encrypt it with LUKS.
@@ -115,10 +113,6 @@ Although not providing a full fledged environment, Bottles and Lutris do the job
 ### Running Android apps
 
 Use Waydroid
-
-## Preserved MacOS tweaks
-
-May NOT be comming soon. Because it might brick your system, and I don't own a Mac. The Bazzite developers are already trying to port it to Apple Silicon 🤩, keeping the Linux framework
 
 
 
