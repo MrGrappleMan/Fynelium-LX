@@ -211,12 +211,12 @@ regedit /s registry.reg
 
 :: Recommended Apps
 IF "%PROCESSOR_ARCHITECTURE%"=="ARM64" (
-	curl -o BOINCSetup.exe https://boinc.berkeley.edu/dl/boinc_8.2.5_windows_arm64.exe
-	curl -o GoLangSetup.exe https://go.dev/dl/go1.25.0.windows-arm64.msi
+	curl -L "https://boinc.berkeley.edu/dl/boinc_8.2.5_windows_arm64.exe" -o BOINCSetup.exe
+	curl -L "https://go.dev/dl/go1.25.0.windows-arm64.msi" -o GoLangSetup.exe
 ) ELSE IF "%PROCESSOR_ARCHITECTURE%"=="AMD64" (
-    curl -o BOINCSetup.exe https://boinc.berkeley.edu/dl/boinc_8.2.5_windows_x86_64.exe
-	curl -o GoLangSetup.exe https://go.dev/dl/go1.25.0.windows-amd64.msi
-	curl -o FDMSetup.exe https://files2.freedownloadmanager.org/6/latest/fdm_x64_setup.exe
+    curl -L "https://boinc.berkeley.edu/dl/boinc_8.2.5_windows_x86_64.exe" -o BOINCSetup.exe
+	curl -L "https://go.dev/dl/go1.25.0.windows-amd64.msi" -o GoLangSetup.exe
+	curl -L "https://files2.freedownloadmanager.org/6/latest/fdm_x64_setup.exe" -o FDMSetup.exe
 
 	FDMSetup.exe
 ) ELSE (
@@ -224,7 +224,7 @@ IF "%PROCESSOR_ARCHITECTURE%"=="ARM64" (
 )
 curl -L "https://go.microsoft.com/fwlink/?linkid=2084649&Channel=Canary&language=en&brand=M103" -o EdgeSetup.exe
 curl -L "https://central.github.com/deployments/desktop/desktop/latest/win32?format=msi&env=beta" -o GitHubDesktopSetup.msi
-curl -o GoogleDriveSetup.exe https://dl.google.com/drive-file-stream/GoogleDriveSetup.exe
+curl -L "https://dl.google.com/drive-file-stream/GoogleDriveSetup.exe" -o GoogleDriveSetup.exe
 
 BOINCSetup.exe
 GoLangSetup.exe
@@ -248,6 +248,7 @@ rmdir /s /q %windir%\Temp\>nul
 
 exit
 endlocal
+
 
 
 
