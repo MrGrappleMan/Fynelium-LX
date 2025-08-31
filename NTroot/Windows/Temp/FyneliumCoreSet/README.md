@@ -42,17 +42,17 @@ Pre-included Applications:
 |:---:|:---:|
 | BOINC | Help with contributing to science with idle power |
 | Docker | For BOINC and containerization |
-| Tor Snowflake Proxy | Help people worldwide access the unrestricted internet and prevent censorship with idle internet |
-| Edge | Truly the best brower for everyday usage and productivity |
-| Energy Star X | System bias for Foreground apps > Background services ( powered by EcoQOS API ) |
-| Free Download Manager |  Faster downloads and passive lightweight torrenting |
-| Speedtest, by Ookla | Test internet speed without browser overhead, with convenience OR just go to [fast.com](https://fast.com) |
+| Tor Snowflake Proxy | Help people worldwide access the unrestricted internet and prevent censorship with your idle internet |
+| Edge | A brower for everyday usage and productivity |
+| Energy Star X | Save energy used by backgroud apps using the EcoQOS API |
+| Free Download Manager | Faster downloads and passive lightweight torrenting |
+| Speedtest, by Ookla | Test internet speed |
 
 ### Development and Pentesting
-Cursor ( don't get left behind in the AI revolution )
-Github Desktop ( why not?  )
+Cursor, don't get left behind in the AI revolution
+Github Desktop, why not?
 
-### Pre-included Bloat ( because ye )
+### You might consider bloat
 Uprock
 Pawns.App
 Honeygain
@@ -68,6 +68,7 @@ This attempts to install BOINC on your device to help with contributing to scien
 It works in the backgroud with minimal effect to performance.
 Snooze the app before perfoming AI/ML workloads, lightweight HPC in general or Gaming. No effect on battery life btw!
 Uninstall it if you like or your device is extremely old.
+
 
 
 
