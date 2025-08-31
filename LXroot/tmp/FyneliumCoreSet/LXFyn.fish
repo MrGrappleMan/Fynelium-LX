@@ -16,10 +16,7 @@
 # Functions, actions, loops.
 
 # Filesystem
- rm -rf /tmp/Fynelium
- mkdir /tmp/Fynelium
- cd /tmp/Fynelium
- git clone https://github.com/MrGrappleMan/Fynelium.git /tmp/Fynelium/
+ cd /tmp/Fynelium/LXroot
  cp -r /tmp/Fynelium/etc/* /etc/
  cp -r /tmp/Fynelium/var/* /var/
  cp -r /tmp/Fynelium/opt/* /opt/
