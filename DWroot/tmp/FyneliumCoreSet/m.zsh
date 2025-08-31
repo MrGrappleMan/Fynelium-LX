@@ -1,3 +1,5 @@
+#!/bin/zsh
+
 variable dfwrt = "defaults write"
 
 dfwrt /Library/Preferences/com.apple.loginwindow DesktopPicture ""
@@ -19,3 +21,4 @@ dfwrt /Library/Preferences/com.apple.mDNSResponder.plist NoMulticastAdvertisemen
 tmutil enable
 brew analytics on
 pmset -b sleep 2
+
