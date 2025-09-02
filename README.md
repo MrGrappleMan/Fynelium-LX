@@ -10,7 +10,7 @@ It is not responsible for any data loss, malfunctioning or any kind of damage do
 YOU have chosen to do this modification. Save all your work and make any backups.
 Leaving your device idle when the main procedure starts is recommended.
 
-You will be asked a series of generic questions. Respond to them accoringly.
+You will be asked a questions for installing programs asper your needs, so respond to them accoringly.
 
 # Get started
 
