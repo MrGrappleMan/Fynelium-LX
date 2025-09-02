@@ -19,14 +19,9 @@
 3. Windows' engine handles UEFI setup utility settings for itself for optimal performance
 4. Drive trimming or defragmentation
 
-This side-project is for users who want to have a better device experience,
-but are unable to switch away from Windows 11 to Linux. Plug, [Fynelium](https://https://github.com/MrGrappleMan/Fynelium/)
+This is for users who want to have a better device experience,
+but are unable to switch away from Windows to Linux.
 
-It is not responsible for any data loss, malfunctioning or any kind of damage done to your device.
-YOU have chosen to do this modification. Save all your work and make any backups.
-Leaving your device idle when the main procedure starts is recommended.
-
-You will be asked a series of generic questions. Respond to them accoringly.
 Run this in a permission elevated CMD window
 To do that, press Win+R, clear out anythin in the text field, type CMD and hit enter. Paste the text below into the window.
 
@@ -68,6 +63,7 @@ This attempts to install BOINC on your device to help with contributing to scien
 It works in the backgroud with minimal effect to performance.
 Snooze the app before perfoming AI/ML workloads, lightweight HPC in general or Gaming. No effect on battery life btw!
 Uninstall it if you like or your device is extremely old.
+
 
 
 
