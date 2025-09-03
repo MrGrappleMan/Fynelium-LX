@@ -353,10 +353,10 @@ Windows Registry Editor Version 5.00
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CrashControl]
 "DisplayParameters"=dword:00000001
 
-; No Verbose Startup Information
+; Show Verbose Startup Information
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Policies\System]
-"VerboseStatus"=dword:00000000
+"VerboseStatus"=dword:00000001
 
 ; Take Ownership of a part of the filesystem
 
