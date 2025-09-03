@@ -2,7 +2,7 @@
 Description=BOINC Science United Node
 Documentation=man:boinc(1) https://boinc.berkeley.edu/ https://scienceunited.org/
 Wants=vboxdrv.service
-After=vboxdrv.service network-online.target
+After=vboxdrv.service
 
 [Service]
 Type=simple
