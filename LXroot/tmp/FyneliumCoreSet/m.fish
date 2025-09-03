@@ -352,7 +352,7 @@ end
 
 # Kernel
  rot initramfs --enable
- plymouth-set-default-theme spinner
+ plymouth-set-default-theme details
  rot kargs \
   --append-if-missing=rhgb \
   --append-if-missing=threadirqs \
