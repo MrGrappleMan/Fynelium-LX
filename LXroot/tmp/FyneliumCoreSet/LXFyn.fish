@@ -17,10 +17,10 @@
 
 # Filesystem
  cd /tmp/Fynelium/LXroot
- cp -r /tmp/Fynelium/etc/* /etc/
- cp -r /tmp/Fynelium/var/* /var/
- cp -r /tmp/Fynelium/opt/* /opt/
- ##cp -r /tmp/Fynelium/root/* /root/
+ cp -r /tmp/Fynelium/LXroot/etc/* /etc/
+ cp -r /tmp/Fynelium/LXroot/var/* /var/
+ cp -r /tmp/Fynelium/LXroot/opt/* /opt/
+ ##cp -r /tmp/Fynelium/LXroot/root/* /root/
  mkdir -p /etc/playit
  mkdir -p /opt/playit
 
