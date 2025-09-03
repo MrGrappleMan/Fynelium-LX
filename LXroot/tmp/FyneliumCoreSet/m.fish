@@ -4,9 +4,9 @@
 ### Adjusting some userspace settings and apps yourself is recommended after the reboot ###
 
 # Aliases
- alias rot "rpm-ostree -q --peer"
- alias rotpkgadd "rpm-ostree -q --peer install --allow-inactive --idempotent -y"
- alias rotpkgdel "rpm-ostree -q --peer uninstall --allow-inactive --idempotent -y"
+ alias rot "rpm-ostree --peer"
+ alias rotpkgadd "rpm-ostree --peer install --allow-inactive --idempotent -y"
+ alias rotpkgdel "rpm-ostree --peer uninstall --allow-inactive --idempotent -y"
  alias fpk "flatpak --system"
  alias fpkrepadd "flatpak --system remote-add --if-not-exists"
  alias fpkrepdel "flatpak --system remote-delete --force"
@@ -358,7 +358,7 @@ end
   --append-if-missing=threadirqs \
   --append-if-missing=sysrq_always_enabled=1 \
   --append-if-missing=consoleblank=0 \
-  --append-if-missing=quiet \
+  --delete-if-present=quiet \
   --append-if-missing=profile \
   --append-if-missing=loglevel=3 \
   --append-if-missing=preempt=full \
