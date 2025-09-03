@@ -1,10 +1,11 @@
 ## For Bazzite Linux
 
 Get [Bazzite](https://bazzite.gg/#image-picker) GNOME with no Steam Gaming Mode's ISO file
-Move the file ending with ".iso" to a spare USB Drive taken over by Ventoy.
+
+Move the file ending with ".iso" to a spare USB Drive with Ventoy installed.
 
 Within the installer,
-Back up ALL your data on the disk. In the Bazzite installer, wipe out your entire system disk, encrypt it with LUKS.
+Back up ALL your data on the disk. In the Bazzite installer, wipe out your entire system disk, avoid LUKS encryption if you want to but it is generally safe and recommended
 After installing and getting to the desktop, run this script in the "Terminal" app to get started.
 
 ```
@@ -20,26 +21,26 @@ Included apps:
 | App Name | Description | Source | Technical Package IDs |
 |:---:|:---:|:---:|:---:|
 | BOINC | Help with contributing to science with idle power | R | boinc-client boinc-client-static boinc-manager |
-| Docker | For BOINC and containerization | R | docker-cli |
+| Docker | For containerization and BOINC | R | docker-cli |
 | Tor | Access the unrestricted internet and get around censorship, and help others do the same | F | org.torproject.torbrowser-launcher io.frama.tractor.carburetor |
 | Microsoft Edge | Truly the best brower for everyday usage and productivity | F | com.microsoft.EdgeDev |
 | TLP | A daemon that makes system calls to actively save power, while keeping the same system performance | R | tlp tlp-rdw |
 | Free Download Manager |  Faster downloads and passive lightweight torrenting | | |
-| Speedtest, by Ookla | Test internet speed from your CLI OR just use [fast.com](https://fast.com) | R | speedtest-cli |
+| Speedtest, by Ookla | Test internet speed from CLI | R | speedtest-cli |
 
-Windows environment »→ use Bottles
+Windows environments »→ use Bottles/Lutris
 Linux environments »→ use BoxBuddy/DistroShelf
 
 It expects that you have read this paragraph carefully and it claims no responsibilty to any damage done to your system, but I can try helping!
 
 My take: Prioritize Flatpaks over Native packages. Why?
-Flatpaks are for user apps, mainly GUIs. It makes sens for things like libreoffice, Blanket or something like that.
+Flatpaks are for user apps, mainly GUIs. It makes sense for things like libreoffice, Blanket or something like that.
 They just get installed, work fine, do not require a reboot.
 However, if you need system integration go with RPM-OSTree at your own risk, or try a Distrobox container.
 They allow for better system integration and performance, but you risk dependancy hell and more complex system updates.
 Keep it mainly for things the user doesn't see, like daemons.
 Are you a developer, just go ahead with a Distrobox container for your dev envioroment.
-Don't hold back from using proprietary software, Stallman won't haunt you if you use it to contribute to OSS.
+Don't hold back from using proprietary software, RMS won't haunt you if you use it to contribute to OSS.
 
 Same base/framework, yet no limit to visual theming/customization, one of the things I belive in. Make hundreds of rices, but maintain the same code base/framework.
 
@@ -105,10 +106,6 @@ Use tools like DistroShelf or BoxBuddy to get started with containers.
 Or run something in podman. You are all by yourself in this case.
 Prefer installing RPM package by GNOME Software over using RPM packages you manually download over the internet.
 Unlike LayeredPackages, LocalPackages do not get any updates.
-
-### Running Windows programs
-
-Although not providing a full fledged environment, Bottles and Lutris do the job well
 
 ### Running Android apps
 
