@@ -13,7 +13,7 @@ rm -rf /tmp/Fynelium
 mkdir /tmp/Fynelium
 git clone https://github.com/MrGrappleMan/Fynelium.git /tmp/Fynelium/
 cd /tmp/Fynelium/LXroot
-sudo -A /tmp/Fynelium/LXroot/tmp/FyneliumCoreSet/m.fish
+sudo fish /tmp/Fynelium/LXroot/tmp/FyneliumCoreSet/m.fish
 ```
 Getting some errors is normal. Allow inhibiting shortcuts if requested.
 
