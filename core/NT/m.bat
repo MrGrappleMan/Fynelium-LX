@@ -113,18 +113,23 @@ echo Device will restart automatically within a 2 minutes and show a warning onc
 ::Trigger Tweaks OR Repairs
 
 echo Checking for health and repairs...
+@echo on
 sfc /scannow
 chkdsk /f /r
 wsreset.exe
 dism /Online /CheckHealth 
 dism /Online /ScanHealth
 dism /Online /Cleanup-Image /RestoreHealth
+@echo off
 
 :: Toggle Tweaks:
 echo Disabling hibernation
+@echo on
 powercfg -h off
+@echo off
 
 echo Starting recommended services
+@echo on
 sc start "SensrSvc" & sc config "SensrSvc" start=auto
 sc start "SensorService" & sc config "SensorService" start=auto
 sc start "NetTcpPortSharing" & sc config "NetTcpPortSharing" start=auto
@@ -152,8 +157,10 @@ sc start "WlanSvc" & sc config "WlanSvc" start=auto
 sc start "dot3svc" & sc config "dot3svc" start=auto
 sc start "SysMain" & sc config "SysMain" start=auto
 sc start "WSearch" & sc config "WSearch" start=auto
+@echo off
 
 echo Modifying BCDEdit settings...
+@echo on
 bcdedit /set bootlog yes
 bcdedit /set bootmenupolicy Standard
 bcdedit /set bootstatuspolicy DisplayAllFailures
@@ -172,6 +179,7 @@ bcdedit /set onecpu off
 bcdedit /set vsmlaunchtype Auto
 bcdedit /set nx Optin
 bcdedit /deletevalue useplatformclock
+@echo off
 
 :: bcdedit /set forcelegacyplatform no
 :: bcdedit /set nolowmem off
@@ -185,9 +193,11 @@ bcdedit /deletevalue useplatformclock
 :: bcdedit /set hypervisorlaunchtype on
 
 echo Setting up trustworthy NTP servers
+@echo on
 w32tm /register
 w32tm /config /syncfromflags:all /manualpeerlist:"time.google.com time.windows.com time.cloudflare.com pool.ntp.org time.facebook.com time.apple.com time.aws.com" /reliable:YES /update
 w32tm /resync
+@echo off
 
 echo Applying registry tweaks
 regedit /s %windir%\Temp\Fynelium\core\r.reg
@@ -198,6 +208,7 @@ regedit /s %windir%\Temp\Fynelium\core\r.reg
 :: Recommended Apps
 echo Installing apps and packages that you may find useful,
 
+@echo on
 winget install Discord.Discord.Canary
 winget install UCBerkeley.BOINC
 
@@ -220,5 +231,7 @@ winget install Microsoft.WindowsPCHealthCheck
 winget install Valve.Steam
 winget install Valve.SteamCMD
 
+@echo off
 exit
 endlocal
+
