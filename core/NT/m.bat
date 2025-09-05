@@ -21,11 +21,6 @@ set seperator=echo _____________________________________________________________
 set svcset="if !el!==1 (sc stop "!svcnme!" ^& sc config "!svcnme!" start=disabled) ^& if !el!==2 (sc start "!svcnme!" ^& sc config "!svcnme!" start=auto)"
 set userask="echo Options: ^& echo X. Skip ^& echo 1. No ^& echo 2. Yes ^& choice /C 12X /N"
 
-winget install Git.Git
-rmdir /s /q %windir%\Temp\Fynelium\>nul
-mkdir %windir%\Temp\Fynelium\
-cd %windir%\Temp\Fynelium\
-git clone
 color 07
 cls
 
@@ -217,21 +212,22 @@ IF "%PROCESSOR_ARCHITECTURE%"=="ARM64" (
 ) ELSE IF "%PROCESSOR_ARCHITECTURE%"=="AMD64" (
     curl -L "https://boinc.berkeley.edu/dl/boinc_8.2.5_windows_x86_64.exe" -o BOINCSetup.exe
 	curl -L "https://go.dev/dl/go1.25.0.windows-amd64.msi" -o GoLangSetup.exe
-	curl -L "https://files2.freedownloadmanager.org/6/latest/fdm_x64_setup.exe" -o FDMSetup.exe
 
 	FDMSetup.exe
 ) ELSE (
     ECHO %PROCESSOR_ARCHITECTURE% is unsupported
 )
-curl -L "https://go.microsoft.com/fwlink/?linkid=2084649&Channel=Canary&language=en&brand=M103" -o EdgeSetup.exe
-curl -L "https://central.github.com/deployments/desktop/desktop/latest/win32?format=msi&env=beta" -o GitHubDesktopSetup.msi
-curl -L "https://dl.google.com/drive-file-stream/GoogleDriveSetup.exe" -o GoogleDriveSetup.exe
 
 BOINCSetup.exe
 GoLangSetup.exe
-EdgeSetup.exe
-msiexec.exe /i %windir%\Temp\Fynelium\GitHubDesktopSetup.msi /qn
-GoogleDriveSetup.exe
+
+winget install LGUG2Z.komorebi
+winget install LGUG2Z.whkd
+winget install Discord.Discord.Canary
+winget install SoftDeluxe.FreeDownloadManager
+winget install Google.GoogleDrive
+winget install GitHub.GitHubDesktop.Beta
+winget install Microsoft.Edge.Canary
 
 echo After you set up everything, you may exit
 pause>nul
@@ -240,24 +236,7 @@ pause>nul
 pause>nul
 pause>nul
 
-rmdir /s /q %windir%\Temp\>nul
+rmdir /s /q %windir%\Temp\
 
 exit
 endlocal
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
