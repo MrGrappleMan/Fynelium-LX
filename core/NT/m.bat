@@ -111,6 +111,8 @@ echo Do not do important work or programs that keep progress via save-files on y
 echo Device will restart automatically within a 2 minutes and show a warning once done.
 
 ::Trigger Tweaks OR Repairs
+
+echo Undergoing repair and health checks
 sfc /scannow
 chkdsk /f /r
 wsreset.exe
@@ -118,16 +120,17 @@ dism /Online /CheckHealth
 dism /Online /ScanHealth
 dism /Online /Cleanup-Image /RestoreHealth
 
+echo Removing Caches, will be migrated later
 net stop wuauserv>nul
 rmdir /s /q %windir%\SoftwareDistribution\Download\>nul
-rmdir /s /q %tmp%\>nul
-rmdir /s /q %windir%\Prefetch\>nul
-ipconfig /flushdns>nul
-ipconfig /registerdns>nul
-ipconfig /release>nul
-ipconfig /renew>nul
-wuauclt.exe /updatenow>nul
-net start wuauserv>nul
+rmdir /s /q %tmp%\
+rmdir /s /q %windir%\Prefetch\
+ipconfig /flushdns
+ipconfig /registerdns
+ipconfig /release
+ipconfig /renew
+wuauclt.exe /updatenow
+net start wuauserv
 
 pnputil /remove-device /class "Mouse" /subtree
 pnputil /remove-device /class "Keyboard" /subtree
@@ -223,16 +226,10 @@ winget install Google.GoogleDrive
 winget install GitHub.GitHubDesktop.Beta
 winget install Microsoft.Edge.Canary
 winget install UCBerkeley.BOINC
-
-echo After you set up everything, you may exit
-pause>nul
-pause>nul
-pause>nul
-pause>nul
-pause>nul
-
-rmdir /s /q %windir%\Temp\
+winget install Microsoft.PCManager.Beta
+winget install Microsoft.WindowsPCHealthCheck
 
 exit
 endlocal
+
 
