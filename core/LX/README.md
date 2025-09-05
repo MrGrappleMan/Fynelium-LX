@@ -1,4 +1,4 @@
-## For Bazzite Linux
+# Linux, mainly Bazzite
 
 Get [Bazzite](https://bazzite.gg/#image-picker) GNOME with no Steam Gaming Mode's ISO file
 
