@@ -112,7 +112,7 @@ echo Device will restart automatically within a 2 minutes and show a warning onc
 
 ::Trigger Tweaks OR Repairs
 
-echo Undergoing repair and health checks
+echo Checking for health and repairs...
 sfc /scannow
 chkdsk /f /r
 wsreset.exe
@@ -120,62 +120,45 @@ dism /Online /CheckHealth
 dism /Online /ScanHealth
 dism /Online /Cleanup-Image /RestoreHealth
 
-echo Removing Caches, will be migrated later
-net stop wuauserv>nul
-rmdir /s /q %windir%\SoftwareDistribution\Download\>nul
-rmdir /s /q %tmp%\
-rmdir /s /q %windir%\Prefetch\
-ipconfig /flushdns
-ipconfig /registerdns
-ipconfig /release
-ipconfig /renew
-wuauclt.exe /updatenow
-net start wuauserv
-
-pnputil /remove-device /class "Mouse" /subtree
-pnputil /remove-device /class "Keyboard" /subtree
-pnputil /remove-device /class "HIDClass" /subtree
-pnputil /remove-device /class "USBDevice" /subtree
-pnputil /remove-device /class "USB" /subtree
-timeout 15
-pnputil.exe /scan-devices
-
 :: Toggle Tweaks:
+echo Disabling hibernation
 powercfg -h off
 
-sc start "SensrSvc">nul & sc config "SensrSvc" start=auto>nul
-sc start "SensorService">nul & sc config "SensorService" start=auto>nul
-sc start "NetTcpPortSharing">nul & sc config "NetTcpPortSharing" start=auto>nul
-sc start "wisvc">nul & sc config "wisvc" start=auto>nul
-sc start "WpnUserService">nul & sc config "WpnUserService" start=auto>nul
-sc start "WpnService">nul & sc config "WpnService" start=auto>nul
-sc start "UserDataSvc">nul & sc config "UserDataSvc" start=auto>nul
-sc start "UnistoreSvc">nul & sc config "UnistoreSvc" start=auto>nul
-sc start "UevAgentService">nul & sc config "UevAgentService" start=auto>nul
-sc start "UsoSvc">nul & sc config "UsoSvc" start=auto>nul
-sc start "InstallServicec">nul & sc config "InstallService" start=auto>nul
-sc start "DiagTrack">nul & sc config "DiagTrack" start=auto>nul
-sc start "tzautoupdate">nul & sc config "tzautoupdate" start=auto>nul
-sc start "BITS">nul & sc config "BITS" start=auto>nul
-sc start "DoSvc">nul & sc config "DoSvc" start=auto>nul
-sc start "wuauserv">nul & sc config "wuauserv" start=auto>nul
-sc start "WaaSMedicSvc">nul & sc config "WaaSMedicSvc" start=auto>nul
-sc start "Dnscache">nul & sc config "Dnscache" start=auto>nul
-sc start "svsvc">nul & sc config "svsvc" start=auto>nul
-sc start "Winmgmt">nul & sc config "Winmgmt" start=auto>nul
-sc start "whesvc">nul & sc config "whesvc" start=auto>nul
-sc start "WebClient">nul & sc config "WebClient" start=auto>nul
-sc start "W32Time">nul & sc config "W32Time" start=auto>nul
-sc start "WlanSvc">nul & sc config "WlanSvc" start=auto>nul
-sc start "dot3svc">nul & sc config "dot3svc" start=auto>nul
-sc start "SysMain">nul & sc config "SysMain" start=auto>nul
-sc start "WSearch">nul & sc config "WSearch" start=auto>nul
+echo Starting recommended services
+sc start "SensrSvc" & sc config "SensrSvc" start=auto
+sc start "SensorService" & sc config "SensorService" start=auto
+sc start "NetTcpPortSharing" & sc config "NetTcpPortSharing" start=auto
+sc start "wisvc" & sc config "wisvc" start=auto
+sc start "WpnUserService" & sc config "WpnUserService" start=auto
+sc start "WpnService" & sc config "WpnService" start=auto
+sc start "UserDataSvc" & sc config "UserDataSvc" start=auto
+sc start "UnistoreSvc" & sc config "UnistoreSvc" start=auto
+sc start "UevAgentService" & sc config "UevAgentService" start=auto
+sc start "UsoSvc" & sc config "UsoSvc" start=auto
+sc start "InstallServicec" & sc config "InstallService" start=auto
+sc start "DiagTrack" & sc config "DiagTrack" start=auto
+sc start "tzautoupdate" & sc config "tzautoupdate" start=auto
+sc start "BITS" & sc config "BITS" start=auto
+sc start "DoSvc" & sc config "DoSvc" start=auto
+sc start "wuauserv" & sc config "wuauserv" start=auto
+sc start "WaaSMedicSvc" & sc config "WaaSMedicSvc" start=auto
+sc start "Dnscache" & sc config "Dnscache" start=auto
+sc start "svsvc" & sc config "svsvc" start=auto
+sc start "Winmgmt" & sc config "Winmgmt" start=auto
+sc start "whesvc" & sc config "whesvc" start=auto
+sc start "WebClient" & sc config "WebClient" start=auto
+sc start "W32Time" & sc config "W32Time" start=auto
+sc start "WlanSvc" & sc config "WlanSvc" start=auto
+sc start "dot3svc" & sc config "dot3svc" start=auto
+sc start "SysMain" & sc config "SysMain" start=auto
+sc start "WSearch" & sc config "WSearch" start=auto
 
+echo Modifying BCDEdit settings...
 bcdedit /set bootlog yes
 bcdedit /set bootmenupolicy Standard
 bcdedit /set bootstatuspolicy DisplayAllFailures
-bcdedit /set quietboot on
-bcdedit /set sos on
+bcdedit /set quietboot off
+bcdedit /set sos off
 bcdedit /set nocrashautoreboot off
 bcdedit /set bootuxdisabled off
 bcdedit /set maxproc yes
@@ -201,30 +184,41 @@ bcdedit /deletevalue useplatformclock
 :: bcdedit /set testsigning No
 :: bcdedit /set hypervisorlaunchtype on
 
-w32tm /config /syncfromflags:manual /manualpeerlist:"time.google.com time.windows.com time.cloudflare.com pool.ntp.org time.facebook.com time.apple.com time.aws.com" /reliable:YES /update & net stop w32time & net start w32time & w32tm /resync /force
+echo Setting up trustworthy NTP servers
+w32tm /register
+w32tm /config /syncfromflags:all /manualpeerlist:"time.google.com time.windows.com time.cloudflare.com pool.ntp.org time.facebook.com time.apple.com time.aws.com" /reliable:YES /update
+w32tm /resync
 
-regedit /s r.reg
+echo Applying registry tweaks
+regedit /s %windir%\Temp\Fynelium\core\r.reg
 
 :: Power plan. idk if this works, last tried it in 2022, did not work across PCs
 :: powercfg.exe -import "!cd!\powerplan.pow">nul
 
 :: Recommended Apps
+echo Installing apps and packages that you may find useful,
 
+winget install Discord.Discord.Canary
+winget install UCBerkeley.BOINC
+
+::General Productivity
 winget install LGUG2Z.komorebi
 winget install LGUG2Z.whkd
-winget install Discord.Discord.Canary
 winget install SoftDeluxe.FreeDownloadManager
 winget install Google.GoogleDrive
-winget install GitHub.GitHubDesktop.Beta
 winget install Microsoft.Edge.Canary
-winget install UCBerkeley.BOINC
+
+::Software Development
+winget install GoLang.Go
+winget install GitHub.GitHubDesktop.Beta
+
+::System Maintenance
 winget install Microsoft.PCManager.Beta
 winget install Microsoft.WindowsPCHealthCheck
+
+::Gaming
 winget install Valve.Steam
 winget install Valve.SteamCMD
-winget install GoLang.Go
 
 exit
 endlocal
-
-
