@@ -18,7 +18,7 @@ exit
 :: Functions and Variables
 set arch=%PROCESSOR_ARCHITECTURE%
 set seperator=echo _____________________________________________________________________________________________________________________________________________________________________________________________
-set svcset="if !el!==1 (sc stop "!svcnme!" ^& sc config "!svcnme!" start=disabled) ^& if !el!==2 (sc start "!svcnme!" ^& sc config "!svcnme!" start=auto)"
+set svcset="if !el!==1 (sc stop "!svcnme!" ^& sc config "!svcnme!" start=disabled) ^& if !el!==2 (sc start "!svcnme!" ^& sc config "!svcnme!">nul start=auto)"
 set userask="echo Options: ^& echo X. Skip ^& echo 1. No ^& echo 2. Yes ^& choice /C 12X /N"
 
 color 07
@@ -123,40 +123,40 @@ dism /Online /Cleanup-Image /RestoreHealth
 @echo off
 
 :: Toggle Tweaks:
-echo Disabling hibernation
+echo Disabling hibernation>nul
 @echo on
-powercfg -h off
+powercfg -h off>nul
 @echo off
 
-echo Starting recommended services
+echo Modifying services...
 @echo on
-sc start "SensrSvc" & sc config "SensrSvc" start=auto
-sc start "SensorService" & sc config "SensorService" start=auto
-sc start "NetTcpPortSharing" & sc config "NetTcpPortSharing" start=auto
-sc start "wisvc" & sc config "wisvc" start=auto
-sc start "WpnUserService" & sc config "WpnUserService" start=auto
-sc start "WpnService" & sc config "WpnService" start=auto
-sc start "UserDataSvc" & sc config "UserDataSvc" start=auto
-sc start "UnistoreSvc" & sc config "UnistoreSvc" start=auto
-sc start "UevAgentService" & sc config "UevAgentService" start=auto
-sc start "UsoSvc" & sc config "UsoSvc" start=auto
-sc start "InstallServicec" & sc config "InstallService" start=auto
-sc start "DiagTrack" & sc config "DiagTrack" start=auto
-sc start "tzautoupdate" & sc config "tzautoupdate" start=auto
-sc start "BITS" & sc config "BITS" start=auto
-sc start "DoSvc" & sc config "DoSvc" start=auto
-sc start "wuauserv" & sc config "wuauserv" start=auto
-sc start "WaaSMedicSvc" & sc config "WaaSMedicSvc" start=auto
-sc start "Dnscache" & sc config "Dnscache" start=auto
-sc start "svsvc" & sc config "svsvc" start=auto
-sc start "Winmgmt" & sc config "Winmgmt" start=auto
-sc start "whesvc" & sc config "whesvc" start=auto
-sc start "WebClient" & sc config "WebClient" start=auto
-sc start "W32Time" & sc config "W32Time" start=auto
-sc start "WlanSvc" & sc config "WlanSvc" start=auto
-sc start "dot3svc" & sc config "dot3svc" start=auto
-sc start "SysMain" & sc config "SysMain" start=auto
-sc start "WSearch" & sc config "WSearch" start=auto
+sc start "SensrSvc"nul> & sc config "SensrSvc">nul start=auto
+sc start "SensorService"nul> & sc config "SensorService">nul start=auto
+sc start "NetTcpPortSharing"nul> & sc config "NetTcpPortSharing">nul start=auto
+sc start "wisvc"nul> & sc config "wisvc">nul start=auto
+sc start "WpnUserService"nul> & sc config "WpnUserService">nul start=auto
+sc start "WpnService"nul> & sc config "WpnService">nul start=auto
+sc start "UserDataSvc"nul> & sc config "UserDataSvc">nul start=auto
+sc start "UnistoreSvc"nul> & sc config "UnistoreSvc">nul start=auto
+sc start "UevAgentService"nul> & sc config "UevAgentService">nul start=auto
+sc start "UsoSvc"nul> & sc config "UsoSvc">nul start=auto
+sc start "InstallServicec"nul> & sc config "InstallService">nul start=auto
+sc start "DiagTrack"nul> & sc config "DiagTrack">nul start=auto
+sc start "tzautoupdate"nul> & sc config "tzautoupdate">nul start=auto
+sc start "BITS"nul> & sc config "BITS">nul start=auto
+sc start "DoSvc"nul> & sc config "DoSvc">nul start=auto
+sc start "wuauserv"nul> & sc config "wuauserv">nul start=auto
+sc start "WaaSMedicSvc"nul> & sc config "WaaSMedicSvc">nul start=auto
+sc start "Dnscache"nul> & sc config "Dnscache">nul start=auto
+sc start "svsvc"nul> & sc config "svsvc">nul start=auto
+sc start "Winmgmt"nul> & sc config "Winmgmt">nul start=auto
+sc start "whesvc"nul> & sc config "whesvc">nul start=auto
+sc start "WebClient"nul> & sc config "WebClient">nul start=auto
+sc start "W32Time"nul> & sc config "W32Time">nul start=auto
+sc start "WlanSvc"nul> & sc config "WlanSvc">nul start=auto
+sc start "dot3svc"nul> & sc config "dot3svc">nul start=auto
+sc start "SysMain"nul> & sc config "SysMain">nul start=auto
+sc start "WSearch"nul> & sc config "WSearch">nul start=auto
 @echo off
 
 echo Modifying BCDEdit settings...
@@ -234,4 +234,5 @@ winget install Valve.SteamCMD
 @echo off
 exit
 endlocal
+
 
