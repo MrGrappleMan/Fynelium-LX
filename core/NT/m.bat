@@ -209,14 +209,6 @@ regedit /s r.reg
 :: powercfg.exe -import "!cd!\powerplan.pow">nul
 
 :: Recommended Apps
-IF "%PROCESSOR_ARCHITECTURE%"=="ARM64" (
-	curl -L "https://go.dev/dl/go1.25.0.windows-arm64.msi" -o GoLangSetup.exe
-) ELSE IF "%PROCESSOR_ARCHITECTURE%"=="AMD64" (
-	curl -L "https://go.dev/dl/go1.25.0.windows-amd64.msi" -o GoLangSetup.exe
-) ELSE (
-    ECHO %PROCESSOR_ARCHITECTURE% is unsupported
-)
-GoLangSetup.exe
 
 winget install LGUG2Z.komorebi
 winget install LGUG2Z.whkd
@@ -228,6 +220,9 @@ winget install Microsoft.Edge.Canary
 winget install UCBerkeley.BOINC
 winget install Microsoft.PCManager.Beta
 winget install Microsoft.WindowsPCHealthCheck
+winget install Valve.Steam
+winget install Valve.SteamCMD
+winget install GoLang.Go
 
 exit
 endlocal
