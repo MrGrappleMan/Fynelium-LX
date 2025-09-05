@@ -5,7 +5,7 @@ Get [Bazzite](https://bazzite.gg/#image-picker) GNOME with no Steam Gaming Mode'
 Move the file ending with ".iso" to a spare USB Drive with Ventoy installed.
 
 Within the installer,
-Back up ALL your data on the disk. In the Bazzite installer, wipe out your entire system disk, avoid LUKS encryption if you want to but it is generally safe and recommended
+Back up ALL your data on the disk. In the Bazzite installer, wipe out your entire system disk, avoid LUKS encryption if you want to. But it is generally safe and recommended, you might find it annoying though.
 After installing and getting to the desktop, run this script in the "Terminal" app to get started.
 
 ```
@@ -13,8 +13,7 @@ cd /tmp/
 rm -rf /tmp/Fynelium
 mkdir /tmp/Fynelium
 git clone https://github.com/MrGrappleMan/Fynelium.git /tmp/Fynelium/
-cd /tmp/Fynelium/LXroot
-sudo fish /tmp/Fynelium/LXroot/tmp/FyneliumCoreSet/m.fish
+sudo fish /tmp/Fynelium/core/LX/m.fish
 ```
 Getting some errors is normal. Allow inhibiting shortcuts if requested.
 
