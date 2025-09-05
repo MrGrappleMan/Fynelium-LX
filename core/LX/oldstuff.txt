@@ -1,23 +1,6 @@
 #!/bin/zsh
 clear
 cd
-netrf() {
-    while true; do
-        sudo nmcli device wifi rescan
-		sudo nmcli connection up "$(nmcli -t -f NAME connection show --active | head -n 1)"
-        sleep 300
-    done
-}
-netrf &
-NETRFP=$!
-sudo swapoff -a
-sudorefresh() {
-	while true; do
-		sudo -v
-		sleep 150
-	done
-}
-sudorefresh &
 SUDOREFRESHP=$!
 sudo pacman -Syy base base-devel git
 git clone https://aur.archlinux.org/git-git.git
@@ -41,31 +24,7 @@ kill $SUDOREFRESHP
 kill $NETRFP
 
 #!/bin/zsh
-clear
-cd
-if [[ "$USER" == "root" ]]; then
-echo Running as root by default is not allowed.
-echo There are a few instances where you need to be a regular user...
-sleep 5
-exit
-fi
-netrf() {
-    while true; do
-        sudo -v
-        sleep 240
-    done
-}
-netrf &
-NETRP=$!
 sudo swapoff -a
-sudorefresh() {
-    while true; do
-        sudo -v
-        sleep 240
-    done
-}
-sudorefresh &
-SUDOREFRESHP=$!
 # PkgConfigs---------------------------------------------------------------------------------------------------- 
 pacmanrcf() {
 sudo rm -rf /var/lib/pacman/db.lck /etc/pacman.d/gnupg /var/lib/pacman/sync/* ~/pacman-git
