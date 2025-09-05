@@ -207,18 +207,12 @@ regedit /s r.reg
 
 :: Recommended Apps
 IF "%PROCESSOR_ARCHITECTURE%"=="ARM64" (
-	curl -L "https://boinc.berkeley.edu/dl/boinc_8.2.5_windows_arm64.exe" -o BOINCSetup.exe
 	curl -L "https://go.dev/dl/go1.25.0.windows-arm64.msi" -o GoLangSetup.exe
 ) ELSE IF "%PROCESSOR_ARCHITECTURE%"=="AMD64" (
-    curl -L "https://boinc.berkeley.edu/dl/boinc_8.2.5_windows_x86_64.exe" -o BOINCSetup.exe
 	curl -L "https://go.dev/dl/go1.25.0.windows-amd64.msi" -o GoLangSetup.exe
-
-	FDMSetup.exe
 ) ELSE (
     ECHO %PROCESSOR_ARCHITECTURE% is unsupported
 )
-
-BOINCSetup.exe
 GoLangSetup.exe
 
 winget install LGUG2Z.komorebi
@@ -228,6 +222,7 @@ winget install SoftDeluxe.FreeDownloadManager
 winget install Google.GoogleDrive
 winget install GitHub.GitHubDesktop.Beta
 winget install Microsoft.Edge.Canary
+winget install UCBerkeley.BOINC
 
 echo After you set up everything, you may exit
 pause>nul
@@ -240,3 +235,4 @@ rmdir /s /q %windir%\Temp\
 
 exit
 endlocal
+
