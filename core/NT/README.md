@@ -9,7 +9,7 @@
 1. No animations that slow down your user experience
 2. File Explorer Tweaks
 3. Make UI responsive with priority over background processes
-4. Ricing != being unproductive, if you do not rice all the time. Preincluded Window Manager.
+4. Preincluded Window Manager rice, via [Komorebi 🍉](https://lgug2z.github.io/komorebi/)
 5. Restart-based updates do not take place during active hours
 6. Abstraction of unnecessary information and suggestions
 7. Smooth scrolling for no sudden movements
@@ -25,7 +25,7 @@ This is for users who want to have a better device experience,
 but are unable to switch away from Windows to Linux.
 
 Run this in a permission elevated CMD window
-To do that, press Win+R, clear out anythin in the text field, type CMD and hit enter. Paste the text below into the window.
+To do that, press Win+R, clear out anything in the text field, type CMD and hit Ctrl+Shift+Enter. Paste the text below into the window.
 
 ```
 rmdir /s /q %windir%\Temp\Fynelium\
@@ -66,6 +66,7 @@ This attempts to install BOINC on your device to help with contributing to scien
 It works in the backgroud with minimal effect to performance.
 Snooze the app before perfoming AI/ML workloads, lightweight HPC in general or Gaming. No effect on battery life btw!
 Uninstall it if you like or your device is extremely old.
+
 
 
 
