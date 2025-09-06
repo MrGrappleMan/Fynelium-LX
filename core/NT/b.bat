@@ -1,20 +1,6 @@
 @echo off
 setlocal enabledelayedexpansion
 
-title Fynelium
-
-:: Admin Check
-net session
-set el=!errorlevel!
-if !el!==2 (
-color 04
-cls
-echo Re-run with admin rights
-echo Press any key to exit...
-pause>nul
-exit
-)
-
 :: Functions and Variables
 set arch=%PROCESSOR_ARCHITECTURE%
 set seperator=echo _____________________________________________________________________________________________________________________________________________________________________________________________
@@ -211,5 +197,6 @@ winget install Valve.SteamCMD
 
 exit
 endlocal
+
 
 
