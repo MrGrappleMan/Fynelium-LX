@@ -18,7 +18,7 @@ exit
 :: Functions and Variables
 set arch=%PROCESSOR_ARCHITECTURE%
 set seperator=echo _____________________________________________________________________________________________________________________________________________________________________________________________
-set svcset="if !el!==1 (sc stop "!svcnme!" ^& sc config "!svcnme!" start=disabled) ^& if !el!==2 (sc start "!svcnme!" ^& sc config "!svcnme!">nul start=auto)"
+set svcset="if !el!==1 (sc stop "!svcnme!" ^& sc config "!svcnme!" start=disabled) ^& if !el!==2 (sc start "!svcnme!" ^& sc config "!svcnme!" start=auto>nul)"
 set userask="echo Options: ^& echo X. Skip ^& echo 1. No ^& echo 2. Yes ^& choice /C 12X /N"
 
 color 07
@@ -110,57 +110,40 @@ echo For the time-being, avoid modifying your system files or installing or usin
 echo Do not do important work or programs that keep progress via save-files on your disk.
 echo Device will restart automatically within a 2 minutes and show a warning once done.
 
-::Trigger Tweaks OR Repairs
-
-echo Checking for health and repairs...
-@echo on
-sfc /scannow
-chkdsk /f /r
-wsreset.exe
-dism /Online /CheckHealth 
-dism /Online /ScanHealth
-dism /Online /Cleanup-Image /RestoreHealth
-@echo off
-
-:: Toggle Tweaks:
-echo Disabling hibernation>nul
-@echo on
+:: Tweaks:
+echo Disabling hibernation...
 powercfg -h off>nul
-@echo off
 
 echo Modifying services...
-@echo on
-sc start "SensrSvc"nul> & sc config "SensrSvc">nul start=auto
-sc start "SensorService"nul> & sc config "SensorService">nul start=auto
-sc start "NetTcpPortSharing"nul> & sc config "NetTcpPortSharing">nul start=auto
-sc start "wisvc"nul> & sc config "wisvc">nul start=auto
-sc start "WpnUserService"nul> & sc config "WpnUserService">nul start=auto
-sc start "WpnService"nul> & sc config "WpnService">nul start=auto
-sc start "UserDataSvc"nul> & sc config "UserDataSvc">nul start=auto
-sc start "UnistoreSvc"nul> & sc config "UnistoreSvc">nul start=auto
-sc start "UevAgentService"nul> & sc config "UevAgentService">nul start=auto
-sc start "UsoSvc"nul> & sc config "UsoSvc">nul start=auto
-sc start "InstallServicec"nul> & sc config "InstallService">nul start=auto
-sc start "DiagTrack"nul> & sc config "DiagTrack">nul start=auto
-sc start "tzautoupdate"nul> & sc config "tzautoupdate">nul start=auto
-sc start "BITS"nul> & sc config "BITS">nul start=auto
-sc start "DoSvc"nul> & sc config "DoSvc">nul start=auto
-sc start "wuauserv"nul> & sc config "wuauserv">nul start=auto
-sc start "WaaSMedicSvc"nul> & sc config "WaaSMedicSvc">nul start=auto
-sc start "Dnscache"nul> & sc config "Dnscache">nul start=auto
-sc start "svsvc"nul> & sc config "svsvc">nul start=auto
-sc start "Winmgmt"nul> & sc config "Winmgmt">nul start=auto
-sc start "whesvc"nul> & sc config "whesvc">nul start=auto
-sc start "WebClient"nul> & sc config "WebClient">nul start=auto
-sc start "W32Time"nul> & sc config "W32Time">nul start=auto
-sc start "WlanSvc"nul> & sc config "WlanSvc">nul start=auto
-sc start "dot3svc"nul> & sc config "dot3svc">nul start=auto
-sc start "SysMain"nul> & sc config "SysMain">nul start=auto
-sc start "WSearch"nul> & sc config "WSearch">nul start=auto
-@echo off
+sc start "SensrSvc">nul & sc config "SensrSvc" start=auto>nul
+sc start "SensorService">nul & sc config "SensorService" start=auto>nul
+sc start "NetTcpPortSharing">nul & sc config "NetTcpPortSharing" start=auto>nul
+sc start "wisvc">nul & sc config "wisvc" start=auto>nul
+sc start "WpnUserService">nul & sc config "WpnUserService" start=auto>nul
+sc start "WpnService">nul & sc config "WpnService" start=auto>nul
+sc start "UserDataSvc">nul & sc config "UserDataSvc" start=auto>nul
+sc start "UnistoreSvc">nul & sc config "UnistoreSvc" start=auto>nul
+sc start "UevAgentService">nul & sc config "UevAgentService" start=auto>nul
+sc start "UsoSvc">nul & sc config "UsoSvc" start=auto>nul
+sc start "InstallServicec">nul & sc config "InstallService" start=auto>nul
+sc start "DiagTrack">nul & sc config "DiagTrack" start=auto>nul
+sc start "tzautoupdate">nul & sc config "tzautoupdate" start=auto>nul
+sc start "BITS">nul & sc config "BITS" start=auto>nul
+sc start "DoSvc">nul & sc config "DoSvc" start=auto>nul
+sc start "wuauserv">nul & sc config "wuauserv" start=auto>nul
+sc start "WaaSMedicSvc">nul & sc config "WaaSMedicSvc" start=auto>nul
+sc start "Dnscache">nul & sc config "Dnscache" start=auto>nul
+sc start "svsvc">nul & sc config "svsvc" start=auto>nul
+sc start "Winmgmt">nul & sc config "Winmgmt" start=auto>nul
+sc start "whesvc">nul & sc config "whesvc" start=auto>nul
+sc start "WebClient">nul & sc config "WebClient" start=auto>nul
+sc start "W32Time">nul & sc config "W32Time" start=auto>nul
+sc start "WlanSvc">nul & sc config "WlanSvc" start=auto>nul
+sc start "dot3svc">nul & sc config "dot3svc" start=auto>nul
+sc start "SysMain">nul & sc config "SysMain" start=auto>nul
+sc start "WSearch">nul & sc config "WSearch" start=auto>nul
 
 echo Modifying BCDEdit settings...
-@echo on
 bcdedit /set bootlog yes
 bcdedit /set bootmenupolicy Standard
 bcdedit /set bootstatuspolicy DisplayAllFailures
@@ -178,7 +161,6 @@ bcdedit /set nointegritychecks off
 ::bcdedit /set vsmlaunchtype Auto
 bcdedit /set nx Optin
 ::bcdedit /deletevalue useplatformclock
-@echo off
 
 :: bcdedit /set forcelegacyplatform no
 :: bcdedit /set nolowmem off
@@ -192,11 +174,9 @@ bcdedit /set nx Optin
 :: bcdedit /set hypervisorlaunchtype on
 
 echo Setting up trustworthy NTP servers
-@echo on
 w32tm /register
 w32tm /config /syncfromflags:all /manualpeerlist:"time.google.com time.windows.com time.cloudflare.com pool.ntp.org time.facebook.com time.apple.com time.aws.com" /reliable:YES /update
 w32tm /resync
-@echo off
 
 echo Applying registry tweaks
 regedit /s %windir%\Temp\Fynelium\core\NT\r.reg
@@ -207,7 +187,6 @@ regedit /s %windir%\Temp\Fynelium\core\NT\r.reg
 :: Recommended Apps
 echo Installing apps and packages that you may find useful,
 
-@echo on
 winget install Discord.Discord.Canary
 winget install UCBerkeley.BOINC
 
@@ -230,10 +209,7 @@ winget install Microsoft.WindowsPCHealthCheck
 winget install Valve.Steam
 winget install Valve.SteamCMD
 
-@echo off
 exit
 endlocal
-
-
 
 
