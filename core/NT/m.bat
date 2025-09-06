@@ -166,19 +166,18 @@ bcdedit /set bootmenupolicy Standard
 bcdedit /set bootstatuspolicy DisplayAllFailures
 bcdedit /set quietboot off
 bcdedit /set sos off
-bcdedit /set nocrashautoreboot off
+::bcdedit /set nocrashautoreboot off
 bcdedit /set bootuxdisabled off
-bcdedit /set maxproc yes
-bcdedit /set onecpu no
+::bcdedit /set maxproc yes
 bcdedit /set disabledynamictick no
-bcdedit /set usefirmwarepcisettings no
+::bcdedit /set usefirmwarepcisettings no
 bcdedit /set nointegritychecks off
-bcdedit /set groupaware on
-bcdedit /set maxgroup on
-bcdedit /set onecpu off
-bcdedit /set vsmlaunchtype Auto
+::bcdedit /set groupaware on
+::bcdedit /set maxgroup on
+::bcdedit /set onecpu off
+::bcdedit /set vsmlaunchtype Auto
 bcdedit /set nx Optin
-bcdedit /deletevalue useplatformclock
+::bcdedit /deletevalue useplatformclock
 @echo off
 
 :: bcdedit /set forcelegacyplatform no
@@ -234,5 +233,6 @@ winget install Valve.SteamCMD
 @echo off
 exit
 endlocal
+
 
 
