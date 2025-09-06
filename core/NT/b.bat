@@ -1,12 +1,6 @@
 @echo off
 setlocal enabledelayedexpansion
 
-:: Functions and Variables
-set arch=%PROCESSOR_ARCHITECTURE%
-set seperator=echo _____________________________________________________________________________________________________________________________________________________________________________________________
-set svcset="if !el!==1 (sc stop "!svcnme!" ^& sc config "!svcnme!" start=disabled) ^& if !el!==2 (sc start "!svcnme!" ^& sc config "!svcnme!" start=auto>nul)"
-set userask="echo Options: ^& echo X. Skip ^& echo 1. No ^& echo 2. Yes ^& choice /C 12X /N"
-
 color 07
 cls
 
@@ -97,8 +91,6 @@ echo Do not do important work or programs that keep progress via save-files on y
 echo Device will restart automatically within a 2 minutes and show a warning once done.
 
 :: Tweaks:
-echo Disabling hibernation...
-powercfg -h off>nul
 
 echo Modifying services...
 sc start "SensrSvc">nul & sc config "SensrSvc" start=auto>nul
@@ -129,74 +121,12 @@ sc start "dot3svc">nul & sc config "dot3svc" start=auto>nul
 sc start "SysMain">nul & sc config "SysMain" start=auto>nul
 sc start "WSearch">nul & sc config "WSearch" start=auto>nul
 
-echo Modifying BCDEdit settings...
-bcdedit /set bootlog yes
-bcdedit /set bootmenupolicy Standard
-bcdedit /set bootstatuspolicy DisplayAllFailures
-bcdedit /set quietboot off
-bcdedit /set sos off
-::bcdedit /set nocrashautoreboot off
-bcdedit /set bootuxdisabled off
-::bcdedit /set maxproc yes
-bcdedit /set disabledynamictick no
-::bcdedit /set usefirmwarepcisettings no
-bcdedit /set nointegritychecks off
-::bcdedit /set groupaware on
-::bcdedit /set maxgroup on
-::bcdedit /set onecpu off
-::bcdedit /set vsmlaunchtype Auto
-bcdedit /set nx Optin
-::bcdedit /deletevalue useplatformclock
-
-:: bcdedit /set forcelegacyplatform no
-:: bcdedit /set nolowmem off
-:: bcdedit /set x2apicpolicy enable
-:: bcdedit /set useplatformtick yes
-:: bcdedit /set tscsyncpolicy enhanced
-:: bcdedit /set uselegacyapicmode no
-:: bcdedit /set usephysicaldestination no
-:: bcdedit /set tpmbootentropy default
-:: bcdedit /set testsigning No
-:: bcdedit /set hypervisorlaunchtype on
-
-echo Setting up trustworthy NTP servers
-w32tm /register
-w32tm /config /syncfromflags:all /manualpeerlist:"time.google.com time.windows.com time.cloudflare.com pool.ntp.org time.facebook.com time.apple.com time.aws.com" /reliable:YES /update
-w32tm /resync
-
-echo Applying registry tweaks
-regedit /s %windir%\Temp\Fynelium\core\NT\r.reg
-
 :: Power plan. idk if this works, last tried it in 2022, did not work across PCs
 :: powercfg.exe -import "!cd!\powerplan.pow">nul
 
-:: Recommended Apps
-echo Installing apps and packages that you may find useful,
-
-winget install Discord.Discord.Canary
-winget install UCBerkeley.BOINC
-
-::General Productivity
-winget install LGUG2Z.komorebi
-winget install LGUG2Z.whkd
-winget install SoftDeluxe.FreeDownloadManager
-winget install Google.GoogleDrive
-winget install Microsoft.Edge.Canary
-
-::Software Development
-winget install GoLang.Go
-winget install GitHub.GitHubDesktop.Beta
-
-::System Maintenance
-winget install Microsoft.PCManager.Beta
-winget install Microsoft.WindowsPCHealthCheck
-
-::Gaming
-winget install Valve.Steam
-winget install Valve.SteamCMD
-
 exit
 endlocal
+
 
 
 
