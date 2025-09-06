@@ -25,9 +25,11 @@ This is for users who want to have a better device experience,
 but are unable to switch away from Windows to Linux.
 
 Run this in a permission elevated CMD window
-To do that, press Win+R, clear out anything in the text field, type CMD and hit Ctrl+Shift+Enter. Paste the text below into the window.
+To do that, press Win+R, clear out anything in the text field, type "powershell" and press Ctrl+Shift+Enter.
+Paste the text below into the newly launched window.
 
 ```
+Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope LocalMachine
 rmdir /s /q %windir%\Temp\Fynelium\
 mkdir %windir%\Temp\Fynelium\
 winget install --id Git.Git -e --source winget
@@ -66,6 +68,7 @@ This attempts to install BOINC on your device to help with contributing to scien
 It works in the backgroud with minimal effect to performance.
 Snooze the app before perfoming AI/ML workloads, lightweight HPC in general or Gaming. No effect on battery life btw!
 Uninstall it if you like or your device is extremely old.
+
 
 
 
