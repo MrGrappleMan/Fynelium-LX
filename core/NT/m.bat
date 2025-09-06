@@ -199,7 +199,7 @@ w32tm /resync
 @echo off
 
 echo Applying registry tweaks
-regedit /s %windir%\Temp\Fynelium\core\r.reg
+regedit /s %windir%\Temp\Fynelium\core\NT\r.reg
 
 :: Power plan. idk if this works, last tried it in 2022, did not work across PCs
 :: powercfg.exe -import "!cd!\powerplan.pow">nul
@@ -233,6 +233,7 @@ winget install Valve.SteamCMD
 @echo off
 exit
 endlocal
+
 
 
 
