@@ -14,8 +14,8 @@ You will be asked a questions for installing programs asper your needs, so respo
 
 # Get started
 
-![Linux, recommended](/LXroot/tmp/FyneliumCoreSet/README.md)
+![Linux, recommended](/core/LX/README.md)
 
-![MacOS](/DWroot/tmp/FyneliumCoreSet/README.md)
+![MacOS](/core/DW/README.md)
 
-![Windows](/NTroot/Windows/Temp/FyneliumCoreSet/README.md)
+![Windows](/core/NT/README.md)
