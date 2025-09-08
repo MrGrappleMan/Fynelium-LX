@@ -3,16 +3,21 @@
 ### Some preferences might not meet your requirements ###
 ### Adjusting some userspace settings and apps yourself is recommended after the reboot ###
 
-# Title
+# Fish
+# Functions
 function fish_title
  echo 千ㄚ几乇ㄥ丨ㄩ爪
 end
+function fyn_base_screen
 echo "    ______                 ___               ";
 echo "   / ____/_  ______  ___  / (_)_  ______ ___ ";
 echo "  / /_  / / / / __ \\/ _ \\/ / / / / / __ \`__ \\";
 echo " / __/ / /_/ / / / /  __/ / / /_/ / / / / / /";
 echo "/_/    \\__, /_/ /_/\\___/_/_/\\__,_/_/ /_/ /_/ ";
 echo "      /____/                                 ";
+echo "_________________________________"
+end
+
 # Aliases
  alias rot "rpm-ostree --peer"
  alias rotpkgadd "rpm-ostree --peer install --allow-inactive --idempotent -y"
@@ -22,8 +27,6 @@ echo "      /____/                                 ";
  alias fpkrepdel "flatpak --system remote-delete --force"
  alias fpkpkgadd "flatpak --system install -y --noninteractive --include-sdk --or-update"
  alias fpkpkgdel "flatpak --system uninstall -y --noninteractive --force-remove"
-
-# Functions, actions, loops.
 
 # Filesystem
  echo Copying over Filesystem contents
