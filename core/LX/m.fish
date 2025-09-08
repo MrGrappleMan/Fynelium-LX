@@ -16,6 +16,7 @@
 # Functions, actions, loops.
 
 # Filesystem
+ echo Copying over Filesystem contents
  cd /tmp/Fynelium/LXroot
  cp -r /tmp/Fynelium/LXroot/etc/* /etc/
  cp -r /tmp/Fynelium/LXroot/var/* /var/
@@ -28,25 +29,29 @@
  clear
  echo "Setup started. Even if something may not seem to be occuring, the process is working in the background"
  echo "It all usually boils down to how fast your device is and the number of packages"
- echo "Be patient till your device reboots. Sometimes a password will be asked. Keep it copied and keep pasting it whenever prompted"
+ echo "Be patient till your device reboots. Sometimes a password will be asked. Keep it copied and keep pasting it whenever prompted."
+ echo "Not the cleanest method, but yeah"
 
 #MaintenanceCommands
+echo Performing basic maintenance
 rot cleanup -b 
 rot reload
-rpm-ostree apply-live
-rpm-ostree apply-live --allow-replacement
 fwupdmgr --allow-branch-switch --allow-older
 flatpak update --system -y --noninteractive --force-remove 
 
-#fwupdmr
+#fwupdmgr
+ echo fwupdmgr modification
  #repos
+  echo fwupdmgr repos add
   fwupdmgr enable-remote lvfs -y
   fwupdmgr enable-remote lvfs-testing -y
 
 #flatpak
  #SystemFlatpaksOnly
+  echo And please, install Flatpaks for the system, not just the user
   flatpak uninstall -u --all -y --noninteractive --force-remove
  #remote-add
+  echo flatpaks repos add
   fpkrepadd flathub https://flathub.org/repo/flathub.flatpakrepo
   fpkrepadd flathub-beta https://flathub.org/beta-repo/flathub-beta.flatpakrepo
   ###fpkrepadd eos-sdk https://ostree.endlessm.com/ostree/eos-sdk
@@ -64,6 +69,7 @@ flatpak update --system -y --noninteractive --force-remove
   fpkrepadd pureos https://store.puri.sm/repo/stable/pureos.flatpakrepo
   fpkrepadd kde-runtime-nightly https://cdn.kde.org/flatpak/kde-runtime-nightly/kde-runtime-nightly.flatpakrepo
  #install
+  echo Installing Flatpaks. Pls choose the latest version of applications if prompted
   fpkpkgadd flathub-beta \
    org.freedesktop.Platform org.gnome.Platform \
    org.freedesktop.Sdk org.gnome.Sdk
@@ -85,6 +91,7 @@ flatpak update --system -y --noninteractive --force-remove
  brh rebase unstable -y
 
 #ujust
+ echo Using ujust for modification of system and additional utilities
  ujust setup-decky install
  ujust setup-decky prerelease # Still of utility on desktops
  ujust get-decky-bazzite-buddy # Know your changes you system undergoes to use it better
@@ -104,6 +111,7 @@ flatpak update --system -y --noninteractive --force-remove
 #snap
 
 #rpm-ostree
+ echo Here is the main part, installing system packages
  #install
    rotpkgadd \
     rust-zram-generator-devel preload \
@@ -191,7 +199,8 @@ flatpak update --system -y --noninteractive --force-remove
  #refresh
   nohup systemctl daemon-reload &
   nohup timedatectl set-ntp true --no-ask-password &
- #Services 
+ #Services
+  echo Modifying SystemD services
   systemctl mask \
    systemd-rfkill systemd-rfkill.socket \
    tracker-store \
@@ -351,18 +360,21 @@ for user_path in (ls -d /home/*)
 end
 
 # Kernel
+ echo Enabling InitRAMFS regeneration
  rot initramfs --enable
+ echo Please do not be freaked out by the startup messages
  plymouth-set-default-theme details
  rot kargs \
   --append-if-missing=rhgb \
   --append-if-missing=threadirqs \
   --append-if-missing=sysrq_always_enabled=1 \
   --append-if-missing=consoleblank=0 \
-  --delete-if-present=quiet \
+  --append-if-missing=quiet \
   --append-if-missing=profile \
   --append-if-missing=loglevel=3 \
   --append-if-missing=preempt=full \
   --append-if-missing=zswap.enabled=0
 
 # Reboot
+ echo Thank you for using this project
  systemctl reboot
