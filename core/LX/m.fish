@@ -3,6 +3,16 @@
 ### Some preferences might not meet your requirements ###
 ### Adjusting some userspace settings and apps yourself is recommended after the reboot ###
 
+# Title
+function fish_title
+ echo 千ㄚ几乇ㄥ丨ㄩ爪
+end
+echo "    ______                 ___               ";
+echo "   / ____/_  ______  ___  / (_)_  ______ ___ ";
+echo "  / /_  / / / / __ \\/ _ \\/ / / / / / __ \`__ \\";
+echo " / __/ / /_/ / / / /  __/ / / /_/ / / / / / /";
+echo "/_/    \\__, /_/ /_/\\___/_/_/\\__,_/_/ /_/ /_/ ";
+echo "      /____/                                 ";
 # Aliases
  alias rot "rpm-ostree --peer"
  alias rotpkgadd "rpm-ostree --peer install --allow-inactive --idempotent -y"
