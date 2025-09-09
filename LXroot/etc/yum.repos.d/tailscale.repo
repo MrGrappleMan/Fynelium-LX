@@ -1,5 +1,5 @@
 [tailscale-stable]
-name=T Tailscale
+name=T Tailscale Stable
 baseurl=https://pkgs.tailscale.com/stable/fedora/$basearch
 enabled=1
 type=rpm
