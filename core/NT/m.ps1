@@ -158,6 +158,7 @@ winget install Microsoft.Edge.Canary
 ## Software Development
 winget install GoLang.Go
 winget install GitHub.GitHubDesktop.Beta
+winget install Microsoft.PowerShell.Preview
 
 ## System Maintenance
 winget install Microsoft.PCManager.Beta
