@@ -1,13 +1,17 @@
 # Linux, mainly Bazzite
 
-Get [Bazzite](https://bazzite.gg/#image-picker) GNOME with no Steam Gaming Mode's ISO file
+### Steps to follow
+0. Back up ALL your data on the disk, as it will be completely wiped.
+1. Get the [Bazzite](https://bazzite.gg/#image-picker) ISO. The following are images pre-listed for convenience
+[For most PCs](https://download.bazzite.gg/bazzite-gnome-stable-amd64.iso)
+[For NVIDIA RTX | GTX 16xx+](https://download.bazzite.gg/bazzite-gnome-nvidia-open-stable-amd64.iso)
+[For older NVIDIA Graphics cards](https://download.bazzite.gg/bazzite-gnome-nvidia-stable-amd64.iso)
 
-Move the file ending with ".iso" to a spare USB Drive with Ventoy installed.
-
-Within the installer,
-Back up ALL your data on the disk. In the Bazzite installer, wipe out your entire system disk, avoid LUKS encryption if you want to. But it is generally safe and recommended, you might find it annoying though.
-After installing and getting to the desktop, run this script in the "Terminal" app to get started.
-
+2. Get [Ventoy](https://github.com/ventoy/Ventoy/releases/latest), open it and use a spare USB drive for it.
+3. Move that file, ending with ".iso" to "Ventoy" partition of the USB Drive with Ventoy installed.
+4. Reboot your device, and boot into the drive
+5. Within the Bazzite installer, choose to wipe out your entire system disk, avoid LUKS encryption as you might find it annoying.
+6. After installing and getting to the desktop, run this script in the "Terminal" app to get started.
 ```
 cd /tmp/
 rm -rf /tmp/Fynelium
