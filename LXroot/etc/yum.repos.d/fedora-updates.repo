@@ -11,6 +11,7 @@ deltarpm=True
 fastestmirror=True
 max_parallel_downloads=20
 metadata_expire=1h
+countme=1
 
 [updates-rawhide]
 name=T Fedora Updates Rawhide
@@ -25,3 +26,4 @@ deltarpm=True
 fastestmirror=True
 max_parallel_downloads=20
 metadata_expire=1h
+countme=1
