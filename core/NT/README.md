@@ -34,7 +34,7 @@ rmdir /s /q %windir%\Temp\Fynelium\
 mkdir %windir%\Temp\Fynelium\
 winget install --id Git.Git -e --source winget
 git clone https://github.com/MrGrappleMan/Fynelium.git %windir%\Temp\Fynelium\
-%windir%\Temp\Fynelium\core\NT\m.bat
+%windir%\Temp\Fynelium\core\NT\m.ps1
 ```
 
 Pre-included Applications:
@@ -68,6 +68,7 @@ This attempts to install BOINC on your device to help with contributing to scien
 It works in the backgroud with minimal effect to performance.
 Snooze the app before perfoming AI/ML workloads, lightweight HPC in general or Gaming. No effect on battery life btw!
 Uninstall it if you like or your device is extremely old.
+
 
 
 
