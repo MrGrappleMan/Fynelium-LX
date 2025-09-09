@@ -1,25 +1,26 @@
-# Windows, 11 is recommended
+# Windows 11. If incompatible, try to install it via a custom ISO like Tiny11
 
 ### 1. Better performance
 1. Avoid virtual memory and enable RAM content compression
-2. No useless animations
+2. Subtler animations
 3. Exclusive Tweaks for lightweight High Performance Computing and Gaming
 
 ### 2. Productive yet peaceful environment
-1. No animations that slow down your user experience
-2. File Explorer Tweaks
+2. File Explorer tweaks for better file handling
 3. Make UI responsive with priority over background processes
 4. Preincluded Window Manager rice, via [Komorebi 🍉](https://lgug2z.github.io/komorebi/)
-5. Restart-based updates do not take place during active hours
-6. Abstraction of unnecessary information and suggestions
-7. Smooth scrolling for no sudden movements
-8. UI Text anti-aliasing
+5. Updates interfere less with your experience
+6. Abstraction of unnecessary information
+7. Advoid suggestions
+8. Smooth scrolling for no sudden movements
+9. UI Text anti-aliasing
 
 ### 3. Automatic Management of all sorts
 1. Updates handled automatically giving you the latest ones
 2. Drivers are handled as per modern algorithms
 3. Windows' engine handles UEFI setup utility settings for itself for optimal performance
 4. Drive trimming or defragmentation
+5. Advanced Telemetry for 
 
 This is for users who want to have a better device experience,
 but are unable to switch away from Windows to Linux.
@@ -43,10 +44,11 @@ Pre-included Applications:
 | BOINC | Help with contributing to science with idle power |
 | Docker | For BOINC and containerization |
 | Tor Snowflake Proxy | Help people worldwide access the unrestricted internet and prevent censorship with your idle internet |
-| Edge | A brower for everyday usage and productivity |
+| Edge Canary | A brower for everyday usage and productivity |
 | Energy Star X | Save energy used by backgroud apps using the EcoQOS API |
-| Free Download Manager | Faster downloads and passive lightweight torrenting |
+| Free Download Manager | Better downloads and torrenting |
 | Speedtest, by Ookla | Test internet speed |
+| Spacedrive | A modern file manager |
 
 ### Development and Pentesting
 Cursor, don't get left behind in the AI revolution
@@ -66,25 +68,8 @@ HYRA AI
 
 This attempts to install BOINC on your device to help with contributing to science
 It works in the backgroud with minimal effect to performance.
-Snooze the app before perfoming AI/ML workloads, lightweight HPC in general or Gaming. No effect on battery life btw!
+Snooze it from the tray icon before using any demanding tasks. No effect on battery life btw!
 Uninstall it if you like or your device is extremely old.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
