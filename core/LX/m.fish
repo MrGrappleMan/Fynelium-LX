@@ -3,33 +3,52 @@
 ### Some preferences might not meet your requirements ###
 ### Adjusting some userspace settings and apps yourself is recommended after the reboot ###
 
-# Fish
+#____________________________________
+# Fish, script based declaration and setup
+#____________________________________
+
 # Functions
 function fish_title
  echo 千ㄚ几乇ㄥ丨ㄩ爪
 end
-function fyn_base_screen
-echo "    ______                 ___               ";
-echo "   / ____/_  ______  ___  / (_)_  ______ ___ ";
-echo "  / /_  / / / / __ \\/ _ \\/ / / / / / __ \`__ \\";
-echo " / __/ / /_/ / / / /  __/ / / /_/ / / / / / /";
-echo "/_/    \\__, /_/ /_/\\___/_/_/\\__,_/_/ /_/ /_/ ";
-echo "      /____/                                 ";
-echo "_________________________________"
+function fyn_bascr
+ clear
+ echo "    ______                 ___               ";
+ echo "   / ____/_  ______  ___  / (_)_  ______ ___ ";
+ echo "  / /_  / / / / __ \\/ _ \\/ / / / / / __ \`__ \\";
+ echo " / __/ / /_/ / / / /  __/ / / /_/ / / / / / /";
+ echo "/_/    \\__, /_/ /_/\\___/_/_/\\__,_/_/ /_/ /_/ ";
+ echo "      /____/                                 ";
+ echo "";
+ echo " GitHub https://github.com/MrGrappleMan/Fynelium";
+ spr
 end
 
 # Aliases
+ alias eci "echo 󰋼"
+ alias spr "echo __________________________________________________________________________________________________________________________"
+
  alias rot "rpm-ostree --peer"
  alias rotpkgadd "rpm-ostree --peer install --allow-inactive --idempotent -y"
  alias rotpkgdel "rpm-ostree --peer uninstall --allow-inactive --idempotent -y"
+
  alias fpk "flatpak --system"
  alias fpkrepadd "flatpak --system remote-add --if-not-exists"
  alias fpkrepdel "flatpak --system remote-delete --force"
  alias fpkpkgadd "flatpak --system install -y --noninteractive --include-sdk --or-update"
  alias fpkpkgdel "flatpak --system uninstall -y --noninteractive --force-remove"
 
+#____________________________________
+# Preparation complete, so we start here
+#____________________________________
+
 # Filesystem
- echo Copying over Filesystem contents
+ fyn_bascr
+ eci "Setup started. Even if it looks stuck, it is all part of the process"
+ eci "Be patient till your device reboots. Sometimes a password will be asked. Keep it copied and keep pasting it whenever prompted."
+ eci "Not the cleanest or most secure method, but yeah Im not aware of any workaround and I dont want to find one rn."
+ spr
+ eci "Copying over Filesystem contents."
  cd /tmp/Fynelium/LXroot
  cp -r /tmp/Fynelium/LXroot/etc/* /etc/
  cp -r /tmp/Fynelium/LXroot/var/* /var/
@@ -38,15 +57,8 @@ end
  mkdir -p /etc/playit
  mkdir -p /opt/playit
 
-#InformTheUser
- clear
- echo "Setup started. Even if something may not seem to be occuring, the process is working in the background"
- echo "It all usually boils down to how fast your device is and the number of packages"
- echo "Be patient till your device reboots. Sometimes a password will be asked. Keep it copied and keep pasting it whenever prompted."
- echo "Not the cleanest method, but yeah"
-
 #MaintenanceCommands
-echo Performing basic maintenance
+eci "Performing basic maintenance. Thanks to the UBlue team, this will be done automatically via the uupd daemon."
 rot cleanup -b 
 rot reload
 fwupdmgr --allow-branch-switch --allow-older
@@ -61,7 +73,7 @@ flatpak update --system -y --noninteractive --force-remove
 
 #flatpak
  #SystemFlatpaksOnly
-  echo And please, install Flatpaks for the system, not just the user
+  eci YOU should install Flatpaks system, not the user
   flatpak uninstall -u --all -y --noninteractive --force-remove
  #remote-add
   echo flatpaks repos add
