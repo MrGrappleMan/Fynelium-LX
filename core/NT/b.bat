@@ -90,42 +90,12 @@ echo For the time-being, avoid modifying your system files or installing or usin
 echo Do not do important work or programs that keep progress via save-files on your disk.
 echo Device will restart automatically within a 2 minutes and show a warning once done.
 
-:: Tweaks:
-
-echo Modifying services...
-sc start "SensrSvc">nul & sc config "SensrSvc" start=auto>nul
-sc start "SensorService">nul & sc config "SensorService" start=auto>nul
-sc start "NetTcpPortSharing">nul & sc config "NetTcpPortSharing" start=auto>nul
-sc start "wisvc">nul & sc config "wisvc" start=auto>nul
-sc start "WpnUserService">nul & sc config "WpnUserService" start=auto>nul
-sc start "WpnService">nul & sc config "WpnService" start=auto>nul
-sc start "UserDataSvc">nul & sc config "UserDataSvc" start=auto>nul
-sc start "UnistoreSvc">nul & sc config "UnistoreSvc" start=auto>nul
-sc start "UevAgentService">nul & sc config "UevAgentService" start=auto>nul
-sc start "UsoSvc">nul & sc config "UsoSvc" start=auto>nul
-sc start "InstallServicec">nul & sc config "InstallService" start=auto>nul
-sc start "DiagTrack">nul & sc config "DiagTrack" start=auto>nul
-sc start "tzautoupdate">nul & sc config "tzautoupdate" start=auto>nul
-sc start "BITS">nul & sc config "BITS" start=auto>nul
-sc start "DoSvc">nul & sc config "DoSvc" start=auto>nul
-sc start "wuauserv">nul & sc config "wuauserv" start=auto>nul
-sc start "WaaSMedicSvc">nul & sc config "WaaSMedicSvc" start=auto>nul
-sc start "Dnscache">nul & sc config "Dnscache" start=auto>nul
-sc start "svsvc">nul & sc config "svsvc" start=auto>nul
-sc start "Winmgmt">nul & sc config "Winmgmt" start=auto>nul
-sc start "whesvc">nul & sc config "whesvc" start=auto>nul
-sc start "WebClient">nul & sc config "WebClient" start=auto>nul
-sc start "W32Time">nul & sc config "W32Time" start=auto>nul
-sc start "WlanSvc">nul & sc config "WlanSvc" start=auto>nul
-sc start "dot3svc">nul & sc config "dot3svc" start=auto>nul
-sc start "SysMain">nul & sc config "SysMain" start=auto>nul
-sc start "WSearch">nul & sc config "WSearch" start=auto>nul
-
 :: Power plan. idk if this works, last tried it in 2022, did not work across PCs
 :: powercfg.exe -import "!cd!\powerplan.pow">nul
 
 exit
 endlocal
+
 
 
 
