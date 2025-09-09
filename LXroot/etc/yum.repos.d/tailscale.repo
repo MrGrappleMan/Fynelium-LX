@@ -14,7 +14,7 @@ metadata_expire=1h
 countme=1
 
 [tailscale-unstable]
-name=Tailscale unstable
+name=T Tailscale Unstable
 baseurl=https://pkgs.tailscale.com/unstable/fedora/$basearch
 type=rpm
 repo_gpgcheck=1
