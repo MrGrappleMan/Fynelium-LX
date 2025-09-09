@@ -1,5 +1,5 @@
 [fedora]
-name=T Fallback repo for system updates
+name=T Fedora
 metalink=https://mirrors.fedoraproject.org/metalink?repo=fedora-$releasever&arch=$basearch
 enabled=1
 repo_gpgcheck=0
