@@ -229,8 +229,8 @@ Windows Registry Editor Version 5.00
 "EnablePrefetcher"=dword:00000003
 "EnableSuperfetch"=dword:00000003
 
-;; Clearing Pagefile at every shutdown wears down the drive more
-;; Albeit recessive, paging is essential for your system, even in dire situations where OOM cannot help
+;; Clearing Pagefile at every shutdown wears down the drive.
+;; Albeit recessive, paging is essential for your system, even in dire situations where OOM killers cannot help.
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management]
 "LargeSystemCache"=dword:00000001
@@ -289,20 +289,20 @@ Windows Registry Editor Version 5.00
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\PriorityControl]
 "Win32PrioritySeparation"=dword:00000022
 
-; Increases system UI responsiveness
+; No reservation for daemons
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile]
 "SystemResponsiveness"=dword:00000000
 
 ; --------------------------------------------
-; Telemetry, Updates, Self Maintenance. Privacy is a joke, and you shouldn't care. Your data helps humanity get closer to singularity.
+; Telemetry, Updates, Self Maintenance. Your data helps humanity get closer to singularity.
 ; Modify them later if you like...it is not recommended to do so.
 ; --------------------------------------------
 
-; Disable auto updating Maps. Who uses this? Rainboltt?
+; Disable auto updating Maps. Just use your phone.
 
 [HKEY_LOCAL_MACHINE\SYSTEM\Maps]
-"AutoUpdateEnabled"=dword:00000001
+"AutoUpdateEnabled"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\WindowsUpdate\UX\Settings]
 "IsExpedited"=dword:00000000
@@ -315,7 +315,7 @@ Windows Registry Editor Version 5.00
 "DOMaxBackgroundDownloadBandwidth"=dword:00000000
 "DOMaxForegroundDownloadBandwidth"=dword:00000000
 
-; Telemetry, help Microsoft get more of your data
+; Telemetry
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\DataCollection]
 "AllowTelemetry"=dword:00000003
@@ -343,7 +343,7 @@ Windows Registry Editor Version 5.00
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Sudo]
 "Enabled"=dword:00000001
 
-; Dim the desktop as it alerts the user, and the user can use arrow keys to quick switch between yes or no
+; Dim the desktop on UAC trigger, use arrow keys to quick switch between yes or no
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System]
 "PromptOnSecureDesktop"=dword:00000001
@@ -353,10 +353,10 @@ Windows Registry Editor Version 5.00
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CrashControl]
 "DisplayParameters"=dword:00000001
 
-; Show Verbose Startup Information
+; No Verbose Startup Information
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Policies\System]
-"VerboseStatus"=dword:00000001
+"VerboseStatus"=dword:00000000
 
 ; Take Ownership of a part of the filesystem
 
@@ -375,6 +375,7 @@ Windows Registry Editor Version 5.00
 [HKEY_CLASSES_ROOT\Directory\shell\runas\command]
 @="cmd.exe /c takeown /f \"%1\" /r /d y && icacls \"%1\" /grant administrators:F /t"
 "IsolatedCommand"="cmd.exe /c takeown /f \"%1\" /r /d y && icacls \"%1\" /grant administrators:F /t"
+
 
 
 
