@@ -2,7 +2,7 @@
 $isAdmin = ([System.Security.Principal.WindowsPrincipal] [System.Security.Principal.WindowsIdentity]#GetCurrent()).IsInRole([System.Security.Principal.WindowsBuiltInRole]#Administrator)
 if (-not $isAdmin) {
     Write-Host "Re-run with admin rights" -ForegroundColor Red
-    echo "Press Enter to exit..."
+    Write-Host "Press Enter to exit..."
     Read-Host
     exit
 }
