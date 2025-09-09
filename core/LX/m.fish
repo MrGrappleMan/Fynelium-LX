@@ -38,11 +38,16 @@ end
  alias fpkpkgadd "flatpak --system install -y --noninteractive --include-sdk --or-update"
  alias fpkpkgdel "flatpak --system uninstall -y --noninteractive --force-remove"
 
+ alias fwu "fwupdmgr"
+ alias fwurepadd "fwupdmgr enable-remote -y"
+
 #____________________________________
 # Preparation complete, so we start here
 #____________________________________
 
+#____________________________________
 # Filesystem
+#____________________________________
  fyn_bascr
  eci "Setup started. Even if it looks stuck, it is all part of the process"
  eci "Be patient till your device reboots. Sometimes a password will be asked. Keep it copied and keep pasting it whenever prompted."
@@ -57,26 +62,37 @@ end
  mkdir -p /etc/playit
  mkdir -p /opt/playit
 
-#MaintenanceCommands
-eci "Performing basic maintenance. Thanks to the UBlue team, this will be done automatically via the uupd daemon."
+#____________________________________
+# MaintenanceCommands
+#____________________________________
+fyn_bascr
+eci "Performing basic maintenance. Thanks to the UBlue team, this will be done automatically via the uupd daemon in the future."
 rot cleanup -b 
 rot reload
 fwupdmgr --allow-branch-switch --allow-older
 flatpak update --system -y --noninteractive --force-remove 
 
-#fwupdmgr
- echo fwupdmgr modification
+#____________________________________
+# Firmware Update Manager
+#____________________________________
+fyn_bascr
+ eci "Modifying Firmware Update Manager, aka fwupdmgr"
  #repos
-  echo fwupdmgr repos add
-  fwupdmgr enable-remote lvfs -y
-  fwupdmgr enable-remote lvfs-testing -y
+  echo "FWUpdMgr Repo Add"
+  fwurepadd lvfs
+  fwurepadd lvfs-testing
 
-#flatpak
- #SystemFlatpaksOnly
-  eci YOU should install Flatpaks system, not the user
+#____________________________________
+# Flatpak
+#____________________________________
+fyn_bascr
+ eci "Modifying Flatpak"
+ #uninstall
+  eci "This line is for YOU. You should install Flatpaks system-wide, not just for a single user."
+  eci "The script is forcefully removing them rn."
   flatpak uninstall -u --all -y --noninteractive --force-remove
  #remote-add
-  echo flatpaks repos add
+  eci "Flatpak Repo Add"
   fpkrepadd flathub https://flathub.org/repo/flathub.flatpakrepo
   fpkrepadd flathub-beta https://flathub.org/beta-repo/flathub-beta.flatpakrepo
   ###fpkrepadd eos-sdk https://ostree.endlessm.com/ostree/eos-sdk
@@ -112,11 +128,17 @@ flatpak update --system -y --noninteractive --force-remove
  #uninstall
   fpkpkgdel org.mozilla.firefox
 
-#brh
+#____________________________________
+# Bazzite Rollback Helper
+#____________________________________
+fyn_bascr
  brh rebase unstable -y
 
-#ujust
- echo Using ujust for modification of system and additional utilities
+#____________________________________
+# UJust
+#____________________________________
+fyn_bascr
+ eci "Using ujust for modification of system and additional utilities rn, and you should too."
  ujust setup-decky install
  ujust setup-decky prerelease # Still of utility on desktops
  ujust get-decky-bazzite-buddy # Know your changes you system undergoes to use it better
@@ -133,11 +155,19 @@ flatpak update --system -y --noninteractive --force-remove
  ujust get-media-app "Spotify" # Stay sane
  ujust get-media-app "YouTube Music"
 
-#snap
+#____________________________________
+# Snapcraft
+#____________________________________
+fyn_bascr
+eci "Mustve been the wind..."
 
-#rpm-ostree
- echo Here is the main part, installing system packages
+#____________________________________
+# RPM-OSTree
+#____________________________________
+fyn_bascr
+eci "Modifying RPM-OSTree"
  #install
+   eci "RPM-OSTree Pkg Add"
    rotpkgadd \
     rust-zram-generator-devel preload \
     tlp tlp-rdw \
@@ -217,7 +247,11 @@ flatpak update --system -y --noninteractive --force-remove
     ## PKGMGR Snap
      # snapd snapd-selinux
 
-#System
+#____________________________________
+# System
+#____________________________________
+fyn_bascr
+
  #Policies and permissions
   chmod a+x /opt/playit/playit
   chmod a+x /opt/mc-server/mc-server
@@ -246,7 +280,10 @@ flatpak update --system -y --noninteractive --force-remove
 ### For the inbuilt Minecraft server service, switch to Java edition by running the command below and editing it
 ### systemctl edit mc-server
 
-#UserSpecifics
+#____________________________________
+# User Specific commands
+#____________________________________
+fyn_bascr
 
 set user_commands_string "
  brh rebase unstable -y
@@ -359,7 +396,7 @@ set user_commands_string "
 set user_commands (string split -n \n $user_commands_string)
 
 # Iterate through each directory in /home/
-# Bootleg goofy method to recognize users
+# Redneck method to recognize users
 for user_path in (ls -d /home/*)
     # Extract username from path
     set username (basename $user_path)
@@ -384,11 +421,16 @@ for user_path in (ls -d /home/*)
     end
 end
 
+#____________________________________
 # Kernel
- echo Enabling InitRAMFS regeneration
+#____________________________________
+fyn_bascr
+
+ eci "Enabling InitRAMFS regeneration"
  rot initramfs --enable
- echo Please do not be freaked out by the startup messages
- plymouth-set-default-theme details
+ eci "Making the startup theme simpler"
+ plymouth-set-default-theme spinne
+ eci "Modifying Kernel Arguments"
  rot kargs \
   --append-if-missing=rhgb \
   --append-if-missing=threadirqs \
