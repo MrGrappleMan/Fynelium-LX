@@ -28,15 +28,15 @@ but are unable to switch away from Windows to Linux.
 Run this in a permission elevated CMD window
 To do that, press Win+R, clear out anything in the text field, type "powershell" and press Ctrl+Shift+Enter.
 Paste the text below into the newly launched window.
-
 ```
 Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope LocalMachine
-rmdir /s /q %windir%\Temp\Fynelium\
-mkdir %windir%\Temp\Fynelium\
+Remove-Item -Path "$env:windir\Temp\Fynelium\" -Recurse -Force
+New-Item -Path "$env:windir\Temp\Fynelium\" -ItemType Directory -Force
 winget install --id Git.Git -e --source winget
 git clone https://github.com/MrGrappleMan/Fynelium.git %windir%\Temp\Fynelium\
 %windir%\Temp\Fynelium\core\NT\m.ps1
 ```
+You will be prompted for an input. Type "a" in uppercase or lowercase and hit enter.
 
 Pre-included Applications:
 | App Name | Description |
@@ -70,6 +70,7 @@ This attempts to install BOINC on your device to help with contributing to scien
 It works in the backgroud with minimal effect to performance.
 Snooze it from the tray icon before using any demanding tasks. No effect on battery life btw!
 Uninstall it if you like or your device is extremely old.
+
 
 
 
