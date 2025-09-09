@@ -230,12 +230,12 @@ Windows Registry Editor Version 5.00
 "EnableSuperfetch"=dword:00000003
 
 ;; Clearing Pagefile at every shutdown wears down the drive more
-;; No swapping, minimal paging as they both reduce your drive lifespan and performance
+;; Albeit recessive, paging is essential for your system, even in dire situations where OOM cannot help
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management]
 "LargeSystemCache"=dword:00000001
 "IoPageLockLimit"=dword:00000000
-"DisablePagingExecutive"=dword:00000001
+"DisablePagingExecutive"=dword:00000000
 "ClearPageFileAtShutdown"=dword:00000000
 "PagingFiles"=hex(7):3f,00,3a,00,5c,00,70,00,61,00,67,00,65,00,66,00,69,00,6c,\
   00,65,00,2e,00,73,00,79,00,73,00,00,00
@@ -375,6 +375,7 @@ Windows Registry Editor Version 5.00
 [HKEY_CLASSES_ROOT\Directory\shell\runas\command]
 @="cmd.exe /c takeown /f \"%1\" /r /d y && icacls \"%1\" /grant administrators:F /t"
 "IsolatedCommand"="cmd.exe /c takeown /f \"%1\" /r /d y && icacls \"%1\" /grant administrators:F /t"
+
 
 
 
