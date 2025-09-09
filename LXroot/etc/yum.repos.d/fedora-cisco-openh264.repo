@@ -6,4 +6,12 @@ enabled=1
 repo_gpgcheck=0
 gpgcheck=1
 gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-fedora-$releasever-$basearch
-skip_if_unavailable=True
+
+[fedora-cisco-openh264-rawhide]
+name=Fedora OpenH264 (From Cisco)
+metalink=https://mirrors.fedoraproject.org/metalink?repo=fedora-cisco-openh264-rawhide&arch=$basearch
+type=rpm
+enabled=1
+repo_gpgcheck=0
+gpgcheck=1
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-fedora-$releasever-$basearch
