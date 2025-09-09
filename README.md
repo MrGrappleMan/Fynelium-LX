@@ -14,8 +14,8 @@ You will be asked a questions for installing programs asper your needs, so respo
 
 # Get started
 
-![Linux, recommended](/core/LX/README.md)
+[Linux, recommended](/core/LX/)
 
-![MacOS](/core/DW/README.md)
+[MacOS](/core/DW/)
 
-![Windows](/core/NT/README.md)
+[Windows](/core/NT/)
