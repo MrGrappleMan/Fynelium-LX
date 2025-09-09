@@ -1,5 +1,5 @@
 [fedora-rawhide]
-name=T Primary repo for system updates
+name=T Fedora Rawhide
 metalink=https://mirrors.fedoraproject.org/metalink?repo=rawhide&arch=$basearch
 enabled=1
 repo_gpgcheck=0
