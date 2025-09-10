@@ -2,7 +2,7 @@
 Description=System Updates enforcer
 
 [Timer]
-OnCalendar=hourly
+OnCalendar=daily
 Persistent=true
 AccuracySec=1h
 
