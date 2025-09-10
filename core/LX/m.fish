@@ -7,12 +7,13 @@
 # Fish, script based declaration and setup
 #____________________________________
 
-# Functions
+# Design and TUI
 function fish_title
  echo 千ㄚ几乇ㄥ丨ㄩ爪
 end
 function fyn_bascr
  clear
+ spr
  echo "    ______                 ___               ";
  echo "   / ____/_  ______  ___  / (_)_  ______ ___ ";
  echo "  / /_  / / / / __ \\/ _ \\/ / / / / / __ \`__ \\";
@@ -21,25 +22,11 @@ function fyn_bascr
  echo "      /____/                                 ";
  echo "";
  echo " GitHub https://github.com/MrGrappleMan/Fynelium";
+ echo "󰊴 SlowRoads.io https://slowroads.io";
  spr
 end
-
-# Aliases
  alias eci "echo 󰋼"
  alias spr "echo __________________________________________________________________________________________________________________________"
-
- alias rot "rpm-ostree --peer"
- alias rotpkgadd "rpm-ostree --peer install --allow-inactive --idempotent -y"
- alias rotpkgdel "rpm-ostree --peer uninstall --allow-inactive --idempotent -y"
-
- alias fpk "flatpak --system"
- alias fpkrepadd "flatpak --system remote-add --if-not-exists"
- alias fpkrepdel "flatpak --system remote-delete --force"
- alias fpkpkgadd "flatpak --system install -y --noninteractive --include-sdk --or-update"
- alias fpkpkgdel "flatpak --system uninstall -y --noninteractive --force-remove"
-
- alias fwu "fwupdmgr"
- alias fwurepadd "fwupdmgr enable-remote -y"
 
 #____________________________________
 # Preparation complete, so we start here
@@ -75,6 +62,8 @@ flatpak update --system -y --noninteractive --force-remove
 #____________________________________
 # Firmware Update Manager
 #____________________________________
+alias fwu "fwupdmgr"
+alias fwurepadd "fwupdmgr enable-remote -y"
 fyn_bascr
  eci "Modifying Firmware Update Manager, aka fwupdmgr"
  #repos
@@ -85,6 +74,11 @@ fyn_bascr
 #____________________________________
 # Flatpak
 #____________________________________
+alias fpk "flatpak --system"
+alias fpkrepadd "flatpak --system remote-add --if-not-exists"
+alias fpkrepdel "flatpak --system remote-delete --force"
+alias fpkpkgadd "flatpak --system install -y --noninteractive --include-sdk --or-update"
+alias fpkpkgdel "flatpak --system uninstall -y --noninteractive --force-remove"
 fyn_bascr
  eci "Modifying Flatpak"
  #uninstall
@@ -164,12 +158,53 @@ eci "Mustve been the wind..."
 #____________________________________
 # RPM-OSTree
 #____________________________________
+alias rot "rpm-ostree --peer"
+function rotpkgadd -d "Opportunistically add packages using rpm-ostree with error handling"
+    set packages $argv
+    if test (count $argv) -eq 1 -a -n (string match '* *' $argv[1])
+        set packages (string split ' ' $argv[1])
+    end
+
+    # Attempt to install all packages
+    set -l cmd "rpm-ostree --peer install --allow-inactive --idempotent -y $packages"
+    set -l output (eval $cmd 2>&1)
+    set -l status $status
+
+    # If installation succeeds, exit
+    if test $status -eq 0
+        return 0
+    end
+
+    # Check for "Packages not found" error
+    set -l error_line (string match '*error: Packages not found:*' $output)
+    if test -n "$error_line"
+        # Extract packages not found from the last line
+        set -l not_found (string split ', ' (string replace 'error: Packages not found: ' '' $error_line[-1]))
+        # Create new package list excluding not found packages
+        set -l new_packages
+        for pkg in $packages
+            if not contains $pkg $not_found
+                set new_packages $new_packages $pkg
+            end
+        end
+
+        # Retry installation with valid packages if any remain
+        if test (count $new_packages) -gt 0
+            rpm-ostree --peer install --allow-inactive --idempotent -y $new_packages
+        end
+    else
+        # If error is not about missing packages, print the error
+        echo $output
+        return $status
+    end
+end
+alias rotpkgdel "rpm-ostree --peer uninstall --allow-inactive --idempotent -y"
 fyn_bascr
+
 eci "Modifying RPM-OSTree"
  #install
    eci "RPM-OSTree Pkg Add"
-   rotpkgadd \
-    rust-zram-generator-devel preload \
+   rotpkgadd "rust-zram-generator-devel preload \
     tlp tlp-rdw \
     pipewire wireplumber wireplumber-libs \
     kernel-modules-extra uutils-coreutils util-linux \
@@ -186,7 +221,7 @@ eci "Modifying RPM-OSTree"
     kuserfeedback gnome-info-collect \
     hblock speedtest-cli \
     docker-cli docker-compose docker-buildx bottles \
-    tailscale openssh openssh-server mosh
+    tailscale openssh openssh-server mosh"
     
     ## System Boosters ##
     ## Power management ##
