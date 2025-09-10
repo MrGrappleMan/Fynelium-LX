@@ -159,43 +159,36 @@ eci "Mustve been the wind..."
 # RPM-OSTree
 #____________________________________
 alias rot "rpm-ostree --peer"
-function rotpkgadd -d "Opportunistically add packages using rpm-ostree with error handling"
+function rotpkgadd -d "Opportunistically add packages using rpm-ostree after checking availability"
     set packages $argv
     if test (count $argv) -eq 1 -a -n (string match '* *' $argv[1])
         set packages (string split ' ' $argv[1])
     end
 
-    # Attempt to install all packages
-    set -l cmd "rpm-ostree --peer install --allow-inactive --idempotent -y $packages"
-    set -l output (eval $cmd 2>&1)
-    set -l status $status
+    set -l install_list
 
-    # If installation succeeds, exit
-    if test $status -eq 0
-        return 0
-    end
+    for pkg in $packages
+        set -l output (rpm-ostree search $pkg)
+        set -l lines (string split \n -- $output)
+        set -l found false
 
-    # Check for "Packages not found" error
-    set -l error_line (string match '*error: Packages not found:*' $output)
-    if test -n "$error_line"
-        # Extract packages not found from the last line
-        set -l not_found (string split ', ' (string replace 'error: Packages not found: ' '' $error_line[-1]))
-        # Create new package list excluding not found packages
-        set -l new_packages
-        for pkg in $packages
-            if not contains $pkg $not_found
-                set new_packages $new_packages $pkg
+        for line in $lines
+            if string match -q '* *' $line
+                set -l candidate (string split -m 1 ' ' $line)[1]
+                if test "$candidate" = "$pkg"
+                    set found true
+                    break
+                end
             end
         end
 
-        # Retry installation with valid packages if any remain
-        if test (count $new_packages) -gt 0
-            rpm-ostree --peer install --allow-inactive --idempotent -y $new_packages
+        if $found
+            set install_list $install_list $pkg
         end
-    else
-        # If error is not about missing packages, print the error
-        echo $output
-        return $status
+    end
+
+    if test (count $install_list) -gt 0
+        rpm-ostree --peer install --allow-inactive --idempotent -y $install_list
     end
 end
 alias rotpkgdel "rpm-ostree --peer uninstall --allow-inactive --idempotent -y"
