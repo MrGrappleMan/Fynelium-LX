@@ -1,12 +1,12 @@
 [Unit]
-Description=Adaptive Read Ahead daemon for loading frequently used parts of the filesystem into the RAM
+Description=An adaptive readahead daemon for loading frequently used parts of the filesystem into the RAM
 After=basic.target
 
 [Service]
 Type=forking
 ExecStart=/usr/bin/preload -n 19
 Restart=always
-RestartSec=1
+RestartSec=60
 Nice=19
 IOSchedulingClass=best-effort
 IOSchedulingPriority=7
