@@ -4,7 +4,7 @@ Documentation=man:rpm-ostree(1) man:rpm-ostreed.conf(5)
 ConditionPathExists=/run/ostree-booted
 
 [Timer]
-OnCalendar=hourly
+OnCalendar=daily
 Persistent=true
 AccuracySec=1h
 
