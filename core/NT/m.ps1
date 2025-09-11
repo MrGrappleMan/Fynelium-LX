@@ -31,7 +31,7 @@ $userask = {
 
 # PowerCFG
 Write-Host "Modifying power configurations"
-powercfg -h off
+powercfg -h on
 
 # Services
 Write-Host "Modifying services"
