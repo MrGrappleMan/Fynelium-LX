@@ -9,9 +9,11 @@ StartLimitIntervalSec=600
 Type=oneshot
 User=root
 ExecStart=/usr/bin/rpm-ostree upgrade -q --peer --trigger-automatic-update-policy --allow-downgrade --bypass-driver
-Nice=19
 IOSchedulingClass=best-effort
 IOSchedulingPriority=7
+Nice=19
+RestrictRealtime=false
+RestartSec=60
 
 [Install]
 WantedBy=multi-user.target
