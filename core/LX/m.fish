@@ -104,7 +104,7 @@ fyn_bascr
   fpkrepadd pureos https://store.puri.sm/repo/stable/pureos.flatpakrepo
   fpkrepadd kde-runtime-nightly https://cdn.kde.org/flatpak/kde-runtime-nightly/kde-runtime-nightly.flatpakrepo
  #install
-  echo Installing Flatpaks. Pls choose the latest version of applications if prompted
+  eci Installing Flatpaks. Please choose the latest version of applications if prompted
   fpkpkgadd flathub-beta \
    org.freedesktop.Platform org.gnome.Platform \
    org.freedesktop.Sdk org.gnome.Sdk
@@ -344,13 +344,8 @@ set user_commands_string "
  gsettings set org.gnome.SessionManager auto-save-session-one-shot true
  gsettings set org.gnome.mutter dynamic-workspaces true
  gsettings set org.gnome.desktop.sound allow-volume-above-100-percent true
- gsettings set org.gnome.desktop.thumbnail-cache maximum-size 128
- gsettings set org.gnome.desktop.thumbnail-cache maximum-age 3
- gsettings set org.gnome.desktop.background picture-options 'none'
- gsettings set org.gnome.desktop.background primary-color '#000000'
- gsettings set org.gnome.desktop.background secondary-color '#000000'
- gsettings set org.gnome.desktop.background picture-uri ''
- gsettings set org.gnome.desktop.background picture-uri-dark ''
+ gsettings set org.gnome.desktop.thumbnail-cache maximum-size 4096
+ gsettings set org.gnome.desktop.thumbnail-cache maximum-age 360
  gsettings set org.gnome.desktop.background picture-opacity 0
  gsettings set org.gnome.desktop.interface cursor-blink false
  gsettings set org.gnome.software allow-updates true
