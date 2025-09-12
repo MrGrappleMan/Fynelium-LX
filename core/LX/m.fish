@@ -67,7 +67,7 @@ alias fwurepadd "fwupdmgr enable-remote -y"
 fyn_bascr
  eci "Modifying Firmware Update Manager, aka fwupdmgr"
  #repos
-  echo "FWUpdMgr Repo Add"
+  eci "FWUpdMgr Repo Add"
   fwurepadd lvfs
   fwurepadd lvfs-testing
 
@@ -322,7 +322,7 @@ set user_commands_string "
  ujust get-framegen install
  ujust get-lsfg install
  ujust get-lsfg install-decky-plugin
- ujust toggle-password-feedback off # You cannot trust anyone. People can get into accounts based on keyboard sounds.
+ ujust toggle-password-feedback off # More Secure
  ujust configure-grub show # Better safe than sorry if you want to debug
  ujust enable-automounting
  ujust enable-steamos-automount
@@ -408,8 +408,6 @@ set user_commands_string "
  gsettings set org.gnome.desktop.break-reminders.movement notify-upcoming true
  gsettings set org.gnome.desktop.break-reminders.movement play-sound true
  gsettings set org.gnome.desktop.break-reminders.movement countdown false
- gsettings set org.gnome.desktop.remote-desktop.vnc enable false
- gsettings set org.gnome.desktop.remote-desktop.rdp enable true
  gsettings set org.gnome.desktop.remote-desktop.rdp negotiate-port true
  gsettings set org.gnome.desktop.remote-desktop.rdp port 3389
  gsettings set org.gnome.desktop.remote-desktop.rdp view-only false
@@ -452,7 +450,7 @@ fyn_bascr
  eci "Enabling InitRAMFS regeneration"
  rot initramfs --enable
  eci "Making the startup theme simpler"
- plymouth-set-default-theme spinne
+ plymouth-set-default-theme spinner
  eci "Modifying Kernel Arguments"
  rot kargs \
   --append-if-missing=rhgb \
