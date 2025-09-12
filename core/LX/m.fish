@@ -22,7 +22,9 @@ function fyn_bascr
  echo "      /____/                                 ";
  echo "";
  echo " GitHub https://github.com/MrGrappleMan/Fynelium";
- echo "󰊴 SlowRoads.io https://slowroads.io";
+ echo "🌐 Main maintainer https://mrgrappleman.github.io";
+ spr
+ fastfetch
  spr
 end
  alias eci "echo 󰋼"
@@ -65,9 +67,9 @@ flatpak update --system -y --noninteractive --force-remove
 alias fwu "fwupdmgr"
 alias fwurepadd "fwupdmgr enable-remote -y"
 fyn_bascr
- eci "Modifying Firmware Update Manager, aka fwupdmgr"
+ eci "Modifying Firmware Update Manager"
  #repos
-  eci "FWUpdMgr Repo Add"
+  eci "Adding Repositories"
   fwurepadd lvfs
   fwurepadd lvfs-testing
 
@@ -86,7 +88,7 @@ fyn_bascr
   eci "It has several advantages. It saves space for the same main files, but keeps data separate for each user."
   flatpak uninstall -u --all -y --noninteractive --force-remove
  #remote-add
-  eci "Flatpak Repo Add"
+  eci "Adding Repositories"
   fpkrepadd flathub https://flathub.org/repo/flathub.flatpakrepo
   fpkrepadd flathub-beta https://flathub.org/beta-repo/flathub-beta.flatpakrepo
   ###fpkrepadd eos-sdk https://ostree.endlessm.com/ostree/eos-sdk
@@ -104,7 +106,7 @@ fyn_bascr
   fpkrepadd pureos https://store.puri.sm/repo/stable/pureos.flatpakrepo
   fpkrepadd kde-runtime-nightly https://cdn.kde.org/flatpak/kde-runtime-nightly/kde-runtime-nightly.flatpakrepo
  #install
-  eci "Installing Flatpaks. Select the latest version of applications if asked here."
+  eci "Installing packages. Select the latest version of them if asked here."
   fpkpkgadd flathub-beta \
    org.freedesktop.Platform org.gnome.Platform \
    org.freedesktop.Sdk org.gnome.Sdk
@@ -154,7 +156,7 @@ fyn_bascr
 # Snapcraft
 #____________________________________
 fyn_bascr
-eci "Modifying snapd"
+eci "Modifying Snapcraft"
 
 #____________________________________
 # RPM-OSTree
@@ -197,7 +199,7 @@ fyn_bascr
 
 eci "Modifying RPM-OSTree"
  #install
-   eci "RPM-OSTree Pkg Add"
+   eci "Add Packages"
    rotpkgadd "rust-zram-generator-devel preload \
     tlp tlp-rdw \
     pipewire wireplumber wireplumber-libs \
