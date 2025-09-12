@@ -6,11 +6,12 @@ After=basic.target
 Type=forking
 ExecStart=/usr/bin/preload -n 19
 Restart=always
-RestartSec=60
-Nice=19
+User=root
 IOSchedulingClass=best-effort
 IOSchedulingPriority=7
-User=root
+Nice=19
+RestrictRealtime=false
+RestartSec=60
 
 [Install]
 WantedBy=multi-user.target
