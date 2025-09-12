@@ -7,10 +7,11 @@ Before=shutdown.target
 User=root
 Type=simple
 ExecStart=/bin/tlp init start
-IOSchedulingPriority=6
-Restart=always
-RestartSec=30
-Nice=10
+IOSchedulingClass=best-effort
+IOSchedulingPriority=7
+Nice=19
+RestrictRealtime=false
+RestartSec=60
 
 [Install]
 WantedBy=multi-user.target
