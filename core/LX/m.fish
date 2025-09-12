@@ -32,7 +32,11 @@ end
 
 #____________________________________
 # Preparation complete, so we start here
+# Let's welcome our user, shall we?
 #____________________________________
+
+curl -L https://wiki.teamfortress.com/w/images/b/b8/Engineer_specialcompleted-assistedkill01.wav -o /tmp/Fynelium/core/audio/start1.wav
+curl -L "https://wiki.teamfortress.com/w/images/0/07/Engineer_wranglekills01.wav" -o /tmp/Fynelium/core/audio/start2.wav
 
 #____________________________________
 # Filesystem
@@ -466,5 +470,6 @@ fyn_bascr
   --append-if-missing=zswap.enabled=0
 
 # End
- echo ✨ Thank you for using this project! 
- 
+ curl -L "https://wiki.teamfortress.com/w/images/7/75/Engineer_specialcompleted06.wav" -o /tmp/Fynelium/core/audio/end1.wav
+ curl -L "https://wiki.teamfortress.com/w/images/a/a1/Engineer_specialcompleted02.wav" -o /tmp/Fynelium/core/audio/start2.wav
+ echo ✨ Thank you for using this project!
