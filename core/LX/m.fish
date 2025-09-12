@@ -82,8 +82,8 @@ alias fpkpkgdel "flatpak --system uninstall -y --noninteractive --force-remove"
 fyn_bascr
  eci "Modifying Flatpak"
  #uninstall
-  eci "This line is for YOU. You should install Flatpaks system-wide, not just for a single user."
-  eci "The script is forcefully removing them rn."
+  eci "By the way, you should install Flatpaks system-wide, not just for a single user"
+  eci "It has several advantages. It saves space for the same main files, but keeps data separate for each user."
   flatpak uninstall -u --all -y --noninteractive --force-remove
  #remote-add
   eci "Flatpak Repo Add"
@@ -104,7 +104,7 @@ fyn_bascr
   fpkrepadd pureos https://store.puri.sm/repo/stable/pureos.flatpakrepo
   fpkrepadd kde-runtime-nightly https://cdn.kde.org/flatpak/kde-runtime-nightly/kde-runtime-nightly.flatpakrepo
  #install
-  eci Installing Flatpaks. Please choose the latest version of applications if prompted
+  eci "Installing Flatpaks. Select the latest version of applications if asked here."
   fpkpkgadd flathub-beta \
    org.freedesktop.Platform org.gnome.Platform \
    org.freedesktop.Sdk org.gnome.Sdk
@@ -132,7 +132,8 @@ fyn_bascr
 # UJust
 #____________________________________
 fyn_bascr
- eci "Using ujust for modification of system and additional utilities rn, and you should too."
+ eci "Modifying system and additional utilities using UJust"
+ eci "It is very handy for most users"
  ujust setup-decky install
  ujust setup-decky prerelease # Still of utility on desktops
  ujust get-decky-bazzite-buddy # Know your changes you system undergoes to use it better
@@ -153,7 +154,7 @@ fyn_bascr
 # Snapcraft
 #____________________________________
 fyn_bascr
-eci "Mustve been the wind..."
+eci "Modifying snapd"
 
 #____________________________________
 # RPM-OSTree
@@ -287,11 +288,9 @@ fyn_bascr
   nohup systemctl daemon-reload &
   nohup timedatectl set-ntp true --no-ask-password &
  #Services
-  echo Modifying SystemD services
+  echo Modifying System-D services
   systemctl mask \
-   systemd-rfkill systemd-rfkill.socket \
-   tracker-store \
-   rpm-ostree-countme rpm-ostree-countme.timer
+   systemd-rfkill systemd-rfkill.socket
   systemctl unmask \
    gdm \
    shutdown.target reboot.target poweroff.target halt.target
@@ -302,8 +301,9 @@ fyn_bascr
    fstrim.timer \
    systemd-bsod \
    sshd playit tailscaled \
-   preload systemd-zram-setup@zram0
-   mc-server
+   preload systemd-zram-setup@zram0 \
+   mc-server \
+   rpm-ostree-countme rpm-ostree-countme.timer
 
 ### For the inbuilt Minecraft server service, switch to Java edition by running the command below and editing it
 ### systemctl edit mc-server
