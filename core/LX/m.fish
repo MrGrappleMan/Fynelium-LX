@@ -438,11 +438,12 @@ for user_path in (ls -d /home/*)
             if test -n "$cmd"
                 sudo -u $username fish -c "$cmd"
                 if test $status -eq 0
-                    echo "done correct"
+                    echo "y"
                 else
+                    echo "-------------------------"  
                     echo "Error for $username: $cmd"
+                    echo "-------------------------"
                 end
-                echo "-------------------"
             end
         end
     end
