@@ -463,6 +463,6 @@ fyn_bascr
   --append-if-missing=preempt=full \
   --append-if-missing=zswap.enabled=0
 
-# Reboot
- echo Thank you for using this project
- systemctl reboot
+# End
+ echo ✨ Thank you for using this project! 
+ 
