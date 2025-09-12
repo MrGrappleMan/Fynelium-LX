@@ -1,5 +1,5 @@
 [Unit]
-Description=Daily RPM-OSTree reporting
+Description=RPM-OSTree status reporting
 Documentation=man:rpm-ostree-countme.service(8)
 ConditionPathExists=/run/ostree-booted
 
@@ -10,3 +10,11 @@ DynamicUser=yes
 StateDirectory=rpm-ostree-countme
 StateDirectoryMode=750
 ExecStart=rpm-ostree countme
+IOSchedulingClass=best-effort
+IOSchedulingPriority=7
+Nice=19
+RestrictRealtime=false
+RestartSec=60
+
+[Install]
+WantedBy=multi-user.target
