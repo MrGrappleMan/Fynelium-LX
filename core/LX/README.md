@@ -1,10 +1,9 @@
 # Linux, mainly Bazzite
 
-### Steps to follow
+## Get started
 0. Back up ALL your data on the disk, as it will be completely wiped.
 1. Get the [Bazzite](https://bazzite.gg/#image-picker) ISO. The following are images pre-listed for convenience
 [Most PCs](https://download.bazzite.gg/bazzite-gnome-stable-amd64.iso) | [NVIDIA RTX | GTX 16xx+](https://download.bazzite.gg/bazzite-gnome-nvidia-open-stable-amd64.iso) | [Older NVIDIA Graphics cards](https://download.bazzite.gg/bazzite-gnome-nvidia-stable-amd64.iso)
-
 2. Get [Ventoy](https://github.com/ventoy/Ventoy/releases/latest), open it and use a spare USB drive for it.
 3. Move that file, ending with ".iso" to "Ventoy" partition of the USB Drive with Ventoy installed.
 4. Reboot your device, and boot into the drive
@@ -19,19 +18,16 @@ sudo fish /tmp/Fynelium/core/LX/m.fish
 ```
 Getting some errors is normal. Allow inhibiting shortcuts if requested.
 
-Windows environments »→ use Bottles/Lutris
-Linux environments »→ use BoxBuddy/DistroShelf
+It expects that you have read this paragraph carefully and claims no responsibilty to any damage done to your system, which is highly unlikely in the first place.
 
-It expects that you have read this paragraph carefully and it claims no responsibilty to any damage done to your system, but I can try helping!
-
-My take: Prioritize Flatpaks over Native packages. Why?
+Prioritize Flatpaks over Native packages.
 Flatpaks are for user apps, mainly GUIs. It makes sense for things like libreoffice, Blanket or something like that.
 They just get installed, work fine, do not require a reboot.
 However, if you need system integration go with RPM-OSTree at your own risk, or try a Distrobox container.
 They allow for better system integration and performance, but you risk dependancy hell and more complex system updates.
 Keep it mainly for things the user doesn't see, like daemons.
 Are you a developer, just go ahead with a Distrobox container for your dev envioroment.
-Don't hold back from using proprietary software, RMS won't haunt you if you use it to contribute to OSS.
+There is no one stopping you from using proprietary software, you should compare the application in itself, not the development model.
 
 Same base/framework, yet no limit to visual theming/customization, one of the things I belive in. Make hundreds of rices, but maintain the same code base/framework.
 
@@ -42,17 +38,16 @@ Asahi Linux support not confirmed(could use unc work macbook, maybe. defaults is
 In the GNOME Display Manager, change your desktop environment to COSMIC.
 
 Bazzite is used as it has access to a wide range of
-### supported hardware
-### user friendly software
-### community support greater than that of regular atomic Fedora alone
+supported hardware
+user friendly software
+community support greater than that of regular atomic Fedora alone
 
 #
 # Extra Tips:
 
 ### [Tailscale](https://tailscale.com)
 Provides a seamless networking experience. You can MoSH, host servers and even access your home network with it.
-Best for home-labbing, server hosting and remotely accessing your home internet.
-Use it with Sunshine / Moonlight to use your desktop from anywhere as long as you 
+Essential for home-labbing, server hosting and remotely accessing your home internet.
 
 ### [PlayIt.gg](https://playit.gg/)
 Port forwarding made simple for all.
@@ -97,18 +92,20 @@ Use Waydroid
 ## Multi Platform Compatibility
 ### Windows
 
-Use Bottles
+Use Bottles or WinBoat
 
 ### Android
 
-Use Waydroid
+Use Waydroid to run Android apps
 ```ujust setup-waydroid```
 
 ### Other Linux Distributions
 
-Use tools like DistroShelf or BoxBuddy to get started with containers.
-Prefer installing RPM package by GNOME Software over using RPM packages you manually download over the internet.
-Unlike LayeredPackages, LocalPackages do not get any updates.
+Use tools like DistroShelf or BoxBuddy to create distribution specific containers.
+
+### Other operating systems
+
+Use KVM with GNOME Boxes
 
 ## Included Packages
 ### rpm-ostree
