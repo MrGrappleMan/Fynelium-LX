@@ -23,8 +23,8 @@ Getting some errors is normal. Allow inhibiting shortcuts if requested.
 
 Included apps:
 | App Name | Description | Source | Technical Package IDs |
-|:---:|:---:|:---:|:---:|
-| BOINC | Help with contributing to science with idle power | R | boinc-client boinc-client-static boinc-manager |
+|---|---|---|---|
+| BOINC | Help with contributing to science with idle power | R | ```boinc-client boinc-client-static boinc-manager``` |
 | Docker | For containerization and BOINC | R | docker-cli |
 | Tor | Access the unrestricted internet and get around censorship, and help others do the same | F | org.torproject.torbrowser-launcher io.frama.tractor.carburetor |
 | Microsoft Edge | Truly the best brower for everyday usage and productivity | F | com.microsoft.EdgeDev |
