@@ -3,9 +3,7 @@
 ### Steps to follow
 0. Back up ALL your data on the disk, as it will be completely wiped.
 1. Get the [Bazzite](https://bazzite.gg/#image-picker) ISO. The following are images pre-listed for convenience
-[For most PCs](https://download.bazzite.gg/bazzite-gnome-stable-amd64.iso)
-[For NVIDIA RTX | GTX 16xx+](https://download.bazzite.gg/bazzite-gnome-nvidia-open-stable-amd64.iso)
-[For older NVIDIA Graphics cards](https://download.bazzite.gg/bazzite-gnome-nvidia-stable-amd64.iso)
+[Most PCs](https://download.bazzite.gg/bazzite-gnome-stable-amd64.iso) | [NVIDIA RTX | GTX 16xx+](https://download.bazzite.gg/bazzite-gnome-nvidia-open-stable-amd64.iso) | [Older NVIDIA Graphics cards](https://download.bazzite.gg/bazzite-gnome-nvidia-stable-amd64.iso)
 
 2. Get [Ventoy](https://github.com/ventoy/Ventoy/releases/latest), open it and use a spare USB drive for it.
 3. Move that file, ending with ".iso" to "Ventoy" partition of the USB Drive with Ventoy installed.
@@ -20,17 +18,6 @@ git clone https://github.com/MrGrappleMan/Fynelium.git /tmp/Fynelium/
 sudo fish /tmp/Fynelium/core/LX/m.fish
 ```
 Getting some errors is normal. Allow inhibiting shortcuts if requested.
-
-Included apps:
-| App Name | Description | Source | Technical Package IDs |
-|---|---|---|---|
-| BOINC | Help with contributing to science with idle power | R | ```boinc-client boinc-client-static boinc-manager``` |
-| Docker | For containerization and BOINC | R | docker-cli |
-| Tor | Access the unrestricted internet and get around censorship, and help others do the same | F | org.torproject.torbrowser-launcher io.frama.tractor.carburetor |
-| Microsoft Edge | Truly the best brower for everyday usage and productivity | F | com.microsoft.EdgeDev |
-| TLP | A daemon that makes system calls to actively save power, while keeping the same system performance | R | tlp tlp-rdw |
-| Free Download Manager |  Faster downloads and passive lightweight torrenting | | |
-| Speedtest, by Ookla | Test internet speed from CLI | R | speedtest-cli |
 
 Windows environments »→ use Bottles/Lutris
 Linux environments »→ use BoxBuddy/DistroShelf
@@ -90,8 +77,7 @@ Host your own Minecraft Server on your PC.
 Note: Using Bedrock edition is heavily recommended.
 It is faster, scalable, efficient and the language used for it is significantly better.
 Want a great vanilla experience? Use this!
-You can infact get mods, worlds and skins for free! The marketplace is just an optional way to support Mojang and UGC creators
-There are plenty of mods here that can satisfy your needs.
+You can infact get mods, worlds and skins for free externally. The marketplace is just an optional way to support developers
 Move the contents inside the server folder to
 ```
 /opt/mc-server/
@@ -104,16 +90,37 @@ such that the server executable is located at and named as
 Want mods only possible to use on Java? Use server software like FabricMC
 alongside mods like Lithium, GeyserMC and Floodgate to get started.
 
-### Running other Linux distributions
-
-Use tools like DistroShelf or BoxBuddy to get started with containers.
-Or run something in podman. You are all by yourself in this case.
-Prefer installing RPM package by GNOME Software over using RPM packages you manually download over the internet.
-Unlike LayeredPackages, LocalPackages do not get any updates.
-
 ### Running Android apps
 
 Use Waydroid
 
+## Multi Platform Compatibility
+### Windows
 
+Use Bottles
+
+### Android
+
+Use Waydroid
+```ujust setup-waydroid```
+
+### Other Linux Distributions
+
+Use tools like DistroShelf or BoxBuddy to get started with containers.
+Prefer installing RPM package by GNOME Software over using RPM packages you manually download over the internet.
+Unlike LayeredPackages, LocalPackages do not get any updates.
+
+## Included Packages
+### rpm-ostree
+| Name | Description | ID |
+|---|---|---|
+| BOINC | Help with contributing to science with idle power | ```boinc-client boinc-client-static boinc-manager``` |
+| Docker | For containerization and BOINC | ```docker-cli``` |
+| TLP | A daemon that makes system calls to actively save power, while keeping the same system performance | ```tlp tlp-rdw``` |
+
+### flatpak
+| Name | Description | ID |
+|---|---|---|
+| Tor | Access the unrestricted internet and get around censorship, and help others do the same | ```org.torproject.torbrowser-launcher io.frama.tractor.carburetor``` |
+| Microsoft Edge | A great brower for everyday usage and productivity | ```com.microsoft.EdgeDev``` |
 
