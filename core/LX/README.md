@@ -18,7 +18,9 @@ sudo fish /tmp/Fynelium/core/LX/m.fish
 ```
 Getting some errors is normal. Allow inhibiting shortcuts if requested.
 
-It expects that you have read this paragraph carefully and claims no responsibilty to any damage done to your system, which is highly unlikely in the first place.
+It expects that you have read the instructions carefully and claims no responsibilty to any damage done, but you can report bugs.
+This project's intended purpose is to have your system in a state with files preconfigured for a great user experience,
+For a unified distribution with the intent of fulfilling consumer/user usage without having technical experience or using terminals.
 
 Prioritize Flatpaks over Native packages.
 Flatpaks are for user apps, mainly GUIs. It makes sense for things like libreoffice, Blanket or something like that.
@@ -28,30 +30,14 @@ They allow for better system integration and performance, but you risk dependanc
 Keep it mainly for things the user doesn't see, like daemons.
 Are you a developer, just go ahead with a Distrobox container for your dev envioroment.
 There is no one stopping you from using proprietary software, you should compare the application in itself, not the development model.
-
 Same base/framework, yet no limit to visual theming/customization, one of the things I belive in. Make hundreds of rices, but maintain the same code base/framework.
 
-This project's intended purpose is to have your system in a state with files preconfigured for a great user experience,
-For a unified distribution with the intent of fulfilling consumer/user usage without having technical experience or using terminals
-Asahi Linux support not confirmed(could use unc work macbook, maybe. defaults is just like gsettings by experience).
+## Extra Tips:
 
-In the GNOME Display Manager, change your desktop environment to COSMIC.
-
-Bazzite is used as it has access to a wide range of
-supported hardware
-user friendly software
-community support greater than that of regular atomic Fedora alone
-
-#
-# Extra Tips:
-
-### [Tailscale](https://tailscale.com)
-Provides a seamless networking experience. You can MoSH, host servers and even access your home network with it.
-Essential for home-labbing, server hosting and remotely accessing your home internet.
-
-### [PlayIt.gg](https://playit.gg/)
-Port forwarding made simple for all.
-Allows for a public IP that can be accessed/used by anyone on the internet.
+| Software | Purpose | Extra notes
+|---|---|---|
+| [Tailscale](https://tailscale.com) | Remote networking without port forward | Provides a seamless networking experience. You can MoSH, host servers and even access your home network with it. Essential for home-labbing, server hosting and remotely accessing your home internet |
+| [PlayIt.gg](https://playit.gg/) | Port forward an IP publicly without fees | Allows for a public IP that can be accessed/used by anyone on the internet, whether it be game servers, SFTP, anything |
 
 Ensure the executable file's location is /opt/playit/playit
 There should be no file at /etc/playit/playit.toml prior to execution of the command below.
@@ -62,62 +48,41 @@ For first time setup run this:
 Get an error? Delete /etc/playit/playit.toml and try first time setup again.
 The service autostarts at startup if the executable is found.
 
-### Sunshine/Moonlight
-Access your device from everywhere with high performance. Pair it with Tailscale and you have an easily accessible desktop!
-Best for screen sharing + remote gaming. Better than Steam Remote Play and not restricted to just games.
+| Sunshine/Moonlight | Remote Desktop | High Performance, for gaming as well as regular usage. You may use w/Tailscale |
 
 ### Minecraft Server
 Host your own Minecraft Server on your PC.
 
-Note: Using Bedrock edition is heavily recommended.
-It is faster, scalable, efficient and the language used for it is significantly better.
-Want a great vanilla experience? Use this!
-You can infact get mods, worlds and skins for free externally. The marketplace is just an optional way to support developers
-Move the contents inside the server folder to
-```
-/opt/mc-server/
-```
-such that the server executable is located at and named as
+Note: For a vanilla experience, Bedrock is heavily recommended
+You server folder's contents go in
 ```
 /opt/mc-server/mc-server
 ```
+And the main binary is to be called ```mc-server```
 
 Want mods only possible to use on Java? Use server software like FabricMC
 alongside mods like Lithium, GeyserMC and Floodgate to get started.
 
-### Running Android apps
-
-Use Waydroid
-
 ## Multi Platform Compatibility
-### Windows
-
-Use Bottles or WinBoat
-
-### Android
-
-Use Waydroid to run Android apps
-```ujust setup-waydroid```
-
-### Other Linux Distributions
-
-Use tools like DistroShelf or BoxBuddy to create distribution specific containers.
-
-### Other operating systems
-
-Use KVM with GNOME Boxes
+| Platform | Tools | Info |
+|---|---|---|
+| Windows | Bottles, Lutris, WinBoat | Use WinBoat for full Windows experience, but with low performance |
+| Android | Waydroid | ```ujust setup-waydroid``` |
+| Linux | BoxBuddy, Distroshelf | Use any |
+| Full Virtual Machines | GNOME Boxes, Virt-Manager |
 
 ## Included Packages
-### rpm-ostree
+### RPM-OSTree
 | Name | Description | ID |
 |---|---|---|
 | BOINC | Help with contributing to science with idle power | ```boinc-client boinc-client-static boinc-manager``` |
 | Docker | For containerization and BOINC | ```docker-cli``` |
 | TLP | A daemon that makes system calls to actively save power, while keeping the same system performance | ```tlp tlp-rdw``` |
 
-### flatpak
+### Flatpak
 | Name | Description | ID |
 |---|---|---|
 | Tor | Access the unrestricted internet and get around censorship, and help others do the same | ```org.torproject.torbrowser-launcher io.frama.tractor.carburetor``` |
 | Microsoft Edge | A great brower for everyday usage and productivity | ```com.microsoft.EdgeDev``` |
 
+### Docker
