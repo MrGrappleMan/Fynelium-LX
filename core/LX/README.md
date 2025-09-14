@@ -1,4 +1,4 @@
-# Linux, mainly Bazzite
+# Linux
 
 ## Get started
 0. Back up ALL your data on the disk, as it will be completely wiped.
@@ -22,23 +22,15 @@ It expects that you have read the instructions carefully and claims no responsib
 This project's intended purpose is to have your system in a state with files preconfigured for a great user experience,
 For a unified distribution with the intent of fulfilling consumer/user usage without having technical experience or using terminals.
 
-Prioritize Flatpaks over Native packages.
-Flatpaks are for user apps, mainly GUIs. It makes sense for things like libreoffice, Blanket or something like that.
-They just get installed, work fine, do not require a reboot.
-However, if you need system integration go with RPM-OSTree at your own risk, or try a Distrobox container.
-They allow for better system integration and performance, but you risk dependancy hell and more complex system updates.
-Keep it mainly for things the user doesn't see, like daemons.
-Are you a developer, just go ahead with a Distrobox container for your dev envioroment.
-There is no one stopping you from using proprietary software, you should compare the application in itself, not the development model.
-Same base/framework, yet no limit to visual theming/customization, one of the things I belive in. Make hundreds of rices, but maintain the same code base/framework.
-
 ## Extra Tips:
 
 | Software | Purpose | Extra notes
 |---|---|---|
 | [Tailscale](https://tailscale.com) | Remote networking without port forward | Provides a seamless networking experience. You can MoSH, host servers and even access your home network with it. Essential for home-labbing, server hosting and remotely accessing your home internet |
 | [PlayIt.gg](https://playit.gg/) | Port forward an IP publicly without fees | Allows for a public IP that can be accessed/used by anyone on the internet, whether it be game servers, SFTP, anything |
+| [Sunshine/Moonlight](https://app.lizardbyte.dev/Sunshine/) | Remote Desktop | High Performance, for gaming as well as regular usage. You may use w/Tailscale |
 
+### Playit.gg
 Ensure the executable file's location is /opt/playit/playit
 There should be no file at /etc/playit/playit.toml prior to execution of the command below.
 For first time setup run this:
@@ -47,8 +39,6 @@ For first time setup run this:
 ```
 Get an error? Delete /etc/playit/playit.toml and try first time setup again.
 The service autostarts at startup if the executable is found.
-
-| Sunshine/Moonlight | Remote Desktop | High Performance, for gaming as well as regular usage. You may use w/Tailscale |
 
 ### Minecraft Server
 Host your own Minecraft Server on your PC.
@@ -62,6 +52,16 @@ And the main binary is to be called ```mc-server```
 
 Want mods only possible to use on Java? Use server software like FabricMC
 alongside mods like Lithium, GeyserMC and Floodgate to get started.
+
+Prioritize Flatpaks over Native packages.
+Flatpaks are for user apps, mainly GUIs. It makes sense for things like libreoffice, Blanket or something like that.
+They just get installed, work fine, do not require a reboot.
+However, if you need system integration go with RPM-OSTree at your own risk, or try a Distrobox container.
+They allow for better system integration and performance, but you risk dependancy hell and more complex system updates.
+Keep it mainly for things the user doesn't see, like daemons.
+Are you a developer, just go ahead with a Distrobox container for your dev envioroment.
+There is no one stopping you from using proprietary software, you should compare the application in itself, not the development model.
+Same base/framework, yet no limit to visual theming/customization, one of the things I belive in. Make hundreds of rices, but maintain the same code base/framework.
 
 ## Multi Platform Compatibility
 | Platform | Tools | Info |
