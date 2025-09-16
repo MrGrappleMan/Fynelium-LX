@@ -12,13 +12,13 @@
 ```
 cd /tmp/
 rm -rf /tmp/Fynelium
-mkdir /tmp/Fynelium
+mkdir -p /tmp/Fynelium
 git clone https://github.com/MrGrappleMan/Fynelium.git /tmp/Fynelium/
 sudo fish /tmp/Fynelium/core/LX/m.fish
 ```
-Getting some errors is normal. Allow inhibiting shortcuts if requested.
+Seeing errors is normal. Allow inhibiting shortcuts if requested.
 
-It expects that you have read the instructions carefully and claims no responsibilty to any damage done, but you can report bugs.
+It expects that you have read the instructions carefully and claims no responsibilty to any damage done, but you can report issues.
 This project's intended purpose is to have your system in a state with files preconfigured for a great user experience,
 For a unified distribution with the intent of fulfilling consumer/user usage without having technical experience or using terminals.
 
