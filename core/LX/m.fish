@@ -37,6 +37,11 @@ end
 
 curl -L https://wiki.teamfortress.com/w/images/b/b8/Engineer_specialcompleted-assistedkill01.wav -o /tmp/Fynelium/core/audio/start1.wav
 curl -L "https://wiki.teamfortress.com/w/images/0/07/Engineer_wranglekills01.wav" -o /tmp/Fynelium/core/audio/start2.wav
+curl -L "https://wiki.teamfortress.com/w/images/7/75/Engineer_specialcompleted06.wav" -o /tmp/Fynelium/core/audio/end1.wav
+curl -L "https://wiki.teamfortress.com/w/images/a/a1/Engineer_specialcompleted02.wav" -o /tmp/Fynelium/core/audio/end2.wav
+
+pw-play /tmp/Fynelium/core/audio/start1.wav
+pw-play /tmp/Fynelium/core/audio/start2.wav
 
 #____________________________________
 # Filesystem
@@ -312,9 +317,6 @@ fyn_bascr
    mc-server \
    rpm-ostree-countme rpm-ostree-countme.timer
 
-### For the inbuilt Minecraft server service, switch to Java edition by running the command below and editing it
-### systemctl edit mc-server
-
 #____________________________________
 # User Specific commands
 #____________________________________
@@ -333,10 +335,12 @@ set user_commands_string "
  ujust configure-grub show # Better safe than sorry if you want to debug
  ujust enable-automounting
  ujust enable-steamos-automount
- ujust setup-sunshine enable # Remote Graphical desktop
- ujust get-media-app "YouTube" # Use this instead of your web browser, as browsers introduce some middleman overhead. This is just dedicated and optimized for specifically YT.
- ujust get-media-app "Spotify" # Live a little
+ ujust setup-sunshine enable # Remote desktop access
+ ujust get-media-app "YouTube" # Dedicated and optimized for YouTube with a cleaner interface.
+ ujust get-media-app "Spotify" # Native Client
  ujust get-media-app "YouTube Music"
+ dconf load / < /tmp/Fynelium/core/LX/d.dconf
+ dconf load /org/gnome/shell/extensions/ < /tmp/Fynelium/core/LX/e.dconf
 "
 
 # Split the commands string into an array based on newlines
@@ -360,9 +364,7 @@ for user_path in (ls -d /home/*)
                 if test $status -eq 0
                     echo "y"
                 else
-                    echo "-------------------------"  
                     echo "Error for $username: $cmd"
-                    echo "-------------------------"
                 end
             end
         end
@@ -374,9 +376,9 @@ end
 #____________________________________
 fyn_bascr
 
- eci "Enabling InitRAMFS regeneration"
+ eci "Enable InitRAMFS regeneration"
  rot initramfs --enable
- eci "Making the startup theme simpler"
+ eci "Set Plymouth theme to spinner"
  plymouth-set-default-theme spinner
  eci "Modifying Kernel Arguments"
  rot kargs \
@@ -391,6 +393,6 @@ fyn_bascr
   --append-if-missing=zswap.enabled=0
 
 # End
- curl -L "https://wiki.teamfortress.com/w/images/7/75/Engineer_specialcompleted06.wav" -o /tmp/Fynelium/core/audio/end1.wav
- curl -L "https://wiki.teamfortress.com/w/images/a/a1/Engineer_specialcompleted02.wav" -o /tmp/Fynelium/core/audio/start2.wav
+ pw-play /tmp/Fynelium/core/audio/end1.wav
+ pw-play /tmp/Fynelium/core/audio/end2.wav
  echo ✨ Thank you for using this project!
