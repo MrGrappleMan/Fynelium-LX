@@ -28,7 +28,7 @@ function fyn_bascr
  spr
 end
  alias eci "echo 󰋼"
- alias spr "echo __________________________________________________________________________________________________________________________"
+ alias spr "echo ________________________________________________________________________________________________________________________________"
 
 #____________________________________
 # Preparation complete, so we start here
@@ -49,7 +49,7 @@ pw-play /tmp/Fynelium/core/audio/start2.wav
  fyn_bascr
  eci "Setup started. Even if it looks stuck, it is all part of the process"
  eci "Be patient till your device reboots. Sometimes a password will be asked. Keep it copied and keep pasting it whenever prompted."
- eci "Not the cleanest but yeah"
+ eci "Not the cleanest but yeah."
  spr
  eci "Copying over Filesystem contents."
  cd /tmp/Fynelium/LXroot
@@ -59,16 +59,6 @@ pw-play /tmp/Fynelium/core/audio/start2.wav
  ##cp -r /tmp/Fynelium/LXroot/root/* /root/
  mkdir -p /etc/playit
  mkdir -p /opt/playit
-
-#____________________________________
-# MaintenanceCommands
-#____________________________________
-fyn_bascr
-eci "Performing basic maintenance. Thanks to the UBlue team, this will be done automatically via the uupd daemon in the future."
-rot cleanup -b 
-rot reload
-fwupdmgr --allow-branch-switch --allow-older
-flatpak update --system -y --noninteractive --force-remove 
 
 #____________________________________
 # Firmware Update Manager
@@ -123,6 +113,7 @@ fyn_bascr
    io.github.celluloid_player.Celluloid \
    io.github.flattool.Warehouse \
    edu.berkeley.BOINC \
+   rocks.shy.VacuumTube \
    com.microsoft.EdgeDev \
    org.virt_manager.virt-manager \
    com.rafaelmardojai.Blanket \
@@ -145,18 +136,16 @@ fyn_bascr
 fyn_bascr
  eci "Modifying system and additional utilities using UJust"
  eci "It is very handy for most users"
- ujust setup-decky install
- ujust setup-decky prerelease # Still of utility on desktops
  ujust get-decky-bazzite-buddy # Know your changes you system undergoes to use it better
  ujust get-framegen install-decky-plugin
  ujust get-framegen install
  ujust get-lsfg install
  ujust get-lsfg install-decky-plugin
- ujust toggle-password-feedback off # You cannot trust anyone. People can get into accounts based on keyboard sounds.
+ ujust toggle-password-feedback off 
  ujust configure-grub show # Better safe than sorry if you want to debug
- ujust enable-automounting
- ujust enable-steamos-automount
- ujust setup-sunshine enable # Remote Graphical desktop
+ #ujust enable-automounting
+ #ujust enable-steamos-automount
+ #ujust setup-sunshine enable # Remote Graphical desktop
  ujust get-media-app "YouTube" # Use this instead of your web browser, as browsers introduce some middleman overhead. This is just dedicated and optimized for specifically YT.
  ujust get-media-app "Spotify" # Stay sane
  ujust get-media-app "YouTube Music"
@@ -323,7 +312,6 @@ fyn_bascr
 fyn_bascr
 
 set user_commands_string "
- brh rebase unstable -y
  ujust setup-decky install
  ujust setup-decky prerelease # Still of utility on desktops
  ujust get-decky-bazzite-buddy # Know your changes you system undergoes to use it better
@@ -332,10 +320,10 @@ set user_commands_string "
  ujust get-lsfg install
  ujust get-lsfg install-decky-plugin
  ujust toggle-password-feedback off # More Secure
- ujust configure-grub show # Better safe than sorry if you want to debug
- ujust enable-automounting
- ujust enable-steamos-automount
- ujust setup-sunshine enable # Remote desktop access
+ ujust configure-grub unhide
+ #ujust enable-automounting
+ #ujust enable-steamos-automount
+ #ujust setup-sunshine enable # Remote desktop access
  ujust get-media-app "YouTube" # Dedicated and optimized for YouTube with a cleaner interface.
  ujust get-media-app "Spotify" # Native Client
  ujust get-media-app "YouTube Music"
@@ -395,4 +383,6 @@ fyn_bascr
 # End
  pw-play /tmp/Fynelium/core/audio/end1.wav
  pw-play /tmp/Fynelium/core/audio/end2.wav
+ fyn_bascr
  echo ✨ Thank you for using this project!
+ echo Please restart your system.
