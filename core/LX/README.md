@@ -1,9 +1,8 @@
 # Linux
 
 ## Get started
-0. Back up ALL your data on the disk, as it will be completely wiped.
-1. Get the [Bazzite](https://bazzite.gg/#image-picker) ISO. The following are images pre-listed for convenience
-[Most PCs](https://download.bazzite.gg/bazzite-gnome-stable-amd64.iso) | [NVIDIA RTX | GTX 16xx+](https://download.bazzite.gg/bazzite-gnome-nvidia-open-stable-amd64.iso) | [Older NVIDIA Graphics cards](https://download.bazzite.gg/bazzite-gnome-nvidia-stable-amd64.iso)
+0. Back up ALL your data on the disk 
+1. Get the [Bazzite](https://bazzite.gg/#image-picker) GNOME image for your hardware.
 2. Get [Ventoy](https://github.com/ventoy/Ventoy/releases/latest), open it and use a spare USB drive for it.
 3. Move that file, ending with ".iso" to "Ventoy" partition of the USB Drive with Ventoy installed.
 4. Reboot your device, and boot into the drive
