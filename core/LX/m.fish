@@ -131,26 +131,6 @@ fyn_bascr
  brh rebase unstable -y
 
 #____________________________________
-# UJust
-#____________________________________
-fyn_bascr
- eci "Modifying system and additional utilities using UJust"
- eci "It is very handy for most users"
- ujust get-decky-bazzite-buddy # Know your changes you system undergoes to use it better
- ujust get-framegen install-decky-plugin
- ujust get-framegen install
- ujust get-lsfg install
- ujust get-lsfg install-decky-plugin
- ujust toggle-password-feedback off 
- ujust configure-grub show # Better safe than sorry if you want to debug
- #ujust enable-automounting
- #ujust enable-steamos-automount
- #ujust setup-sunshine enable # Remote Graphical desktop
- ujust get-media-app "YouTube" # Use this instead of your web browser, as browsers introduce some middleman overhead. This is just dedicated and optimized for specifically YT.
- ujust get-media-app "Spotify" # Stay sane
- ujust get-media-app "YouTube Music"
-
-#____________________________________
 # Snapcraft
 #____________________________________
 fyn_bascr
