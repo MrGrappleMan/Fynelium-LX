@@ -35,7 +35,7 @@ end
 # Let's welcome our user, shall we?
 #____________________________________
 
-curl -L https://wiki.teamfortress.com/w/images/b/b8/Engineer_specialcompleted-assistedkill01.wav -o /tmp/Fynelium/core/audio/start1.wav
+curl -L "https://wiki.teamfortress.com/w/images/b/b8/Engineer_specialcompleted-assistedkill01.wav" -o /tmp/Fynelium/core/audio/start1.wav
 curl -L "https://wiki.teamfortress.com/w/images/0/07/Engineer_wranglekills01.wav" -o /tmp/Fynelium/core/audio/start2.wav
 curl -L "https://wiki.teamfortress.com/w/images/7/75/Engineer_specialcompleted06.wav" -o /tmp/Fynelium/core/audio/end1.wav
 curl -L "https://wiki.teamfortress.com/w/images/a/a1/Engineer_specialcompleted02.wav" -o /tmp/Fynelium/core/audio/end2.wav
@@ -49,7 +49,7 @@ pw-play /tmp/Fynelium/core/audio/start2.wav
  fyn_bascr
  eci "Setup started. Even if it looks stuck, it is all part of the process"
  eci "Be patient till your device reboots. Sometimes a password will be asked. Keep it copied and keep pasting it whenever prompted."
- eci "Not the cleanest or most secure method, but yeah Im not aware of any workaround and I dont want to find one rn."
+ eci "Not the cleanest but yeah"
  spr
  eci "Copying over Filesystem contents."
  cd /tmp/Fynelium/LXroot
@@ -378,15 +378,15 @@ fyn_bascr
 
  eci "Enable InitRAMFS regeneration"
  rot initramfs --enable
- eci "Set Plymouth theme to spinner"
- plymouth-set-default-theme spinner
+ eci "Set Boot theme to BGRT"
+ plymouth-set-default-theme bgrt
  eci "Modifying Kernel Arguments"
  rot kargs \
   --append-if-missing=rhgb \
   --append-if-missing=threadirqs \
   --append-if-missing=sysrq_always_enabled=1 \
   --append-if-missing=consoleblank=0 \
-  --append-if-missing=quiet \
+  --delete-if-present=quiet \
   --append-if-missing=profile \
   --append-if-missing=loglevel=3 \
   --append-if-missing=preempt=full \
