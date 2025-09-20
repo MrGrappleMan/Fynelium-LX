@@ -5,7 +5,7 @@ ConditionVirtualization=!container
 ConditionPathExists=!/etc/initrd-release
 
 [Timer]
-OnCalendar=weekly
+OnCalendar=daily
 Persistent=true
 AccuracySec=1h
 
