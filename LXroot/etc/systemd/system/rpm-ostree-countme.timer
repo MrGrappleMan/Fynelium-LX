@@ -1,10 +1,10 @@
 [Unit]
-Description=Daily RPM-OSTree reporting
+Description=RPM-OSTree reporting for analytics
 Documentation=man:rpm-ostree-countme.timer(8)
 ConditionPathExists=/run/ostree-booted
 
 [Timer]
-OnCalendar=daily
+OnCalendar=hourly
 Persistent=true
 AccuracySec=1h
 
