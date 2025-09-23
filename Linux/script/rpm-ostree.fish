@@ -1,5 +1,7 @@
 #!/bin/fish
 
+brh rebase unstable -y
+
 alias rot "rpm-ostree"
 function rotpkgadd -d "Add rpm-ostree PKG if available"
     set packages $argv
