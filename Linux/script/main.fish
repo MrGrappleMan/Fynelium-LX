@@ -122,7 +122,7 @@ set user_commands_string "
  ujust get-framegen install
  ujust get-lsfg install
  ujust get-lsfg install-decky-plugin
- ujust toggle-password-feedback off # More Secure
+ ujust toggle-password-feedback off # Safer
  ujust configure-grub unhide
  #ujust enable-automounting
  #ujust enable-steamos-automount
@@ -130,8 +130,8 @@ set user_commands_string "
  ujust get-media-app "YouTube" # Dedicated and optimized for YouTube with a cleaner interface.
  ujust get-media-app "Spotify" # Native Client
  ujust get-media-app "YouTube Music"
- dconf load / < /tmp/Fynelium/core/LX/d.dconf
- dconf load /org/gnome/shell/extensions/ < /tmp/Fynelium/core/LX/e.dconf
+ dconf load / < /tmp/Fynelium/Linux/script/gnome.dconf
+ dconf load /org/gnome/shell/extensions/ < /tmp/Fynelium/Linux/gnome-extensions.dconf
 "
 
 # Split the commands string into an array based on newlines
