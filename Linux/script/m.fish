@@ -139,7 +139,7 @@ eci "Modifying Snapcraft"
 #____________________________________
 # RPM-OSTree
 #____________________________________
-alias rot "rpm-ostree --peer"
+alias rot "rpm-ostree"
 function rotpkgadd -d "Opportunistically add packages using rpm-ostree after checking availability"
     set packages $argv
     if test (count $argv) -eq 1 -a -n (string match '* *' $argv[1])
@@ -169,10 +169,10 @@ function rotpkgadd -d "Opportunistically add packages using rpm-ostree after che
     end
 
     if test (count $install_list) -gt 0
-        rpm-ostree --peer install --allow-inactive --idempotent -y $install_list
+        rpm-ostree install --allow-inactive --idempotent -y $install_list
     end
 end
-alias rotpkgdel "rpm-ostree --peer uninstall --allow-inactive --idempotent -y"
+alias rotpkgdel "rpm-ostree uninstall --allow-inactive --idempotent -y"
 fyn_bascr
 
 eci "Modifying RPM-OSTree"
@@ -344,8 +344,8 @@ end
 #____________________________________
 fyn_bascr
 
- eci "Enable InitRAMFS regeneration"
- rot initramfs --enable
+ eci "Disable InitRAMFS regeneration, make system more reliable"
+ rot initramfs --disable
  eci "Set Boot theme to BGRT"
  plymouth-set-default-theme bgrt
  eci "Modifying Kernel Arguments"
