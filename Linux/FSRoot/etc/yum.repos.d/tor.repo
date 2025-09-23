@@ -1,0 +1,6 @@
+[tor]
+name=Tor
+baseurl=https://rpm.torproject.org/fedora/$releasever/$basearch
+enabled=1
+gpgcheck=1
+gpgkey=https://rpm.torproject.org/fedora/public_gpg.key
