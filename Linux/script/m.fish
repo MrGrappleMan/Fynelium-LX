@@ -1,0 +1,368 @@
+#!/bin/env /bin/fish
+### This script is like a template for your system ###
+### Some preferences might not meet your requirements ###
+### Adjusting some userspace settings and apps yourself is recommended after the reboot ###
+
+#____________________________________
+# Fish, script based declaration and setup
+#____________________________________
+
+# Design and TUI
+function fish_title
+ echo 千ㄚ几乇ㄥ丨ㄩ爪
+end
+function fyn_bascr
+ clear
+ spr
+ echo "    ______                 ___               ";
+ echo "   / ____/_  ______  ___  / (_)_  ______ ___ ";
+ echo "  / /_  / / / / __ \\/ _ \\/ / / / / / __ \`__ \\";
+ echo " / __/ / /_/ / / / /  __/ / / /_/ / / / / / /";
+ echo "/_/    \\__, /_/ /_/\\___/_/_/\\__,_/_/ /_/ /_/ ";
+ echo "      /____/                                 ";
+ echo "";
+ echo " GitHub https://github.com/MrGrappleMan/Fynelium";
+ echo "🌐 Main maintainer https://mrgrappleman.github.io";
+ spr
+ fastfetch
+ spr
+end
+ alias eci "echo 󰋼"
+ alias spr "echo ________________________________________________________________________________________________________________________________"
+
+#____________________________________
+# Preparation complete, so we start here
+# Let's welcome our user, shall we?
+#____________________________________
+
+curl -L "https://wiki.teamfortress.com/w/images/b/b8/Engineer_specialcompleted-assistedkill01.wav" -o /tmp/Fynelium/core/audio/start1.wav
+curl -L "https://wiki.teamfortress.com/w/images/0/07/Engineer_wranglekills01.wav" -o /tmp/Fynelium/core/audio/start2.wav
+curl -L "https://wiki.teamfortress.com/w/images/7/75/Engineer_specialcompleted06.wav" -o /tmp/Fynelium/core/audio/end1.wav
+curl -L "https://wiki.teamfortress.com/w/images/a/a1/Engineer_specialcompleted02.wav" -o /tmp/Fynelium/core/audio/end2.wav
+
+pw-play /tmp/Fynelium/core/audio/start1.wav
+pw-play /tmp/Fynelium/core/audio/start2.wav
+
+#____________________________________
+# Filesystem
+#____________________________________
+ fyn_bascr
+ eci "Setup started. Even if it looks stuck, it is all part of the process"
+ eci "Be patient till your device reboots. Sometimes a password will be asked. Keep it copied and keep pasting it whenever prompted."
+ eci "Not the cleanest but yeah."
+ spr
+ eci "Copying over Filesystem contents."
+ cd /tmp/Fynelium/LXroot
+ cp -r /tmp/Fynelium/LXroot/etc/* /etc/
+ cp -r /tmp/Fynelium/LXroot/var/* /var/
+ cp -r /tmp/Fynelium/LXroot/opt/* /opt/
+ ##cp -r /tmp/Fynelium/LXroot/root/* /root/
+ mkdir -p /etc/playit
+ mkdir -p /opt/playit
+
+#____________________________________
+# Firmware Update Manager
+#____________________________________
+alias fwu "fwupdmgr"
+alias fwurepadd "fwupdmgr enable-remote -y"
+fyn_bascr
+ eci "Modifying Firmware Update Manager"
+ #repos
+  eci "Adding Repositories"
+  fwurepadd lvfs
+  fwurepadd lvfs-testing
+
+#____________________________________
+# Flatpak
+#____________________________________
+alias fpk "flatpak --system"
+alias fpkrepadd "flatpak --system remote-add --if-not-exists"
+alias fpkrepdel "flatpak --system remote-delete --force"
+alias fpkpkgadd "flatpak --system install -y --noninteractive --include-sdk --or-update"
+alias fpkpkgdel "flatpak --system uninstall -y --noninteractive --force-remove"
+fyn_bascr
+ eci "Modifying Flatpak"
+ #uninstall
+  eci "By the way, you should install Flatpaks system-wide, not just for a single user"
+  eci "It has several advantages. It saves space for the same main files, but keeps data separate for each user."
+  flatpak uninstall -u --all -y --noninteractive --force-remove
+ #remote-add
+  eci "Adding Repositories"
+  fpkrepadd flathub https://flathub.org/repo/flathub.flatpakrepo
+  fpkrepadd flathub-beta https://flathub.org/beta-repo/flathub-beta.flatpakrepo
+  ###fpkrepadd eos-sdk https://ostree.endlessm.com/ostree/eos-sdk
+  fpkrepadd igalia https://software.igalia.com/flatpak-refs/igalia.flatpakrepo
+  fpkrepadd dragon-nightly https://cdn.kde.org/flatpak/dragon-nightly/dragon-nightly.flatpakrepo
+  ###fpkrepadd eos-apps https://ostree.endlessm.com/ostree/eos-apps
+  fpkrepadd webkit https://software.igalia.com/flatpak-refs/webkit-sdk.flatpakrepo
+  fpkrepadd gnome-nightly https://nightly.gnome.org/gnome-nightly.flatpakrepo
+  fpkrepadd webkit-sdk https://software.igalia.com/flatpak-refs/webkit-sdk.flatpakrepo
+  fpkrepadd fedora oci+https://registry.fedoraproject.org
+  fpkrepadd fedora-testing oci+https://registry.fedoraproject.org/#testing
+  fpkrepadd rhel https://flatpaks.redhat.io/rhel.flatpakrepo
+  fpkrepadd eclipse-nightly https://download.eclipse.org/linuxtools/flatpak-I-builds/eclipse.flatpakrepo
+  fpkrepadd elementaryos https://flatpak.elementary.io/repo.flatpakrepo
+  fpkrepadd pureos https://store.puri.sm/repo/stable/pureos.flatpakrepo
+  fpkrepadd kde-runtime-nightly https://cdn.kde.org/flatpak/kde-runtime-nightly/kde-runtime-nightly.flatpakrepo
+ #install
+  eci "Installing packages. Select the latest version of them if asked here."
+  fpkpkgadd flathub-beta \
+   org.freedesktop.Platform org.gnome.Platform \
+   org.freedesktop.Sdk org.gnome.Sdk
+  fpkpkgadd flathub \
+   io.github.celluloid_player.Celluloid \
+   io.github.flattool.Warehouse \
+   edu.berkeley.BOINC \
+   rocks.shy.VacuumTube \
+   com.microsoft.EdgeDev \
+   org.virt_manager.virt-manager \
+   com.rafaelmardojai.Blanket \
+   org.libreoffice.LibreOffice \
+   org.torproject.torbrowser-launcher io.frama.tractor.carburetor
+  fpkpkgadd flathub-beta \
+   com.visualstudio.code.insiders
+ #uninstall
+  fpkpkgdel org.mozilla.firefox
+
+#____________________________________
+# Bazzite Rollback Helper
+#____________________________________
+fyn_bascr
+ brh rebase unstable -y
+
+#____________________________________
+# Snapcraft
+#____________________________________
+fyn_bascr
+eci "Modifying Snapcraft"
+
+#____________________________________
+# RPM-OSTree
+#____________________________________
+alias rot "rpm-ostree --peer"
+function rotpkgadd -d "Opportunistically add packages using rpm-ostree after checking availability"
+    set packages $argv
+    if test (count $argv) -eq 1 -a -n (string match '* *' $argv[1])
+        set packages (string split ' ' $argv[1])
+    end
+
+    set -l install_list
+
+    for pkg in $packages
+        set -l output (rpm-ostree search $pkg)
+        set -l lines (string split \n -- $output)
+        set -l found false
+
+        for line in $lines
+            if string match -q '* *' $line
+                set -l candidate (string split -m 1 ' ' $line)[1]
+                if test "$candidate" = "$pkg"
+                    set found true
+                    break
+                end
+            end
+        end
+
+        if $found
+            set install_list $install_list $pkg
+        end
+    end
+
+    if test (count $install_list) -gt 0
+        rpm-ostree --peer install --allow-inactive --idempotent -y $install_list
+    end
+end
+alias rotpkgdel "rpm-ostree --peer uninstall --allow-inactive --idempotent -y"
+fyn_bascr
+
+eci "Modifying RPM-OSTree"
+ #install
+   eci "Add Packages"
+   rotpkgadd "rust-zram-generator-devel preload \
+    tlp tlp-rdw \
+    pipewire wireplumber wireplumber-libs \
+    kernel-modules-extra uutils-coreutils util-linux \
+    cosmic-epoch cosmic-desktop xdg-desktop-portal-cosmic initial-setup-gui-wayland-cosmic cosmic-greeter cosmic-comp cosmic-app-library cosmic-applets cosmic-edit cosmic-idle cosmic-osd cosmic-session cosmic-settings cosmic-settings-daemon cosmic-store fedora-release-cosmic-atomic cosmic-config-fedora greetd \
+    gdm \
+    boinc-client boinc-client-static \
+    flatseal flatpak-selinux flatpak-session-helper xdg-desktop-portal flatpak-libs libportal host-spawn \
+    gnome-software gnome-software-rpm-ostree \
+    dnf-plugins-core etckeeper-dnf dnf-repo dnfdaemon dnfdaemon-selinux fedora-repos fedora-repos-rawhide fedora-repos-ostree fedora-gpg-keys \
+    fish \
+    libei libei-utils \
+    btop fastfetch \
+    zstd brotli p7zip p7zip-plugins p7zip-gui \
+    kuserfeedback gnome-info-collect \
+    hblock speedtest-cli \
+    plymouth plymouth-core-libs plymouth-graphic-libs plymouth-kcm plymouth-scripts \
+    docker-cli docker-compose docker-buildx bottles \
+    tailscale openssh openssh-server mosh"
+    
+    ## System Boosters ##
+    ## Power management ##
+    ## User environment ##
+    ## Kernel mods ##
+    ## COSMIC ##
+    ## GDM ##
+    ## Science United ##
+    ## Flatpak ##
+    ## GNOME Software ##
+    ## DNF, RPM, OSTREE ##
+    ## Fish ##
+    ## Libei ##
+    ## TTY Shows ##
+    ## Compression ##
+    ## Telemetry ##
+    ## Networking ##
+    ## Containerization, Orchestration, Virtualization, Emulation ##
+    ## Remote access ##
+
+    ## GhosTTY ## ghostty-nightly ghostty-nightly-fish-completion ghostty-nightly-shell-integration
+
+    ### Developer Specific:-
+    ### Suggested, use these in a container
+     ## Version Control Systems:
+      # git gh
+     ## Rust:
+      # rust cargo clippy
+     ## C stuff:
+      # cpp
+     ## Java:
+      # java-latest-openjdk
+     ## Python:
+      # 
+     ## Compilation:
+      # distcc distcc-server gcc gcc-c++
+     ## Penetration testing / Hacking:
+      # aircrack-ng turbo-attack golang-github-redteampentesting-monsoon
+     ## Artificial Intelligence:
+      # ollama
+
+    ### Gaming:-
+     ## Steam:
+      # steam steam-devices
+     ## Vavoom:
+      # vavoom vavoom-engine
+
+    ### Graphics:-
+     ## Mesa:
+      # mesa-va-drivers-freeworld mesa-vdpau-drivers-freeworld mesa-vulkan-drivers-freeworld
+      # mesa-dri-drivers
+      # mesa-va-drivers mesa-vdpau-drivers mesa-vulkan-drivers
+      # mesa-libOSMesa mesa-compat-libOSMesa
+     ## AMD: amd-gpu-firmware amd-ucode-firmware amdsmi am-utils
+     ## Nvidia: nvidia-gpu-firmware libva-nvidia-driver envytools nvidia-patch
+
+   ### Multipurpose:-
+    ## PKGMGR Snap
+     # snapd snapd-selinux
+
+#____________________________________
+# System
+#____________________________________
+fyn_bascr
+
+ #Policies and permissions
+  chmod a+x /opt/playit/playit
+  chmod a+x /opt/mc-server/mc-server
+ #refresh
+  nohup systemctl daemon-reload &
+  nohup timedatectl set-ntp true --no-ask-password &
+ #Services
+  echo Modifying System-D services
+  systemctl mask \
+   systemd-rfkill systemd-rfkill.socket
+  systemctl unmask \
+   gdm \
+   shutdown.target reboot.target poweroff.target halt.target
+  systemctl reenable \
+   systemd-resolved systemd-networkd systemd-timesyncd \
+   tlp \
+   uupd uupd.timer \
+   fstrim.timer \
+   systemd-bsod \
+   sshd playit tailscaled \
+   preload systemd-zram-setup@zram0 \
+   mc-server \
+   rpm-ostree-countme rpm-ostree-countme.timer
+
+#____________________________________
+# User Specific commands
+#____________________________________
+fyn_bascr
+
+set user_commands_string "
+ ujust setup-decky install
+ ujust setup-decky prerelease # Still of utility on desktops
+ ujust get-decky-bazzite-buddy # Know your changes you system undergoes to use it better
+ ujust get-framegen install-decky-plugin
+ ujust get-framegen install
+ ujust get-lsfg install
+ ujust get-lsfg install-decky-plugin
+ ujust toggle-password-feedback off # More Secure
+ ujust configure-grub unhide
+ #ujust enable-automounting
+ #ujust enable-steamos-automount
+ #ujust setup-sunshine enable # Remote desktop access
+ ujust get-media-app "YouTube" # Dedicated and optimized for YouTube with a cleaner interface.
+ ujust get-media-app "Spotify" # Native Client
+ ujust get-media-app "YouTube Music"
+ dconf load / < /tmp/Fynelium/core/LX/d.dconf
+ dconf load /org/gnome/shell/extensions/ < /tmp/Fynelium/core/LX/e.dconf
+"
+
+# Split the commands string into an array based on newlines
+set user_commands (string split -n \n $user_commands_string)
+
+# Iterate through each directory in /home/
+# Redneck method to recognize users
+for user_path in (ls -d /home/*)
+    # Extract username from path
+    set username (basename $user_path)
+
+    # Check if it's a valid directory and not a system folder like lost+found
+    if test -d "$user_path" -a "$username" != "lost+found"
+        echo "For user: $username"
+
+        # Run each command as the user
+        for cmd in $user_commands
+            # Skip empty lines
+            if test -n "$cmd"
+                sudo -u $username fish -c "$cmd"
+                if test $status -eq 0
+                    echo "y"
+                else
+                    echo "Error for $username: $cmd"
+                end
+            end
+        end
+    end
+end
+
+#____________________________________
+# Kernel
+#____________________________________
+fyn_bascr
+
+ eci "Enable InitRAMFS regeneration"
+ rot initramfs --enable
+ eci "Set Boot theme to BGRT"
+ plymouth-set-default-theme bgrt
+ eci "Modifying Kernel Arguments"
+ rot kargs \
+  --append-if-missing=rhgb \
+  --append-if-missing=threadirqs \
+  --append-if-missing=sysrq_always_enabled=1 \
+  --append-if-missing=consoleblank=0 \
+  --delete-if-present=quiet \
+  --append-if-missing=profile \
+  --append-if-missing=loglevel=3 \
+  --append-if-missing=preempt=full \
+  --append-if-missing=zswap.enabled=0
+
+# End
+ pw-play /tmp/Fynelium/core/audio/end1.wav
+ pw-play /tmp/Fynelium/core/audio/end2.wav
+ fyn_bascr
+ echo ✨ Thank you for using this project!
+ echo Please restart your system.

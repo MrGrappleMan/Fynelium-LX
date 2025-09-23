@@ -1,0 +1,14 @@
+[Unit]
+Description=PlayIt Agent for port forwarding
+Documentation=https://playit.gg
+After=network-pre.target systemd-resolved.service
+
+[Service]
+ExecStart=/opt/playit/playit --secret_path /etc/playit/playit.toml start
+IOSchedulingPriority=6
+Restart=always
+Nice=15
+User=root
+
+[Install]
+WantedBy=multi-user.target
