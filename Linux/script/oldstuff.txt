@@ -145,8 +145,6 @@ fi
 if [[ "$1" == "A" ]]; then
  paru -Syu --noconfirm opencl-amd-dev amdvbflash
 fi
-# ZRAMnRamRoot----------------------------------------------------------------------------------------------------
-sudo ramroot -CEY
 # Pi-Hole----------------------------------------------------------------------------------------------------
 sudo touch /etc/pihole/pihole-FTL.conf
 sudo chmod 755 /etc/pihole/pihole-FTL.conf
@@ -188,8 +186,6 @@ https://urlhaus.abuse.ch/downloads/hostfile/
 XIT
 sudo systemctl enable --now pihole-FTL
 sudo pihole restartdns
-# Snowflake----------------------------------------------------------------------------------------------------
-sudo systemctl enable --now snowflake-proxy
 # Tor----------------------------------------------------------------------------------------------------
 sudo setcap cap_net_bind_service=+ep /usr/bin/obfs4proxy
 cd /etc/systemd/system/
@@ -207,10 +203,6 @@ echo Done
 
 # 8weky
 
-# Quick access to here: bit.ly/LXsetup
-# Sections are divided by blank lines
-# For sections with empty variables, paste them in a text editior for editing the parameters
-
 # Network Drivers(if the adaptor is not detected):
 # Install your network drivers before the main script
 # Using your phone's USB Tethering is an option, but may be risky due to it randomly disconnecting. Use it only to install the network driver.
@@ -223,20 +215,8 @@ sudo sed -i 's/PACKAGE_VERSION="@PKGVER@"/PACKAGE_VERSION="git"/g' /usr/src/rtl8
 sudo dkms add -m rtl88x2bu -v git
 sudo dkms autoinstall
 
-# Main script(to be executed before anything below this secton)
-# Execute by copy-pasting the raw text from the site into a terminal
-# Ensure a stabe internet connection
-https://raw.githubusercontent.com/MrGrappleMan/JustPerformance/main/LX.sh
-
 # OpenSSH:
 sudo ufw allow ssh
-
-# Chrome Remote Desktop(issues may be present for Wayland):
-cd /tmp/
-sudo apt-fast update
-sudo apt-fast dist-upgrade -y
-sudo curl -sL https://dl.google.com/linux/direct/chrome-remote-desktop_current_amd64.deb>crd.deb
-sudo apt-fast install ./crd.deb -y
 
 # Science United
 EMAIL=
@@ -254,12 +234,12 @@ cd /etc/boinc-client/
 # Docker
 # !`Setup----------
 for cpkg in docker.io docker-doc docker-compose docker-compose-v2 podman-docker container runc; do sudo apt-fast remove $cpkg; done
-cd /tmp/ >/dev/null 2>&1
-curl -fsSL https://test.docker.com -o dck.sh >/dev/null 2>&1
-sudo sh dck.sh >/dev/null 2>&1
-sudo systemctl enable --now docker >/dev/null 2>&1
-sudo docker run -d --name mgmpsclient -e CID=69eg packetstream/psclient:latest >/dev/null 2>&1
-sudo docker run -d --name mgmearnfm-client -e EARNFM_TOKEN="a0d3ff10-5d3c-4c24-a80a-d0c0120ddf76" earnfm/earnfm-client:latest >/dev/null 2>&1
+cd /tmp/
+curl -fsSL https://test.docker.com -o dck.sh
+sudo sh dck.sh
+sudo systemctl enable --now docker
+sudo docker run -d --name mgmpsclient -e CID=69eg packetstream/psclient:latest
+sudo docker run -d --name mgmearnfm-client -e EARNFM_TOKEN="a0d3ff10-5d3c-4c24-a80a-d0c0120ddf76" earnfm/earnfm-client:latest
 # `Packetstream----------
 APIKEY=
 sudo docker run -d --name psclient -e CID=$APIKEY packetstream/psclient:latest
