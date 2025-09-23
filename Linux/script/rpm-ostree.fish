@@ -56,7 +56,7 @@ alias rotpkgdel "rpm-ostree uninstall --allow-inactive --idempotent -y"
     hblock speedtest-cli \
     plymouth plymouth-core-libs plymouth-graphic-libs plymouth-kcm plymouth-scripts \
     docker-cli docker-compose docker-buildx bottles \
-    tailscale openssh openssh-server mosh"
+    tailscale openssh openssh-server mosh tor"
     
     ## System Boosters ##
     ## Power management ##
