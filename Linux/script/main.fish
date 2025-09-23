@@ -47,23 +47,10 @@ end
  mkdir -p /opt/playit
 
 #____________________________________
-# Firmware Update Manager
+# No Hangup offloading
 #____________________________________
 nohup fish /tmp/Fynelium/Linux/script/fwupdmgr.fish &
-
-#____________________________________
-# Flatpak
-#____________________________________
 nohup fish /tmp/Fynelium/Linux/script/flatpak.fish &
-
-#____________________________________
-# Snapcraft
-#____________________________________
-
-
-#____________________________________
-# RPM-OSTree
-#____________________________________
 nohup fish /tmp/Fynelium/Linux/script/rpm-ostree.fish &
 
 #____________________________________
