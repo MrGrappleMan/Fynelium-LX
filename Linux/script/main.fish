@@ -31,19 +31,6 @@ end
  alias spr "echo ________________________________________________________________________________________________________________________________"
 
 #____________________________________
-# Preparation complete, so we start here
-# Let's welcome our user, shall we?
-#____________________________________
-
-curl -L "https://wiki.teamfortress.com/w/images/b/b8/Engineer_specialcompleted-assistedkill01.wav" -o /tmp/Fynelium/core/audio/start1.wav
-curl -L "https://wiki.teamfortress.com/w/images/0/07/Engineer_wranglekills01.wav" -o /tmp/Fynelium/core/audio/start2.wav
-curl -L "https://wiki.teamfortress.com/w/images/7/75/Engineer_specialcompleted06.wav" -o /tmp/Fynelium/core/audio/end1.wav
-curl -L "https://wiki.teamfortress.com/w/images/a/a1/Engineer_specialcompleted02.wav" -o /tmp/Fynelium/core/audio/end2.wav
-
-pw-play /tmp/Fynelium/core/audio/start1.wav
-pw-play /tmp/Fynelium/core/audio/start2.wav
-
-#____________________________________
 # Filesystem
 #____________________________________
  fyn_bascr
@@ -167,12 +154,14 @@ end
 #____________________________________
 fyn_bascr
 
- eci "Disable InitRAMFS regeneration, make system more reliable"
- rot initramfs --disable
- eci "Set Boot theme to BGRT"
+ eci "Disable InitRAMFS regen, make system more reliable"
+ rpm-ostree initramfs --disable
+
+ eci "Make theme as BGRT"
  plymouth-set-default-theme bgrt
- eci "Modifying Kernel Arguments"
- rot kargs \
+
+ eci "Edit Kernel Args"
+ rpm-ostree kargs \
   --append-if-missing=rhgb \
   --append-if-missing=threadirqs \
   --append-if-missing=sysrq_always_enabled=1 \
@@ -183,9 +172,7 @@ fyn_bascr
   --append-if-missing=preempt=full \
   --append-if-missing=zswap.enabled=0
 
+#____________________________________
 # End
- pw-play /tmp/Fynelium/core/audio/end1.wav
- pw-play /tmp/Fynelium/core/audio/end2.wav
- fyn_bascr
- echo ✨ Thank you for using this project!
- echo Please restart your system.
+#____________________________________
+ exit
