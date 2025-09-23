@@ -144,8 +144,8 @@ fyn_bascr
  eci "Disable InitRAMFS regen, make system more reliable"
  rpm-ostree initramfs --disable
 
- eci "Make theme as BGRT"
- plymouth-set-default-theme bgrt
+ eci "Verbose boot info"
+ plymouth-set-default-theme details
 
  eci "Edit Kernel Args"
  rpm-ostree kargs \
