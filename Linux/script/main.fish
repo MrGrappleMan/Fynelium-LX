@@ -62,18 +62,12 @@ pw-play /tmp/Fynelium/core/audio/start2.wav
 #____________________________________
 # Firmware Update Manager
 #____________________________________
-alias fwu "fwupdmgr"
-alias fwurepadd "fwupdmgr enable-remote -y"
-fyn_bascr
- eci "Modifying Firmware Update Manager"
- #repos
-  eci "Adding Repositories"
-  fwurepadd lvfs
-  fwurepadd lvfs-testing
+
 
 #____________________________________
 # Flatpak
 #____________________________________
+sudo fish /tmp/Fynelium/Linux/script/flatpak.fish
 
 #____________________________________
 # Bazzite Rollback Helper
@@ -90,7 +84,7 @@ eci "Modifying Snapcraft"
 #____________________________________
 # RPM-OSTree
 #____________________________________
-
+sudo fish /tmp/Fynelium/Linux/script/rpm-ostree.fish
 
 #____________________________________
 # System
