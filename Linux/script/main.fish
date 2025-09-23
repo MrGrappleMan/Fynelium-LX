@@ -47,44 +47,37 @@ pw-play /tmp/Fynelium/core/audio/start2.wav
 # Filesystem
 #____________________________________
  fyn_bascr
- eci "Setup started. Even if it looks stuck, it is all part of the process"
- eci "Be patient till your device reboots. Sometimes a password will be asked. Keep it copied and keep pasting it whenever prompted."
+ eci "Setup started. Wait till device reboots."
+ eci "Sometimes a password will be asked. Copy and paste it whenever prompted."
  spr
  eci "Copying over Filesystem contents."
  cd /tmp/Fynelium/Linux/FSRoot/
  cp -r /tmp/Fynelium/Linux/FSRoot/etc/* /etc/
  cp -r /tmp/Fynelium/Linux/FSRoot/var/* /var/
  cp -r /tmp/Fynelium/Linux/FSRoot/opt/* /opt/
- ##cp -r /tmp/Fynelium/LXroot/root/* /root/
+ ##cp -r /tmp/Fynelium/Linux/FSRoot/root/* /root/
  mkdir -p /etc/playit
  mkdir -p /opt/playit
 
 #____________________________________
 # Firmware Update Manager
 #____________________________________
-
+nohup fish /tmp/Fynelium/Linux/script/fwupdmgr.fish &
 
 #____________________________________
 # Flatpak
 #____________________________________
-sudo fish /tmp/Fynelium/Linux/script/flatpak.fish
-
-#____________________________________
-# Bazzite Rollback Helper
-#____________________________________
-fyn_bascr
- brh rebase unstable -y
+nohup fish /tmp/Fynelium/Linux/script/flatpak.fish &
 
 #____________________________________
 # Snapcraft
 #____________________________________
-fyn_bascr
-eci "Modifying Snapcraft"
+
 
 #____________________________________
 # RPM-OSTree
 #____________________________________
-sudo fish /tmp/Fynelium/Linux/script/rpm-ostree.fish
+nohup fish /tmp/Fynelium/Linux/script/rpm-ostree.fish &
 
 #____________________________________
 # System
@@ -98,7 +91,7 @@ fyn_bascr
   nohup systemctl daemon-reload &
   nohup timedatectl set-ntp true --no-ask-password &
  #Services
-  echo Modifying System-D services
+  echo Edit Systemd services
   systemctl mask \
    systemd-rfkill systemd-rfkill.socket
   systemctl unmask \
@@ -113,7 +106,8 @@ fyn_bascr
    sshd playit tailscaled \
    preload systemd-zram-setup@zram0 \
    mc-server \
-   rpm-ostree-countme rpm-ostree-countme.timer
+   rpm-ostree-countme rpm-ostree-countme.timer \
+   tor
 
 #____________________________________
 # User Specific commands
