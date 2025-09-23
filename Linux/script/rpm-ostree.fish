@@ -1,7 +1,7 @@
 #!/bin/fish
 
 alias rot "rpm-ostree"
-function rotpkgadd -d "Add rpm-ostree PKGS if checking availability"
+function rotpkgadd -d "Add rpm-ostree PKG if available"
     set packages $argv
     if test (count $argv) -eq 1 -a -n (string match '* *' $argv[1])
         set packages (string split ' ' $argv[1])
