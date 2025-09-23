@@ -36,60 +36,7 @@ powercfg -h on
 # Services
 Write-Host "Modifying services"
 
-Start-Service -Name "SensrSvc"
-Set-Service -Name "SensrSvc" -StartupType Automatic
-Start-Service -Name "SensorService"
-Set-Service -Name "SensorService" -StartupType Automatic
-Start-Service -Name "NetTcpPortSharing"
-Set-Service -Name "NetTcpPortSharing" -StartupType Automatic
-Start-Service -Name "wisvc"
-Set-Service -Name "wisvc" -StartupType Automatic
-Start-Service -Name "WpnUserService"
-Set-Service -Name "WpnUserService" -StartupType Automatic
-Start-Service -Name "WpnService"
-Set-Service -Name "WpnService" -StartupType Automatic
-Start-Service -Name "UserDataSvc"
-Set-Service -Name "UserDataSvc" -StartupType Automatic
-Start-Service -Name "UnistoreSvc"
-Set-Service -Name "UnistoreSvc" -StartupType Automatic
-Start-Service -Name "UevAgentService"
-Set-Service -Name "UevAgentService" -StartupType Automatic
-Start-Service -Name "UsoSvc"
-Set-Service -Name "UsoSvc" -StartupType Automatic
-Start-Service -Name "InstallServicec"
-Set-Service -Name "InstallService" -StartupType Automatic
-Start-Service -Name "DiagTrack"
-Set-Service -Name "DiagTrack" -StartupType Automatic
-Start-Service -Name "tzautoupdate"
-Set-Service -Name "tzautoupdate" -StartupType Automatic
-Start-Service -Name "BITS"
-Set-Service -Name "BITS" -StartupType Automatic
-Start-Service -Name "DoSvc"
-Set-Service -Name "DoSvc" -StartupType Automatic
-Start-Service -Name "wuauserv"
-Set-Service -Name "wuauserv" -StartupType Automatic
-Start-Service -Name "WaaSMedicSvc"
-Set-Service -Name "WaaSMedicSvc" -StartupType Automatic
-Start-Service -Name "Dnscache"
-Set-Service -Name "Dnscache" -StartupType Automatic
-Start-Service -Name "svsvc"
-Set-Service -Name "svsvc" -StartupType Automatic
-Start-Service -Name "Winmgmt"
-Set-Service -Name "Winmgmt" -StartupType Automatic
-Start-Service -Name "whesvc"
-Set-Service -Name "whesvc" -StartupType Automatic
-Start-Service -Name "WebClient"
-Set-Service -Name "WebClient" -StartupType Automatic
-Start-Service -Name "W32Time"
-Set-Service -Name "W32Time" -StartupType Automatic
-Start-Service -Name "WlanSvc"
-Set-Service -Name "WlanSvc" -StartupType Automatic
-Start-Service -Name "dot3svc"
-Set-Service -Name "dot3svc" -StartupType Automatic
-Start-Service -Name "SysMain"
-Set-Service -Name "SysMain" -StartupType Automatic
-Start-Service -Name "WSearch"
-Set-Service -Name "WSearch" -StartupType Automatic
+
 
 # MMAgent
 Write-Host "Modifying MMAgents"
@@ -132,7 +79,7 @@ bcdedit /set nx Optin
 #bcdedit /set hypervisorlaunchtype on
 
 # NTP Settings
-Write-Host "Setting up NTP"
+Write-Host "Setup NTP"
 w32tm /register
 w32tm /config /syncfromflags:all /manualpeerlist:"time.google.com time.windows.com time.cloudflare.com pool.ntp.org time.facebook.com time.apple.com time.aws.com" /reliable:YES /update
 w32tm /resync
@@ -142,28 +89,6 @@ Write-Host "Applying registry tweaks"
 regedit /s %windir%\Temp\Fynelium\core\NT\r.reg
 
 # Recommended Apps
-Write-Host "Installing apps and packages that you may find useful"
+Write-Host "PKG ADD"
 
-## Other
-winget install Discord.Discord.Canary
-winget install UCBerkeley.BOINC
-
-## General Productivity
-winget install LGUG2Z.komorebi
-winget install LGUG2Z.whkd
-winget install SoftDeluxe.FreeDownloadManager
-winget install Google.GoogleDrive
-winget install Microsoft.Edge.Canary
-
-## Software Development
-winget install GoLang.Go
-winget install GitHub.GitHubDesktop.Beta
-winget install Microsoft.PowerShell.Preview
-
-## System Maintenance
-winget install Microsoft.PCManager.Beta
-winget install Microsoft.WindowsPCHealthCheck
-
-## Gaming
-winget install Valve.Steam
-winget install Valve.SteamCMD
+winget import --import-file winget.json --ignore-unavailable
