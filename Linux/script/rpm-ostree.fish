@@ -116,3 +116,17 @@ alias rotpkgdel "rpm-ostree uninstall --allow-inactive --idempotent -y"
    ### Multipurpose:-
     ## PKGMGR Snap
      # snapd snapd-selinux
+
+# Kernel Arguments
+
+rpm-ostree kargs \
+  --append-if-missing=rhgb \
+  --append-if-missing=threadirqs \
+  --append-if-missing=sysrq_always_enabled=1 \
+  --append-if-missing=consoleblank=0 \
+  --delete-if-present=quiet \
+  --append-if-missing=profile \
+  --append-if-missing=loglevel=3 \
+  --append-if-missing=preempt=full \
+  --append-if-missing=zswap.enabled=0
+
