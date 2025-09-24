@@ -1,5 +1,7 @@
 [Unit]
 Description=Minecraft server starter
+Wants=network-online.target
+After=network-online.target
 
 # You can also try exploring Bedrock Server software that suits your needs
 # rather than using the official server
