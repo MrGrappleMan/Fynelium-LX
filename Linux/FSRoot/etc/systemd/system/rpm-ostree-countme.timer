@@ -2,6 +2,8 @@
 Description=RPM-OSTree reporting for analytics
 Documentation=man:rpm-ostree-countme.timer(8)
 ConditionPathExists=/run/ostree-booted
+Wants=network-online.target
+After=network-online.target
 
 [Timer]
 OnCalendar=hourly
