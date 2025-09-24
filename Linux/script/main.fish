@@ -11,7 +11,6 @@
 function fish_title
  echo 千ㄚ几乇ㄥ丨ㄩ爪
 end
-function fyn_bascr
  clear
  spr
  echo "    ______                 ___               ";
@@ -26,14 +25,13 @@ function fyn_bascr
  spr
  fastfetch
  spr
-end
  alias eci "echo 󰋼"
  alias spr "echo ________________________________________________________________________________________________________________________________"
 
 #____________________________________
 # Filesystem
 #____________________________________
- fyn_bascr
+ 
  eci "Setup started...please wait"
  eci "Sometimes a password will be asked. Copy and paste it whenever prompted."
  spr
@@ -56,7 +54,6 @@ nohup fish /tmp/Fynelium/Linux/script/rpm-ostree.fish &
 #____________________________________
 # System
 #____________________________________
-fyn_bascr
 
  #Policies and permissions
   chmod a+x /opt/playit/playit
@@ -86,7 +83,6 @@ fyn_bascr
 #____________________________________
 # User Specific commands
 #____________________________________
-fyn_bascr
 
 set user_commands_string "
  ujust setup-decky install
@@ -139,7 +135,6 @@ end
 #____________________________________
 # Kernel
 #____________________________________
-fyn_bascr
 
  eci "Verbose boot info"
  plymouth-set-default-theme details
