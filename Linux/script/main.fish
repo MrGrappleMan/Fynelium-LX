@@ -1,7 +1,4 @@
 #!/bin/env /bin/fish
-### This script is like a template for your system ###
-### Some preferences might not meet your requirements ###
-### Adjusting some userspace settings and apps yourself is recommended after the reboot ###
 
 #____________________________________
 # Fish, script based declaration and setup
@@ -34,6 +31,9 @@ end
  
  eci "Setup started...please wait"
  eci "Sometimes a password will be asked. Copy and paste it whenever prompted."
+ eci "This script is like a template for your system"
+ eci "Some preferences might not meet your requirements"
+ eci "Adjusting some userspace settings and apps yourself is recommended after the reboot"
  spr
  eci "Copy over FS contents"
  cd /tmp/Fynelium/Linux/FSRoot/
