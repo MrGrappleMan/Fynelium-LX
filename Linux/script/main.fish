@@ -34,10 +34,10 @@ end
 # Filesystem
 #____________________________________
  fyn_bascr
- eci "Setup started. Wait till device reboots."
+ eci "Setup started...please wait"
  eci "Sometimes a password will be asked. Copy and paste it whenever prompted."
  spr
- eci "Copying over Filesystem contents."
+ eci "Copy over FS contents"
  cd /tmp/Fynelium/Linux/FSRoot/
  cp -r /tmp/Fynelium/Linux/FSRoot/etc/* /etc/
  cp -r /tmp/Fynelium/Linux/FSRoot/var/* /var/
