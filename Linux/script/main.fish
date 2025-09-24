@@ -8,6 +8,8 @@
 function fish_title
  echo 千ㄚ几乇ㄥ丨ㄩ爪
 end
+ alias eci "echo 󰋼"
+ alias spr "echo ________________________________________________________________________________________________________________________________"
  clear
  spr
  echo "    ______                 ___               ";
@@ -22,11 +24,10 @@ end
  spr
  fastfetch
  spr
- alias eci "echo 󰋼"
- alias spr "echo ________________________________________________________________________________________________________________________________"
 
 #____________________________________
 # Filesystem
+spr
 #____________________________________
  
  eci "Setup started...please wait"
@@ -45,11 +46,17 @@ end
  mkdir -p /opt/playit
 
 #____________________________________
-# No Hangup offloading
+# 
 #____________________________________
-nohup fish /tmp/Fynelium/Linux/script/fwupdmgr.fish &
-nohup fish /tmp/Fynelium/Linux/script/flatpak.fish &
-nohup fish /tmp/Fynelium/Linux/script/rpm-ostree.fish &
+
+#____________________________________
+# 
+#____________________________________
+
+#____________________________________
+# RPM-OSTree
+#____________________________________
+
 
 #____________________________________
 # System
