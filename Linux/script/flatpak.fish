@@ -22,15 +22,15 @@ alias fpkpkgdel "flatpak --system uninstall -y --noninteractive --force-remove"
   fpkrepadd webkit-sdk https://software.igalia.com/flatpak-refs/webkit-sdk.flatpakrepo
   fpkrepadd fedora oci+https://registry.fedoraproject.org
   fpkrepadd fedora-testing oci+https://registry.fedoraproject.org/#testing
-  fpkrepadd rhel https://flatpaks.redhat.io/rhel.flatpakrepo
+  ###fpkrepadd rhel https://flatpaks.redhat.io/rhel.flatpakrepo
   fpkrepadd eclipse-nightly https://download.eclipse.org/linuxtools/flatpak-I-builds/eclipse.flatpakrepo
   fpkrepadd elementaryos https://flatpak.elementary.io/repo.flatpakrepo
   fpkrepadd pureos https://store.puri.sm/repo/stable/pureos.flatpakrepo
   fpkrepadd kde-runtime-nightly https://cdn.kde.org/flatpak/kde-runtime-nightly/kde-runtime-nightly.flatpakrepo
 # PKG ADD
-  fpkpkgadd flathub-beta \
-   org.freedesktop.Platform org.gnome.Platform \
-   org.freedesktop.Sdk org.gnome.Sdk
+  #fpkpkgadd flathub-beta \
+   #org.freedesktop.Platform org.gnome.Platform \
+   #org.freedesktop.Sdk org.gnome.Sdk
   fpkpkgadd flathub \
    io.github.celluloid_player.Celluloid \
    io.github.flattool.Warehouse \
