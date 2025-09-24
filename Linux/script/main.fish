@@ -147,18 +147,6 @@ fyn_bascr
  eci "Verbose boot info"
  plymouth-set-default-theme details
 
- eci "Edit Kernel Args"
- rpm-ostree kargs \
-  --append-if-missing=rhgb \
-  --append-if-missing=threadirqs \
-  --append-if-missing=sysrq_always_enabled=1 \
-  --append-if-missing=consoleblank=0 \
-  --delete-if-present=quiet \
-  --append-if-missing=profile \
-  --append-if-missing=loglevel=3 \
-  --append-if-missing=preempt=full \
-  --append-if-missing=zswap.enabled=0
-
 #____________________________________
 # End
 #____________________________________
