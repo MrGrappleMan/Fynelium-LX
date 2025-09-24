@@ -91,7 +91,7 @@ fyn_bascr
 set user_commands_string "
  ujust setup-decky install
  ujust setup-decky prerelease # Still of utility on desktops
- ujust get-decky-bazzite-buddy # Know your changes you system undergoes to use it better
+ ujust get-decky-bazzite-buddy # Bazzite changelog view
  ujust get-framegen install-decky-plugin
  ujust get-framegen install
  ujust get-lsfg install
@@ -142,7 +142,7 @@ end
 fyn_bascr
 
  eci "Disable InitRAMFS regen, make system more reliable"
- rpm-ostree initramfs --disable
+ #rpm-ostree initramfs --disable
 
  eci "Verbose boot info"
  plymouth-set-default-theme details
