@@ -37,7 +37,10 @@ function rotpkgadd -d "Add rpm-ostree PKG if available"
 end
 alias rotpkgdel "rpm-ostree uninstall --allow-inactive --idempotent -y"
 
- #install
+#____________________________________
+# PKG ADD
+#____________________________________
+
    rotpkgadd "rust-zram-generator-devel preload \
     tlp tlp-rdw \
     pipewire wireplumber wireplumber-libs \
@@ -117,7 +120,9 @@ alias rotpkgdel "rpm-ostree uninstall --allow-inactive --idempotent -y"
     ## PKGMGR Snap
      # snapd snapd-selinux
 
+#____________________________________
 # Kernel Arguments
+#____________________________________
 
 rpm-ostree kargs \
   --append-if-missing=rhgb \
@@ -130,3 +135,8 @@ rpm-ostree kargs \
   --append-if-missing=preempt=full \
   --append-if-missing=zswap.enabled=0
 
+#____________________________________
+# Disable InitRAMFS regen, make system more reliable
+#____________________________________
+
+ #rpm-ostree initramfs --disable
