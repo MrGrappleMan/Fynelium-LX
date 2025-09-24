@@ -141,9 +141,6 @@ end
 #____________________________________
 fyn_bascr
 
- eci "Disable InitRAMFS regen, make system more reliable"
- #rpm-ostree initramfs --disable
-
  eci "Verbose boot info"
  plymouth-set-default-theme details
 
