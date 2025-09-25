@@ -1,4 +1,4 @@
-## GhosTTY ## ghostty-nightly ghostty-nightly-fish-completion ghostty-nightly-shell-integration
+    ## GhosTTY ## ghostty-nightly ghostty-nightly-fish-completion ghostty-nightly-shell-integration
 
     ### Developer Specific:-
     ### Suggested, use these in a container
@@ -37,3 +37,5 @@
    ### Multipurpose:-
     ## PKGMGR Snap
      # snapd snapd-selinux
+
+## COSMIC ## cosmic-epoch cosmic-desktop xdg-desktop-portal-cosmic initial-setup-gui-wayland-cosmic cosmic-greeter cosmic-comp cosmic-app-library cosmic-applets cosmic-edit cosmic-idle cosmic-osd cosmic-session cosmic-settings cosmic-settings-daemon cosmic-store fedora-release-cosmic-atomic cosmic-config-fedora greetd
