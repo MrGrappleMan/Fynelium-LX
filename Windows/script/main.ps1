@@ -1,4 +1,4 @@
-# Admin Check
+# IsAdmin?
 $isAdmin = ([System.Security.Principal.WindowsPrincipal] [System.Security.Principal.WindowsIdentity]#GetCurrent()).IsInRole([System.Security.Principal.WindowsBuiltInRole]#Administrator)
 if (-not $isAdmin) {
     Write-Host "Re-run with admin rights" -ForegroundColor Red
@@ -7,7 +7,7 @@ if (-not $isAdmin) {
     exit
 }
 
-# Variables and Functions
+# Var, Func
 $arch = $env:PROCESSOR_ARCHITECTURE
 $seperator = "_____________________________________________________________________________________________________________________________________________________________________________________________"
 $svcset = {
@@ -31,6 +31,7 @@ $userask = {
 
 # PowerCFG
 powercfg -h on
+##powercfg.exe -import "!cd!\powerplan.pow">nul
 
 # Services
 
@@ -71,13 +72,13 @@ bcdedit /set nx Optin
 #bcdedit /set testsigning No
 #bcdedit /set hypervisorlaunchtype on
 
-# NTP Settings
+# NTPOptions
 w32tm /register
 w32tm /config /syncfromflags:all /manualpeerlist:"time.google.com time.windows.com time.cloudflare.com pool.ntp.org time.facebook.com time.apple.com time.aws.com" /reliable:YES /update
 w32tm /resync
 
-# Registry Tweaks
+# Registry
 regedit /s %windir%\Temp\Fynelium-NT\r.reg
 
-# Recommended Apps
+# Winget
 winget import --import-file winget.json --ignore-unavailable
