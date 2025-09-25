@@ -80,15 +80,13 @@ spr
    gdm \
    shutdown.target reboot.target poweroff.target halt.target
   systemctl reenable \
-   systemd-resolved systemd-networkd systemd-timesyncd \
+   systemd-timesyncd \
    tlp \
-   uupd uupd.timer \
+   uupd uupd.timer rpm-ostree-countme rpm-ostree-countme.timer \
    fstrim.timer \
    systemd-bsod \
-   sshd playit tailscaled \
+   sshd tailscaled \
    preload systemd-zram-setup@zram0 \
-   mc-server \
-   rpm-ostree-countme rpm-ostree-countme.timer \
    tor
 
 #____________________________________
