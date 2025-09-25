@@ -35,8 +35,6 @@ $userask = {
 Clear-Host
 Write-Host "Do you use a printer, fax or a virtual print service?"
 Write-Host ""
-Write-Host "Manages print jobs sent from the computer to the printer or print server"
-Write-Host "It can store multiple print jobs in the print queue or buffer retrieved by the printer or print server"
 $choice = & $userask
 & $svcset "PrintNotify"
 & $svcset "Spooler"
@@ -47,9 +45,8 @@ $choice = & $userask
 Clear-Host
 Write-Host "Do you use image scanners, Android PTP or connect cameras?"
 Write-Host ""
-Write-Host "Service(s) Name: StiSvc FrameServer WiaRpc"
 Write-Host "Waits until you press the button on your scanner and then manages the process of getting the image where it needs to go"
-Write-Host "This also affects communication with cameras and Android PTP that you connect directly to your computer, so be aware of that if you need this function"
+Write-Host "This also interferes communication with cameras and Android PTP that you connect directly to your computer"
 $choice = & $userask
 & $svcset "StiSvc"
 & $svcset "FrameServer"
@@ -58,8 +55,6 @@ $choice = & $userask
 # Xbox
 Clear-Host
 Write-Host "Do you use anything related to Xbox?"
-Write-Host ""
-Write-Host "Service(s) Name: XblAuthManager GameSave"
 $choice = & $userask
 & $svcset "XblAuthManager"
 & $svcset "GameSave"
