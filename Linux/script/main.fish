@@ -46,19 +46,24 @@ spr
  mkdir -p /opt/playit
 
 #____________________________________
-# 
+# Firmware Update Manager
 spr
 #____________________________________
 
+
+
 #____________________________________
-# 
+# Flatpak
 spr
 #____________________________________
+
+
 
 #____________________________________
 # RPM-OSTree
 spr
 #____________________________________
+
 
 
 #____________________________________
@@ -147,11 +152,11 @@ end
 spr
 #____________________________________
 
- eci "Verbose boot info"
- plymouth-set-default-theme details
+ #eci "BGRT boot theme"
+ #plymouth-set-default-theme bgrt
 
 #____________________________________
-# End
+# Reboot
 spr
 #____________________________________
- exit
+ systemctl reboot
