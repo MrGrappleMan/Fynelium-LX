@@ -29,6 +29,82 @@ $userask = {
     return $choice
 }
 
+# UserPrompts
+
+# Printers / Fax
+Clear-Host
+Write-Host "Do you use a printer, fax or a virtual print service?"
+Write-Host ""
+Write-Host "Manages print jobs sent from the computer to the printer or print server"
+Write-Host "It can store multiple print jobs in the print queue or buffer retrieved by the printer or print server"
+$choice = & $userask
+& $svcset "PrintNotify"
+& $svcset "Spooler"
+& $svcset "Fax"
+& $svcset "PrintWorkflowUserSvc"
+
+# Scanners / Cameras
+Clear-Host
+Write-Host "Do you use image scanners, Android PTP or connect cameras?"
+Write-Host ""
+Write-Host "Service(s) Name: StiSvc FrameServer WiaRpc"
+Write-Host "Waits until you press the button on your scanner and then manages the process of getting the image where it needs to go"
+Write-Host "This also affects communication with cameras and Android PTP that you connect directly to your computer, so be aware of that if you need this function"
+$choice = & $userask
+& $svcset "StiSvc"
+& $svcset "FrameServer"
+& $svcset "WiaRpc"
+
+# Xbox
+Clear-Host
+Write-Host "Do you use anything related to Xbox?"
+Write-Host ""
+Write-Host "Service(s) Name: XblAuthManager GameSave"
+$choice = & $userask
+& $svcset "XblAuthManager"
+& $svcset "GameSave"
+
+# Bluetooth
+Clear-Host
+Write-Host "Do you use Bluetooth for anything? This even considers for Nearby Share"
+Write-Host ""
+Write-Host "Service(s) Name: BluetoothUserService BTAGService bthserv"
+Write-Host "Stopping this service causes paired Bluetooth devices to fail to operate"
+Write-Host "It prevent new devices from being discovered or paired"
+Write-Host "Yet it can also serve as a safety measure from attacks like KNOB or BLUFFS"
+$choice = & $userask
+& $svcset "BluetoothUserService"
+& $svcset "BTAGService"
+& $svcset "bthserv"
+
+# Remote Desktop
+Clear-Host
+Write-Host "Do you use remote desktop or remotely manage your device?"
+Write-Host ""
+Write-Host "These services make remote control of your computer possible."
+Write-Host "However, Microsoft Support could use this to fix issues."
+Write-Host "Windows's Remote support won't work if you disable these services."
+Write-Host "Disabling these helps improve the security of your device in general"
+Write-Host "You may use Parsec or Moonlight without issues"
+$choice = & $userask
+& $svcset "SessionEnv"
+& $svcset "TermService"
+& $svcset "UmRdpService"
+& $svcset "RemoteRegistry"
+
+# Virtualization
+Clear-Host
+Write-Host "Do you use Docker, VirtualBox, Hyper-V, WSL, VMware, Android emulator, or any other virtualization, containerization or emulation software?"
+$choice = & $userask
+if ($choice -eq "1") {
+    bcdedit /set hypervisorlaunchtype off
+} elseif ($choice -eq "2") {
+    bcdedit /set hypervisorlaunchtype on
+}
+
+exit
+
+
 # PowerCFG
 powercfg -h on
 ##powercfg.exe -import "!cd!\powerplan.pow">nul
