@@ -4,6 +4,14 @@
 # Fish, script based declaration and setup
 #____________________________________
 
+# Aliases
+alias fpk "flatpak --system"
+alias fpkrepadd "flatpak --system remote-add --if-not-exists"
+alias fpkrepdel "flatpak --system remote-delete --force"
+alias fpkpkgadd "flatpak --system install -y --noninteractive --include-sdk --or-update"
+alias fpkpkgdel "flatpak --system uninstall -y --noninteractive --force-remove"
+
+
 # Design and TUI
 function fish_title
  echo 千ㄚ几乇ㄥ丨ㄩ爪
@@ -32,7 +40,8 @@ end
  spr
 
 #____________________________________
-# Filesystem
+spr
+eci Filesystem
 spr
 #____________________________________
  
@@ -46,7 +55,8 @@ spr
  mkdir -p /opt/playit
 
 #____________________________________
-# Firmware Update Manager
+spr
+eci Firmware Update Manager
 spr
 #____________________________________
 
@@ -57,25 +67,64 @@ spr
 spr
 #____________________________________
 
+# REP ADD
+  fpkrepadd flathub https://flathub.org/repo/flathub.flatpakrepo
+  fpkrepadd flathub-beta https://flathub.org/beta-repo/flathub-beta.flatpakrepo
+  ###fpkrepadd eos-sdk https://ostree.endlessm.com/ostree/eos-sdk
+  fpkrepadd igalia https://software.igalia.com/flatpak-refs/igalia.flatpakrepo
+  fpkrepadd dragon-nightly https://cdn.kde.org/flatpak/dragon-nightly/dragon-nightly.flatpakrepo
+  ###fpkrepadd eos-apps https://ostree.endlessm.com/ostree/eos-apps
+  fpkrepadd webkit https://software.igalia.com/flatpak-refs/webkit-sdk.flatpakrepo
+  fpkrepadd gnome-nightly https://nightly.gnome.org/gnome-nightly.flatpakrepo
+  fpkrepadd webkit-sdk https://software.igalia.com/flatpak-refs/webkit-sdk.flatpakrepo
+  fpkrepadd fedora oci+https://registry.fedoraproject.org
+  fpkrepadd fedora-testing oci+https://registry.fedoraproject.org/#testing
+  ###fpkrepadd rhel https://flatpaks.redhat.io/rhel.flatpakrepo
+  fpkrepadd eclipse-nightly https://download.eclipse.org/linuxtools/flatpak-I-builds/eclipse.flatpakrepo
+  fpkrepadd elementaryos https://flatpak.elementary.io/repo.flatpakrepo
+  fpkrepadd pureos https://store.puri.sm/repo/stable/pureos.flatpakrepo
+  fpkrepadd kde-runtime-nightly https://cdn.kde.org/flatpak/kde-runtime-nightly/kde-runtime-nightly.flatpakrepo
 
+# PKG DEL
+  flatpak uninstall -u --all -y --noninteractive --force-remove
+  fpkpkgdel org.mozilla.firefox
+
+# PKG ADD
+  ##fpkpkgadd flathub-beta \
+   ##org.freedesktop.Platform org.gnome.Platform \
+   ##org.freedesktop.Sdk org.gnome.Sdk
+  fpkpkgadd flathub \
+   io.github.celluloid_player.Celluloid \
+   io.github.flattool.Warehouse \
+   edu.berkeley.BOINC \
+   rocks.shy.VacuumTube \
+   com.microsoft.EdgeDev \
+   org.virt_manager.virt-manager \
+   com.rafaelmardojai.Blanket \
+   org.libreoffice.LibreOffice \
+   org.torproject.torbrowser-launcher io.frama.tractor.carburetor
+  fpkpkgadd flathub-beta \
+   com.visualstudio.code.insiders
 
 #____________________________________
-# RPM-OSTree
+spr
+eci RPM-OSTree
 spr
 #____________________________________
 
 
 
 #____________________________________
-# System
+spr
+eci System
 spr
 #____________________________________
 
- #Policies and permissions
+ # Policies and permissions
   chmod a+x /opt/playit/playit
   chmod a+x /opt/mc-server/mc-server
- #refresh
-  nohup systemctl daemon-reload &
+ # refresh
+  systemctl daemon-reload
   nohup timedatectl set-ntp true --no-ask-password &
  #Services
   echo Edit Systemd services
@@ -95,7 +144,8 @@ spr
    tor
 
 #____________________________________
-# User Specific commands
+spr
+eci User Specific commands
 spr
 #____________________________________
 
@@ -148,7 +198,8 @@ for user_path in (ls -d /home/*)
 end
 
 #____________________________________
-# Kernel
+spr
+eci Kernel
 spr
 #____________________________________
 
@@ -156,7 +207,8 @@ spr
  #plymouth-set-default-theme bgrt
 
 #____________________________________
-# Reboot
+spr
+eci Reboot
 spr
 #____________________________________
  systemctl reboot
