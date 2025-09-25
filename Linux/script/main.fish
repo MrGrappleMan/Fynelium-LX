@@ -46,6 +46,8 @@ function rotpkgadd -d "Add rpm-ostree PKG if available"
 end
 alias rotpkgdel "rpm-ostree uninstall --allow-inactive --idempotent -y"
 
+alias fwu "fwupdmgr"
+alias fwurepadd "fwupdmgr enable-remote -y"
 
 # Design and TUI
 function fish_title
@@ -95,7 +97,9 @@ eci Firmware Update Manager
 spr
 #____________________________________
 
-
+# REP ADD
+ fwurepadd lvfs
+ fwurepadd lvfs-testing
 
 #____________________________________
 spr
