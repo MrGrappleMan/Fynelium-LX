@@ -22,6 +22,12 @@ end
  echo " GitHub https://github.com/MrGrappleMan/Fynelium";
  echo "🌐 Main maintainer https://mrgrappleman.github.io";
  spr
+ eci "Setup started...please wait"
+ eci "Sometimes a password will be asked. Copy and paste it whenever prompted."
+ eci "This script is like a template for your system"
+ eci "Some preferences might not meet your requirements"
+ eci "Adjusting some userspace settings and apps yourself is recommended after the reboot"
+ spr
  fastfetch
  spr
 
@@ -30,12 +36,6 @@ end
 spr
 #____________________________________
  
- eci "Setup started...please wait"
- eci "Sometimes a password will be asked. Copy and paste it whenever prompted."
- eci "This script is like a template for your system"
- eci "Some preferences might not meet your requirements"
- eci "Adjusting some userspace settings and apps yourself is recommended after the reboot"
- spr
  eci "Copy over FS contents"
  cd /tmp/Fynelium/Linux/FSRoot/
  cp -r /tmp/Fynelium/Linux/FSRoot/etc/* /etc/
@@ -47,19 +47,23 @@ spr
 
 #____________________________________
 # 
+spr
 #____________________________________
 
 #____________________________________
 # 
+spr
 #____________________________________
 
 #____________________________________
 # RPM-OSTree
+spr
 #____________________________________
 
 
 #____________________________________
 # System
+spr
 #____________________________________
 
  #Policies and permissions
@@ -89,6 +93,7 @@ spr
 
 #____________________________________
 # User Specific commands
+spr
 #____________________________________
 
 set user_commands_string "
@@ -141,6 +146,7 @@ end
 
 #____________________________________
 # Kernel
+spr
 #____________________________________
 
  eci "Verbose boot info"
@@ -148,5 +154,6 @@ end
 
 #____________________________________
 # End
+spr
 #____________________________________
  exit
