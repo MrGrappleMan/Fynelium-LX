@@ -88,10 +88,7 @@ cls
 echo The main process has started. Keep this window open and check back after every 10-15 minutes.
 echo For the time-being, avoid modifying your system files or installing or using software that does that.
 echo Do not do important work or programs that keep progress via save-files on your disk.
-echo Device will restart automatically within a 2 minutes and show a warning once done.
-
-:: Power plan. idk if this works, last tried it in 2022, did not work across PCs
-:: powercfg.exe -import "!cd!\powerplan.pow">nul
+echo Device will restart automatically within a 2 minutes and show a warning once done.
 
 exit
 endlocal
