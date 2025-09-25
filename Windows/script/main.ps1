@@ -30,17 +30,11 @@ $userask = {
 }
 
 # PowerCFG
-Write-Host "Modifying power configurations"
 powercfg -h on
 
 # Services
-Write-Host "Modifying services"
-
-
 
 # MMAgent
-Write-Host "Modifying MMAgents"
-
 Enable-MMAgent -ApplicationLaunchPrefetching
 Enable-MMAgent -ApplicationPreLaunch
 Enable-MMAgent -MemoryCompression
@@ -49,7 +43,6 @@ Enable-MMAgent -PageCombining
 Set-MMAgent -MaxOperationAPIFiles 8192
 
 # BCDEdit
-Write-Host "Modifying BCDEdit settings"
 bcdedit /set bootlog yes
 bcdedit /set bootmenupolicy Standard
 bcdedit /set bootstatuspolicy DisplayAllFailures
@@ -79,16 +72,12 @@ bcdedit /set nx Optin
 #bcdedit /set hypervisorlaunchtype on
 
 # NTP Settings
-Write-Host "Setup NTP"
 w32tm /register
 w32tm /config /syncfromflags:all /manualpeerlist:"time.google.com time.windows.com time.cloudflare.com pool.ntp.org time.facebook.com time.apple.com time.aws.com" /reliable:YES /update
 w32tm /resync
 
 # Registry Tweaks
-Write-Host "Applying registry tweaks"
-regedit /s %windir%\Temp\Fynelium\core\NT\r.reg
+regedit /s %windir%\Temp\Fynelium-NT\r.reg
 
 # Recommended Apps
-Write-Host "PKG ADD"
-
 winget import --import-file winget.json --ignore-unavailable
