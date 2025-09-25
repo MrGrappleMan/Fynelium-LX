@@ -55,15 +55,15 @@ $choice = & $userask
 # Xbox
 Clear-Host
 Write-Host "Do you use anything related to Xbox?"
+Write-Host ""
 $choice = & $userask
 & $svcset "XblAuthManager"
 & $svcset "GameSave"
 
 # Bluetooth
 Clear-Host
-Write-Host "Do you use Bluetooth for anything? This even considers for Nearby Share"
+Write-Host "Do you use Bluetooth for anything in any form, even for Nearby Share?"
 Write-Host ""
-Write-Host "Service(s) Name: BluetoothUserService BTAGService bthserv"
 Write-Host "Stopping this service causes paired Bluetooth devices to fail to operate"
 Write-Host "It prevent new devices from being discovered or paired"
 Write-Host "Yet it can also serve as a safety measure from attacks like KNOB or BLUFFS"
@@ -72,11 +72,11 @@ $choice = & $userask
 & $svcset "BTAGService"
 & $svcset "bthserv"
 
-# Remote Desktop
+# RemoteAccess
 Clear-Host
 Write-Host "Do you use remote desktop or remotely manage your device?"
 Write-Host ""
-Write-Host "These services make remote control of your computer possible."
+Write-Host "It makes remote control of your computer possible."
 Write-Host "However, Microsoft Support could use this to fix issues."
 Write-Host "Windows's Remote support won't work if you disable these services."
 Write-Host "Disabling these helps improve the security of your device in general"
