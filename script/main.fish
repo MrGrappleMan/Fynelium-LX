@@ -115,56 +115,6 @@ eci RPM-OSTree
 spr
 #____________________________________
 
-# Rebase
-brh rebase testing -y
-
-# PKG ADD
-   rotpkgadd "rust-zram-generator-devel preload \
-    tlp tlp-rdw \
-    pipewire wireplumber wireplumber-libs \
-    kernel-modules-extra uutils-coreutils util-linux \
-    boinc-client boinc-client-static \
-    flatseal flatpak-selinux flatpak-session-helper xdg-desktop-portal flatpak-libs libportal host-spawn \
-    gnome-software gnome-software-rpm-ostree \
-    dnf-plugins-core etckeeper-dnf dnf-repo dnfdaemon dnfdaemon-selinux fedora-repos fedora-repos-rawhide fedora-repos-ostree fedora-gpg-keys \
-    libei libei-utils \
-    zstd p7zip p7zip-plugins p7zip-gui \
-    kuserfeedback gnome-info-collect \
-    hblock \
-    plymouth plymouth-core-libs plymouth-graphic-libs plymouth-kcm plymouth-scripts \
-    docker-cli docker-compose docker-buildx bottles \
-    openssh openssh-server mosh tor"
-    
-    ## System Boosters ##
-    ## Power management ##
-    ## User environment ##
-    ## Kernel mods ##
-    ## Science United ##
-    ## Flatpak ##
-    ## GNOME Software ##
-    ## DNF, RPM, OSTREE ##
-    ## Libei ##
-    ## Compression ##
-    ## Telemetry ##
-    ## Networking ##
-    ## Containerization, Orchestration, Virtualization, Emulation ##
-    ## Remote access ##
-
-# Kernel Arguments
-rpm-ostree kargs \
-  --append-if-missing=rhgb \
-  --append-if-missing=threadirqs \
-  --append-if-missing=sysrq_always_enabled=1 \
-  --append-if-missing=consoleblank=0 \
-  --append-if-missing=quiet \
-  --append-if-missing=profile \
-  --append-if-missing=loglevel=3 \
-  --append-if-missing=preempt=full \
-  --append-if-missing=zswap.enabled=0
-
-# Disable local InitRAMFS, reliable and standardized system
- rpm-ostree initramfs --disable
-
 #____________________________________
 spr
 eci Systemd
