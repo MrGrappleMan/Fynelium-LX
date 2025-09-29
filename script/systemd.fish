@@ -1,3 +1,5 @@
+#!/usr/bin/env fish
+
 # NTP
   nohup timedatectl set-ntp true --no-ask-password &
 
