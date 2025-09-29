@@ -6,9 +6,6 @@
 
 # Aliases
 
-alias fwu "fwupdmgr"
-alias fwurepadd "fwupdmgr enable-remote -y"
-
 # Interface Design
 function fish_title
  echo 千ㄚ几乇ㄥ丨ㄩ爪
@@ -49,28 +46,6 @@ spr
  mkdir -p /opt/playit
  chmod a+x /opt/playit/playit
  chmod a+x /opt/mc-server/mc-server
-
-#____________________________________
-spr
-eci Firmware Update Manager
-spr
-#____________________________________
-
-# REP ADD
- fwurepadd lvfs
- fwurepadd lvfs-testing
-
-#____________________________________
-spr
-eci Flatpak
-spr
-#____________________________________
-
-#____________________________________
-spr
-eci RPM-OSTree
-spr
-#____________________________________
 
 #____________________________________
 spr
