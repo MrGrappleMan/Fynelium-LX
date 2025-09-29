@@ -1,7 +1,6 @@
 #!/usr/bin/env fish
 
-
-# Aliases
+## Aliases
 alias rot "rpm-ostree"
 function rotpkgadd -d "RPM-OSTree PKG ADD if available"
     set packages $argv
@@ -37,4 +36,50 @@ function rotpkgadd -d "RPM-OSTree PKG ADD if available"
 end
 alias rotpkgdel "rpm-ostree uninstall -q --allow-inactive --idempotent -y"
 
+# Rebase
+brh rebase testing -y
+
 # PKG ADD
+   rotpkgadd "rust-zram-generator-devel preload \
+    tlp tlp-rdw \
+    kernel-modules-extra uutils-coreutils util-linux \
+    boinc-client boinc-client-static \
+    flatseal flatpak-selinux flatpak-session-helper xdg-desktop-portal flatpak-libs libportal host-spawn \
+    dnf-plugins-core etckeeper-dnf dnf-repo dnfdaemon dnfdaemon-selinux fedora-repos fedora-repos-rawhide fedora-repos-ostree fedora-gpg-keys \
+    libei libei-utils \
+    p7zip p7zip-plugins p7zip-gui \
+    kuserfeedback gnome-info-collect \
+    hblock \
+    plymouth plymouth-core-libs plymouth-graphic-libs plymouth-kcm plymouth-scripts \
+    docker-cli docker-compose docker-buildx bottles \
+    openssh openssh-server mosh tor"
+    
+    ## System Boosters ##
+    ## Power management ##
+    ## User environment ##
+    ## Kernel mods ##
+    ## Science United ##
+    ## Flatpak ##
+    ## GNOME Software ##
+    ## DNF, RPM, OSTREE ##
+    ## Libei ##
+    ## Compression ##
+    ## Telemetry ##
+    ## Networking ##
+    ## Containerization, Orchestration, Virtualization, Emulation ##
+    ## Remote access ##
+
+# Kernel Args
+rpm-ostree kargs \
+  --append-if-missing=rhgb \
+  --append-if-missing=threadirqs \
+  --append-if-missing=sysrq_always_enabled=1 \
+  --append-if-missing=consoleblank=0 \
+  --append-if-missing=quiet \
+  --append-if-missing=profile \
+  --append-if-missing=loglevel=3 \
+  --append-if-missing=preempt=full \
+  --append-if-missing=zswap.enabled=0
+
+# Universal InitRAMFS, reliable and standardized system
+rpm-ostree initramfs --disable
