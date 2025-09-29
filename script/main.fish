@@ -150,8 +150,8 @@ eci RPM-OSTree
 spr
 #____________________________________
 
-# Rebase to unstable
-brh rebase unstable -y
+# Rebase
+brh rebase testing -y
 
 # PKG ADD
    rotpkgadd "rust-zram-generator-devel preload \
