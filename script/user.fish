@@ -1,8 +1,7 @@
-#!/bin/fish
+#!/usr/bin/env fish
 
 ujust setup-decky install
 ujust setup-decky prerelease # Still of utility on desktops
-ujust get-decky-bazzite-buddy # Bazzite changelog view
 ujust get-framegen install-decky-plugin
 ujust get-framegen install
 ujust get-lsfg install
