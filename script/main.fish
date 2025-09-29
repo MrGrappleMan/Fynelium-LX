@@ -151,41 +151,34 @@ spr
 #____________________________________
 
 # Rebase to unstable
-#brh rebase unstable -y
+brh rebase unstable -y
 
 # PKG ADD
    rotpkgadd "rust-zram-generator-devel preload \
     tlp tlp-rdw \
     pipewire wireplumber wireplumber-libs \
     kernel-modules-extra uutils-coreutils util-linux \
-    gdm \
     boinc-client boinc-client-static \
     flatseal flatpak-selinux flatpak-session-helper xdg-desktop-portal flatpak-libs libportal host-spawn \
     gnome-software gnome-software-rpm-ostree \
     dnf-plugins-core etckeeper-dnf dnf-repo dnfdaemon dnfdaemon-selinux fedora-repos fedora-repos-rawhide fedora-repos-ostree fedora-gpg-keys \
-    fish \
     libei libei-utils \
-    btop fastfetch \
-    zstd brotli p7zip p7zip-plugins p7zip-gui \
+    zstd p7zip p7zip-plugins p7zip-gui \
     kuserfeedback gnome-info-collect \
-    hblock speedtest-cli \
+    hblock \
     plymouth plymouth-core-libs plymouth-graphic-libs plymouth-kcm plymouth-scripts \
     docker-cli docker-compose docker-buildx bottles \
-    tailscale openssh openssh-server mosh tor"
+    openssh openssh-server mosh tor"
     
     ## System Boosters ##
     ## Power management ##
     ## User environment ##
     ## Kernel mods ##
-    ## COSMIC ##
-    ## GDM ##
     ## Science United ##
     ## Flatpak ##
     ## GNOME Software ##
     ## DNF, RPM, OSTREE ##
-    ## Fish ##
     ## Libei ##
-    ## TTY Shows ##
     ## Compression ##
     ## Telemetry ##
     ## Networking ##
@@ -241,23 +234,7 @@ spr
 #____________________________________
 
 set user_commands_string "
- ujust setup-decky install
- ujust setup-decky prerelease # Still of utility on desktops
- ujust get-decky-bazzite-buddy # Bazzite changelog view
- ujust get-framegen install-decky-plugin
- ujust get-framegen install
- ujust get-lsfg install
- ujust get-lsfg install-decky-plugin
- ujust toggle-password-feedback off # Safer
- ujust configure-grub unhide
- #ujust enable-automounting
- #ujust enable-steamos-automount
- #ujust setup-sunshine enable # Remote desktop access
- ujust get-media-app "YouTube" # Dedicated and optimized for YouTube with a cleaner interface.
- ujust get-media-app "Spotify" # Native Client
- ujust get-media-app "YouTube Music"
- dconf load / < /tmp/Fynelium-LX/script/gnome.dconf
- dconf load /org/gnome/shell/extensions/ < /tmp/Fynelium-LX/script/gnome-extensions.dconf
+ echo emptyforfutureusesection
 "
 
 # Split the commands string into an array based on newlines
