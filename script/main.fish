@@ -24,28 +24,12 @@ end
  echo " GitHub https://github.com/MrGrappleMan/Fynelium-LX";
  echo "🌐 Main maintainer https://mrgrappleman.github.io";
  spr
- eci "Setup started...please wait. "
- eci "Sometimes a password will be asked. Copy and paste it whenever prompted."
- eci "This script is like a template for your system 🪨 ➛ 🗿"
- eci "〽️ Some preferences might not meet your requirements"
- eci "You may edit them after the reboot. ⚠️ Doing so now can result in a disaster 🤯"
- spr
 
 #____________________________________
 spr
 eci Filesystem
 spr
 #____________________________________
- 
- cd /tmp/Fynelium-LX/FSRoot/
- cp -r /tmp/Fynelium-LX/FSRoot/etc/* /etc/
- cp -r /tmp/Fynelium-LX/FSRoot/var/* /var/
- cp -r /tmp/Fynelium-LX/FSRoot/opt/* /opt/
- ##cp -r /tmp/Fynelium-LX/FSRoot/root/* /root/
- mkdir -p /etc/playit
- mkdir -p /opt/playit
- chmod a+x /opt/playit/playit
- chmod a+x /opt/mc-server/mc-server
 
 #____________________________________
 spr
