@@ -1,7 +1,7 @@
 #!/bin/env /bin/fish
 
 #____________________________________
-# Fish, script based declaration and setup
+# Shell setup
 #____________________________________
 
 # Aliases
