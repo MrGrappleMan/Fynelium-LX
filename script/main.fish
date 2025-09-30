@@ -32,3 +32,5 @@ fish /tmp/Fynelium-LX/script/rpm-ostree.fish
 fish /tmp/Fynelium-LX/script/flatpak.fish
 fish /tmp/Fynelium-LX/script/systemd.fish
 fish /tmp/Fynelium-LX/script/fwupdmgr.fish
+fish /tmp/Fynelium-LX/script/ujust.fish
+fish /tmp/Fynelium-LX/script/gsettings.fish
