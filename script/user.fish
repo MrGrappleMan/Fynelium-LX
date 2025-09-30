@@ -1,5 +1,7 @@
 #!/usr/bin/env fish
 
+# Gets executed once by root, then the user, as seeen in documentation.
+
 ujust setup-decky install
 ujust setup-decky prerelease # Still of utility on desktops
 ujust get-framegen install-decky-plugin
@@ -14,5 +16,5 @@ ujust configure-grub unhide
 ujust get-media-app "YouTube" # Dedicated and optimized for YouTube with a cleaner interface.
 ujust get-media-app "Spotify" # Native Client
 ujust get-media-app "YouTube Music"
-dconf load / < /tmp/Fynelium-LX/script/gnome.dconf
-dconf load /org/gnome/shell/extensions/ < /tmp/Fynelium-LX/script/gnome-extensions.dconf
+dconf load / < /tmp/Fynelium-LX/export/gnome.dconf
+dconf load /org/gnome/shell/extensions/ < /tmp/Fynelium-LX/export/gnome-extensions.dconf
