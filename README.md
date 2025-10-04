@@ -25,4 +25,4 @@ Sometimes your user password will be asked. Copy and paste it whenever prompted.
 〽️ Some preferences might not meet your requirements, so 🪨 ➛ 🗿 as per your preferences
 You may edit them only after the reboot, as doing so during the script runs can result in a disaster 🤯
 
-9. ### [Documentation](notion.so/Bazzite-27642d161cf980a5a844e08f156d5950?source=copy_link)
+### [Extra Documentation](notion.so/Bazzite-27642d161cf980a5a844e08f156d5950?source=copy_link)
