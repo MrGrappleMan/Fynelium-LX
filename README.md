@@ -1,4 +1,6 @@
-# Main installation
+![Last Commit made to repository](https://img.shields.io/github/last-commit/MrGrappleMan/Fynelium-LX?style=for-the-badge)
+
+# Installation
 
 1. Backup ALL your data on the disk
 2. Get the [Bazzite](https://bazzite.gg/#image-picker) GNOME image for your hardware.
