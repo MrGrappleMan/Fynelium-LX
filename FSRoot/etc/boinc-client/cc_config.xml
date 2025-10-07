@@ -32,7 +32,7 @@
 	<os_random_only>0</os_random_only>
 	<process_priority>0</process_priority>
 	<process_priority_special>0</process_priority_special>
-	<rec_half_life_days>262144</rec_half_life_days>
+	<rec_half_life_days>256</rec_half_life_days>
 	<report_results_immediately>1</report_results_immediately>
 	<run_apps_manually>0</run_apps_manually>
 	<save_stats_days>10</save_stats_days>
@@ -45,7 +45,6 @@
 	<simple_gui_only>0</simple_gui_only>
     </options>
 </cc_config>
-
 
 
 
