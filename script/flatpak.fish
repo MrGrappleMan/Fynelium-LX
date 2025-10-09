@@ -25,22 +25,26 @@ alias fpkpkgdel "flatpak --system uninstall -y --noninteractive --force-remove"
   fpkrepadd pureos https://store.puri.sm/repo/stable/pureos.flatpakrepo
   fpkrepadd kde-runtime-nightly https://cdn.kde.org/flatpak/kde-runtime-nightly/kde-runtime-nightly.flatpakrepo
 
-# PKG DEL
+# PKG DEL ## flatpaks should only be installed system wide, as they can share binaries between users, while keeping data separate for each. It also stnadardizes locations.
   flatpak uninstall -u --all -y --noninteractive --force-remove
 
 # PKG ADD
   ##fpkpkgadd flathub-beta \
    ##org.freedesktop.Platform org.gnome.Platform \
    ##org.freedesktop.Sdk org.gnome.Sdk
+
   fpkpkgadd flathub \
    io.github.celluloid_player.Celluloid \
    io.github.flattool.Warehouse \
    edu.berkeley.BOINC \
+   org.vinegarhq.Sober io.mrarm.mcpelauncher \
    rocks.shy.VacuumTube \
    com.microsoft.EdgeDev \
-   org.virt_manager.virt-manager \
+   org.virt_manager.virt-manager org.gnome.Boxes \
    com.rafaelmardojai.Blanket \
-   org.libreoffice.LibreOffice \
+   org.libreoffice.LibreOffice io.github.brunofin.Cohesion \
+   org.inkscape.Inkscape org.kde.krita \
    org.torproject.torbrowser-launcher io.frama.tractor.carburetor
+
   fpkpkgadd flathub-beta \
    com.visualstudio.code.insiders
