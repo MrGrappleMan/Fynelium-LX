@@ -2,13 +2,13 @@
 
 # Gets executed once by root, then the user, as seeen in documentation.
 
-ujust setup-decky install
-ujust setup-decky prerelease # Still of utility on desktops
+ujust setup-decky install # Even for desktop users of Big Picture mode, it is still conventient
+ujust setup-decky prerelease
 ujust get-framegen install-decky-plugin
 ujust get-framegen install
-ujust get-lsfg install
+ujust get-lsfg install # Best to only be used for non fast paced games
 ujust get-lsfg install-decky-plugin
-ujust toggle-password-feedback off # Safer
+ujust toggle-password-feedback off # Safer, prevents password glimpsing
 ujust configure-grub unhide
 #ujust enable-automounting
 #ujust enable-steamos-automount
