@@ -31,10 +31,10 @@ function rotpkgadd -d "RPM-OSTree PKG ADD if available"
     end
 
     if test (count $install_list) -gt 0
-        rpm-ostree install -q --allow-inactive --idempotent -y $install_list
+        rpm-ostree install --allow-inactive --idempotent -y $install_list
     end
 end
-alias rotpkgdel "rpm-ostree uninstall -q --allow-inactive --idempotent -y"
+alias rotpkgdel "rpm-ostree uninstall --allow-inactive --idempotent -y"
 
 # Rebase
 brh rebase testing -y
@@ -47,11 +47,12 @@ brh rebase testing -y
     flatseal flatpak-selinux flatpak-session-helper xdg-desktop-portal flatpak-libs libportal host-spawn \
     dnf-plugins-core etckeeper-dnf dnf-repo dnfdaemon dnfdaemon-selinux fedora-repos fedora-repos-rawhide fedora-repos-ostree fedora-gpg-keys \
     libei libei-utils \
-    p7zip p7zip-plugins p7zip-gui \
+    p7zip p7zip-plugins \
     kuserfeedback gnome-info-collect \
     hblock \
     plymouth plymouth-core-libs plymouth-graphic-libs plymouth-kcm plymouth-scripts \
     docker-cli docker-compose docker-buildx bottles \
+    cosmic-epoch cosmic-desktop xdg-desktop-portal-cosmic initial-setup-gui-wayland-cosmic cosmic-greeter cosmic-comp cosmic-app-library cosmic-applets cosmic-edit cosmic-idle cosmic-osd cosmic-session cosmic-settings cosmic-settings-daemon cosmic-store fedora-release-cosmic-atomic cosmic-config-fedora greetd \
     openssh openssh-server mosh tor"
     
     ## System Boosters ##
