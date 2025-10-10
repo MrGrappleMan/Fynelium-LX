@@ -74,13 +74,14 @@ brh rebase testing -y
 rpm-ostree kargs \
   --append-if-missing=rhgb \
   --append-if-missing=threadirqs \
-  --append-if-missing=sysrq_always_enabled=1 \
+  --append-if-missing=sysrq_always_enabled=0 \
   --append-if-missing=consoleblank=0 \
   --append-if-missing=quiet \
-  --append-if-missing=profile \
+  --delete-if-present=profile \
   --append-if-missing=loglevel=3 \
   --append-if-missing=preempt=full \
-  --append-if-missing=zswap.enabled=0
+  --append-if-missing=zswap.enabled=0 \
+  --append-if-missing=nowatchdog
 
 # Universal InitRAMFS, reliable and standardized system
 rpm-ostree initramfs --disable
