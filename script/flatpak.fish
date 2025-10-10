@@ -37,14 +37,20 @@ alias fpkpkgdel "flatpak --system uninstall -y --noninteractive --force-remove"
    io.github.celluloid_player.Celluloid \
    io.github.flattool.Warehouse \
    edu.berkeley.BOINC \
-   org.vinegarhq.Sober io.mrarm.mcpelauncher \
+   org.vinegarhq.Sober \
    rocks.shy.VacuumTube \
    com.microsoft.EdgeDev \
-   org.virt_manager.virt-manager org.gnome.Boxes \
-   com.rafaelmardojai.Blanket \
+   org.virt_manager.virt-manager \
    org.libreoffice.LibreOffice io.github.brunofin.Cohesion \
-   org.inkscape.Inkscape org.kde.krita \
-   org.torproject.torbrowser-launcher io.frama.tractor.carburetor
+   org.torproject.torbrowser-launcher \
+   io.github.ecotubehq.player
 
   fpkpkgadd flathub-beta \
-   com.visualstudio.code.insiders
+   com.rafaelmardojai.Blanket \
+   com.visualstudio.code.insiders \
+   io.mrarm.mcpelauncher \
+   io.frama.tractor.carburetor \
+   org.inkscape.Inkscape org.kde.krita
+
+  fpkpkgadd gnome-nightly \
+   org.gnome.BoxesDevel
