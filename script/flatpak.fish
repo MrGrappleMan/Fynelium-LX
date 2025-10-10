@@ -34,6 +34,7 @@ alias fpkpkgdel "flatpak --system uninstall -y --noninteractive --force-remove"
    ##org.freedesktop.Sdk org.gnome.Sdk
 
   fpkpkgadd flathub \
+   com.rafaelmardojai.Blanket \
    io.github.celluloid_player.Celluloid \
    io.github.flattool.Warehouse \
    edu.berkeley.BOINC \
@@ -46,7 +47,6 @@ alias fpkpkgdel "flatpak --system uninstall -y --noninteractive --force-remove"
    io.github.ecotubehq.player
 
   fpkpkgadd flathub-beta \
-   com.rafaelmardojai.Blanket \
    com.visualstudio.code.insiders \
    io.mrarm.mcpelauncher \
    io.frama.tractor.carburetor \
