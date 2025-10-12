@@ -1,7 +1,6 @@
 [Unit]
 Description=System Updates enforcer
 Wants=network-online.target
-After=network-online.target
 
 [Timer]
 OnCalendar=daily
