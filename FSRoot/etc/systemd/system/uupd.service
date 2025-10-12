@@ -3,7 +3,6 @@ Description=System updater
 StartLimitBurst=3
 StartLimitIntervalSec=600
 Wants=network-online.target
-After=network-online.target
 
 [Service]
 Type=oneshot
@@ -14,7 +13,7 @@ User=root
 Restart=on-failure
 # Set SELinux context unconfined as bootc requires some special perms for relabeling (idk about install_t????)
 SELinuxContext=system_u:unconfined_r:unconfined_t:s0
-IOSchedulingClass=best-effort
+IOSchedulingClass=2
 IOSchedulingPriority=7
 Nice=19
 RestrictRealtime=false
