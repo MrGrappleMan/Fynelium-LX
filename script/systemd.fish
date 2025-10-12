@@ -21,6 +21,5 @@
    uupd.timer rpm-ostree-countme.timer \
    fstrim.timer btrfs-dedup@var-home.timer \
    systemd-bsod \
-   sshd tailscaled \
-   preload systemd-zram-setup@zram0 \
-   tor
+   sshd tailscaled tor \
+   preload systemd-zram-setup@zram0
