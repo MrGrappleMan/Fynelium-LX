@@ -11,10 +11,7 @@
 7. After installing and getting to the desktop, run this script in the "Terminal" app to get started.
 
 ```
-sudo curl "https://raw.githubusercontent.com/MrGrappleMan/Fynelium-LX/refs/heads/main/script/main.fish" | sudo fish
-curl "https://raw.githubusercontent.com/MrGrappleMan/Fynelium-LX/refs/heads/main/script/ujust.fish" | fish
-curl "https://raw.githubusercontent.com/MrGrappleMan/Fynelium-LX/refs/heads/main/script/gsettings.fish" | fish
-systemctl reboot
+curl "https://raw.githubusercontent.com/MrGrappleMan/Fynelium-LX/refs/heads/main/script/prepare.fish" | fish
 
 ```
 
