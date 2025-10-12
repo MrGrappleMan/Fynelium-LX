@@ -18,8 +18,8 @@
   systemctl reenable \
    systemd-timesyncd \
    tlp \
-   uupd uupd.timer rpm-ostree-countme rpm-ostree-countme.timer \
-   fstrim.timer \
+   uupd.timer rpm-ostree-countme.timer \
+   fstrim.timer btrfs-dedup@var-home.timer \
    systemd-bsod \
    sshd tailscaled \
    preload systemd-zram-setup@zram0 \
