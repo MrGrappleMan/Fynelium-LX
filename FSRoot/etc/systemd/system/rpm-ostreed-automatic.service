@@ -5,13 +5,12 @@ ConditionPathExists=/run/ostree-booted
 StartLimitBurst=3
 StartLimitIntervalSec=600
 Wants=network-online.target
-After=network-online.target
 
 [Service]
 Type=oneshot
 User=root
-ExecStart=/usr/bin/rpm-ostree upgrade -q --peer --trigger-automatic-update-policy --allow-downgrade --bypass-driver
-IOSchedulingClass=best-effort
+ExecStart=/usr/bin/rpm-ostree upgrade -q --trigger-automatic-update-policy --allow-downgrade --bypass-driver
+IOSchedulingClass=2
 IOSchedulingPriority=7
 Nice=19
 RestrictRealtime=false
