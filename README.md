@@ -1,6 +1,8 @@
 ![Last Commit made to repository](https://img.shields.io/github/last-commit/MrGrappleMan/Fynelium-LX?style=for-the-badge)
 
-# Installation
+# Fynelium for [Bazzite Linux](https://bazzite.gg/)
+
+## Installation
 
 1. Backup ALL your data on the disk
 2. Get the [Bazzite](https://bazzite.gg/#image-picker) GNOME image for your hardware, without Steam Gaming mode
@@ -23,5 +25,8 @@ In terminals, usually it is Ctrl+Shift+C and Ctrl+Shift+V for copy-pasting
 
 You may not like some preferences so 🪨 ➛ 🗿 as you like only after the reboot,
 as doing so during the script runs can result in errors 🤯
+
+What to do with the drive? Keep it as a backup troubleshooting drive!
+You can move ISOs like UBCD Live, HBCD, or even Tails if ykyk
 
 ### [Extra Documentation](notion.so/Bazzite-27642d161cf980a5a844e08f156d5950?source=copy_link)
