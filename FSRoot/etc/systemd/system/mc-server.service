@@ -9,6 +9,7 @@ After=network-online.target
 [Service]
 Type=simple
 ExecStart=/opt/mc-server/mc-server
+IOSchedulingClass=2
 IOSchedulingPriority=5
 Restart=always
 Nice=10
