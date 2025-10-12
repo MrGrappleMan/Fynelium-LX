@@ -5,8 +5,11 @@ Before=shutdown.target
 
 [Service]
 User=root
-Type=simple
-ExecStart=/bin/tlp init start
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/usr/sbin/tlp init start
+ExecReload=/usr/sbin/tlp start
+ExecStop=/usr/sbin/tlp init stop
 IOSchedulingClass=best-effort
 IOSchedulingPriority=7
 Nice=19
