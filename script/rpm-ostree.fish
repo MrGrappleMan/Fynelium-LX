@@ -72,7 +72,7 @@ brh rebase testing -y
 
 # Kernel Args
 rpm-ostree kargs \
-  --append-if-missing=rhgb \
+  --delete-if-present=rhgb \
   --append-if-missing=threadirqs \
   --append-if-missing=sysrq_always_enabled=0 \
   --append-if-missing=consoleblank=0 \
