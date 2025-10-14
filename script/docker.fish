@@ -1,3 +1,5 @@
+#!/bin/env fish
+
 # Docker
 # !`Setup----------
 for cpkg in docker.io docker-doc docker-compose docker-compose-v2 podman-docker container runc; do sudo apt-fast remove $cpkg; done
