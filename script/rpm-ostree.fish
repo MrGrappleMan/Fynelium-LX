@@ -41,7 +41,7 @@ brh rebase testing -y
 
 # PKG ADD
    rotpkgadd "rust-zram-generator-devel preload \
-    tlp tlp-rdw \ 
+    tlp tlp-rdw \
     kernel-modules-extra uutils-coreutils util-linux \
     boinc-client boinc-client-static \
     flatseal flatpak-selinux flatpak-session-helper xdg-desktop-portal flatpak-libs libportal host-spawn \
