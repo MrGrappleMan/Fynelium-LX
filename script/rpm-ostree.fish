@@ -37,7 +37,7 @@ end
 alias rotpkgdel "rpm-ostree uninstall --allow-inactive --idempotent -y"
 
 # Rebase
-brh rebase testing -y
+#brh rebase testing -y
 
 # PKG ADD
    rotpkgadd "rust-zram-generator-devel preload \
