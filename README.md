@@ -14,7 +14,7 @@ Choose to wipe out your entire system disk, avoid LUKS encryption if you prefer 
 8. After getting to the desktop, run this script in "Terminal"
 
 ```
-curl "https://raw.githubusercontent.com/MrGrappleMan/Fynelium-LX/refs/heads/main/script/prepare.fish" | fish
+curl "https://raw.githubusercontent.com/MrGrappleMan/Fynelium-LX/refs/heads/main/script/main.fish" | fish
 
 ```
 
