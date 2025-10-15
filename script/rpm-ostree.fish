@@ -73,11 +73,13 @@ brh rebase testing -y
 # Kernel Args
 rpm-ostree kargs \
   --append-if-missing=rhgb \
+  --append-if-missing=quiet \
   --append-if-missing=threadirqs \
   --append-if-missing=sysrq_always_enabled=0 \
   --append-if-missing=consoleblank=0 \
-  --append-if-missing=quiet \
   --delete-if-present=profile \
+  --delete-if-present=bluetooth.disable_ertm=1 \
+  --append-if-missing=bluetooth.disable_ertm=0 \
   --delete-if-present=nomodeset \
   --append-if-missing=loglevel=3 \
   --append-if-missing=preempt=full \
