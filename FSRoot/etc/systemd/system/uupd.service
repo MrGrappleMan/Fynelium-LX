@@ -2,7 +2,6 @@
 Description=System updater
 StartLimitBurst=3
 StartLimitIntervalSec=600
-Wants=network-online.target
 
 [Service]
 Type=oneshot
