@@ -1,10 +1,8 @@
 [Unit]
 Description=Minecraft server starter
-Wants=network-online.target
-After=network-online.target
 
-# You can also try exploring Bedrock Server software that suits your needs
-# rather than using the official server
+# You can also try exploring Server software that suits
+# your needs rather than using the official server
 
 [Service]
 Type=simple
@@ -15,7 +13,7 @@ Restart=always
 Nice=10
 User=root
 
-# Use the contents below for drop in
+# Use the contents below for drop in if using Java servers
 #WorkingDirectory=/opt/mcje-server
 #ExecStart=/usr/bin/java -Xmx6G -Xms256m -XX:+UseZGC -XX:+UnlockExperimentalVMOptions -XX:+UseCompressedOops -XX:+OptimizeStringConcat -XX:+UseNUMA -XX:MaxRAMPercentage=75.0 -jar server.jar 
 
