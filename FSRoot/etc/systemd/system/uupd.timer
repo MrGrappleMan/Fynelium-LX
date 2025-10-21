@@ -3,7 +3,7 @@ Description=System Updates enforcer
 Wants=network-online.target
 
 [Timer]
-OnCalendar=daily
+OnCalendar=hourly
 Persistent=true
 AccuracySec=1h
 
