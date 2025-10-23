@@ -1,4 +1,8 @@
-![Last Commit made to repository](https://img.shields.io/github/last-commit/MrGrappleMan/Fynelium-LX?style=for-the-badge)
+![License](https://img.shields.io/github/license/MrGrappleMan/Fynelium-LX?style=for-the-badge)
+![Last Commit](https://img.shields.io/github/last-commit/MrGrappleMan/Fynelium-LX?style=for-the-badge)
+![Contributors](https://img.shields.io/github/contributors/MrGrappleMan/Fynelium-LX?style=for-the-badge)
+![Stars](https://img.shields.io/github/stars/MrGrappleMan/Fynelium-LX?style=for-the-badge)
+![Forks](https://img.shields.io/github/forks/MrGrappleMan/Fynelium-LX?style=for-the-badge)
 
 # Fynelium for [Bazzite Linux](https://bazzite.gg/)
 
