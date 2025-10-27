@@ -2,6 +2,8 @@
 Description=RPM-OSTree status reporting
 Documentation=man:rpm-ostree-countme.service(8)
 ConditionPathExists=/run/ostree-booted
+After=network-online.target
+Wants=network-online.target
 
 [Service]
 Type=oneshot
