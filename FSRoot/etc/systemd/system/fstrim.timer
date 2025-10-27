@@ -7,7 +7,7 @@ ConditionPathExists=!/etc/initrd-release
 [Timer]
 OnCalendar=daily
 Persistent=true
-AccuracySec=12h
+AccuracySec=24h
 
 [Install]
 WantedBy=timers.target
