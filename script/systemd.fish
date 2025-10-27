@@ -1,20 +1,20 @@
 #!/usr/bin/env fish
 
-# NTP
+# ⌚ NTP
   nohup timedatectl set-ntp true --no-ask-password &
 
-# reload
+# 🔃 Reload configurations
   systemctl daemon-reload
 
-# Mask
+# 🫥 Mask
   systemctl mask \
    systemd-rfkill systemd-rfkill.socket
 
-# Unmask
+# 🙂 Unmask
   systemctl unmask \
    shutdown.target reboot.target poweroff.target halt.target
 
-# Enable
+# 🟢 Enable
   systemctl reenable \
    systemd-timesyncd \
    tlp \
@@ -23,3 +23,6 @@
    systemd-bsod \
    sshd tailscaled tor \
    preload systemd-zram-setup@zram0
+
+# 🟥 Disable
+  # systemctl disable
