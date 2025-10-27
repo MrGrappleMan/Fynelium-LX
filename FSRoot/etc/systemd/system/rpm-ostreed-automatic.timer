@@ -6,7 +6,7 @@ ConditionPathExists=/run/ostree-booted
 [Timer]
 OnCalendar=daily
 Persistent=true
-AccuracySec=12h
+AccuracySec=24h
 
 [Install]
 WantedBy=timers.target
