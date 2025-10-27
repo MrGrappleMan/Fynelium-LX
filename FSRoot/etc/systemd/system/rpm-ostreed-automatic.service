@@ -1,5 +1,5 @@
 [Unit]
-Description=Auto-updater exclusive for RPM-OSTree
+Description=🔄️ For RPM-OSTree only, Updates the system for having access to the latest changes and potential bug fixes and security patches
 Documentation=man:rpm-ostree(1) man:rpm-ostreed.conf(5)
 ConditionPathExists=/run/ostree-booted
 StartLimitBurst=3
@@ -9,11 +9,16 @@ StartLimitIntervalSec=600
 Type=oneshot
 User=root
 ExecStart=/usr/bin/rpm-ostree upgrade -q --trigger-automatic-update-policy --allow-downgrade --bypass-driver
+
+# CommonSnippet - Daemons
 IOSchedulingClass=2
 IOSchedulingPriority=7
 Nice=19
+Restart=on-failure
 RestrictRealtime=false
 RestartSec=60
+StartLimitBurst=5
+StartLimitIntervalSec=300
 
 [Install]
 WantedBy=multi-user.target
