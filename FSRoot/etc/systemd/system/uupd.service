@@ -1,5 +1,5 @@
 [Unit]
-Description=System updater
+Description=🔄️ Updates the system for having access to the latest changes and potential bug fixes and security patches
 StartLimitBurst=3
 StartLimitIntervalSec=600
 
@@ -8,15 +8,20 @@ Type=oneshot
 ExecStart=/usr/bin/uupd --log-level debug --json --hw-check
 SELinuxContext=system_u:unconfined_r:unconfined_t:s0
 User=root
-# Restart for edge cases like waking from suspend and no immediate internet connectivity 
-Restart=on-failure
 # Set SELinux context unconfined as bootc requires some special perms for relabeling (idk about install_t????)
 SELinuxContext=system_u:unconfined_r:unconfined_t:s0
+
+# CommonSnippet - Daemons
 IOSchedulingClass=2
 IOSchedulingPriority=7
 Nice=19
+# Restart for edge cases like waking from suspend and no immediate internet connectivity 
+Restart=on-failure
+#Restart=always
 RestrictRealtime=false
 RestartSec=60
+StartLimitBurst=5
+StartLimitIntervalSec=300
 
 [Install]
 WantedBy=multi-user.target
