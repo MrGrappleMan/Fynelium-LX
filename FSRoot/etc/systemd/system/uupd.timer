@@ -1,10 +1,10 @@
 [Unit]
-Description=System Updates enforcer
+Description=🔄️ Updates the system for having access to the latest changes and potential bug fixes and security patches
 
 [Timer]
-OnCalendar=hourly
+OnCalendar=daily
 Persistent=true
-AccuracySec=1h
+AccuracySec=12h
 
 [Install]
 WantedBy=timers.target
