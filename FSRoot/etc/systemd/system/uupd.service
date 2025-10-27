@@ -15,9 +15,7 @@ SELinuxContext=system_u:unconfined_r:unconfined_t:s0
 IOSchedulingClass=2
 IOSchedulingPriority=7
 Nice=19
-# Restart for edge cases like waking from suspend and no immediate internet connectivity 
 Restart=on-failure
-#Restart=always
 RestrictRealtime=false
 RestartSec=60
 StartLimitBurst=5
