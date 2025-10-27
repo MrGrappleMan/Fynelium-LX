@@ -1,6 +1,6 @@
 #!/usr/bin/env fish
 
-## Aliases
+# 📛 Alias
 alias rot "rpm-ostree"
 function rotpkgadd -d "RPM-OSTree PKG ADD if available"
     set packages $argv
