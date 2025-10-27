@@ -1,5 +1,5 @@
 [Unit]
-Description=Discard unused filesystem blocks
+Description=💽 Discard unused filesystem blocks to improve disk access efficiency and longevity
 Documentation=man:fstrim
 ConditionVirtualization=!container
 ConditionPathExists=!/etc/initrd-release
@@ -7,7 +7,7 @@ ConditionPathExists=!/etc/initrd-release
 [Timer]
 OnCalendar=daily
 Persistent=true
-AccuracySec=1h
+AccuracySec=12h
 
 [Install]
 WantedBy=timers.target
