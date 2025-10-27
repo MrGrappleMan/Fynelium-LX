@@ -1,6 +1,6 @@
 #!/usr/bin/env fish
 
-# Alias
+# 📛 Alias
 alias fpk "flatpak --system"
 alias fpkrepadd "flatpak --system remote-add --if-not-exists"
 alias fpkrepdel "flatpak --system remote-delete --force"
