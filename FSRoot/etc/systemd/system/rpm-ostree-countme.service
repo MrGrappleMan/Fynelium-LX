@@ -1,5 +1,5 @@
 [Unit]
-Description=RPM-OSTree status reporting
+Description=📊 RPM-OSTree system status reporting and analytics
 Documentation=man:rpm-ostree-countme.service(8)
 ConditionPathExists=/run/ostree-booted
 After=network-online.target
@@ -14,9 +14,12 @@ DynamicUser=yes
 StateDirectory=rpm-ostree-countme
 StateDirectoryMode=750
 ExecStart=rpm-ostree countme
+
+# CommonSnippet - Daemons
 IOSchedulingClass=2
 IOSchedulingPriority=7
 Nice=19
+Restart=on-failure
 RestrictRealtime=false
 RestartSec=60
 
