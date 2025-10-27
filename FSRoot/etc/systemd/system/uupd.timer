@@ -1,5 +1,7 @@
 [Unit]
 Description=🔄️ Updates the system for having access to the latest changes and potential bug fixes and security patches
+After=network-online.target
+Wants=network-online.target
 
 [Timer]
 OnCalendar=daily
