@@ -51,7 +51,7 @@ rotUpd
    rotpkgadd "rust-zram-generator-devel systemd-swap preload \
     tlp tlp-rdw \
     kernel-modules-extra uutils-coreutils util-linux \
-    boinc-client boinc-client-static boinc-manager \
+    boinc-client boinc-client-static \
     flatseal flatpak-selinux flatpak-session-helper xdg-desktop-portal flatpak-libs libportal host-spawn \
     dnf-plugins-core etckeeper-dnf dnf-repo dnfdaemon dnfdaemon-selinux fedora-repos fedora-repos-rawhide fedora-repos-ostree fedora-gpg-keys \
     libei libei-utils \
