@@ -1,8 +1,13 @@
 #!/usr/bin/env fish
 
 # 📛 Alias
-alias rot "rpm-ostree"
-function rotpkgadd -d "RPM-OSTree PKG ADD if available"
+alias rot "rpm-ostree -q"
+alias rotUpd "rot upgrade"
+function rotApplyLive -d "Applies RPM-OSTree changes live"
+    rpm-ostree apply-live
+    rpm-ostree apply-live --allow-replacement
+end
+function rotPkg+ -d "RPM-OSTree PKG ADD if available"
     set packages $argv
     if test (count $argv) -eq 1 -a -n (string match '* *' $argv[1])
         set packages (string split ' ' $argv[1])
@@ -34,7 +39,7 @@ function rotpkgadd -d "RPM-OSTree PKG ADD if available"
         rpm-ostree install --allow-inactive --idempotent -y $install_list
     end
 end
-alias rotpkgdel "rpm-ostree uninstall --allow-inactive --idempotent -y"
+alias rotPkg- "rot uninstall --allow-inactive --idempotent -y"
 
 # Rebase
 #brh rebase testing -y
