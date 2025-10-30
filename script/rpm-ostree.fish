@@ -2,7 +2,7 @@
 
 # 📛 Alias
 alias rot "rpm-ostree -q"
-alias rotUpd "rot upgrade"
+alias rotUpd "rot upgrade --trigger-automatic-update-policy --allow-downgrade --bypass-driver"
 function rotApplyLive -d "Applies RPM-OSTree changes live"
     rpm-ostree apply-live
     rpm-ostree apply-live --allow-replacement
@@ -44,6 +44,9 @@ alias rotPkg- "rot uninstall --allow-inactive --idempotent -y"
 # Rebase
 #brh rebase testing -y
 
+# Update
+rotUpd
+
 # PKG ADD
    rotpkgadd "rust-zram-generator-devel preload \
     tlp tlp-rdw \
@@ -76,7 +79,7 @@ alias rotPkg- "rot uninstall --allow-inactive --idempotent -y"
     ## Remote access ##
 
 # Kernel Args
-rpm-ostree kargs \
+rot kargs \
   --append-if-missing=rhgb \
   --append-if-missing=quiet \
   --append-if-missing=threadirqs \
