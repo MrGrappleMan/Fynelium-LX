@@ -26,7 +26,7 @@ alias fpkPkg- "fpk uninstall -y --noninteractive --force-remove"
   fpkRep+ pureos https://store.puri.sm/repo/stable/pureos.flatpakrepo
   fpkRep+ kde-runtime-nightly https://cdn.kde.org/flatpak/kde-runtime-nightly/kde-runtime-nightly.flatpakrepo
 
-# PKG - ## Flatpaks system wide, binaries shared between users, while kept data separate. It standardizes location and save storage.
+# PKG - ## Flatpaks system wide, data stays separate for users. Standardizes location and saves storage.
   flatpak uninstall -u --all -y --noninteractive --force-remove
 
 # PKG +
@@ -36,22 +36,13 @@ alias fpkPkg- "fpk uninstall -y --noninteractive --force-remove"
 
   fpkPkg+ flathub \
    com.rafaelmardojai.Blanket \
-   io.github.celluloid_player.Celluloid \
    io.github.flattool.Warehouse \
    edu.berkeley.BOINC \
-   org.vinegarhq.Sober \
-   rocks.shy.VacuumTube \
+   org.vinegarhq.Sober io.mrarm.mcpelauncher \
+   rocks.shy.VacuumTube io.github.ecotubehq.player \
    com.microsoft.EdgeDev \
-   org.virt_manager.virt-manager \
    org.libreoffice.LibreOffice io.github.brunofin.Cohesion \
-   org.torproject.torbrowser-launcher \
-   io.github.ecotubehq.player
-
-  fpkPkg+ flathub-beta \
-   com.visualstudio.code.insiders \
-   io.mrarm.mcpelauncher \
-   io.frama.tractor.carburetor \
-   org.inkscape.Inkscape org.kde.krita
-
-  fpkPkg+ gnome-nightly \
-   org.gnome.BoxesDevel
+   org.torproject.torbrowser-launcher io.frama.tractor.carburetor \
+   com.visualstudio.code \
+   org.inkscape.Inkscape org.kde.krita \
+   org.gnome.Boxes
