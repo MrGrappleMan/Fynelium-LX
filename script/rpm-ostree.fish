@@ -2,12 +2,15 @@
 
 # 📛 Alias
 alias rot "rpm-ostree -q"
-alias rotUpd "rot upgrade --trigger-automatic-update-policy --allow-downgrade --bypass-driver"
-function rotApplyLive -d "Applies RPM-OSTree changes live"
+function rotUpd -d "Apply non destructive refresh methods. Removal of caches also considered destructive"
+    rot reload -b
+    rot upgrade --trigger-automatic-update-policy --allow-downgrade --bypass-driver
+end
+function rotApplyLive -d "Apply changes live"
     rpm-ostree apply-live
     rpm-ostree apply-live --allow-replacement
 end
-function rotPkg+ -d "RPM-OSTree PKG ADD if available"
+function rotPkg+ -d "PKG ADD if present"
     set packages $argv
     if test (count $argv) -eq 1 -a -n (string match '* *' $argv[1])
         set packages (string split ' ' $argv[1])
@@ -48,20 +51,34 @@ alias rotPkg- "rot uninstall --allow-inactive --idempotent -y"
 rotUpd
 
 # PKG ADD
-   rotpkgadd "rust-zram-generator-devel systemd-swap preload \
+   rotPkg+ "rust-zram-generator-devel systemd-swap preload \
     tlp tlp-rdw \
     kernel-modules-extra uutils-coreutils util-linux \
     boinc-client boinc-client-static \
+    \
+    snapd \
     flatseal flatpak-selinux flatpak-session-helper xdg-desktop-portal flatpak-libs libportal host-spawn \
     dnf-plugins-core etckeeper-dnf dnf-repo dnfdaemon dnfdaemon-selinux fedora-repos fedora-repos-rawhide fedora-repos-ostree fedora-gpg-keys \
+    \
     libei libei-utils \
     p7zip p7zip-plugins brotli \
-    kuserfeedback gnome-info-collect \
-    hblock \
+    bottles \
+    \
+    docker-cli docker-compose docker-compose-switch docker-buildx docker-buildkit \
+    nodejs pnpm \
+    rust cargo clippy \
+    git gh \
+    cpp \
+    distcc distcc-server gcc gcc-c++ \
+    java-latest-openjdk \
+    \
     plymouth plymouth-core-libs plymouth-graphic-libs plymouth-kcm plymouth-scripts \
-    docker-cli docker-compose docker-buildx bottles \
     cosmic-epoch cosmic-desktop xdg-desktop-portal-cosmic initial-setup-gui-wayland-cosmic cosmic-greeter cosmic-comp cosmic-app-library cosmic-applets cosmic-edit cosmic-idle cosmic-osd cosmic-session cosmic-settings cosmic-settings-daemon cosmic-store fedora-release-cosmic-atomic cosmic-config-fedora greetd \
-    openssh openssh-server mosh tor tailscale trayscale rclone rclone-broswer"
+    \
+    openssh openssh-server mosh \
+    tor \
+    tailscale trayscale \
+    rclone rclone-broswer"
 
     ## System Boosters ##
     ## Power management ##
@@ -95,25 +112,11 @@ rot kargs \
   --append-if-missing=nowatchdog \
   --append-if-missing=pcie_aspm=on
 
-# Universal InitRAMFS, reliable and standardized system
+# Server provided InitRAMFS, reliable and standardized system
 rpm-ostree initramfs --disable
 
     ## GhosTTY ## ghostty-nightly ghostty-nightly-fish-completion ghostty-nightly-shell-integration
 
-    ### Developer Specific:-
-    ### Suggested, use these in a container
-     ## Version Control Systems:
-      # git gh
-     ## Rust:
-      # rust cargo clippy
-     ## C stuff:
-      # cpp
-     ## Java:
-      # java-latest-openjdk
-     ## Python:
-      # 
-     ## Compilation:
-      # distcc distcc-server gcc gcc-c++
      ## Penetration testing / Hacking:
       # aircrack-ng turbo-attack golang-github-redteampentesting-monsoon
      ## Artificial Intelligence:
