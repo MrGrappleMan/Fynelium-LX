@@ -1,5 +1,7 @@
 #!/usr/bin/env fish
 
+# 👣 Configures GSettings / Dconf
+
 # Gets executed once by root, then the user, as seeen in documentation.
 
 dconf load / < /tmp/Fynelium-LX/export/gnome.dconf
