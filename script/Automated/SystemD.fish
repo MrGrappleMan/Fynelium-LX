@@ -1,5 +1,7 @@
 #!/usr/bin/env fish
 
+# ⚜️ System-D: The core of Linux for its functioning and handling essential system functions, beside being just an init system
+
 # ⌚ NTP
   nohup timedatectl set-ntp true --no-ask-password &
 
