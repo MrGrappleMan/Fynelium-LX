@@ -8,6 +8,8 @@ alias fpkRep- "fpk remote-delete --force"
 alias fpkPkg+ "fpk install -y --noninteractive --or-update"
 alias fpkPkg- "fpk uninstall -y --noninteractive --force-remove"
 
+# REP -
+
 # REP +
   fpkRep+ flathub https://flathub.org/repo/flathub.flatpakrepo
   fpkRep+ flathub-beta https://flathub.org/beta-repo/flathub-beta.flatpakrepo
@@ -25,6 +27,7 @@ alias fpkPkg- "fpk uninstall -y --noninteractive --force-remove"
   fpkRep+ elementaryos https://flatpak.elementary.io/repo.flatpakrepo
   fpkRep+ pureos https://store.puri.sm/repo/stable/pureos.flatpakrepo
   fpkRep+ kde-runtime-nightly https://cdn.kde.org/flatpak/kde-runtime-nightly/kde-runtime-nightly.flatpakrepo
+  fpkRep+ cosmic https://apt.pop-os.org/cosmic/cosmic.flatpakrepo
 
 # PKG - ## Flatpaks system wide, data stays separate for users. Standardizes location and saves storage.
   flatpak uninstall -u --all -y --noninteractive --force-remove
