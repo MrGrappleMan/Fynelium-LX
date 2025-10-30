@@ -48,20 +48,20 @@ alias rotPkg- "rot uninstall --allow-inactive --idempotent -y"
 rotUpd
 
 # PKG ADD
-   rotpkgadd "rust-zram-generator-devel preload \
+   rotpkgadd "rust-zram-generator-devel systemd-swap preload \
     tlp tlp-rdw \
     kernel-modules-extra uutils-coreutils util-linux \
-    boinc-client boinc-client-static \
+    boinc-client boinc-client-static boinc-manager \
     flatseal flatpak-selinux flatpak-session-helper xdg-desktop-portal flatpak-libs libportal host-spawn \
     dnf-plugins-core etckeeper-dnf dnf-repo dnfdaemon dnfdaemon-selinux fedora-repos fedora-repos-rawhide fedora-repos-ostree fedora-gpg-keys \
     libei libei-utils \
-    p7zip p7zip-plugins \
+    p7zip p7zip-plugins brotli \
     kuserfeedback gnome-info-collect \
     hblock \
     plymouth plymouth-core-libs plymouth-graphic-libs plymouth-kcm plymouth-scripts \
     docker-cli docker-compose docker-buildx bottles \
     cosmic-epoch cosmic-desktop xdg-desktop-portal-cosmic initial-setup-gui-wayland-cosmic cosmic-greeter cosmic-comp cosmic-app-library cosmic-applets cosmic-edit cosmic-idle cosmic-osd cosmic-session cosmic-settings cosmic-settings-daemon cosmic-store fedora-release-cosmic-atomic cosmic-config-fedora greetd \
-    openssh openssh-server mosh tor"
+    openssh openssh-server mosh tor tailscale trayscale rclone rclone-broswer"
 
     ## System Boosters ##
     ## Power management ##
