@@ -29,7 +29,7 @@ alias fpkPkg- "fpk uninstall -y --noninteractive --force-remove"
   fpkRep+ kde-runtime-nightly https://cdn.kde.org/flatpak/kde-runtime-nightly/kde-runtime-nightly.flatpakrepo
   fpkRep+ cosmic https://apt.pop-os.org/cosmic/cosmic.flatpakrepo
 
-# PKG - ## Flatpaks system wide, data stays separate for users. Standardizes location and saves storage.
+# PKG - ## Keeping Flatpaks system wide tandardizes location and saves storage, yet data stays separate for users.
   flatpak uninstall -u --all -y --noninteractive --force-remove
 
 # PKG +
@@ -38,14 +38,21 @@ alias fpkPkg- "fpk uninstall -y --noninteractive --force-remove"
    ##org.freedesktop.Sdk org.gnome.Sdk
 
   fpkPkg+ flathub \
-   com.rafaelmardojai.Blanket \
-   io.github.flattool.Warehouse \
-   edu.berkeley.BOINC \
-   org.vinegarhq.Sober io.mrarm.mcpelauncher \
-   rocks.shy.VacuumTube io.github.ecotubehq.player \
-   com.microsoft.EdgeDev \
-   org.libreoffice.LibreOffice io.github.brunofin.Cohesion \
-   org.torproject.torbrowser-launcher io.frama.tractor.carburetor \
-   com.visualstudio.code \
-   org.inkscape.Inkscape org.kde.krita \
-   org.gnome.Boxes
+    com.rafaelmardojai.Blanket \
+    io.github.flattool.Warehouse \
+    edu.berkeley.BOINC \
+    org.vinegarhq.Sober io.mrarm.mcpelauncher \
+    rocks.shy.VacuumTube com.warlordsoftwares.youtube-downloader-4ktube io.github.ecotubehq.player \
+    com.microsoft.EdgeDev \
+    com.ranfdev.DistroShelf org.gnome.Boxes rs.ruffle.Ruffle \
+    org.libreoffice.LibreOffice io.github.brunofin.Cohesion \
+    org.torproject.torbrowser-launcher io.frama.tractor.carburetor \
+    com.visualstudio.code \
+    org.inkscape.Inkscape org.kde.krita org.blender.Blender xyz.woxel.Woxel \
+    org.telegram.desktop io.github.tobagin.karere dev.vencord.Vesktop \
+    com.github.wwmm.easyeffects org.nickvision.cavalier
+
+    fpkPkg+ cosmic \
+      io.github.cosmic_utils.cosmic-ext-applet-clipboard-manager \
+      io.github.cosmic_utils.cosmic-ext-applet-external-monitor-brightness \
+      io.github.cosmic_utils.minimon-applet
