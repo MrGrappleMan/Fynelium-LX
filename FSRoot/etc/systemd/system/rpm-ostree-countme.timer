@@ -1,5 +1,5 @@
 [Unit]
-Description=RPM-OSTree reporting for analytics
+Description=⌚️ RPM-OSTree component for anonymously reporting system details to Fedora for statistics
 Documentation=man:rpm-ostree-countme.timer(8)
 ConditionPathExists=/run/ostree-booted
 After=network-online.target
@@ -8,7 +8,7 @@ Wants=network-online.target
 [Timer]
 OnCalendar=daily
 Persistent=true
-AccuracySec=24h
+AccuracySec=11h
 
 [Install]
 WantedBy=timers.target
