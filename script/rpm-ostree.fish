@@ -2,7 +2,7 @@
 
 # 📛 Alias
 alias rot "rpm-ostree -q"
-function rotUpd -d "Apply non destructive refresh methods. Removal of caches also considered destructive"
+function rotUpd -d "Do non-destructive steps to refresh pkg mgr, no removal of caches"
     rot reload -b
     rot upgrade --trigger-automatic-update-policy --allow-downgrade --bypass-driver
 end
@@ -62,7 +62,6 @@ rotUpd
     \
     libei libei-utils \
     p7zip p7zip-plugins brotli \
-    bottles \
     \
     docker-cli docker-compose docker-compose-switch docker-buildx docker-buildkit \
     nodejs pnpm \
@@ -136,7 +135,3 @@ rpm-ostree initramfs --disable
       # mesa-libOSMesa mesa-compat-libOSMesa
      ## AMD: amd-gpu-firmware amd-ucode-firmware amdsmi am-utils
      ## Nvidia: nvidia-gpu-firmware libva-nvidia-driver envytools nvidia-patch
-
-   ### Multipurpose:-
-    ## PKGMGR Snap
-     # snapd snapd-selinux
