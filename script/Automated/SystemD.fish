@@ -20,7 +20,7 @@
   systemctl reenable \
    systemd-timesyncd \
    tlp \
-   uupd.timer rpm-ostree-countme.timer \
+   uupd.timer uupd rpm-ostree-countme.timer rpm-ostree-countme \
    fstrim.timer btrfs-dedup@var-home.timer \
    systemd-bsod \
    sshd tailscaled tor \
