@@ -10,7 +10,6 @@ function rotApplyLive -d "Apply changes live"
     rpm-ostree apply-live
     rpm-ostree apply-live --allow-replacement
 end
-alias rotPkg+Adv "rot install --allow-inactive --idempotent -y"
 function rotPkg+ -d "PKG ADD if present"
     set packages $argv
     if test (count $argv) -eq 1 -a -n (string match '* *' $argv[1])
@@ -43,7 +42,7 @@ function rotPkg+ -d "PKG ADD if present"
         rpm-ostree install --allow-inactive --idempotent -y $install_list
     end
 end
-alias rotPkg-Adv "rot uninstall --allow-inactive --idempotent -y"
+alias rotPkg- "rot uninstall --allow-inactive --idempotent -y"
 
 # Rebase
 #brh rebase testing -y
