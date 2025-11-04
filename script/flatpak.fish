@@ -76,7 +76,7 @@ alias fpkPkg- "fpk uninstall -y --noninteractive --force-remove"
   fpkPkg+ "com.rafaelmardojai.Blanket \
     io.github.flattool.Warehouse \
     edu.berkeley.BOINC \
-    org.vinegarhq.Sober io.mrarm.mcpelauncher \
+    org.vinegarhq.Sober io.mrarm.mcpelauncher app.twintaillauncher.ttl com.heroicgameslauncher.hgl \
     rocks.shy.VacuumTube com.warlordsoftwares.youtube-downloader-4ktube io.github.ecotubehq.player \
     com.microsoft.EdgeDev com.gopeed.Gopeed org.qbittorrent.qBittorrent \
     com.ranfdev.DistroShelf org.gnome.Boxes rs.ruffle.Ruffle \
