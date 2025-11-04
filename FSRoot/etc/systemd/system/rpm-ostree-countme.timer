@@ -1,5 +1,5 @@
 [Unit]
-Description=⌚️ RPM-OSTree component for anonymously reporting system details to Fedora for statistics
+Description=⌚️ RPM-OSTree component that anonymously tracks the approximate age of the system installation, no personal info sent
 Documentation=man:rpm-ostree-countme.timer(8)
 ConditionPathExists=/run/ostree-booted
 After=network-online.target
@@ -8,7 +8,7 @@ Wants=network-online.target
 [Timer]
 OnCalendar=daily
 Persistent=true
-AccuracySec=11h
+AccuracySec=3h
 
 [Install]
 WantedBy=timers.target
