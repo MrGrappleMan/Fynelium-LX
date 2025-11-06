@@ -1,6 +1,6 @@
 #!/usr/bin/env fish
 
-# 🖨️ Firmware Update Manager - updates your system firmware
+# 🖨️ fwupdmgr - Firmware Update Manager updates your system firmware
 
 # Alias
 alias fwu "fwupdmgr"
