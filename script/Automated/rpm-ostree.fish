@@ -2,11 +2,11 @@
 
 # 📛 Alias
 alias rot "rpm-ostree -q"
-function rotUpd -d "Do non-destructive steps to refresh pkg mgr, no removal of caches"
-    rot reload -b
+function rotUpd -d "Do semi non-destructive steps to refresh and update package manager, no removal of caches"
+    rot reload
     rot upgrade --trigger-automatic-update-policy --allow-downgrade --bypass-driver
 end
-function rotApplyLive -d "Apply changes live"
+function rotApplyLive -d "Apply changes live to currently booted deployment"
     rpm-ostree apply-live
     rpm-ostree apply-live --allow-replacement
 end
@@ -95,7 +95,7 @@ rotUpd
     ## Containerization, Orchestration, Virtualization, Emulation ##
     ## Remote access ##
 
-# Kernel Args
+# Kernel Arguments
 rot kargs \
   --append-if-missing=rhgb \
   --append-if-missing=quiet \
@@ -112,7 +112,7 @@ rot kargs \
   --append-if-missing=nowatchdog \
   --append-if-missing=pcie_aspm=on
 
-# Server provided InitRAMFS, reliable and standardized system
+# Centrally compiled initramfs provided by server, reliable and standardized system and lower points of failure
 rpm-ostree initramfs --disable
 
     ## GhosTTY ## ghostty-nightly ghostty-nightly-fish-completion ghostty-nightly-shell-integration
