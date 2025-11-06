@@ -1,12 +1,11 @@
 #!/usr/bin/env fish
 
 # 📛 Alias
-alias fpk "flatpak --system"
-alias fpkUpd "fpk update -y"
-alias fpkRep+ "fpk remote-add --if-not-exists"
-alias fpkRep- "fpk remote-delete --force"
-alias fpkPkg+Adv "fpk install -y --noninteractive --or-update"
-function fpkPkg+ -d "Flatpak install if present in remote"
+alias fpk "flatpak --system" # Main alias
+alias fpkUpd "fpk update -y" # Updation
+alias fpkRep+ "fpk remote-add --if-not-exists" # Repository add
+alias fpkRep- "fpk remote-delete --force" # Repository remove
+function fpkPkg+ -d "Flatpak add packages with additional checks"
     set -l remote flathub  # Change if you use a different primary remote
     set packages $argv
     if test (count $argv) -eq 1 -a -n (string match '* *' $argv[1])
@@ -42,7 +41,7 @@ function fpkPkg+ -d "Flatpak install if present in remote"
         flatpak install -y --noninteractive --or-update --system $remote $install_list
     end
 end
-alias fpkPkg- "fpk uninstall -y --noninteractive --force-remove"
+alias fpkPkg- "fpk uninstall -y --noninteractive --force-remove" # Package remove
 
 # REP -
 
