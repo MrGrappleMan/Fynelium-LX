@@ -27,10 +27,10 @@ mkdir -p /opt/playit
 chmod a+x /opt/playit/playit
 chmod a+x /opt/mc-server/mc-server
 
-# Sub-Execution
-fish /tmp/Fynelium-LX/script/rpm-ostree.fish
-fish /tmp/Fynelium-LX/script/flatpak.fish
-fish /tmp/Fynelium-LX/script/systemd.fish
-fish /tmp/Fynelium-LX/script/fwupdmgr.fish
-fish /tmp/Fynelium-LX/script/ujust.fish
-fish /tmp/Fynelium-LX/script/gsettings.fish
+# Subexecution of sub-scripts that dont require user interaction. doubtful of ujust and flatpak
+fish /tmp/Fynelium-LX/script/Automated/rpm-ostree.fish
+fish /tmp/Fynelium-LX/script/Automated/flatpak.fish
+fish /tmp/Fynelium-LX/script/Automated/systemd.fish
+fish /tmp/Fynelium-LX/script/Automated/fwupdmgr.fish
+fish /tmp/Fynelium-LX/script/Automated/ujust.fish
+fish /tmp/Fynelium-LX/script/Automated/gsettings.fish
