@@ -2,12 +2,13 @@
 
 # RootCheck
 if fish_is_root_user
-    echo "Launched correctly! Starting..."
+    echo "Starting..."
 else
-    echo "Not running as root. Please run as intended in the documentation by directly copy-pasting the box"
+    echo "Not running as root! An internal error has happened. You are not supposed to run this by itself"
+    exit
 end
 
-# Retrieval
+# Retrieval of project files
 
 cd /tmp/
 rm -rf /tmp/Fynelium-LX
@@ -15,7 +16,7 @@ mkdir -p /tmp/Fynelium-LX
 git clone https://github.com/MrGrappleMan/Fynelium-LX.git /tmp/Fynelium-LX/
 /tmp/Fynelium-LX/
 
-# Cloning
+# Copy over to filesystem
 cp -r /tmp/Fynelium-LX/FSRoot/etc/* /etc/
 cp -r /tmp/Fynelium-LX/FSRoot/var/* /var/
 cp -r /tmp/Fynelium-LX/FSRoot/opt/* /opt/
