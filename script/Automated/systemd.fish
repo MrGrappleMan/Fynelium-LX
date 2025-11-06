@@ -8,15 +8,15 @@
 # 🔃 Reload configurations
   systemctl daemon-reload
 
-# 🫥 Mask
+# 🫥 Mask - never run, even manually
   systemctl mask \
    systemd-rfkill systemd-rfkill.socket
 
-# 🙂 Unmask
+# 🙂 Unmask - allow to run
   systemctl unmask \
    shutdown.target reboot.target poweroff.target halt.target
 
-# 🟢 Enable
+# 🟢 Enable at startup - reenables them for surity that the correct one is enabled by precedence set by developers
   systemctl reenable \
    systemd-timesyncd \
    tlp \
@@ -26,5 +26,5 @@
    sshd tailscaled tor \
    preload systemd-zram-setup@zram0
 
-# 🟥 Disable
+# 🟥 Disable at startup
   # systemctl disable
