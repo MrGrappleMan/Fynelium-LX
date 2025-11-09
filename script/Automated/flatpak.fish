@@ -79,10 +79,10 @@ alias fpkPkg- "fpk uninstall -y --noninteractive --force-remove" # Package remov
     rocks.shy.VacuumTube com.warlordsoftwares.youtube-downloader-4ktube io.github.ecotubehq.player \
     com.microsoft.EdgeDev com.gopeed.Gopeed org.qbittorrent.qBittorrent \
     com.ranfdev.DistroShelf org.gnome.Boxes rs.ruffle.Ruffle \
-    org.libreoffice.LibreOffice io.github.brunofin.Cohesion \
-    org.torproject.torbrowser-launcher io.frama.tractor.carburetor \
+    io.github.brunofin.Cohesion \
+    io.frama.tractor.carburetor \
     com.visualstudio.code \
-    org.inkscape.Inkscape org.upscayl.Upscayl org.kde.krita org.blender.Blender xyz.woxel.Woxel com.obsproject.Studio \
+    org.upscayl.Upscayl com.obsproject.Studio \
     org.telegram.desktop io.github.tobagin.karere dev.vencord.Vesktop \
     com.github.wwmm.easyeffects org.nickvision.cavalier"
 
