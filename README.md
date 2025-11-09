@@ -71,4 +71,4 @@ as doing so during the script runs can result in errors 🤯
 What to do with the drive? Keep it as a backup troubleshooting drive!
 You can move ISOs like UBCD Live, HBCD, or even Tails if ykyk
 
-### [Extra Documentation](notion.so/Bazzite-27642d161cf980a5a844e08f156d5950?source=copy_link)
+### [Extra Documentation](https://notion.so/Bazzite-27642d161cf980a5a844e08f156d5950?source=copy_link)
