@@ -2,7 +2,7 @@
 
 # 📛 Alias
 alias rot "rpm-ostree -q"
-function rotUpd -d "Do semi non-destructive steps to refresh and update package manager, no removal of caches"
+function rotUpd -d "Do non-destructive steps to refresh and update package manager, no removal of caches"
     rot reload
     rot upgrade --trigger-automatic-update-policy --allow-downgrade --bypass-driver
 end
@@ -72,11 +72,16 @@ rotUpd
     java-latest-openjdk \
     libvirt-daemon-kvm qemu-kvm qemu-kvm-core \
     \
+    libreoffice \
+    krita krita-libs inkscape blender \
+    \
     plymouth plymouth-core-libs plymouth-graphic-libs plymouth-kcm plymouth-scripts \
     cosmic-epoch cosmic-desktop xdg-desktop-portal-cosmic initial-setup-gui-wayland-cosmic cosmic-greeter cosmic-comp cosmic-app-library cosmic-applets cosmic-edit cosmic-idle cosmic-osd cosmic-session cosmic-settings cosmic-settings-daemon cosmic-store fedora-release-cosmic-atomic cosmic-config-fedora greetd \
     \
+    hblock \
+    qbittorrent \
     openssh openssh-server mosh \
-    tor \
+    tor torbrowser-launcher \
     tailscale trayscale \
     rclone rclone-broswer"
 
