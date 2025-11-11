@@ -102,7 +102,7 @@ rotUpd
 
 # Kernel Arguments
 rot kargs \
-  --append-if-missing=rhgb \
+  --delete-if-present=rhgb \
   --append-if-missing=quiet \
   --append-if-missing=threadirqs \
   --append-if-missing=sysrq_always_enabled=0 \
