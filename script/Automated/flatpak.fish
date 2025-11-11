@@ -81,7 +81,7 @@ alias fpkPkg- "fpk uninstall -y --noninteractive --force-remove" # Package remov
     com.ranfdev.DistroShelf org.gnome.Boxes rs.ruffle.Ruffle \
     io.github.brunofin.Cohesion \
     io.frama.tractor.carburetor \
-    com.visualstudio.code \
+    com.visualstudio.code io.github.qwersyk.Newelle \
     org.upscayl.Upscayl com.obsproject.Studio \
     org.telegram.desktop io.github.tobagin.karere dev.vencord.Vesktop \
     com.github.wwmm.easyeffects org.nickvision.cavalier"
