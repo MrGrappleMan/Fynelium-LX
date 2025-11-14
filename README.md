@@ -18,16 +18,14 @@
 
 </div>
 
-### 1. Get the Bazzite installer image 🍓
+### 1. Get the Bazzite installer ISO 🍓
 
-- [Regular](https://download.bazzite.gg/bazzite-stable-amd64.iso)  
-- [Nvidia](https://download.bazzite.gg/bazzite-nvidia-open-stable-amd64.iso)  
-- [Nvidia](https://download.bazzite.gg/bazzite-nvidia-stable-amd64.iso)  
+- [Regular](https://download.bazzite.gg/bazzite-stable-amd64.iso)
+- [Nvidia](https://download.bazzite.gg/bazzite-nvidia-open-stable-amd64.iso)
+- [Nvidia old](https://download.bazzite.gg/bazzite-nvidia-stable-amd64.iso)
 
-Save that `.iso` file somewhere easy, like your Downloads folder. 📥
-
-### 2. Setup Ventoy on a USB Drive 🔌 - all contents inside it will be erased!
-- Grab a spare USB drive (at least 8GB, but bigger is better). **Warning**: 
+### 2. Setup Ventoy on a USB Drive 🔌 - data will be wiped!
+- Grab a spare USB drive (minimum 8GB, bigger is better). **Warning**: 
 - Get [Ventoy](https://github.com/ventoy/Ventoy/releases/latest)
 - Unzip the download, then **run the Ventoy app** (`Ventoy2Disk.exe` on Windows).  
 - Plug in your USB, select it in the app, and click **Install**. – Ventoy is now on your USB! 🪄
@@ -39,7 +37,7 @@ Save that `.iso` file somewhere easy, like your Downloads folder. 📥
 - Move the installer image `.iso` file into the Ventoy partition.
 
 ### 4. Boot Up & Install! ⚙️
-- Plug the USB into the PC you want to install Bazzite on.  
+- Plug the USB into the PC where you want to install Bazzite.
 - Restart your PC and **enter the boot menu / UEFI setup screen** (usually by spamming F12, F10, Esc, or Del – check your PC's splash screen or motherboard details).  
 - Pick your USB drive from the list (it'll say Ventoy).  
 - Ventoy will show a menu – select your Bazzite `.iso` and hit Enter.  
