@@ -18,41 +18,40 @@
 
 </div>
 
-### 1. Get the Bazzite installer ISO 🍓
+### 1. Get Bazzite installer ISO 🍓
 
 - [Regular](https://download.bazzite.gg/bazzite-stable-amd64.iso)
 - [Nvidia](https://download.bazzite.gg/bazzite-nvidia-open-stable-amd64.iso)
 - [Nvidia old](https://download.bazzite.gg/bazzite-nvidia-stable-amd64.iso)
 
-### 2. Setup Ventoy on a USB Drive 🔌 - data will be wiped!
-- Grab a spare USB drive (minimum 8GB, bigger is better). **Warning**: 
-- Get [Ventoy](https://github.com/ventoy/Ventoy/releases/latest)
-- Unzip the download, then **run the Ventoy app** (`Ventoy2Disk.exe` on Windows).  
+### 2. Setup Ventoy on an external drive 🔌 - **Warning**: data will be wiped!
+- Grab a spare USB drive (minimum 8GB, bigger is better).
+- Get [Ventoy](https://github.com/ventoy/Ventoy/releases/latest) for your OS
+- Unzip the download, then **run Ventoy setup** (`Ventoy2Disk.exe` on Windows).  
 - Plug in your USB, select it in the app, and click **Install**. – Ventoy is now on your USB! 🪄
 
 ### 3. Shift the installer image 📂
-- In your file manager, you will see two partitions
+- In your file manager, you will see two partitions on the device
   "Ventoy" - where you will store `.iso` files \
   "VTOYEFI" - where Ventoy, the utility stores its files)*
 - Move the installer image `.iso` file into the Ventoy partition.
 
-### 4. Boot Up & Install! ⚙️
+### 4. Boot the installer ⚙️
 - Plug the USB into the PC where you want to install Bazzite.
-- Restart your PC and **enter the boot menu / UEFI setup screen** (usually by spamming F12, F10, Esc, or Del – check your PC's splash screen or motherboard details).  
-- Pick your USB drive from the list (it'll say Ventoy).  
-- Ventoy will show a menu – select your Bazzite `.iso` and hit Enter.  
-- Choose **"Bazzite Installer"** when it asks. You're in! 🎮
+- Restart your PC and **enter the boot menu / UEFI setup screen** (usually by spamming F1, F12, F10, Esc, or Del – check device splash screen or motherboard OEM details).  
+- Pick your USB drive from the list.  
+- Ventoy will show a menu – select the Bazzite `.iso` and enter.  
 
-### 5. Install Options (Your Choice!) 🛠️
-- The installer is super user-friendly with a graphical wizard.  
-- **Make it your only OS?** Select your main drive and let it format.  
-- **Dual-booting with Windows?** Shrink your Windows partition first (in Windows Disk Management), then pick the free space.  
-- **Want extra security?** Turn on **LUKS encryption** – it'll ask for a password on boot. 🔒  
-- Follow the on-screen steps: pick language, timezone, create a user, etc. It'll handle the rest!
+### 5. Installing Bazzite 🛠️
+- Pick language, timezone, create a user(choose a single alphabet for convenience), etc.
+- **Make it your only OS?** Select your main drive and let it format, delete previous partitions by freeing up space, preserve none on that disk.  
+- **Dual-booting with Windows?** Shrink your Windows partition first (in Windows Disk Management), then pick the free space from the installer here.  
+- **Drive Encryption** Turn on **LUKS encryption** – password asked on every boot 🔒  
+- Wait till it installs
 
-### 6. First Boot Magic ✨
+### 6. Post install script ✨
 - In terminals, usually it is `Ctrl` + `Shift` + `C` and `Ctrl` + `Shift` + `V` for copy-pasting
-- Once you're on the Bazzite GNOME desktop, open a **Terminal** (search for it in the menu).  
+- Once you're on the desktop, open a **Terminal** (search for it in the menu).  
 - Paste and run this script to finish setup:
 
 ```
@@ -63,10 +62,9 @@ Some errors are expected. Allow inhibiting shortcuts if requested.
 
 Sometimes your user password will be asked. Paste it whenever it is asked.
 
-You may not like some preferences so 🪨 ➛ 🗿 as you like only after the reboot,
-as doing so during the script runs can result in errors 🤯
+Avoid interaction with your device when the script is running, unless the window mentions
 
 What to do with the drive? Keep it as a backup troubleshooting drive!
-You can move ISOs like UBCD Live, HBCD, or even Tails if ykyk
+You can move ISOs like UBCD Live, HBCD, Tails, a spare copy of EndeavourOS, etc.
 
 ### [Extra Documentation](https://notion.so/Bazzite-27642d161cf980a5a844e08f156d5950?source=copy_link)
