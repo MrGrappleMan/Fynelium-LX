@@ -10,7 +10,7 @@ function rotApplyLive -d "Apply changes live to currently booted deployment"
     rpm-ostree apply-live
     rpm-ostree apply-live --allow-replacement
 end
-function rotPkg+ -d "PKG ADD if present"
+function rotPkg+Adv -d "PKG ADD if present"
     set packages $argv
     if test (count $argv) -eq 1 -a -n (string match '* *' $argv[1])
         set packages (string split ' ' $argv[1])
@@ -42,10 +42,12 @@ function rotPkg+ -d "PKG ADD if present"
         rpm-ostree install --allow-inactive --idempotent -y $install_list
     end
 end
+alias rotPkg+ "rot install --allow-inactive --idempotent -y"
 alias rotPkg- "rot uninstall --allow-inactive --idempotent -y"
 
 # Rebase
 #brh rebase testing -y
+rot rebase --experimental fedora:fedora/rawhide/x86_64/cosmic-atomic
 
 # Update
 rotUpd
