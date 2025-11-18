@@ -1,9 +1,12 @@
 
-### We do not have the repos installed yet, so a base config with just the AUR will be used, else pacman errors for the missing mirrorlists and keys ##
+### Assume repos installed yet at this phase, a base config with just the AUR will be used, else pacman errors for the missing mirrorlists and keys ###
+
+# pacman commonflags list: --noconfirm --needed
 
 ## Adding repo keys
 sudo rm -rf /var/lib/pacman/db.lck /etc/pacman.d/gnupg /var/lib/pacman/sync/* ~/pacman-git
-sudo pacman -Sc --noconfirm
+sudo pacman -Syyuu --noconfirm
+sudo pacman -Scc --noconfirm
 sudo pacman-key --init
 sudo pacman-key --populate archlinux
 
@@ -13,6 +16,10 @@ sudo pacman-key --lsign-key 3056513887B78AEB
 sudo pacman -U --noconfirm 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-keyring.pkg.tar.zst'
 sudo pacman -U --noconfirm 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-mirrorlist.pkg.tar.zst'
 
-# Replace basic conf with optimal conf w/multiple repos here #
+# Replace basic cfg with main cfg here #
 rm -f /etc/pacman.conf
 cp /etc/pacman.conf.fyn-mod /etc/pacman.conf
+
+# Get paru
+
+### Now starting to utilize paru ###
