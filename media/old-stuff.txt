@@ -26,20 +26,6 @@ kill $NETRFP
 #!/bin/zsh
 sudo swapoff -a
 # PkgConfigs---------------------------------------------------------------------------------------------------- 
-pacmanrcf() {
-sudo rm -rf /var/lib/pacman/db.lck /etc/pacman.d/gnupg /var/lib/pacman/sync/* ~/pacman-git
-sudo pacman -Sc --noconfirm
-sudo pacman-key --init
-sudo pacman-key --populate archlinux
-sudo pacman-key --recv-key 3056513887B78AEB --keyserver keyserver.ubuntu.com
-sudo pacman-key --lsign-key 3056513887B78AEB
-sudo pacman -U --noconfirm 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-keyring.pkg.tar.zst'
-sudo pacman -U --noconfirm 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-mirrorlist.pkg.tar.zst'
-sudo touch /etc/pacman.conf
-sudo chmod 755 /etc/pacman.conf
-
-sudo chmod 755 /etc/pacman.d/mirrorlist
-}
 
 jppkgrcf() {
 sudo touch /usr/bin/JPpkg
@@ -50,7 +36,7 @@ sudo systemctl enable JPpkg.timer
 sudo systemctl disable JPpkg.service
 if [[ "$1" == "upd" && "$(cat /sys/class/power_supply/AC/online)" == "1" ]]; then
 sudo reflector --latest 5 --protocol https --sort rate --save /etc/pacman.d/mirrorlist
-paru -Syyu --noconfirm
+paru -Syu --noconfirm
 fi
 if [[ "$1" == "stop" ]]; then
 sudo systemctl stop JPpkg.service
@@ -101,7 +87,7 @@ WantedBy=timers.target
 XIT
 }
 pacmanrcf
-sudo pacman -Syy --noconfirm base-devel base git
+
 git clone https://aur.archlinux.org/git-git.git
 git clone https://aur.archlinux.org/paru-git.git
 git clone https://aur.archlinux.org/pacman-git.git
@@ -126,13 +112,7 @@ sudo renice -n 0 -p $BASHPID
 cd
 sudo rm -rf ~
 # PackageInst----------------------------------------------------------------------------------------------------
-for pakges in\
- linux-xanmod-edge linux-xanmod-edge-headers ramroot-btrfs\
- pipewire-git libpipewire-git wireplumber-git libwireplumber-git\
- paru-git mc-git pi-hole-standalone snowflake-pt-proxy flatpak
-#  hyprland-git eww-git flatpak
-do paru -Syu --noconfirm $pakges
-done
+
 for pakgis in\
  linux linux-headers
 do paru -Rns --noconfirm $pakgis
