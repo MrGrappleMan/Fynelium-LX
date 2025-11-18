@@ -23,3 +23,13 @@ cp /etc/pacman.conf.fyn-mod /etc/pacman.conf
 # Get paru
 
 ### Now starting to utilize paru ###
+
+sudo pacman -Syy --noconfirm base-devel base git
+
+for getpkgs in \
+ google-chrome-dev ramroot-btrfs \
+ pipewire libpipewire-git wireplumber-git libwireplumber-git \
+ paru mc-git pi-hole-standalone snowflake-pt-proxy flatpak snap
+#  hyprland-git eww-git flatpak
+do paru -Suu --noconfirm $getpkgs
+done
