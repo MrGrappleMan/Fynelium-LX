@@ -106,7 +106,7 @@ rotUpd
 # Kernel Arguments
 echo "Modifying kernel arguments"
 rot kargs \
-  --delete-if-present=rhgb \
+  --append-if-missing=rhgb \
   --append-if-missing=quiet \
   --append-if-missing=threadirqs \
   --append-if-missing=sysrq_always_enabled=0 \
