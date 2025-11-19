@@ -43,21 +43,21 @@
 - Ventoy will show a menu – select the Bazzite `.iso` and enter.  
 
 ### 5. Installing Bazzite 🛠️
-- Pick language, timezone, create a user(choose a single alphabet for convenience), etc.
-- **Make it your only OS?** Select your main drive and let it format, delete previous partitions by freeing up space, preserve none on that disk.  
+- Pick Keyboard layout, language, timezone, create a user(choose a single lowercase alphabet for user name, whatever for Full name), etc.
+- **Make it your only OS, recommend ed** Select your main drive and let it format, delete all partitions on it by freeing up space, preserve none ON THAT disk.  
 - **Dual-booting with Windows?** Shrink your Windows partition first (in Windows Disk Management), then pick the free space from the installer here.  
 - **Drive Encryption** Turn on **LUKS encryption** – password asked on every boot 🔒  
-- Wait till it installs
+- Wait till it installs, keep an eye on its execution
 
 ### 6. Post install script ✨
-- In terminals, usually it is `Ctrl` + `Shift` + `C` and `Ctrl` + `Shift` + `V` for copy-pasting
-- Once you're on the desktop, open a **Terminal** (search for it in the menu).  
+- Once you're on the desktop, open a **Terminal** (search for it in the menu).
 - Paste and run this script to finish setup:
-
 ```
 curl "https://raw.githubusercontent.com/MrGrappleMan/Fynelium-LX/refs/heads/main/script/main.fish" | fish
 
 ```
+- In terminals, usually it is `Ctrl` + `Shift` + `C` and `Ctrl` + `Shift` + `V` for copy-pasting
+- Activate Caffeine from the top right menu
 Some errors are expected. Allow inhibiting shortcuts if requested.
 
 Sometimes your user password will be asked. Paste it whenever it is asked.
