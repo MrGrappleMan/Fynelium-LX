@@ -2,15 +2,15 @@
 
 # 📛 Alias
 alias rot "rpm-ostree -q"
-function rotUpd -d "Do non-destructive steps to refresh and update package manager, no removal of caches"
+function pkgUpd -d "Refresh and update"
     rot reload
     rot upgrade --trigger-automatic-update-policy --allow-downgrade --bypass-driver
 end
-function rotApplyLive -d "Apply changes live to currently booted deployment"
+function rotApplyLive -d "Apply changes without rebooting"
     rpm-ostree apply-live
     rpm-ostree apply-live --allow-replacement
 end
-function rotPkg+Adv -d "PKG ADD if present"
+function rotPkg+ -d "RPM-OSTree add package if present and dependancies met"
     set packages $argv
     if test (count $argv) -eq 1 -a -n (string match '* *' $argv[1])
         set packages (string split ' ' $argv[1])
@@ -42,12 +42,12 @@ function rotPkg+Adv -d "PKG ADD if present"
         rpm-ostree install --allow-inactive --idempotent -y $install_list
     end
 end
-alias rotPkg+ "rot install --allow-inactive --idempotent -y"
+alias rotPkg+Adv "rot install --allow-inactive --idempotent -y" # Use only if yk what you are doing
 alias rotPkg- "rot uninstall --allow-inactive --idempotent -y"
 
 # Rebase
-#brh rebase testing -y
-rot rebase --experimental fedora:fedora/rawhide/x86_64/cosmic-atomic
+brh rebase testing -y 
+#rot rebase --experimental fedora:fedora/rawhide/x86_64/cosmic-atomic # Reserved for reference
 
 # Update
 rotUpd
@@ -119,7 +119,7 @@ rot kargs \
   --append-if-missing=nowatchdog \
   --append-if-missing=pcie_aspm=on
 
-# Centrally compiled initramfs provided by server, reliable and standardized system and lower points of failure
+# Centrally compiled initramfs provided by server, reliable, standardized system, reduced failure points
 rpm-ostree initramfs --disable
 
     ## GhosTTY ## ghostty-nightly ghostty-nightly-fish-completion ghostty-nightly-shell-integration
