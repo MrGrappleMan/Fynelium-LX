@@ -72,16 +72,17 @@ alias fpkPkg- "fpk uninstall -y --noninteractive --force-remove" # Package remov
    ##org.freedesktop.Platform org.gnome.Platform \
    ##org.freedesktop.Sdk org.gnome.Sdk
 
-  fpkPkg+ "com.rafaelmardojai.Blanket \
+  fpkPkg+ " \
+    com.rafaelmardojai.Blanket \
     io.github.flattool.Warehouse \
     edu.berkeley.BOINC \
     org.vinegarhq.Sober io.mrarm.mcpelauncher app.twintaillauncher.ttl com.heroicgameslauncher.hgl \
     rocks.shy.VacuumTube com.warlordsoftwares.youtube-downloader-4ktube io.github.ecotubehq.player \
-    com.microsoft.EdgeDev com.gopeed.Gopeed org.qbittorrent.qBittorrent \
+    com.microsoft.EdgeDev com.gopeed.Gopeed \
     com.ranfdev.DistroShelf org.gnome.Boxes rs.ruffle.Ruffle \
     io.github.brunofin.Cohesion \
     io.frama.tractor.carburetor \
-    com.visualstudio.code io.github.qwersyk.Newelle \
+    com.visualstudio.code com.visualstudio.code.tool.fish com.visualstudio.code.tool.podman io.github.qwersyk.Newelle \
     org.upscayl.Upscayl com.obsproject.Studio \
     org.telegram.desktop io.github.tobagin.karere dev.vencord.Vesktop \
     com.github.wwmm.easyeffects org.nickvision.cavalier"
