@@ -2,7 +2,7 @@
 
 # 📛 Alias
 alias rot "rpm-ostree -q"
-function pkgUpd -d "Refresh and update"
+function rotUpd -d "Refresh and update"
     rot reload
     rot upgrade --trigger-automatic-update-policy --allow-downgrade --bypass-driver
 end
