@@ -53,6 +53,7 @@ brh rebase testing -y
 rotUpd
 
 # PKG ADD
+   echo "Adding packages to RPM-OSTree"
    rotPkg+ "rust-zram-generator-devel systemd-swap preload \
     tlp tlp-rdw \
     kernel-modules-extra uutils-coreutils util-linux \
@@ -103,6 +104,7 @@ rotUpd
     ## Remote access ##
 
 # Kernel Arguments
+echo "Modifying kernel arguments"
 rot kargs \
   --delete-if-present=rhgb \
   --append-if-missing=quiet \
@@ -120,6 +122,7 @@ rot kargs \
   --append-if-missing=pcie_aspm=on
 
 # Centrally compiled initramfs provided by server, reliable, standardized system, reduced failure points
+echo Forcing mono reliant initramfs
 rpm-ostree initramfs --disable
 
     ## GhosTTY ## ghostty-nightly ghostty-nightly-fish-completion ghostty-nightly-shell-integration
