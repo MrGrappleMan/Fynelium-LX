@@ -1,7 +1,7 @@
 #!/usr/bin/env fish
 
 # 📛 Alias
-alias rot "rpm-ostree -q"
+alias rot "rpm-ostree"
 function rotUpd -d "Refresh and update"
     rot reload
     rot upgrade --trigger-automatic-update-policy --allow-downgrade --bypass-driver
