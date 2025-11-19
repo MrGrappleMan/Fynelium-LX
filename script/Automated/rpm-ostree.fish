@@ -46,8 +46,9 @@ alias rotPkg+Adv "rot install --allow-inactive --idempotent -y" # Use only if yk
 alias rotPkg- "rot uninstall --allow-inactive --idempotent -y"
 
 # Rebase
-brh rebase testing -y 
-#rot rebase --experimental fedora:fedora/rawhide/x86_64/cosmic-atomic # Reserved for reference
+#brh rebase bazzite-dx-gnome:latest -y
+rot rebase --experimental ostree-image-signed:docker://ghcr.io/ublue-os/bazzite-dx-gnome:latest
+#rot rebase --experimental fedora:fedora/rawhide/x86_64/cosmic-atomic # Do not use
 
 # Update
 rotUpd
