@@ -16,7 +16,7 @@
   systemctl unmask \
    shutdown.target reboot.target poweroff.target halt.target
 
-# 🟢 Enable at startup - reenables them for surity that the correct one is enabled by precedence set by developers
+# 🟢 Enable at startup - reenables them for surity that the correct one is enabled as per the precedence set by systemd's developers
   systemctl reenable \
    systemd-timesyncd \
    tlp \
