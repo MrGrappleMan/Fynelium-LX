@@ -66,12 +66,14 @@ alias fpkPkg- "fpk uninstall -y --noninteractive --force-remove" # Package remov
   fpkRep+ cosmic https://apt.pop-os.org/cosmic/cosmic.flatpakrepo
 
 # PKG ( - Removal )
-   flatpak uninstall -u --all -y --noninteractive --force-remove ## Keeping Flatpaks system wide standardizes location and saves storage, yet data stays separate for users.
+   flatpak uninstall -u --all -y --noninteractive --force-remove ## System wide Flatpaks standardize location and save storage, yet data stays separate for users.
    fpkPkg- \
      org.mozilla.firefox \
      com.google.Chrome
    
-   # Use "app.zen_browser.zen" over firefox
+   # Use "app.zen_browser.zen" over "org.mozilla.firefox" - Polished experience
+   # Use "com.google.ChromeDev" over "com.google.Chrome" - Faster updates
+
 # PKG ( + Install )
    ##fpkPkg+ "flathub-beta \
    ##org.freedesktop.Platform org.gnome.Platform \
@@ -87,11 +89,14 @@ alias fpkPkg- "fpk uninstall -y --noninteractive --force-remove" # Package remov
     com.ranfdev.DistroShelf org.gnome.Boxes rs.ruffle.Ruffle \
     io.github.brunofin.Cohesion \
     io.frama.tractor.carburetor \
-    com.visualstudio.code com.visualstudio.code.tool.fish com.visualstudio.code.tool.podman io.github.qwersyk.Newelle \
+    io.github.qwersyk.Newelle \
     org.upscayl.Upscayl com.obsproject.Studio \
     org.telegram.desktop io.github.tobagin.karere dev.vencord.Vesktop \
     com.github.wwmm.easyeffects org.nickvision.cavalier
 
-    fpkPkg+ "io.github.cosmic_utils.cosmic-ext-applet-clipboard-manager \
+# No using "com.visualstudio.code com.visualstudio.code.tool.fish com.visualstudio.code.tool.podman" - Bazzite-DX already has VSCode
+
+    fpkPkg+Adv cosmic \
+      io.github.cosmic_utils.cosmic-ext-applet-clipboard-manager \
       io.github.cosmic_utils.cosmic-ext-applet-external-monitor-brightness \
-      io.github.cosmic_utils.minimon-applet" "cosmic"
+      io.github.cosmic_utils.minimon-applet
