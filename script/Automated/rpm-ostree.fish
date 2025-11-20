@@ -67,12 +67,10 @@ rotUpd
     libei libei-utils \
     p7zip p7zip-plugins brotli \
     \
-    docker-cli docker-compose docker-compose-switch docker-buildx docker-buildkit \
     nodejs pnpm \
     rust cargo clippy \
     git gh \
-    cpp \
-    distcc distcc-server gcc gcc-c++ \
+    distcc distcc-server \
     java-latest-openjdk \
     libvirt-daemon-kvm qemu-kvm qemu-kvm-core \
     \
@@ -135,7 +133,10 @@ rpm-ostree initramfs --disable
       # aircrack-ng turbo-attack golang-github-redteampentesting-monsoon
      ## Artificial Intelligence:
       # ollama
-
+     ## Docker:
+      # docker-cli docker-compose docker-compose-switch docker-buildx docker-buildkit
+     ## C / C++:
+      # gcc gcc-c++ cpp
     ### Gaming:-
      ## Steam:
       # steam steam-devices
