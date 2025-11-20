@@ -10,7 +10,7 @@ function rotApplyLive -d "Apply changes without rebooting"
     rpm-ostree apply-live
     rpm-ostree apply-live --allow-replacement
 end
-function rotPkg+ -d "RPM-OSTree add package if present and dependancies met"
+function rotPkg+ -d "RPM-OSTree add package if present and dependancies met(deps met not implemented yet)"
     set packages $argv
     if test (count $argv) -eq 1 -a -n (string match '* *' $argv[1])
         set packages (string split ' ' $argv[1])
@@ -45,16 +45,16 @@ end
 alias rotPkg+Adv "rot install --allow-inactive --idempotent -y" # Use only if yk what you are doing
 alias rotPkg- "rot uninstall --allow-inactive --idempotent -y"
 
-# Rebase
-#brh rebase bazzite-dx-gnome:latest -y
-rot rebase --experimental ostree-image-signed:docker://ghcr.io/ublue-os/bazzite-dx-gnome:latest
-#rot rebase --experimental fedora:fedora/rawhide/x86_64/cosmic-atomic # Do not use
+# Rebase - to GNOME DX
+brh rebase bazzite-dx-gnome:latest -y # Great for general purpose development, productivity and gmaing. Most feature packed and well maintained.
+#rot rebase --experimental ostree-image-signed:docker://ghcr.io/ublue-os/bazzite-dx-gnome:latest # 
+#rot rebase --experimental fedora:fedora/rawhide/x86_64/cosmic-atomic # Do not use, just for reference
 
 # Update
 rotUpd
 
 # PKG ADD
-   echo "Adding packages to RPM-OSTree"
+   echo "Adding packages to RPM-OSTree, this may take time. Zero trust upon whatever packages that even the maintainer inserts, for safeguards."
    rotPkg+ "rust-zram-generator-devel systemd-swap preload \
     tlp tlp-rdw \
     kernel-modules-extra uutils-coreutils util-linux \
@@ -102,9 +102,14 @@ rotUpd
     ## Remote access ##
 
 # Kernel Arguments
+# No RHBG = faster boot, even if not by much
+# Quiet suppresses unnecessary dialogs
+# SysRq not required for average user
+# Force Bluetooth ERTM - modern technology, enhances efficiency
+# ZSwap - Can sometimes serve as a very useful fallback to prevent OOM crashes. Lifespan not reduced by a lot on NVMe SSDs
 echo "Modifying kernel arguments"
 rot kargs \
-  --append-if-missing=rhgb \
+  --delete-if-present=rhgb \
   --append-if-missing=quiet \
   --append-if-missing=threadirqs \
   --append-if-missing=sysrq_always_enabled=0 \
@@ -115,11 +120,12 @@ rot kargs \
   --delete-if-present=nomodeset \
   --append-if-missing=loglevel=3 \
   --append-if-missing=preempt=full \
-  --append-if-missing=zswap.enabled=0 \
+  --append-if-missing=zswap.enabled=1 \
+  --delete-if-present=zswap.enabled=0 \
   --append-if-missing=nowatchdog \
   --append-if-missing=pcie_aspm=on
 
-# Centrally compiled initramfs provided by server, reliable, standardized system, reduced failure points
+# InitRAMFS - Centrally compiled provided, reliable, standardized system, reduced failure points
 echo Forcing mono reliant initramfs
 rpm-ostree initramfs --disable
 
