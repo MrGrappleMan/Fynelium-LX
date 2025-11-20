@@ -5,8 +5,8 @@ alias fpk "flatpak --system" # Main alias
 alias fpkUpd "fpk update -y" # Updation
 alias fpkRep+ "fpk remote-add --if-not-exists" # Repository add
 alias fpkRep- "fpk remote-delete --force" # Repository remove
-function fpkPkg+ -d "Flatpak add packages with additional checks"
-    set -l remote flathub  # Change if you use a different primary remote
+function fpkPkg+ -d "Flatpak add packages with additional checks, right now incomplete"
+    set -l remote $argv[2]
     set packages $argv
     if test (count $argv) -eq 1 -a -n (string match '* *' $argv[1])
         set packages (string split ' ' $argv[1])
@@ -41,11 +41,12 @@ function fpkPkg+ -d "Flatpak add packages with additional checks"
         flatpak install -y --noninteractive --or-update --system $remote $install_list
     end
 end
+alias fpkPkg+Adv "flatpak install -y --noninteractive --or-update --system"
 alias fpkPkg- "fpk uninstall -y --noninteractive --force-remove" # Package remove
 
-# REP -
+# REP ( - Removal )
 
-# REP +
+# REP ( + Install )
   fpkRep+ flathub https://flathub.org/repo/flathub.flatpakrepo
   fpkRep+ flathub-beta https://flathub.org/beta-repo/flathub-beta.flatpakrepo
   ###fpkRep+ eos-sdk https://ostree.endlessm.com/ostree/eos-sdk
@@ -64,30 +65,33 @@ alias fpkPkg- "fpk uninstall -y --noninteractive --force-remove" # Package remov
   fpkRep+ kde-runtime-nightly https://cdn.kde.org/flatpak/kde-runtime-nightly/kde-runtime-nightly.flatpakrepo
   fpkRep+ cosmic https://apt.pop-os.org/cosmic/cosmic.flatpakrepo
 
-# PKG - ## Keeping Flatpaks system wide tandardizes location and saves storage, yet data stays separate for users.
-  flatpak uninstall -u --all -y --noninteractive --force-remove
-
-# PKG +
-  ##fpkPkg+ flathub-beta \
+# PKG ( - Removal )
+   flatpak uninstall -u --all -y --noninteractive --force-remove ## Keeping Flatpaks system wide standardizes location and saves storage, yet data stays separate for users.
+   fpkPkg- \
+     org.mozilla.firefox \
+     com.google.Chrome
+   
+   # Use "app.zen_browser.zen" over firefox
+# PKG ( + Install )
+   ##fpkPkg+ "flathub-beta \
    ##org.freedesktop.Platform org.gnome.Platform \
-   ##org.freedesktop.Sdk org.gnome.Sdk
+   ##org.freedesktop.Sdk org.gnome.Sdk" "flathub-beta"
 
-  fpkPkg+ " \
+  fpkPkg+Adv flathub \
     com.rafaelmardojai.Blanket \
     io.github.flattool.Warehouse \
     edu.berkeley.BOINC \
     org.vinegarhq.Sober io.mrarm.mcpelauncher app.twintaillauncher.ttl com.heroicgameslauncher.hgl \
     rocks.shy.VacuumTube com.warlordsoftwares.youtube-downloader-4ktube io.github.ecotubehq.player \
-    com.microsoft.EdgeDev com.gopeed.Gopeed \
+    com.google.ChromeDev com.gopeed.Gopeed \
     com.ranfdev.DistroShelf org.gnome.Boxes rs.ruffle.Ruffle \
     io.github.brunofin.Cohesion \
     io.frama.tractor.carburetor \
     com.visualstudio.code com.visualstudio.code.tool.fish com.visualstudio.code.tool.podman io.github.qwersyk.Newelle \
     org.upscayl.Upscayl com.obsproject.Studio \
     org.telegram.desktop io.github.tobagin.karere dev.vencord.Vesktop \
-    com.github.wwmm.easyeffects org.nickvision.cavalier"
+    com.github.wwmm.easyeffects org.nickvision.cavalier
 
-    fpkPkg+ cosmic \
-      io.github.cosmic_utils.cosmic-ext-applet-clipboard-manager \
+    fpkPkg+ "io.github.cosmic_utils.cosmic-ext-applet-clipboard-manager \
       io.github.cosmic_utils.cosmic-ext-applet-external-monitor-brightness \
-      io.github.cosmic_utils.minimon-applet
+      io.github.cosmic_utils.minimon-applet" "cosmic"
