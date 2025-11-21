@@ -46,7 +46,7 @@ alias rotPkg+Adv "rot install --allow-inactive --idempotent -y" # Use only if yk
 alias rotPkg- "rot uninstall --allow-inactive --idempotent -y"
 
 # Rebase - to GNOME DX
-brh rebase bazzite-dx-gnome:latest -y # Great for general purpose development, productivity and gmaing. Most feature packed and well maintained.
+brh rebase bazzite-dx-gnome:latest -y # Great for general purpose development, productivity and gmaing. Most feature packed and well maintained - ignoring the bleeding edge-ness, but you can easily revert.
 #rot rebase --experimental ostree-image-signed:docker://ghcr.io/ublue-os/bazzite-dx-gnome:latest # 
 #rot rebase --experimental fedora:fedora/rawhide/x86_64/cosmic-atomic # Do not use, just for reference
 
