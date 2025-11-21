@@ -91,7 +91,7 @@ alias fpkPkg- "fpk uninstall -y --noninteractive --force-remove" # Package remov
     io.frama.tractor.carburetor \
     io.github.qwersyk.Newelle \
     org.upscayl.Upscayl com.obsproject.Studio \
-    org.telegram.desktop io.github.tobagin.karere dev.vencord.Vesktop \
+    org.telegram.desktop com.rtosta.zapzap dev.vencord.Vesktop \
     com.github.wwmm.easyeffects org.nickvision.cavalier
 
 # No using "com.visualstudio.code com.visualstudio.code.tool.fish com.visualstudio.code.tool.podman" - Bazzite-DX already has VSCode
