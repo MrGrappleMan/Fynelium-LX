@@ -2,6 +2,7 @@
 Description=⚛️ Science United / BOINC - help scientific research projects by giving them idle computing power
 Documentation=https://scienceunited.org/ man:boinc(1) https://boinc.berkeley.edu/
 Wants=vboxdrv.service network-online.target
+After=vboxdrv.service network-online.target
 StartLimitBurst=5
 StartLimitIntervalSec=300
 
