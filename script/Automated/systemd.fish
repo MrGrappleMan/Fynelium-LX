@@ -20,11 +20,12 @@
   systemctl reenable \
    systemd-timesyncd \
    tlp \
-   uupd.timer uupd rpm-ostree-countme.timer rpm-ostree-countme \
+   uupd.timer rpm-ostree-countme.timer \
    fstrim.timer btrfs-dedup@var-home.timer \
    systemd-bsod \
    sshd tailscaled tor \
    preload systemd-zram-setup@zram0
 
 # 🟥 Disable at startup
-  # systemctl disable
+  systemctl disable \
+   uupd rpm-ostree-countme
