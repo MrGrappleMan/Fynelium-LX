@@ -45,7 +45,8 @@ end
 alias rotPkg+Adv "rot install --allow-inactive --idempotent -y" # Use only if yk what you are doing
 alias rotPkg- "rot uninstall --allow-inactive --idempotent -y"
 
-# Rebase - to GNOME DX
+# Rebase - to Bazzite GNOME DX
+echo "⎋ Attempting rebase to Bazzite Dev Experience - GNOME"
 brh rebase bazzite-dx-gnome:latest -y # Great for general purpose development, productivity and gmaing. Most feature packed and well maintained - ignoring the bleeding edge-ness, but you can easily revert.
 #rot rebase --experimental ostree-image-signed:docker://ghcr.io/ublue-os/bazzite-dx-gnome:latest # 
 #rot rebase --experimental fedora:fedora/rawhide/x86_64/cosmic-atomic # Do not use, just for reference
@@ -54,7 +55,7 @@ brh rebase bazzite-dx-gnome:latest -y # Great for general purpose development, p
 rotUpd
 
 # PKG ADD
-   echo "Adding packages to RPM-OSTree, this may take time. Zero trust upon whatever packages that even the maintainer inserts, for safeguards."
+   echo "🢷 Adding packages to RPM-OSTree, this may take time. Zero trust upon whatever packages that even the maintainer inserts, for safeguards."
    rotPkg+ "rust-zram-generator-devel systemd-swap preload \
     tlp tlp-rdw \
     kernel-modules-extra uutils-coreutils util-linux \
@@ -67,6 +68,7 @@ rotUpd
     libei libei-utils \
     p7zip p7zip-plugins brotli \
     \
+    ollama gemini-cli \
     nodejs pnpm \
     rust cargo clippy \
     git gh \
@@ -74,8 +76,8 @@ rotUpd
     java-latest-openjdk \
     libvirt-daemon-kvm qemu-kvm qemu-kvm-core \
     \
-    plymouth plymouth-core-libs plymouth-graphic-libs plymouth-kcm plymouth-scripts \
     cosmic-epoch cosmic-desktop xdg-desktop-portal-cosmic initial-setup-gui-wayland-cosmic cosmic-greeter cosmic-comp cosmic-app-library cosmic-applets cosmic-edit cosmic-idle cosmic-osd cosmic-session cosmic-settings cosmic-settings-daemon cosmic-store fedora-release-cosmic-atomic cosmic-config-fedora greetd \
+    mission-center \
     \
     hblock \
     qbittorrent persepolis \
@@ -105,7 +107,7 @@ rotUpd
 # SysRq not required for average user
 # Force Bluetooth ERTM - modern technology, enhances efficiency
 # ZSwap - Can sometimes serve as a very useful fallback to prevent OOM crashes. Lifespan not reduced by a lot on NVMe SSDs
-echo "Modifying kernel arguments"
+echo "🗣️ Modifying kernel arguments"
 rot kargs \
   --delete-if-present=rhgb \
   --append-if-missing=quiet \
@@ -124,15 +126,13 @@ rot kargs \
   --append-if-missing=pcie_aspm=on
 
 # InitRAMFS - Centrally compiled provided, reliable, standardized system, reduced failure points
-echo Forcing mono reliant initramfs
+echo Forcing universal initramfs
 rpm-ostree initramfs --disable
 
     ## GhosTTY ## ghostty-nightly ghostty-nightly-fish-completion ghostty-nightly-shell-integration
 
      ## Penetration testing / Hacking:
       # aircrack-ng turbo-attack golang-github-redteampentesting-monsoon
-     ## Artificial Intelligence:
-      # ollama
      ## Docker:
       # docker-cli docker-compose docker-compose-switch docker-buildx docker-buildkit
      ## C / C++:
