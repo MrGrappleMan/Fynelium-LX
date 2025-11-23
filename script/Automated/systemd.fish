@@ -16,9 +16,10 @@
   systemctl unmask \
    shutdown.target reboot.target poweroff.target halt.target
 
-# 🟢 Enable at startup - reenables them for surity that the correct one is enabled as per the precedence set by systemd's developers
+# 🟢 Enable at startup - reenable ensures that precedence set by Systemd's developers is followed
   systemctl reenable \
    systemd-timesyncd \
+   podman \
    tlp \
    uupd.timer rpm-ostree-countme.timer \
    fstrim.timer btrfs-dedup@var-home.timer \
