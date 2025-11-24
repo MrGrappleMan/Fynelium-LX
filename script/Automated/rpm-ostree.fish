@@ -78,6 +78,7 @@ rotUpd
     \
     cosmic-epoch cosmic-desktop xdg-desktop-portal-cosmic initial-setup-gui-wayland-cosmic cosmic-greeter cosmic-comp cosmic-app-library cosmic-applets cosmic-edit cosmic-idle cosmic-osd cosmic-session cosmic-settings cosmic-settings-daemon cosmic-store fedora-release-cosmic-atomic cosmic-config-fedora greetd \
     mission-center \
+    google-chrome-canary \
     \
     hblock \
     qbittorrent persepolis \
