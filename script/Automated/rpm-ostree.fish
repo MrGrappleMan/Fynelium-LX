@@ -71,6 +71,7 @@ rotUpd
     p7zip p7zip-plugins brotli \
     \
     ollama gemini-cli \
+    code-insiders \
     nodejs pnpm \
     rust cargo clippy \
     git gh \
