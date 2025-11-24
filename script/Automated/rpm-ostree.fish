@@ -65,6 +65,8 @@ rotUpd
     flatseal flatpak-selinux flatpak-session-helper xdg-desktop-portal flatpak-libs libportal host-spawn \
     dnf-plugins-core etckeeper-dnf dnf-repo dnfdaemon dnfdaemon-selinux fedora-repos fedora-repos-rawhide fedora-repos-ostree fedora-gpg-keys \
     \
+    mcpelauncher-manifest mcpelauncher-ui-manifest msa-manifest \
+    \
     libei libei-utils \
     p7zip p7zip-plugins brotli \
     \
