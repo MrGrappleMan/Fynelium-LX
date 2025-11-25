@@ -20,9 +20,9 @@
 
 ### 1. Get Bazzite installer ISO 🍓
 
-- [Regular](https://download.bazzite.gg/bazzite-stable-amd64.iso)
-- [Nvidia](https://download.bazzite.gg/bazzite-nvidia-open-stable-amd64.iso)
-- [Nvidia old](https://download.bazzite.gg/bazzite-nvidia-stable-amd64.iso)
+- [Regular](https://download.bazzite.gg/bazzite-gnome-stable-amd64.iso)
+- [Nvidia](https://download.bazzite.gg/bazzite-gnome-nvidia-open-stable-amd64.iso)
+- [Nvidia GTX 9xx-10xx Series](https://download.bazzite.gg/bazzite-gnome-nvidia-stable-amd64.iso)
 
 ### 2. Setup Ventoy on an external drive 🔌 - **Warning**: data will be wiped!
 - Grab a spare USB drive (minimum 8GB, bigger is better).
