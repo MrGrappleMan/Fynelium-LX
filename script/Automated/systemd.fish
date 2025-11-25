@@ -19,6 +19,7 @@
 # 🟢 Enable at startup - reenable ensures that precedence set by Systemd's developers is followed
   systemctl reenable \
    systemd-timesyncd \
+   gdm \
    podman \
    tlp \
    uupd.timer rpm-ostree-countme.timer \
