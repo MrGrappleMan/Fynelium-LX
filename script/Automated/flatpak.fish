@@ -69,7 +69,10 @@ alias fpkPkg- "fpk uninstall -y --noninteractive --force-remove" # Package remov
    flatpak uninstall -u --all -y --noninteractive --force-remove ## System wide Flatpaks standardize location and save storage, yet data stays separate for users.
    fpkPkg- \
      org.mozilla.firefox \
-     com.google.Chrome
+     com.google.Chrome \
+     com.github.tchx84.Flatseal \
+     com.obsproject.Studio \
+     io.missioncenter.MissionCenter
    
    # Use "app.zen_browser.zen" over "org.mozilla.firefox" - Polished experience
    # Use "com.google.ChromeDev" over "com.google.Chrome" - Faster updates
