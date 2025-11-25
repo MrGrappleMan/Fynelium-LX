@@ -111,7 +111,8 @@ rotUpd
 # Quiet suppresses unnecessary dialogs
 # SysRq not required for average user
 # Force Bluetooth ERTM - modern technology, enhances efficiency
-# ZSwap - Can sometimes serve as a very useful fallback to prevent OOM crashes. Lifespan not reduced by a lot on NVMe SSDs
+# ZSwap >> ZRAM - Serves as a very efficient fallback to prevent OOM crashes. Lifespan not reduced by a lot on NVMe SSDs
+
 echo "🗣️ Modifying kernel arguments"
 rot kargs \
   --delete-if-present=rhgb \
@@ -125,6 +126,8 @@ rot kargs \
   --delete-if-present=nomodeset \
   --append-if-missing=loglevel=3 \
   --append-if-missing=preempt=full \
+  --delete-if-present=systemd.zram=1 \
+  --append-if-missing=systemd.zram=0 \
   --append-if-missing=zswap.enabled=1 \
   --delete-if-present=zswap.enabled=0 \
   --append-if-missing=nowatchdog \
