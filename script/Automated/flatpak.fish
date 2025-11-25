@@ -89,7 +89,7 @@ alias fpkPkg- "fpk uninstall -y --noninteractive --force-remove" # Package remov
     io.github.brunofin.Cohesion \
     io.frama.tractor.carburetor \
     io.github.qwersyk.Newelle \
-    org.upscayl.Upscayl com.obsproject.Studio \
+    org.upscayl.Upscayl \
     org.telegram.desktop com.rtosta.zapzap dev.vencord.Vesktop \
     com.github.wwmm.easyeffects org.nickvision.cavalier
 
