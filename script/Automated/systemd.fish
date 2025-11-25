@@ -25,7 +25,7 @@
    fstrim.timer btrfs-dedup@var-home.timer \
    systemd-bsod \
    sshd tailscaled tor \
-   preload systemd-zram-setup@zram0
+   preload
 
 # 🟥 Disable at startup
   systemctl disable \
