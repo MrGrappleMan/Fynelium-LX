@@ -1,6 +1,6 @@
 [Unit]
-Description=🔄️ UUpd, Updates system to get possible latest changes, bug fixes, security patches
-After=network-online.target uupd.service
+Description=🔄️ Fyn-sysfresh, tries to do what UUpd can't
+After=network-online.target
 Wants=network-online.target
 
 [Timer]
