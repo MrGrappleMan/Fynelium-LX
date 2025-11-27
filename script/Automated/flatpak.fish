@@ -2,7 +2,6 @@
 
 # 📛 Alias
 alias fpk "flatpak --system" # Main alias
-alias fpkUpd "fpk update -y" # Updation
 alias fpkRep+ "fpk remote-add --if-not-exists" # Repository add
 alias fpkRep- "fpk remote-delete --force" # Repository remove
 function fpkPkg+ -d "Flatpak add packages with additional checks, right now incomplete"
