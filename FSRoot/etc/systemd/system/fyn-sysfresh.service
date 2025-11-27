@@ -1,1 +1,24 @@
+[Unit]
+Description=🔄️ Fyn-sysfresh, tries to do what UUpd can't
+After=network-online.target
+Wants=network-online.target
+StartLimitBurst=3
+StartLimitIntervalSec=600
 
+[Service]
+Type=oneshot
+ExecStart=/op/fyn-scripts/sysfresh.fish
+User=root
+
+# CommonSnippet - Daemons
+IOSchedulingClass=2
+IOSchedulingPriority=7
+Nice=19
+Restart=on-failure
+RestrictRealtime=false
+RestartSec=60
+StartLimitBurst=5
+StartLimitIntervalSec=300
+
+[Install]
+WantedBy=multi-user.target
