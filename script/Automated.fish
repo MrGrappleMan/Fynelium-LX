@@ -15,7 +15,7 @@ cd /tmp/
 rm -rf /tmp/Fynelium-LX
 mkdir -p /tmp/Fynelium-LX
 git clone https://github.com/MrGrappleMan/Fynelium-LX.git /tmp/Fynelium-LX/
-/tmp/Fynelium-LX/
+cd /tmp/Fynelium-LX/
 
 # FS Copy over
 echo Copying over additions to filesystem
