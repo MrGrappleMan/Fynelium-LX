@@ -9,7 +9,7 @@ cd /tmp/
 rm -rf /tmp/Fynelium-LX
 mkdir -p /tmp/Fynelium-LX
 git clone https://github.com/MrGrappleMan/Fynelium-LX.git /tmp/Fynelium-LX/
-/tmp/Fynelium-LX/
+cd /tmp/Fynelium-LX/
 
 cp -r /tmp/Fynelium-LX/FSRoot/etc/* /etc/
 cp -r /tmp/Fynelium-LX/FSRoot/var/* /var/
