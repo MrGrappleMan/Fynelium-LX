@@ -1,15 +1,17 @@
 [Unit]
-Description=🔄️ Updates the system for having access to the latest changes and potential bug fixes and security patches
-After=network-online.target systemd-udev-settle.service dbus.service systemd-journald.service
-Wants=network-online.target systemd-udev-settle.service
+Description=🔄️ UUpd, Updates system to get possible latest changes, bug fixes, security patches
+After=network-online.target
+Wants=network-online.target
 StartLimitBurst=3
 StartLimitIntervalSec=600
 
 [Service]
 Type=oneshot
-ExecStart=/usr/bin/uupd --log-level debug --json --hw-check
+ExecStart=/usr/bin/uupd --log-level debug --json -c --quiet --diable-progress
 User=root
-# Set SELinux context unconfined as bootc requires some special perms for relabeling (idk about install_t????)
+# Minimum battery percent should be 35
+Environment="UUPD_BATTERY_MIN_PERCENT=35"
+# Set SELinux context unconfined as bootc requires some special perms for relabeling (install_t????)
 SELinuxContext=system_u:unconfined_r:unconfined_t:s0
 
 # CommonSnippet - Daemons
