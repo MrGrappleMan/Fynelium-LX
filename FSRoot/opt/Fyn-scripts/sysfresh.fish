@@ -26,8 +26,8 @@ timedatectl set-ntp true --no-ask-password
 
 rpm-ostree -q reload
 rpm-ostree -q upgrade --trigger-automatic-update-policy --allow-downgrade --bypass-driver
-rpm-ostree apply-live
 rpm-ostree apply-live --allow-replacement
+rpm-ostree apply-live
 rpm-ostree -q initramfs --disable
 
 # Flatpak
