@@ -1,15 +1,7 @@
 #!/usr/bin/env fish
 
 # 📛 Alias
-alias rot "rpm-ostree"
-function rotUpd -d "Refresh and update"
-    rot reload
-    rot upgrade --trigger-automatic-update-policy --allow-downgrade --bypass-driver
-end
-function rotApplyLive -d "Apply changes without rebooting"
-    rpm-ostree apply-live
-    rpm-ostree apply-live --allow-replacement
-end
+alias rot "rpm-ostree -q"
 function rotPkg+ -d "RPM-OSTree add package if present and dependancies met(deps met not implemented yet)"
     set packages $argv
     if test (count $argv) -eq 1 -a -n (string match '* *' $argv[1])
@@ -44,6 +36,11 @@ function rotPkg+ -d "RPM-OSTree add package if present and dependancies met(deps
 end
 alias rotPkg+Adv "rot install --allow-inactive --idempotent -y" # Use only if yk what you are doing
 alias rotPkg- "rot uninstall --allow-inactive --idempotent -y"
+
+# Cancel background transactions
+
+rot cancel
+
 
 # Rebase - to Bazzite GNOME DX
 echo "⎋ Attempting rebase to Bazzite Dev Experience - GNOME"
