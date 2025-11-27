@@ -34,7 +34,7 @@ chmod a+x /opt/mc-server/mc-server
 # Subexecution of sub-scripts that dont require user interaction. doubtful of ujust and flatpak
 echo Now executing subscripts
 
-fish /opt/Fyn-scipts/sysfresh.fish
+fish /opt/Fyn-scripts/sysfresh.fish
 fish /tmp/Fynelium-LX/script/Automated/rpm-ostree.fish
 fish /tmp/Fynelium-LX/script/Automated/flatpak.fish
 fish /tmp/Fynelium-LX/script/Automated/systemd.fish
