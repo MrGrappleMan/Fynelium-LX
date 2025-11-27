@@ -1,12 +1,17 @@
 [Unit]
-Description=🔄️ Updates the system for having access to the latest changes and potential bug fixes and security patches
+Description=🔄️ UUpd, Updates system to get possible latest changes, bug fixes, security patches
 After=network-online.target
 Wants=network-online.target
 
 [Timer]
-OnCalendar=daily
+# Fires 6 hours later, relative to previous run regardless of source
+# Timezone-immune
+# Thus, OnUnitInactiveSec is efficient
+
+# The Fedora Project's own documentation recommends updating "on an almost daily basis", as this uses rawhide repos
+
+OnUnitInactiveSec=6h
 Persistent=true
-AccuracySec=6h
 
 [Install]
 WantedBy=timers.target
