@@ -1,0 +1,11 @@
+[Unit]
+Description=🔄️ UUpd, Updates system to get possible latest changes, bug fixes, security patches
+After=network-online.target uupd.service
+Wants=network-online.target
+
+[Timer]
+OnUnitInactiveSec=6h
+Persistent=true
+
+[Install]
+WantedBy=timers.target
