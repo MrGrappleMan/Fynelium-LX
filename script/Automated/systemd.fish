@@ -5,9 +5,6 @@
 # ⌚ NTP
   nohup timedatectl set-ntp true --no-ask-password &
 
-# 🔃 Reload configurations
-  systemctl daemon-reload
-
 # 🫥 Mask - never run, even manually
   systemctl mask \
    systemd-rfkill systemd-rfkill.socket
@@ -22,7 +19,7 @@
    gdm \
    podman \
    tlp \
-   uupd.timer rpm-ostree-countme.timer \
+   uupd.timer rpm-ostree-countme.timer fyn-sysfresh.timer \
    fstrim.timer btrfs-dedup@var-home.timer \
    systemd-bsod \
    sshd tailscaled tor \
@@ -30,4 +27,4 @@
 
 # 🟥 Disable at startup
   systemctl disable \
-   uupd rpm-ostree-countme
+   uupd rpm-ostree-countme fyn-sysfresh
