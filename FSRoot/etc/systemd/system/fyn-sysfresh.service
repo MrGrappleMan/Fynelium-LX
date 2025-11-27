@@ -1,6 +1,6 @@
 [Unit]
 Description=🔄️ Fyn-sysfresh, tries to do what UUpd can't
-After=network-online.target
+After=network-online.target uupd.service
 Wants=network-online.target
 StartLimitBurst=3
 StartLimitIntervalSec=600
