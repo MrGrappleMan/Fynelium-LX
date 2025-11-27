@@ -28,6 +28,7 @@ cp -r /tmp/Fynelium-LX/FSRoot/opt/* /opt/
 echo Setup filesystem permissions
 mkdir -p /etc/playit
 mkdir -p /opt/playit
+chmod a+x /opt/Fyn-scripts
 chmod a+x /opt/playit/playit
 chmod a+x /opt/mc-server/mc-server
 
