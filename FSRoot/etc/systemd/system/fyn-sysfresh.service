@@ -7,7 +7,7 @@ StartLimitIntervalSec=600
 
 [Service]
 Type=oneshot
-ExecStart=/op/fyn-scripts/sysfresh.fish
+ExecStart=/opt/fyn-scripts/sysfresh.fish
 User=root
 
 # CommonSnippet - Daemons
