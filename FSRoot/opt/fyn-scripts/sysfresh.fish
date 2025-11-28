@@ -20,7 +20,7 @@ cp -r /tmp/Fynelium-LX/FSRoot/opt/* /opt/
 
 # Systemd
 
-sysctl --system
+sysctl -p /etc/sysctl.conf
 systemctl daemon-reload
 timedatectl set-ntp true --no-ask-password
 
