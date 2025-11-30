@@ -20,9 +20,8 @@ cp -r /tmp/Fynelium-LX/FSRoot/opt/* /opt/
 
 # Systemd
 
-sysctl -p /etc/sysctl.conf
+sysctl --system
 systemctl daemon-reload
-timedatectl set-ntp true --no-ask-password
 
 # RPM-OSTree
 
@@ -30,8 +29,7 @@ rpm-ostree -q reload
 rpm-ostree -q upgrade --trigger-automatic-update-policy --allow-downgrade --bypass-driver
 rpm-ostree apply-live --allow-replacement
 rpm-ostree apply-live
-rpm-ostree -q initramfs --disable
 
 # Flatpak
 
-flatpak --system update -y --force-remove --appstream --noninteractive
+flatpak --system update -y --force-remove --noninteractive
