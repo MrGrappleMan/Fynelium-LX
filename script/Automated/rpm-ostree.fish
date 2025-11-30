@@ -38,9 +38,7 @@ alias rotPkg+Adv "rot install --allow-inactive --idempotent -y" # Use only if yk
 alias rotPkg- "rot uninstall --allow-inactive --idempotent -y"
 
 # Cancel background transactions
-
 rot cancel
-
 
 # Rebase - to Bazzite GNOME DX
 echo "⎋ Attempting rebase to Bazzite Dev Experience - GNOME"
@@ -79,7 +77,7 @@ rotUpd
     cosmic-epoch cosmic-desktop xdg-desktop-portal-cosmic initial-setup-gui-wayland-cosmic cosmic-greeter cosmic-comp cosmic-app-library cosmic-applets cosmic-edit cosmic-idle cosmic-osd cosmic-session cosmic-settings cosmic-settings-daemon cosmic-store fedora-release-cosmic-atomic cosmic-config-fedora greetd \
     mission-center \
     google-chrome-canary \
-    obs-studio obs-studio-libs obs-studio-plugin-browser obs-studio-plugin-vaapi obs-studio-plugin-vkcapture obs-studio-plugin-droidcam \
+    obs-studio obs-studio-libs obs-studio-plugin-browser \
     \
     hblock \
     qbittorrent persepolis \
@@ -102,6 +100,8 @@ rotUpd
     ## Networking ##
     ## Containerization, Orchestration, Virtualization, Emulation ##
     ## Remote access ##
+
+#obs-studio-plugin-vaapi obs-studio-plugin-vkcapture obs-studio-plugin-droidcam
 
 # Kernel Arguments
 # No RHBG = faster boot, even if not by much
@@ -130,9 +130,9 @@ rot kargs \
   --append-if-missing=nowatchdog \
   --append-if-missing=pcie_aspm=on
 
-# InitRAMFS - Centrally compiled provided, reliable, standardized system, reduced failure points
-echo Forcing universal initramfs
-rpm-ostree initramfs --disable
+# initramfs
+echo InitRAMFS - Centrally compiled provided, reliable, standardized system, reduced failure points
+rpm-ostree -q initramfs --disable
 
     ## GhosTTY ## ghostty-nightly ghostty-nightly-fish-completion ghostty-nightly-shell-integration
 
