@@ -2,6 +2,8 @@
 
 # ⚜️ System-D: The core of Linux for its functioning and handling essential system functions, beside being just an init system
 
+timedatectl set-ntp true --no-ask-password
+
 # 🫥 Mask - never run, even manually
   systemctl mask \
    systemd-rfkill systemd-rfkill.socket
