@@ -92,10 +92,11 @@ alias fpkPkg- "fpk uninstall -y --noninteractive --force-remove" # Package remov
     io.frama.tractor.carburetor \
     io.github.qwersyk.Newelle \
     org.upscayl.Upscayl \
-    org.telegram.desktop com.rtosta.zapzap dev.vencord.Vesktop \
+    org.telegram.desktop io.github.tobagin.karere dev.vencord.Vesktop \
     com.github.wwmm.easyeffects org.nickvision.cavalier
 
-# No using "com.visualstudio.code com.visualstudio.code.tool.fish com.visualstudio.code.tool.podman" - Bazzite-DX already has VSCode
+# Although more feature rich, "com.rtosta.zapzap" has several inconsitencies and higher resource consumption. "io.github.tobagin.karere" just works well with native libraries
+# No using VSCode flatpaks "com.visualstudio.code com.visualstudio.code.tool.fish com.visualstudio.code.tool.podman" - Bazzite-DX already has it
 
     fpkPkg+Adv cosmic \
       io.github.cosmic_utils.cosmic-ext-applet-clipboard-manager \
