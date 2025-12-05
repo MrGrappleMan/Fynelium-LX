@@ -52,7 +52,6 @@ rotUpd
 # PKG ADD
    echo "🢷 Adding packages to RPM-OSTree, this may take time. Zero trust upon whatever packages that even the maintainer inserts, for safeguards."
    rotPkg+ "rust-zram-generator-devel systemd-swap preload \
-    tlp tlp-rdw \
     kernel-modules-extra uutils-coreutils util-linux \
     boinc-client boinc-client-static \
     \
