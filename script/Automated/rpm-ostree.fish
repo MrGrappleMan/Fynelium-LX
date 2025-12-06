@@ -103,11 +103,14 @@ rotUpd
 #obs-studio-plugin-vaapi obs-studio-plugin-vkcapture obs-studio-plugin-droidcam
 
 # Kernel Arguments
-# No RHBG = faster boot, even if not by much
-# Quiet suppresses unnecessary dialogs
+# (x) rhgb - faster boot, even if not by much
+# quiet - Suppresses unnecessary dialogs
 # SysRq not required for average user
-# Force Bluetooth ERTM - modern technology, enhances efficiency
+# bluetooth.disable_ertm=0 - modern technology, enhances efficiency
 # ZSwap >> ZRAM - Serves as a very efficient fallback to prevent OOM crashes. Lifespan not reduced by a lot on NVMe SSDs
+# preempt=full - Dynamic Preempt: full
+# nowatchdog - no system watchdog
+# threadirqs - threaded irqs have dynamic Priority Management, unlike hard irqs
 
 echo "🗣️ Modifying kernel arguments"
 rot kargs \
@@ -117,15 +120,15 @@ rot kargs \
   --append-if-missing=sysrq_always_enabled=0 \
   --append-if-missing=consoleblank=0 \
   --delete-if-present=profile \
-  --delete-if-present=bluetooth.disable_ertm=1 \
-  --append-if-missing=bluetooth.disable_ertm=0 \
+  --delete-if-present=bluetooth.disable_ertm=1 --append-if-missing=bluetooth.disable_ertm=0 \
   --delete-if-present=nomodeset \
   --append-if-missing=loglevel=3 \
   --append-if-missing=preempt=full \
-  --delete-if-present=systemd.zram=1 \
-  --append-if-missing=systemd.zram=0 \
-  --append-if-missing=zswap.enabled=1 \
-  --delete-if-present=zswap.enabled=0 \
+  --delete-if-present=systemd.zram=1 --append-if-missing=systemd.zram=0 \
+  --append-if-missing=zswap.enabled=1 --delete-if-present=zswap.enabled=0 \
+  --append-if-missing=zswap.shrinker_enabled=Y --delete-if-present=zswap.shrinker_enabled=N \
+  --append-if-missing=zswap.zpool=zsmalloc \
+  --append-if-missing=zswap.compressor=lzo \
   --append-if-missing=nowatchdog \
   --append-if-missing=pcie_aspm=on
 
