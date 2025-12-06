@@ -3,9 +3,9 @@
 clear
 # RootCheck
 if fish_is_root_user
-    echo "Is root user, proceeding..."
+    echo
 else
-    echo "Not running as root! You are supposed to run this as root"
+    echo "Run this subscript as root!"
     exit
 end
 
