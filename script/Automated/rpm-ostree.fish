@@ -67,7 +67,7 @@ rotUpd
     ollama gemini-cli \
     code-insiders \
     nodejs pnpm \
-    rust cargo clippy \
+    rust cargo rustup clippy \
     git gh \
     distcc distcc-server \
     java-latest-openjdk \
@@ -75,6 +75,7 @@ rotUpd
     \
     cosmic-epoch cosmic-desktop xdg-desktop-portal-cosmic initial-setup-gui-wayland-cosmic cosmic-greeter cosmic-comp cosmic-app-library cosmic-applets cosmic-edit cosmic-idle cosmic-osd cosmic-session cosmic-settings cosmic-settings-daemon cosmic-store fedora-release-cosmic-atomic cosmic-config-fedora greetd \
     mission-center \
+    thunar featherpad \
     google-chrome-canary \
     obs-studio obs-studio-libs obs-studio-plugin-browser \
     \
