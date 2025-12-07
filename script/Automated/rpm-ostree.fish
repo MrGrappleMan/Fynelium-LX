@@ -73,7 +73,7 @@ rotUpd
     java-latest-openjdk \
     libvirt-daemon-kvm qemu-kvm qemu-kvm-core \
     \
-    warp-terminal warp-cli \
+    warp-terminal \
     cosmic-epoch cosmic-desktop xdg-desktop-portal-cosmic initial-setup-gui-wayland-cosmic cosmic-greeter cosmic-comp cosmic-app-library cosmic-applets cosmic-edit cosmic-idle cosmic-osd cosmic-session cosmic-settings cosmic-settings-daemon cosmic-store fedora-release-cosmic-atomic cosmic-config-fedora greetd \
     mission-center \
     thunar featherpad \
@@ -103,6 +103,7 @@ rotUpd
     ## Remote access ##
 
 #obs-studio-plugin-vaapi obs-studio-plugin-vkcapture obs-studio-plugin-droidcam
+#warp-cli conflicts with warp-terminal(it already includes warp-cli)
 
 # Kernel Arguments
 # (x) rhgb - faster boot, even if not by much
