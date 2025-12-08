@@ -48,6 +48,8 @@ brh rebase bazzite-dx-gnome:latest -y # Great for general purpose development, p
 
 # Update
 rotUpd
+# PKG DEL
+  rotPkg- tlp tlp-rdw
 
 # PKG ADD
    echo "🢷 Adding packages to RPM-OSTree, this may take time. Zero trust upon whatever packages that even the maintainer inserts, for safeguards."
