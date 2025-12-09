@@ -4,6 +4,7 @@ After=network-online.target
 Wants=network-online.target
 
 [Timer]
+OnBootSec=20min
 OnUnitInactiveSec=6h
 Persistent=true
 
