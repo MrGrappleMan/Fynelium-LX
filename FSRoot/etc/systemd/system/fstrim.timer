@@ -5,6 +5,7 @@ ConditionVirtualization=!container
 ConditionPathExists=!/etc/initrd-release
 
 [Timer]
+OnBootSec=1h
 OnUnitInactiveSec=6h
 Persistent=true
 
