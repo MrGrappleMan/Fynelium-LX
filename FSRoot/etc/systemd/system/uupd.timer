@@ -4,11 +4,16 @@ After=network-online.target
 Wants=network-online.target
 
 [Timer]
-# Fires 6 hours later, relative to previous run regardless of source
-# Timezone-immune
-# Thus, OnUnitInactiveSec is efficient
+# The Fedora Project's own docs suggest updating "on an almost daily basis", and this uses rawhide repos
 
-# The Fedora Project's own documentation recommends updating "on an almost daily basis", as this uses rawhide repos
+# If the service state is lost or it has never run, this guarantees the first run, providing a reference timestamp for OnUnitInactiveSec
+OnBootSec=20min
+
+# Fires 6 hours later, relative to previous run regardless of source
+# Timezone-immune. OnUnitInactiveSec is efficient than OnCalendar
+# Relative to the time last ran, not the wall clock
+# If a service unit never deactivates because it crashes or hangs indefinitely, the OnUnitInactiveSec timer will not restart
+# it automatically because the inactive state is never reached. This can definitely cause issues.
 
 OnUnitInactiveSec=6h
 Persistent=true
