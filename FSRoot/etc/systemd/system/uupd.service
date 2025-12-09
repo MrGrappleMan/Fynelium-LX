@@ -7,10 +7,10 @@ StartLimitIntervalSec=600
 
 [Service]
 Type=oneshot
-ExecStart=/usr/bin/uupd --log-level debug --json -c --quiet --diable-progress
+ExecStart=/usr/bin/uupd --log-level debug --json -c --quiet --disable-progress
 User=root
-# Minimum battery percent should be 35
-Environment="UUPD_BATTERY_MIN_PERCENT=35"
+# Minimum battery percent should be 65
+Environment="UUPD_BATTERY_MIN_PERCENT=65"
 # Set SELinux context unconfined as bootc requires some special perms for relabeling (install_t????)
 SELinuxContext=system_u:unconfined_r:unconfined_t:s0
 
