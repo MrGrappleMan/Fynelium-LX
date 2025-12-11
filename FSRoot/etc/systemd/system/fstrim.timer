@@ -4,10 +4,12 @@ Documentation=man:fstrim
 ConditionVirtualization=!container
 ConditionPathExists=!/etc/initrd-release
 
+# Daily execution is enough, hourly is for datacenter type machines. daily is excessive but still is ok as compared to previous 6 hourly
+
 [Timer]
-OnBootSec=1h
-OnUnitInactiveSec=6h
 Persistent=true
+OnCalendar=daily UTC
+AccuracySec=23h
 
 [Install]
 WantedBy=timers.target
