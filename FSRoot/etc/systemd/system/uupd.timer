@@ -6,17 +6,23 @@ Wants=network-online.target
 [Timer]
 # The Fedora Project's own docs suggest updating "on an almost daily basis", and this uses rawhide repos
 
-# If the service state is lost or it has never run, this guarantees the first run, providing a reference timestamp for OnUnitInactiveSec
-OnBootSec=20min
+# Method A: - Better suited, efficient
+# AccuracySec=23h - allows timers to be auto-rescheduled and coalesced within the NEXT(+ not +-) 23 hours to prevent unnecessary CPU wake-ups
+# Persistent=true - opportunistically runs the target if the time to be ran is due
+# OnCalendar=daily UTC - run once atleast per day, and this can be forced to follow a specific timezone, here UTC
+Persistent=true
+OnCalendar=daily UTC
+AccuracySec=23h
 
-# Fires 6 hours later, relative to previous run regardless of source
-# Timezone-immune. OnUnitInactiveSec is efficient than OnCalendar
+# Method B: - Accurate, but unnecessary contextual reliance
+# Fires 6 hours later, relative to previous run of the service
 # Relative to the time last ran, not the wall clock
 # If a service unit never deactivates because it crashes or hangs indefinitely, the OnUnitInactiveSec timer will not restart
-# it automatically because the inactive state is never reached. This can definitely cause issues.
-
-OnUnitInactiveSec=6h
-Persistent=true
+# it automatically because the inactive state is never reached. This can definitely cause issues, so OnBootSec can help resolve that by providing a definite time.
+# If the service state is lost or it has never run, this guarantees the first run, providing a reference timestamp for OnUnitInactiveSec
+#OnBootSec=20min
+#OnUnitInactiveSec=12h
+#Persistent=true
 
 [Install]
 WantedBy=timers.target
