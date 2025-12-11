@@ -6,9 +6,9 @@ Wants=network-online.target
 After=network-online.target
 
 [Timer]
-OnBootSec=20min
-OnUnitInactiveSec=6h
 Persistent=true
+OnCalendar=daily UTC
+AccuracySec=23h
 
 [Install]
 WantedBy=timers.target
