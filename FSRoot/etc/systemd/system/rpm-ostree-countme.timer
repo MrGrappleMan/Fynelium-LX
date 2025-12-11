@@ -5,6 +5,9 @@ ConditionPathExists=/run/ostree-booted
 Wants=network-online.target
 After=network-online.target
 
+# Daily has greater, accurate count compared to weekly. Compensates and lets devs know how much people actually keep Linux on their device and remove it right after.
+# just an approximation
+
 [Timer]
 Persistent=true
 OnCalendar=daily UTC
