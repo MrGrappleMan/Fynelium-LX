@@ -1,17 +1,17 @@
 [Unit]
-Description=⌚️ RPM-OSTree component that anonymously tracks the approximate age of the system installation, no personal info sent
+Description=⌚️ RPM-OSTree component that anonymously tracks the appx. system age, no personal info sent
 Documentation=man:rpm-ostree-countme.timer(8)
 ConditionPathExists=/run/ostree-booted
 Wants=network-online.target
 After=network-online.target
 
-# Daily has greater, accurate count compared to weekly. Compensates and lets devs know how much people actually keep Linux on their device and remove it right after.
-# just an approximation
+# 8h has greater, accurate count compared to weekly. Compensates very minor energy yet lets devs know how much people actually keep 
+# Linux on their device and remove it right after. just an approximation
 
 [Timer]
 Persistent=true
-OnCalendar=daily UTC
-AccuracySec=23h
+OnCalendar=00,08,16:00:00 UTC UTC
+AccuracySec=8h
 
 [Install]
 WantedBy=timers.target
