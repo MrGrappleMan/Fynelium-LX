@@ -16,11 +16,7 @@ StateDirectoryMode=750
 ExecStart=rpm-ostree countme
 
 # CommonSnippet - Daemons
-IOSchedulingClass=2
-IOSchedulingPriority=7
-Nice=19
 Restart=on-failure
-RestrictRealtime=false
 RestartSec=60
 
 [Install]
