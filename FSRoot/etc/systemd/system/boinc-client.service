@@ -1,8 +1,8 @@
 [Unit]
 Description=⚛️ Science United / BOINC - help scientific research projects by giving them idle computing power
 Documentation=https://scienceunited.org/ man:boinc(1) https://boinc.berkeley.edu/
-Wants=vboxdrv.service network-online.target
-After=vboxdrv.service network-online.target
+Wants=podman.service vboxdrv.service network-online.target
+After=network-online.target
 StartLimitBurst=5
 StartLimitIntervalSec=300
 
@@ -18,9 +18,9 @@ ExecStart=/usr/bin/boinc --no_gui_rpc
 ExecStop=/usr/bin/boinccmd --quit
 ExecReload=/usr/bin/boinccmd --read_cc_config
 ExecStopPost=/usr/bin/rm -f lockfile
+IOSchedulingClass=idle
 
 # CommonSnippet - Daemons
-IOSchedulingClass=2
 IOSchedulingPriority=7
 Nice=19
 Restart=on-failure
