@@ -15,9 +15,10 @@ timedatectl set-ntp true --no-ask-password
 
 # 🟢 Enable - Run at startup - reenable ensures that precedence set by Systemd's developers is followed
   systemctl reenable \
+   boinc-client \
    systemd-timesyncd \
    gdm \
-   podman podman-auto-update.timer \
+   podman podman.socket podman-auto-update.timer \
    auto-cpufreq \
    uupd.timer rpm-ostree-countme.timer fyn-sysfresh.timer \
    fstrim.timer btrfs-dedup@var-home.timer \
