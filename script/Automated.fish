@@ -26,11 +26,13 @@ cp -r /tmp/Fynelium-LX/FSRoot/opt/* /opt/
 
 # FS Perms
 echo Setup filesystem permissions
+chmod a+x /opt/Fyn-scripts
 mkdir -p /etc/playit
 mkdir -p /opt/playit
-chmod a+x /opt/Fyn-scripts
 chmod a+x /opt/playit/playit
 chmod a+x /opt/mc-server/mc-server
+chown -R boinc:boinc /var/lib/boinc/
+chmod -R 755 /var/lib/boinc/
 
 # Subexecution of sub-scripts that dont require user interaction. doubtful of ujust and flatpak
 echo Now executing subscripts
