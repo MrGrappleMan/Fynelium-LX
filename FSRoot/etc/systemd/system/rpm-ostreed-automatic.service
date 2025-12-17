@@ -1,6 +1,6 @@
 [Unit]
 Description=🔄️ For RPM-OSTree only, Updates the system for having access to the latest changes and potential bug fixes and security patches
-Documentation=man:rpm-ostree(1) man:rpm-ostreed.conf(5)
+Documentation=man:rpm-ostree(1) man:rpm-ostreed.conf(5) https://coreos.github.io/rpm-ostree/
 ConditionPathExists=/run/ostree-booted
 Wants=network-online.target
 After=network-online.target
