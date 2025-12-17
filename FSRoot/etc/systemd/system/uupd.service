@@ -1,6 +1,7 @@
 [Unit]
 Description=🔄️ UUpd, Updates system to get possible latest changes, bug fixes, security patches
-After=network-online.target
+Documentation=https://github.com/ublue-os/uupd
+After=network-online.target 
 Wants=network-online.target
 StartLimitBurst=3
 StartLimitIntervalSec=600
@@ -21,8 +22,10 @@ Nice=19
 Restart=on-failure
 RestrictRealtime=false
 RestartSec=60
-StartLimitBurst=5
-StartLimitIntervalSec=300
+
+# CommonSnippet - Daemons
+Restart=on-failure
+RestartSec=60
 
 [Install]
 WantedBy=multi-user.target
