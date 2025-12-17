@@ -18,11 +18,11 @@ ExecStart=/usr/bin/boinc --no_gui_rpc
 ExecStop=/usr/bin/boinccmd --quit
 ExecReload=/usr/bin/boinccmd --read_cc_config
 ExecStopPost=/usr/bin/rm -f lockfile
-IOSchedulingClass=idle
+IOSchedulingClass=3
+CPUSchedulingPolicy=idle
+Nice=19
 
 # CommonSnippet - Daemons
-IOSchedulingPriority=7
-Nice=19
 Restart=on-failure
 RestrictRealtime=false
 RestartSec=60
