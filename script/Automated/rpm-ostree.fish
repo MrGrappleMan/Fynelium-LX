@@ -55,7 +55,7 @@ rotUpd
    echo "🢷 Adding packages to RPM-OSTree, this may take time. Zero trust upon whatever packages that even the maintainer inserts, for safeguards."
    rotPkg+ "rust-zram-generator-devel systemd-swap preload \
     kernel-modules-extra uutils-coreutils util-linux \
-    boinc-client boinc-client-static \
+    boinc-client boinc-client-static boinc-manager \
     \
     snapd \
     flatseal flatpak-selinux flatpak-session-helper xdg-desktop-portal flatpak-libs libportal host-spawn \
@@ -133,9 +133,11 @@ rot kargs \
   --append-if-missing=zswap.enabled=1 --delete-if-present=zswap.enabled=0 \
   --append-if-missing=zswap.shrinker_enabled=Y --delete-if-present=zswap.shrinker_enabled=N \
   --append-if-missing=zswap.zpool=zsmalloc \
-  --append-if-missing=zswap.compressor=lzo \
+  --append-if-missing=zswap.compressor=zstd \
   --append-if-missing=nowatchdog \
   --append-if-missing=pcie_aspm=on
+
+# lz4 > lzo in terms of efficiency and modernity. zstd fine for speed but great for balanced usage. brotli is unsuitable for this, as content is dynamic.
 
 # initramfs
 echo InitRAMFS - Centrally compiled provided, reliable, standardized system, reduced failure points
