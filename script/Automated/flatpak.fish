@@ -84,7 +84,6 @@ alias fpkPkg- "fpk uninstall -y --noninteractive --force-remove" # Package remov
   fpkPkg+Adv flathub \
     com.rafaelmardojai.Blanket \
     io.github.flattool.Warehouse \
-    edu.berkeley.BOINC \
     org.vinegarhq.Sober app.twintaillauncher.ttl com.heroicgameslauncher.hgl \
     rocks.shy.VacuumTube com.warlordsoftwares.youtube-downloader-4ktube io.github.ecotubehq.player \
     com.ranfdev.DistroShelf org.gnome.Boxes rs.ruffle.Ruffle \
