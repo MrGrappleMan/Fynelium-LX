@@ -6,8 +6,7 @@ timedatectl set-ntp true --no-ask-password
 
 # 🫥 Mask - never run
   systemctl mask \
-   systemd-rfkill systemd-rfkill.socket \
-   tlp
+   systemd-rfkill systemd-rfkill.socket
 
 # 🙂 Unmask - allow to run
   systemctl unmask \
