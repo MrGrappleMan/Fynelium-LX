@@ -1,7 +1,7 @@
 #!/usr/bin/env fish
 
 # 📛 Alias
-alias rot "rpm-ostree -q"
+alias rot "rpm-ostree"
 function rotPkg+ -d "RPM-OSTree add package if present(dependancy checks not implemented yet)"
     set packages $argv
     if test (count $argv) -eq 1 -a -n (string match '* *' $argv[1])
@@ -79,6 +79,7 @@ brh rebase bazzite-dx-gnome:latest -y # Great for general purpose development, p
     thunar featherpad \
     google-chrome-canary \
     obs-studio obs-studio-libs obs-studio-plugin-browser \
+    krita krita-libs \
     \
     hblock \
     qbittorrent persepolis \
