@@ -2,7 +2,7 @@
 
 # 📛 Alias
 alias rot "rpm-ostree -q"
-function rotPkg+ -d "RPM-OSTree add package if present and dependancies met(deps met not implemented yet)"
+function rotPkg+ -d "RPM-OSTree add package if present(dependancy checks not implemented yet)"
     set packages $argv
     if test (count $argv) -eq 1 -a -n (string match '* *' $argv[1])
         set packages (string split ' ' $argv[1])
@@ -34,28 +34,26 @@ function rotPkg+ -d "RPM-OSTree add package if present and dependancies met(deps
         rpm-ostree install --allow-inactive --idempotent -y $install_list
     end
 end
-alias rotPkg+Adv "rot install --allow-inactive --idempotent -y" # Use only if yk what you are doing
+alias rotPkg+Adv "rot install --allow-inactive --idempotent -y" # Use if you know the package exists and there won't be dependency conflicts
 alias rotPkg- "rot uninstall --allow-inactive --idempotent -y"
 
 # Cancel background transactions
 rot cancel
 
 # Rebase - to Bazzite GNOME DX
-echo "⎋ Attempting rebase to Bazzite Dev Experience - GNOME"
-brh rebase bazzite-dx-gnome:latest -y # Great for general purpose development, productivity and gmaing. Most feature packed and well maintained - ignoring the bleeding edge-ness, but you can easily revert.
-#rot rebase --experimental ostree-image-signed:docker://ghcr.io/ublue-os/bazzite-dx-gnome:latest # 
+echo "⎋ Rebase to Bazzite Dev Experience - GNOME desktop base image"
+brh rebase bazzite-dx-gnome:latest -y # Great for general purpose development, productivity and gaming. Most feature packed and well maintained - ignoring the bleeding edge-ness, but you can easily revert.
+#rot rebase --experimental ostree-image-signed:docker://ghcr.io/ublue-os/bazzite-dx-gnome:latest # Same outcome, but different method
 #rot rebase --experimental fedora:fedora/rawhide/x86_64/cosmic-atomic # Do not use, just for reference
 
-# Update
-rotUpd
 # PKG DEL
-  rotPkg- tlp tlp-rdw
 
 # PKG ADD
    echo "🢷 Adding packages to RPM-OSTree, this may take time. Zero trust upon whatever packages that even the maintainer inserts, for safeguards."
    rotPkg+ "rust-zram-generator-devel systemd-swap preload \
     kernel-modules-extra uutils-coreutils util-linux \
     boinc-client boinc-client-static boinc-manager \
+    tlp tlp-rdw \
     \
     snapd \
     flatseal flatpak-selinux flatpak-session-helper xdg-desktop-portal flatpak-libs libportal host-spawn \
@@ -105,14 +103,14 @@ rotUpd
     ## Remote access ##
 
 #obs-studio-plugin-vaapi obs-studio-plugin-vkcapture obs-studio-plugin-droidcam
-#warp-cli conflicts with warp-terminal(it already includes warp-cli)
+# warp-cli conflicts warp-terminal(it already includes warp-cli)
 
 # Kernel Arguments
-# (x) rhgb - faster boot, even if not by much
+# (n) rhgb - faster boot, even if not by much
 # quiet - Suppresses unnecessary dialogs
 # SysRq not required for average user
 # bluetooth.disable_ertm=0 - modern technology, enhances efficiency
-# ZSwap >> ZRAM - Serves as a very efficient fallback to prevent OOM crashes. Lifespan not reduced by a lot on NVMe SSDs
+# zswap > (n) zram - Serves as a very efficient fallback to prevent OOM crashes. Lifespan not reduced by a lot on NVMe SSDs
 # preempt=full - Dynamic Preempt: full
 # nowatchdog - no system watchdog
 # threadirqs - threaded irqs have dynamic Priority Management, unlike hard irqs
