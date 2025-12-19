@@ -11,8 +11,8 @@ Wants=network-online.target
 # Persistent=true - opportunistically runs the target if the time to be ran is due
 # OnCalendar=daily UTC - attempt to run 4 times day, and this can be forced to follow a specific timezone, here UTC
 Persistent=true
-OnCalendar=00,06,12,18:00:00 UTC
-AccuracySec=6h
+OnCalendar=00,04,08,12,16,20:00:00 UTC
+AccuracySec=4h
 
 # Method B: - Accurate, but unnecessary contextual reliance
 # Fires 6 hours later, relative to previous run of the service
