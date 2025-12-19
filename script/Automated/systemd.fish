@@ -19,7 +19,7 @@ timedatectl set-ntp true --no-ask-password
    systemd-timesyncd \
    gdm \
    podman podman.socket podman-auto-update.timer \
-   auto-cpufreq \
+   auto-cpufreq tlp \
    uupd.timer rpm-ostree-countme.timer fyn-sysfresh.timer \
    fstrim.timer btrfs-dedup@var-home.timer \
    systemd-bsod \
@@ -30,6 +30,5 @@ timedatectl set-ntp true --no-ask-password
   systemctl disable \
    uupd rpm-ostree-countme fyn-sysfresh \
    rpm-ostreed-automatic rpm-ostreed-automatic.timer \
-   tlp \
    docker docker.socket \
    podman-auto-update
