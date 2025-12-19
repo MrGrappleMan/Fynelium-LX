@@ -121,7 +121,7 @@ rot kargs \
   --delete-if-present=rhgb \
   --append-if-missing=quiet \
   --append-if-missing=threadirqs \
-  --append-if-missing=sysrq_always_enabled=0 \
+  --append-if-missing=sysrq_always_enabled=1 --delete-if-present=sysrq_always_enabled=0 \
   --append-if-missing=consoleblank=0 \
   --delete-if-present=profile \
   --delete-if-present=bluetooth.disable_ertm=1 --append-if-missing=bluetooth.disable_ertm=0 \
@@ -132,11 +132,12 @@ rot kargs \
   --append-if-missing=zswap.enabled=1 --delete-if-present=zswap.enabled=0 \
   --append-if-missing=zswap.shrinker_enabled=Y --delete-if-present=zswap.shrinker_enabled=N \
   --append-if-missing=zswap.zpool=zsmalloc \
-  --append-if-missing=zswap.compressor=zstd \
+  --append-if-missing=zswap.compressor=lz4 --delete-if-present=zswap.compressor=lzo zswap.compressor=zstd \
   --append-if-missing=nowatchdog \
   --append-if-missing=pcie_aspm=on
 
-# lz4 > lzo in terms of efficiency and modernity. zstd fine for speed but great for balanced usage. brotli is unsuitable for this, as content is dynamic.
+# lz4 > lzo in terms of efficiency and modernity. zstd fine for speed but great for balanced usage. brotli is unsuitable for this, as memory content is dynamic.
+# lz4 overall lowest latency
 
 # initramfs
 echo InitRAMFS - Centrally compiled provided, reliable, standardized system, reduced failure points
