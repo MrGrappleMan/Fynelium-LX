@@ -6,7 +6,8 @@ timedatectl set-ntp true --no-ask-password
 
 # 🫥 Mask - never run
   systemctl mask \
-   systemd-rfkill systemd-rfkill.socket power-profiles-daemon
+   systemd-rfkill systemd-rfkill.socket power-profiles-daemon \
+   tlp
 
 # 🙂 Unmask - allow to run
   systemctl unmask \
@@ -18,7 +19,7 @@ timedatectl set-ntp true --no-ask-password
    systemd-timesyncd \
    gdm \
    podman podman.socket podman-auto-update.timer \
-   auto-cpufreq tlp \
+   auto-cpufreq \
    uupd.timer rpm-ostree-countme.timer fyn-sysfresh.timer \
    fstrim.timer btrfs-dedup@var-home.timer \
    systemd-bsod \
@@ -28,6 +29,7 @@ timedatectl set-ntp true --no-ask-password
 # 🟥 Disable - Do not run at startup
   systemctl disable \
    uupd rpm-ostree-countme fyn-sysfresh \
+   tlp \
    rpm-ostreed-automatic rpm-ostreed-automatic.timer \
    docker docker.socket \
    podman-auto-update
