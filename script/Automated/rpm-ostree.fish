@@ -151,7 +151,8 @@ brh rebase bazzite-dx-gnome:latest -y # Great for general purpose development, p
 # zswap > (n) zram - Serves as a very efficient fallback to prevent OOM crashes. Lifespan not reduced by a lot on NVMe SSDs
 # preempt=full - Dynamic Preempt: full
 # nowatchdog - no system watchdog
-# threadirqs - threaded irqs have dynamic Priority Management, unlike hard irqs
+# threadirqs - threaded irqs have dynamic priority management, unlike hard irqs
+# amd_pstate/intel_pstate - always better than acpi-cpufreq
 
 echo "🗣️ Modifying kernel arguments"
 rot kargs \
@@ -171,8 +172,11 @@ rot kargs \
   --append-if-missing=zswap.zpool=zsmalloc \
   --append-if-missing=zswap.compressor=lz4 --delete-if-present=zswap.compressor=lzo zswap.compressor=zstd \
   --append-if-missing=nowatchdog \
-  --append-if-missing=pcie_aspm=on
+  --append-if-missing=pcie_aspm=on \
+  --append-if-missing=amd_pstate=guided --append-if-missing=amd_pstate.enable=1 --append-if-missing=amd_pstate.shared_mem=1 \
+  --append-if-missing=intel_pstate=active --append-if-missing=intel_pstate.enable=1
 
+# intel_pstate=guided does not exist
 # lz4 > lzo in terms of efficiency and modernity. zstd fine for speed but great for balanced usage. brotli is unsuitable for this, as memory content is dynamic.
 # lz4 overall lowest latency
 
