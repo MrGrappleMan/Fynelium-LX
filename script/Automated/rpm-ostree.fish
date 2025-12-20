@@ -34,8 +34,8 @@ function rotPkg+ -d "RPM-OSTree add package if present(dependancy checks not imp
         rpm-ostree install --allow-inactive --idempotent -y $install_list
     end
 end
-alias rotPkg+Adv "rot install --allow-inactive --idempotent -y" # Use if you know the package exists and there won't be dependency conflicts
-alias rotPkg- "rot uninstall --allow-inactive --idempotent -y"
+alias rotPkg+Adv "rpm-ostree install --allow-inactive --idempotent -y" # Use if you know the package exists and there won't be dependency conflicts
+alias rotPkg- "rpm-ostree uninstall --allow-inactive --idempotent -y"
 
 # Cancel background transactions
 rot cancel
@@ -61,8 +61,7 @@ brh rebase bazzite-dx-gnome:latest -y # Great for general purpose development, p
    echo "🢷 Adding packages to RPM-OSTree, this may take time. Zero trust upon whatever packages that even the maintainer inserts, for safeguards."
    rotPkg+ "rust-zram-generator-devel systemd-swap preload \
     kernel-modules-extra uutils-coreutils util-linux \
-    boinc-client boinc-client-static boinc-manager \
-    tlp tlp-rdw \
+    boinc-client boinc-client-static \
     \
     snapd \
     flatseal flatpak-selinux flatpak-session-helper xdg-desktop-portal flatpak-libs libportal host-spawn \
@@ -112,8 +111,37 @@ brh rebase bazzite-dx-gnome:latest -y # Great for general purpose development, p
     ## Containerization, Orchestration, Virtualization, Emulation ##
     ## Remote access ##
 
+###### Reserved/reference pacakges:
+## CONFLICTS ##
+# warp-cli | warp-terminal ( it already includes warp-cli )
+# tlp, tlp-rdw | tuned-ppd, power-profiles-daemon ( architectural shift in tlp. great but inconvenient, therefore it conflicts with the base image, error: Checkout tlp-1.9.0-6.fc44.noarch: Hardlinking 22/4ea4cdcf902e721f5550bca4e5e6e1630672751aa0931cdad5634f7eb49201.file to net.hadess.PowerProfiles.service: File exists )
+
+## PORTS ## for GUI/applications that work better on other package managers
+# boinc-manager | fpk:edu.berkeley.BOINC
+
 #obs-studio-plugin-vaapi obs-studio-plugin-vkcapture obs-studio-plugin-droidcam
-# warp-cli conflicts warp-terminal(it already includes warp-cli)
+## GhosTTY ## ghostty-nightly ghostty-nightly-fish-completion ghostty-nightly-shell-integration
+
+     ## Pentesting / Hacking:
+      # aircrack-ng turbo-attack golang-github-redteampentesting-monsoon
+     ## Docker:
+      # docker-cli docker-compose docker-compose-switch docker-buildx docker-buildkit
+     ## C / C++:
+      # gcc gcc-c++ cpp
+    ### Gaming:-
+     ## Steam:
+      # steam steam-devices
+     ## Vavoom:
+      # vavoom vavoom-engine
+
+    ### Graphics:-
+     ## Mesa:
+      # mesa-va-drivers-freeworld mesa-vdpau-drivers-freeworld mesa-vulkan-drivers-freeworld
+      # mesa-dri-drivers
+      # mesa-va-drivers mesa-vdpau-drivers mesa-vulkan-drivers
+      # mesa-libOSMesa mesa-compat-libOSMesa
+     ## AMD: amd-gpu-firmware amd-ucode-firmware amdsmi am-utils
+     ## Nvidia: nvidia-gpu-firmware libva-nvidia-driver envytools nvidia-patch
 
 # Kernel Arguments
 # (n) rhgb - faster boot, even if not by much
@@ -151,26 +179,3 @@ rot kargs \
 # initramfs
 echo InitRAMFS - Centrally compiled provided, reliable, standardized system, reduced failure points
 rpm-ostree -q initramfs --disable
-
-    ## GhosTTY ## ghostty-nightly ghostty-nightly-fish-completion ghostty-nightly-shell-integration
-
-     ## Penetration testing / Hacking:
-      # aircrack-ng turbo-attack golang-github-redteampentesting-monsoon
-     ## Docker:
-      # docker-cli docker-compose docker-compose-switch docker-buildx docker-buildkit
-     ## C / C++:
-      # gcc gcc-c++ cpp
-    ### Gaming:-
-     ## Steam:
-      # steam steam-devices
-     ## Vavoom:
-      # vavoom vavoom-engine
-
-    ### Graphics:-
-     ## Mesa:
-      # mesa-va-drivers-freeworld mesa-vdpau-drivers-freeworld mesa-vulkan-drivers-freeworld
-      # mesa-dri-drivers
-      # mesa-va-drivers mesa-vdpau-drivers mesa-vulkan-drivers
-      # mesa-libOSMesa mesa-compat-libOSMesa
-     ## AMD: amd-gpu-firmware amd-ucode-firmware amdsmi am-utils
-     ## Nvidia: nvidia-gpu-firmware libva-nvidia-driver envytools nvidia-patch
