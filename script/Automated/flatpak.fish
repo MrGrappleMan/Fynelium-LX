@@ -73,8 +73,8 @@ alias fpkPkg- "fpk uninstall -y --noninteractive --force-remove" # Package remov
      com.obsproject.Studio \
      io.missioncenter.MissionCenter
    
-   # Use "app.zen_browser.zen" over "org.mozilla.firefox" - Polished experience
-   # Use "com.google.ChromeDev" over "com.google.Chrome" - Faster updates
+# Use "app.zen_browser.zen" over "org.mozilla.firefox" - Polished experience
+# Use "com.google.ChromeDev" over "com.google.Chrome" - Faster updates
 
 # PKG ( + Install )
    ##fpkPkg+ "flathub-beta \
@@ -83,6 +83,7 @@ alias fpkPkg- "fpk uninstall -y --noninteractive --force-remove" # Package remov
 
   fpkPkg+Adv flathub \
     com.rafaelmardojai.Blanket \
+    edu.berkeley.BOINC \
     io.github.flattool.Warehouse \
     org.vinegarhq.Sober app.twintaillauncher.ttl com.heroicgameslauncher.hgl \
     rocks.shy.VacuumTube com.warlordsoftwares.youtube-downloader-4ktube io.github.ecotubehq.player \
