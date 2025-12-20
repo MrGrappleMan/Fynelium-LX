@@ -49,6 +49,15 @@ brh rebase bazzite-dx-gnome:latest -y # Great for general purpose development, p
 # PKG DEL
 
 # PKG ADD
+
+### Notes:
+### Always update system before installing packages.
+### Manually creating systemd unit files in /etc/systemd/system/ can potentially cause an rpm-ostree hardlinking 
+### file exists error when you try to install the actual packages that provide those same files later. 
+### Systemd units placed in /etc/systemd/system/ are part of the mutable host configuration, 
+### which rpm-ostree attempts to manage or migrate across deployments. When a package providing the exact same 
+### file is introduced, the conflict occurs. It it happens, rename the doubtful one to *.bak, rpm-ostree operation goes here, rename to original.
+
    echo "🢷 Adding packages to RPM-OSTree, this may take time. Zero trust upon whatever packages that even the maintainer inserts, for safeguards."
    rotPkg+ "rust-zram-generator-devel systemd-swap preload \
     kernel-modules-extra uutils-coreutils util-linux \
