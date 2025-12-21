@@ -14,9 +14,9 @@ ProtectControlGroups=true
 ReadWritePaths=-/var/lib/boinc -/etc/boinc-client -/tmp -/var/tmp
 User=boinc
 WorkingDirectory=/var/lib/boinc
-ExecStart=/usr/bin/boinc --no_gui_rpc
+ExecStart=/usr/bin/boinc
 ExecStop=/usr/bin/boinccmd --quit
-ExecReload=/usr/bin/boinccmd --read_cc_config
+ExecReload=/usr/bin/boinccmd --read_cc_config --acct_mgr sync
 ExecStopPost=/usr/bin/rm -f lockfile
 # We want the user to have a good experience. BOINC is non-essential but appreciated to work in the background.
 # This provides a much smoother "QoS" type resource usage distribution.
