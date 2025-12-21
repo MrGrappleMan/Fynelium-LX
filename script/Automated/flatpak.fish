@@ -85,13 +85,12 @@ alias fpkPkg- "fpk uninstall -y --noninteractive --force-remove" # Package remov
     com.rafaelmardojai.Blanket \
     edu.berkeley.BOINC \
     io.github.flattool.Warehouse \
-    org.vinegarhq.Sober app.twintaillauncher.ttl com.heroicgameslauncher.hgl \
+    org.vinegarhq.Sober app.twintaillauncher.ttl com.heroicgameslauncher.hgl io.mrarm.mcpelauncher \
     rocks.shy.VacuumTube com.warlordsoftwares.youtube-downloader-4ktube io.github.ecotubehq.player \
     com.ranfdev.DistroShelf org.gnome.Boxes rs.ruffle.Ruffle \
-    io.github.brunofin.Cohesion \
-    io.frama.tractor.carburetor \
-    io.github.qwersyk.Newelle \
-    org.upscayl.Upscayl \
+    io.github.brunofin.Cohesion org.libreoffice.LibreOffice \
+    io.frama.tractor.carburetor com.termius.Termius dev.deedles.Trayscale \
+    io.github.qwersyk.Newelle org.upscayl.Upscayl \
     org.telegram.desktop io.github.tobagin.karere dev.vencord.Vesktop \
     com.github.wwmm.easyeffects org.nickvision.cavalier
 
