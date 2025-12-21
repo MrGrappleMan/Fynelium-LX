@@ -2,8 +2,8 @@
 
 # 📛 Alias
 alias fpk "flatpak --system" # Main alias
-alias fpkRep+ "fpk remote-add --if-not-exists" # Repository add
-alias fpkRep- "fpk remote-delete --force" # Repository remove
+alias fpkRep+ "flatpak --system remote-add --if-not-exists" # Repository add
+alias fpkRep- "flatpak --system remote-delete --force" # Repository remove
 function fpkPkg+ -d "Flatpak add packages with additional checks, right now incomplete"
     set -l remote $argv[2]
     set packages $argv
@@ -37,11 +37,11 @@ function fpkPkg+ -d "Flatpak add packages with additional checks, right now inco
         end
     end
     if test (count $install_list) -gt 0
-        flatpak install -y --noninteractive --or-update --system $remote $install_list
+        flatpak --system install -y --noninteractive --or-update $remote $install_list
     end
 end
-alias fpkPkg+Adv "flatpak install -y --noninteractive --or-update --system"
-alias fpkPkg- "fpk uninstall -y --noninteractive --force-remove" # Package remove
+alias fpkPkg+Adv "flatpak --system install -y --noninteractive --or-update"
+alias fpkPkg- "flatpak --system uninstall -y --noninteractive --force-remove" # Package remove
 
 # REP ( - Removal )
 
