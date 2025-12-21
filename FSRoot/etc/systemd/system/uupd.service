@@ -12,6 +12,10 @@ ExecStart=/usr/bin/uupd --log-level debug --json -c --quiet --disable-progress
 User=root
 # Minimum battery percent should be 65
 Environment="UUPD_BATTERY_MIN_PERCENT=65"
+# Only 95% of RAM can be consumed
+Environment="UUPD_MEMORY_MAX_PERCENT=90"
+# Only 85% of CPU time can be used
+Environment="UUPD_CPU_MAX_LOAD_PERCENT=85"
 # Set SELinux context unconfined as bootc requires some special perms for relabeling (install_t????)
 SELinuxContext=system_u:unconfined_r:unconfined_t:s0
 
@@ -19,9 +23,7 @@ SELinuxContext=system_u:unconfined_r:unconfined_t:s0
 IOSchedulingClass=2
 IOSchedulingPriority=7
 Nice=19
-Restart=on-failure
 RestrictRealtime=false
-RestartSec=60
 
 # CommonSnippet - Daemons
 Restart=on-failure
