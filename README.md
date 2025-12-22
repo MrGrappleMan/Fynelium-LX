@@ -56,7 +56,7 @@
 curl "https://raw.githubusercontent.com/MrGrappleMan/Fynelium-LX/refs/heads/main/script/main.fish" | fish
 
 ```
-- In terminals, usually it is `Ctrl` + `Shift` + `C` and `Ctrl` + `Shift` + `V` for copy-pasting
+- In terminals, `Ctrl + Shift + C` to copy and `Ctrl + Shift + V` to paste
 - Activate Caffeine from the top right menu
 Some errors are expected. Allow inhibiting shortcuts if requested.
 
