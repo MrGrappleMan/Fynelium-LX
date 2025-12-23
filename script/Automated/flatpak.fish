@@ -77,15 +77,15 @@ alias fpkPkg- "flatpak --system uninstall -y --noninteractive --force-remove" # 
 # Use "com.google.ChromeDev" over "com.google.Chrome" - Faster updates
 
 # PKG ( + Install )
-   ##fpkPkg+ "flathub-beta \
-   ##org.freedesktop.Platform org.gnome.Platform \
-   ##org.freedesktop.Sdk org.gnome.Sdk" "flathub-beta"
+   fpkPkg+Adv flathub-beta \
+   org.freedesktop.Platform org.gnome.Platform \
+   org.freedesktop.Sdk org.gnome.Sdk
 
   fpkPkg+Adv flathub \
     com.rafaelmardojai.Blanket \
     edu.berkeley.BOINC \
     io.github.flattool.Warehouse \
-    org.vinegarhq.Sober app.twintaillauncher.ttl com.heroicgameslauncher.hgl io.mrarm.mcpelauncher \
+    org.vinegarhq.Sober app.twintaillauncher.ttl com.heroicgameslauncher.hgl \
     rocks.shy.VacuumTube com.warlordsoftwares.youtube-downloader-4ktube io.github.ecotubehq.player \
     com.ranfdev.DistroShelf org.gnome.Boxes rs.ruffle.Ruffle \
     io.github.brunofin.Cohesion org.libreoffice.LibreOffice \
@@ -93,6 +93,9 @@ alias fpkPkg- "flatpak --system uninstall -y --noninteractive --force-remove" # 
     io.github.qwersyk.Newelle org.upscayl.Upscayl \
     org.telegram.desktop io.github.tobagin.karere dev.vencord.Vesktop \
     com.github.wwmm.easyeffects org.nickvision.cavalier
+
+  fpkPkg+Adv flathub-beta \
+    io.mrarm.mcpelauncher
 
 # Although more feature rich, "com.rtosta.zapzap" has several inconsitencies and higher resource consumption. "io.github.tobagin.karere" just works well with native libraries
 # No using VSCode flatpaks "com.visualstudio.code com.visualstudio.code.tool.fish com.visualstudio.code.tool.podman" - Bazzite-DX already has it
