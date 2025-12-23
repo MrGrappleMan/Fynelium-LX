@@ -1,7 +1,7 @@
 #!/usr/bin/env fish
 
 # 📛 Alias
-alias rot "rpm-ostree"
+alias rpm-ostree "rpm-ostree"
 function rotPkg+ -d "RPM-OSTree add package if present(dependancy checks not implemented yet)"
     set packages $argv
     if test (count $argv) -eq 1 -a -n (string match '* *' $argv[1])
@@ -38,13 +38,13 @@ alias rotPkg+Adv "rpm-ostree install --allow-inactive --idempotent -y" # Use if 
 alias rotPkg- "rpm-ostree uninstall --allow-inactive --idempotent -y"
 
 # Cancel background transactions
-rot cancel
+rpm-ostree cancel
 
 # Rebase - to Bazzite GNOME DX
 echo "⎋ Rebase to Bazzite Dev Experience - GNOME desktop base image"
 brh rebase bazzite-dx-gnome:latest -y # Great for general purpose development, productivity and gaming. Most feature packed and well maintained - ignoring the bleeding edge-ness, but you can easily revert.
-#rot rebase --experimental ostree-image-signed:docker://ghcr.io/ublue-os/bazzite-dx-gnome:latest # Same outcome, but different method
-#rot rebase --experimental fedora:fedora/rawhide/x86_64/cosmic-atomic # Do not use, just for reference
+#rpm-ostree rebase --experimental ostree-image-signed:docker://ghcr.io/ublue-os/bazzite-dx-gnome:latest # Same outcome, but different method
+#rpm-ostree rebase --experimental fedora:fedora/rawhide/x86_64/cosmic-atomic # Do not use, just for reference
 
 # PKG DEL
 
@@ -155,7 +155,7 @@ brh rebase bazzite-dx-gnome:latest -y # Great for general purpose development, p
 # amd_pstate/intel_pstate - always better than acpi-cpufreq
 
 echo "🗣️ Modifying kernel arguments"
-rot kargs \
+rpm-ostree kargs \
   --delete-if-present=rhgb \
   --append-if-missing=quiet \
   --append-if-missing=threadirqs \
@@ -170,11 +170,12 @@ rot kargs \
   --append-if-missing=zswap.enabled=1 --delete-if-present=zswap.enabled=0 \
   --append-if-missing=zswap.shrinker_enabled=Y --delete-if-present=zswap.shrinker_enabled=N \
   --append-if-missing=zswap.zpool=zsmalloc \
-  --append-if-missing=zswap.compressor=lz4 --delete-if-present=zswap.compressor=lzo zswap.compressor=zstd \
-  --append-if-missing=nowatchdog \
-  --append-if-missing=pcie_aspm=on \
-  --append-if-missing=amd_pstate=guided --append-if-missing=amd_pstate.enable=1 --append-if-missing=amd_pstate.shared_mem=1 \
-  --append-if-missing=intel_pstate=active --append-if-missing=intel_pstate.enable=1
+  --append-if-missing=zswap.compressor=lz4 --delete-if-present=zswap.compressor=lzo --delete-if-present=zswap.compressor=zstd \
+  --append-if-missing=nowatchdog --append-if-missing=clocksource=tsc \
+  --append-if-missing=pcie_aspm=on --delete-if-present=pcie_aspm=off \
+  --append-if-missing=amd_pstate=guided --append-if-missing=amd_pstate.enable=1 --delete-if-present=amd_pstate.enable=0 --append-if-missing=amd_pstate.shared_mem=1 \
+  --append-if-missing=intel_pstate=active --append-if-missing=intel_pstate.enable=1 --delete-if-present=intel_pstate.enable=0 \
+  --append-if-missing=amdgpu.sg_display=1
 
 # intel_pstate=guided does not exist
 # lz4 > lzo in terms of efficiency and modernity. zstd fine for speed but great for balanced usage. brotli is unsuitable for this, as memory content is dynamic.
