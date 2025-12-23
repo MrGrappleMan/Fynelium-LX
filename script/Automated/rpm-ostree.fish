@@ -144,15 +144,31 @@ brh rebase bazzite-dx-gnome:latest -y # Great for general purpose development, p
      ## Nvidia: nvidia-gpu-firmware libva-nvidia-driver envytools nvidia-patch
 
 # Kernel Arguments
-# (n) rhgb - faster boot, even if not by much
-# quiet - Suppresses unnecessary dialogs
-# SysRq not required for average user
-# bluetooth.disable_ertm=0 - modern technology, enhances efficiency
-# zswap > (n) zram - Serves as a very efficient fallback to prevent OOM crashes. Lifespan not reduced by a lot on NVMe SSDs
-# preempt=full - Dynamic Preempt: full
-# nowatchdog - no system watchdog
-# threadirqs - threaded irqs have dynamic priority management, unlike hard irqs
-# amd_pstate/intel_pstate - always better than acpi-cpufreq
+# 🛠️ UNIVERSAL KERNEL ARGUMENT EXPLANATIONS
+# (n) rhgb                   # 🚫 Disabled: Red Hat Graphical Boot hides boot logs; disabling allows visibility into service failures.
+# quiet                      # 🤫 Enabled: Suppresses non-critical kernel messages, reducing console I/O overhead and visual clutter.
+# threadirqs                 # 🧵 Enabled: Moves hardware interrupt handlers into threads, allowing the scheduler to prioritize tasks.
+# sysrq_always_enabled=1     # 🔑 Enabled: Provides a low-level interface to rescue a frozen system (e.g., REISUB), regardless of UI state.
+# consoleblank=180           # 🖥️ Enabled: Prevents the physical console (TTY) from causing display burn in and energy efficiency; essential for display longevity
+# (n) profile                # 🚫 Disabled: Stops the kernel from collecting profiling data, saving a small amount of CPU cycles.
+# bluetooth.disable_ertm=0   # 📶 Enabled: Enables Enhanced Retransmission Mode; required for full compatibility with modern BT peripherals.
+# (n) nomodeset              # 🚫 Disabled: Allows the kernel to use high-performance GPU drivers (KMS) instead of slow VESA fallbacks.
+# loglevel=3                 # 📉 Enabled: Limits logging to 'Error' level; prevents the 'dmesg' buffer from being flooded by minor warnings.
+# preempt=full               # ⚡ Enabled: Allows the kernel to be interrupted more aggressively; improves desktop and audio responsiveness.
+# systemd.zram=0             # 🛑 Disabled: Turns off zram (compressed RAM disk) to avoid conflicts when using zswap.
+# zswap.enabled=1            # 🗜️ Enabled: Intercepts pages moving to swap and compresses them in RAM to reduce physical Disk I/O.
+# zswap.shrinker_enabled=Y   # ♻️ Enabled: Automatically evicts the coldest compressed pages to disk when RAM is needed elsewhere.
+# zswap.zpool=zsmalloc       # 🏗️ Enabled: Uses a highly efficient memory allocator that reduces fragmentation in compressed memory pools.
+# zswap.compressor=lz4       # 🚀 Enabled: Prioritizes decompression speed over compression ratio; ideal for modern high-frequency CPUs.
+# nowatchdog                 # 🐕 Enabled: Disables the 'hang' detector; frees up a hardware timer and prevents NMI-related latency spikes.
+# clocksource=tsc            # ⏱️ Enabled: Forces the 'Time Stamp Counter'; the lowest latency method for the OS to track time on x86.
+# pcie_aspm=on               # 🍃 Enabled: Enables Active State Power Management; allows PCIe links to enter low-power states when idle.
+# amd_pstate=guided          # 💎 Enabled: Requests the hardware to manage its own clock speeds based on workload, rather than OS-fixed steps.
+# amd_pstate.enable=1        # ✅ Enabled: Activates the modern AMD P-State driver for finer-grained power/performance control on Zen CPUs.
+# amd_pstate.shared_mem=1    # 🧠 Enabled: Allows the CPU and OS to communicate via shared memory for faster frequency transitions.
+# intel_pstate=active        # 🏎️ Enabled: Uses Intel's hardware-managed P-states (HWP) for superior efficiency compared to legacy ACPI.
+# amdgpu.sg_display=1        # 📽️ Enabled: Enables Scatter/Gather display; allows the GPU to use non-contiguous memory for frame buffers.
+# pci=realloc=on             # 🗺️ Enabled: Allows the kernel to re-map PCI resources if the BIOS didn't allocate enough space (BAR).
 
 echo "🗣️ Modifying kernel arguments"
 rpm-ostree kargs \
@@ -160,7 +176,7 @@ rpm-ostree kargs \
   --append-if-missing=quiet \
   --append-if-missing=threadirqs \
   --append-if-missing=sysrq_always_enabled=1 --delete-if-present=sysrq_always_enabled=0 \
-  --append-if-missing=consoleblank=0 \
+  --append-if-missing=consoleblank=180 \
   --delete-if-present=profile \
   --delete-if-present=bluetooth.disable_ertm=1 --append-if-missing=bluetooth.disable_ertm=0 \
   --delete-if-present=nomodeset \
@@ -175,7 +191,8 @@ rpm-ostree kargs \
   --append-if-missing=pcie_aspm=on --delete-if-present=pcie_aspm=off \
   --append-if-missing=amd_pstate=guided --append-if-missing=amd_pstate.enable=1 --delete-if-present=amd_pstate.enable=0 --append-if-missing=amd_pstate.shared_mem=1 \
   --append-if-missing=intel_pstate=active --append-if-missing=intel_pstate.enable=1 --delete-if-present=intel_pstate.enable=0 \
-  --append-if-missing=amdgpu.sg_display=1
+  --append-if-missing=amdgpu.sg_display=1 \
+  --append-if-missing=pci=realloc=on
 
 # intel_pstate=guided does not exist
 # lz4 > lzo in terms of efficiency and modernity. zstd fine for speed but great for balanced usage. brotli is unsuitable for this, as memory content is dynamic.
