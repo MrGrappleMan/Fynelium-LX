@@ -8,15 +8,20 @@ StartLimitIntervalSec=300
 
 [Service]
 Type=simple
-ProtectHome=true
-ProtectSystem=strict
-ProtectControlGroups=true
-ReadWritePaths=-/var/lib/boinc -/etc/boinc-client -/tmp -/var/tmp
+SupplementaryGroups=video render
+DeviceAllow=/dev/dri/renderD128 rw
+DeviceAllow=/dev/dri/card0 rw
+# If using rootless Podman, allow access to its home
+ProtectHome=read-only
+# Ensure cgroups are accessible for container management
+ProtectControlGroups=false
+# Add the specific path where Podman stores its data
+ReadWritePaths=-/var/lib/boinc -/etc/boinc-client -/tmp -/var/tmp -/var/lib/containers -/dev/dri
 User=boinc
 WorkingDirectory=/var/lib/boinc
-ExecStart=/usr/bin/boinc
+ExecStart=/usr/bin/boinc --allow_remote_gui_rpc --check_all_logins
 ExecStop=/usr/bin/boinccmd --quit
-ExecReload=/usr/bin/boinccmd --read_cc_config --acct_mgr sync
+ExecReload=/usr/bin/boinccmd --read_cc_config
 ExecStopPost=/usr/bin/rm -f lockfile
 # We want the user to have a good experience. BOINC is non-essential but appreciated to work in the background.
 # This provides a much smoother "QoS" type resource usage distribution.
