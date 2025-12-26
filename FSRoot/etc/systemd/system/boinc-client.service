@@ -11,6 +11,7 @@ Type=simple
 SupplementaryGroups=video render
 DeviceAllow=/dev/dri/renderD128 rw
 DeviceAllow=/dev/dri/card0 rw
+Environment=DRI_NAME=renderD128
 # If using rootless Podman, allow access to its home
 ProtectHome=read-only
 # Ensure cgroups are accessible for container management
@@ -18,6 +19,8 @@ ProtectControlGroups=false
 # Add the specific path where Podman stores its data
 ReadWritePaths=-/var/lib/boinc -/etc/boinc-client -/tmp -/var/tmp -/var/lib/containers -/dev/dri
 User=boinc
+Group=boinc
+Delegate=yes
 WorkingDirectory=/var/lib/boinc
 ExecStart=/usr/bin/boinc --allow_remote_gui_rpc --check_all_logins
 ExecStop=/usr/bin/boinccmd --quit
