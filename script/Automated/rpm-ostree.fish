@@ -146,7 +146,7 @@ brh rebase bazzite-dx-gnome:latest -y # Great for general purpose development, p
 # Kernel Arguments
 # 🛠️ UNIVERSAL KERNEL ARGUMENT EXPLANATIONS
 # (n) rhgb                   # 🚫 Disabled: Red Hat Graphical Boot hides boot logs; disabling allows visibility into service failures.
-# quiet                      # 🤫 Enabled: Suppresses non-critical kernel messages, reducing console I/O overhead and visual clutter.
+# quiet                      # 🤫 Disabled: Looks better, additional debugging information
 # threadirqs                 # 🧵 Enabled: Moves hardware interrupt handlers into threads, allowing the scheduler to prioritize tasks.
 # sysrq_always_enabled=1     # 🔑 Enabled: Provides a low-level interface to rescue a frozen system (e.g., REISUB), regardless of UI state.
 # consoleblank=180           # 🖥️ Enabled: Prevents the physical console (TTY) from causing display burn in and energy efficiency; essential for display longevity
@@ -173,7 +173,7 @@ brh rebase bazzite-dx-gnome:latest -y # Great for general purpose development, p
 echo "🗣️ Modifying kernel arguments"
 rpm-ostree kargs \
   --delete-if-present=rhgb \
-  --append-if-missing=quiet \
+  --delete-if-present=quiet \
   --append-if-missing=threadirqs \
   --append-if-missing=sysrq_always_enabled=1 --delete-if-present=sysrq_always_enabled=0 \
   --append-if-missing=consoleblank=180 \
