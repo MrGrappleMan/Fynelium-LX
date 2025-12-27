@@ -8,7 +8,7 @@ StartLimitIntervalSec=600
 
 [Service]
 Type=oneshot
-ExecStart=/usr/bin/uupd --log-level debug --json -c --quiet --disable-progress
+ExecStart=/usr/bin/uupd --log-level debug --json -c -f
 User=root
 # Minimum battery percent should be 65
 Environment="UUPD_BATTERY_MIN_PERCENT=65"
