@@ -4,12 +4,12 @@ After=network-online.target
 Wants=network-online.target
 
 [Timer]
-# The Fedora Project's own docs suggest updating "on an almost daily basis", and this uses rawhide repos
+# The Fedora Project's own docs suggest updating "on an almost daily basis", and this uses experimental/prerelease versions of software
 
 # Method A: - Better suited, efficient
-# AccuracySec=6h - allows timers to be auto-rescheduled and coalesced within the NEXT(+ not +-) 6 hours to prevent unnecessary CPU wake-ups
-# Persistent=true - opportunistically runs the target if the time to be ran is due
-# OnCalendar=daily UTC - attempt to run 4 times day, and this can be forced to follow a specific timezone, here UTC
+# AccuracySec=4h - allows timers to be auto-rescheduled and coalesced within the NEXT 4 hours to prevent unnecessary CPU wake-ups
+# Persistent=true - tries to run the target if the time to be ran is due
+# OnCalendar=00,04,08,12,16,20:00:00 UTC - attempt to run 6 times day, and this can be forced to follow a specific timezone, here UTC
 Persistent=true
 OnCalendar=00,04,08,12,16,20:00:00 UTC
 AccuracySec=4h
