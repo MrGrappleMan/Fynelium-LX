@@ -1,0 +1,13 @@
+[Unit]
+Description=hBlock /etc/hosts updation
+After=network-online.target
+Wants=network-online.target
+
+[Timer]
+OnCalendar=*-*-* 00:00:00
+AccuracySec=12h
+Persistent=true
+Unit=hblock.service
+
+[Install]
+WantedBy=timers.target
