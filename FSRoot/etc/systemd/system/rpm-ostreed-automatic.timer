@@ -7,8 +7,8 @@ After=network-online.target
 
 [Timer]
 Persistent=true
-OnCalendar=daily UTC
-AccuracySec=23h
+OnCalendar=00,04,08,12,16,20:00:00 UTC
+AccuracySec=4h
 
 [Install]
 WantedBy=timers.target
