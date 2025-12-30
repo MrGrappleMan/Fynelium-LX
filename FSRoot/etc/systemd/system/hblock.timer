@@ -4,9 +4,9 @@ After=network-online.target
 Wants=network-online.target
 
 [Timer]
-OnCalendar=*-*-* 00:00:00
-AccuracySec=12h
 Persistent=true
+OnCalendar=00,04,08,12,16,20:00:00 UTC
+AccuracySec=4h
 Unit=hblock.service
 
 [Install]
