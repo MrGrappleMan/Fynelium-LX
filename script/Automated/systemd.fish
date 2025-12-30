@@ -13,7 +13,7 @@ timedatectl set-ntp true --no-ask-password
   systemctl unmask \
    shutdown.target reboot.target poweroff.target halt.target
 
-# 🟢 Enable - Run at startup - reenable ensures that precedence set by Systemd's developers is followed
+# 🟢 Enable - Run at startup - reenable ensures that precedence set by Systemd's developers is followed in the [Install] section
   systemctl reenable \
    boinc-client \
    systemd-timesyncd \
@@ -23,7 +23,7 @@ timedatectl set-ntp true --no-ask-password
    uupd.timer rpm-ostree-countme.timer fyn-sysfresh.timer \
    fstrim.timer btrfs-dedup@var-home.timer \
    systemd-bsod \
-   sshd tailscaled tor \
+   sshd tailscaled tor hblock.timer \
    preload
 
 # 🟥 Disable - Do not run at startup
