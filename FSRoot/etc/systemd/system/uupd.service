@@ -8,16 +8,19 @@ StartLimitIntervalSec=600
 
 [Service]
 Type=oneshot
-ExecStart=/usr/bin/uupd --log-level debug --json -c -f
+ExecStart=/usr/bin/uupd --log-level debug --json -f
 User=root
-# Minimum battery percent should be 65
-Environment="UUPD_BATTERY_MIN_PERCENT=65"
-# Only 95% of RAM can be consumed
-Environment="UUPD_MEMORY_MAX_PERCENT=90"
-# Only 85% of CPU time can be used
-Environment="UUPD_CPU_MAX_LOAD_PERCENT=85"
+# Minimum battery percent should be 20
+Environment="UUPD_BATTERY_MIN_PERCENT=20"
+# Only run when under Y% of RAM is consumed
+#Environment="UUPD_MEMORY_MAX_PERCENT=Y"
+#Environment="UUPD_MEMORY_MAX_PERCENT=100" # for bypass
+# Only run when CPU load under X%
+#Environment="UUPD_CPU_MAX_LOAD_PERCENT=X"
+#Environment="UUPD_CPU_MAX_LOAD_PERCENT=100" # for bypass
 # Set SELinux context unconfined as bootc requires some special perms for relabeling (install_t????)
 SELinuxContext=system_u:unconfined_r:unconfined_t:s0
+# Disabled hardware checks (-c flag) to ensure no false fails and updates always happen. I just need the battery level check, else we are fine.
 
 # CommonSnippet - Daemons
 IOSchedulingClass=2
