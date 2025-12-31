@@ -20,15 +20,15 @@ timedatectl set-ntp true --no-ask-password
    gdm \
    podman podman.socket podman-auto-update.timer \
    auto-cpufreq \
-   uupd.timer rpm-ostree-countme.timer fyn-sysfresh.timer \
+   uupd uupd.timer rpm-ostree-countme rpm-ostree-countme.timer fyn-sysfresh.timer \
    fstrim.timer btrfs-dedup@var-home.timer \
    systemd-bsod \
-   sshd tailscaled tor hblock.timer \
+   sshd tailscaled tor hblock hblock.timer \
    preload
 
 # 🟥 Disable - Do not run at startup
   systemctl disable \
-   uupd rpm-ostree-countme fyn-sysfresh \
+   fyn-sysfresh \
    tlp \
    rpm-ostreed-automatic rpm-ostreed-automatic.timer \
    docker docker.socket \
