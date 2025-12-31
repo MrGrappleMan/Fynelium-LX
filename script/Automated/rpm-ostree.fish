@@ -51,7 +51,7 @@ brh rebase bazzite-dx-gnome:latest -y # Great for general purpose development, p
 # PKG ADD
 
 ### Notes:
-### Always update system before installing packages.
+### Always update system before installing packages. Avoid 
 ### Manually creating systemd unit files in /etc/systemd/system/ can potentially cause an rpm-ostree hardlinking 
 ### file exists error when you try to install the actual packages that provide those same files later. 
 ### Systemd units placed in /etc/systemd/system/ are part of the mutable host configuration, 
@@ -64,13 +64,13 @@ brh rebase bazzite-dx-gnome:latest -y # Great for general purpose development, p
     boinc-client boinc-client-static \
     \
     snapd \
-    flatseal flatpak-selinux flatpak-session-helper xdg-desktop-portal flatpak-libs libportal host-spawn \
-    dnf-plugins-core etckeeper-dnf dnf-repo dnfdaemon dnfdaemon-selinux fedora-repos fedora-repos-rawhide fedora-repos-ostree fedora-gpg-keys \
+    flatseal flatpak-selinux flatpak-session-helper xdg-desktop-portal libportal host-spawn \
+    dnf-plugins-core etckeeper-dnf dnf-repo dnfdaemon dnfdaemon-selinux fedora-repos-rawhide fedora-repos-ostree fedora-gpg-keys \
     \
     mcpelauncher-manifest mcpelauncher-ui-manifest msa-manifest \
     \
-    libei libei-utils \
-    p7zip p7zip-plugins brotli \
+    libei-utils \
+    brotli \
     \
     ollama gemini-cli \
     code-insiders \
@@ -82,7 +82,7 @@ brh rebase bazzite-dx-gnome:latest -y # Great for general purpose development, p
     libvirt-daemon-kvm qemu-kvm qemu-kvm-core \
     \
     warp-terminal \
-    cosmic-epoch cosmic-desktop xdg-desktop-portal-cosmic initial-setup-gui-wayland-cosmic cosmic-greeter cosmic-comp cosmic-app-library cosmic-applets cosmic-edit cosmic-idle cosmic-osd cosmic-session cosmic-settings cosmic-settings-daemon cosmic-store fedora-release-cosmic-atomic cosmic-config-fedora greetd \
+    cosmic-epoch cosmic-desktop xdg-desktop-portal-cosmic cosmic-greeter cosmic-comp cosmic-app-library cosmic-applets cosmic-edit cosmic-idle cosmic-osd cosmic-session cosmic-settings cosmic-settings-daemon cosmic-store fedora-release-cosmic-atomic cosmic-config-fedora greetd \
     mission-center \
     thunar featherpad \
     google-chrome-canary \
@@ -91,27 +91,19 @@ brh rebase bazzite-dx-gnome:latest -y # Great for general purpose development, p
     \
     hblock \
     qbittorrent persepolis \
-    openssh openssh-server mosh \
+    mosh \
     tor torbrowser-launcher \
     tailscale trayscale \
-    rclone rclone-broswer"
+    rclone rclone-browser"
 
-    ## System Boosters ##
-    ## Power management ##
-    ## User environment ##
-    ## Kernel mods ##
-    ## Science United ##
-    ## Flatpak ##
-    ## GNOME Software ##
-    ## DNF, RPM, OSTREE ##
-    ## Libei ##
-    ## Compression ##
-    ## Telemetry ##
-    ## Networking ##
-    ## Containerization, Orchestration, Virtualization, Emulation ##
-    ## Remote access ##
+### Reserved/reference pacakges:
 
-###### Reserved/reference pacakges:
+## REFERENCE ##
+cpp fedora-gpg-keys fedora-repos flatpak-libs flatpak-selinux
+flatpak-session-helper gcc git kernel-modules-extra libei libportal openssh
+openssh-server p7zip p7zip-plugins plymouth plymouth-core-libs plymouth-scripts
+tailscale util-linux vim xdg-desktop-portal
+
 ## CONFLICTS ##
 # warp-cli | warp-terminal ( it already includes warp-cli )
 # tlp, tlp-rdw | tuned-ppd, power-profiles-daemon ( architectural shift in tlp. great but inconvenient, therefore it conflicts with the base image, error: Checkout tlp-1.9.0-6.fc44.noarch: Hardlinking 22/4ea4cdcf902e721f5550bca4e5e6e1630672751aa0931cdad5634f7eb49201.file to net.hadess.PowerProfiles.service: File exists )
@@ -146,7 +138,7 @@ brh rebase bazzite-dx-gnome:latest -y # Great for general purpose development, p
 # Kernel Arguments
 # 🛠️ UNIVERSAL KERNEL ARGUMENT EXPLANATIONS
 # (n) rhgb                   # 🚫 Disabled: Red Hat Graphical Boot hides boot logs; disabling allows visibility into service failures.
-# quiet                      # 🤫 Disabled: Looks better, additional debugging information
+# (n) quiet                  # 🤫 Disabled: Looks more interesting, additional debugging information
 # threadirqs                 # 🧵 Enabled: Moves hardware interrupt handlers into threads, allowing the scheduler to prioritize tasks.
 # sysrq_always_enabled=1     # 🔑 Enabled: Provides a low-level interface to rescue a frozen system (e.g., REISUB), regardless of UI state.
 # consoleblank=180           # 🖥️ Enabled: Prevents the physical console (TTY) from causing display burn in and energy efficiency; essential for display longevity
@@ -199,5 +191,5 @@ rpm-ostree kargs \
 # lz4 overall lowest latency
 
 # initramfs
-echo InitRAMFS - Centrally compiled provided, reliable, standardized system, reduced failure points
+echo InitRAMFS - Centrally compiled provides an initamfs with reliability, standardization, reduced failure points
 rpm-ostree -q initramfs --disable
