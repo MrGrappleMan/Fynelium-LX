@@ -52,49 +52,28 @@ brh rebase bazzite-dx-gnome:latest -y # Great for general purpose development, p
 
 ### Notes:
 ### Always update system before installing packages. Avoid layering packages that end up in InactiveRequests
-### Manually creating systemd unit files in /etc/systemd/system/ can potentially cause an rpm-ostree hardlinking 
+### Packages are now uncategorized, this is to simplify drop-in from 'rpm-ostree status' 
+###  Systemd unit files in /etc/systemd/system/ may cause an rpm-ostree hardlinking 
 ### file exists error when you try to install the actual packages that provide those same files later. 
 ### Systemd units placed in /etc/systemd/system/ are part of the mutable host configuration, 
 ### which rpm-ostree attempts to manage or migrate across deployments. When a package providing the exact same 
-### file is introduced, the conflict occurs. It it happens, rename the doubtful one to *.bak, rpm-ostree operation goes here, rename to original.
+### file is introduced, the conflict occurs. It it happens, rename the doubtful one to *.bak, do the rpm-ostree operation, rename to original if successful.
 
-   echo "🢷 Adding packages to RPM-OSTree, this may take time. Zero trust upon whatever packages that even the maintainer inserts, for safeguards."
-   rotPkg+ "rust-zram-generator-devel systemd-swap preload \
-    kernel-modules-extra uutils-coreutils \
-    boinc-client boinc-client-static \
-    \
-    snapd \
-    flatseal libportal host-spawn \
-    dnf-plugins-core etckeeper-dnf dnf-repo dnfdaemon dnfdaemon-selinux fedora-repos-rawhide fedora-repos-ostree fedora-gpg-keys \
-    \
-    mcpelauncher-manifest mcpelauncher-ui-manifest msa-manifest \
-    \
-    libei-utils \
-    brotli \
-    \
-    ollama gemini-cli \
-    code-insiders \
-    nodejs pnpm \
-    rust cargo rustup clippy \
-    gh \
-    distcc distcc-server \
-    java-latest-openjdk \
-    libvirt-daemon-kvm qemu-kvm qemu-kvm-core \
-    \
-    warp-terminal \
-    cosmic-epoch cosmic-desktop xdg-desktop-portal-cosmic cosmic-greeter cosmic-comp cosmic-app-library cosmic-applets cosmic-edit cosmic-idle cosmic-osd cosmic-session cosmic-settings cosmic-settings-daemon cosmic-store fedora-release-cosmic-atomic cosmic-config-fedora greetd \
-    mission-center \
-    thunar featherpad \
-    google-chrome-canary \
-    obs-studio obs-studio-libs obs-studio-plugin-browser \
-    krita krita-libs \
-    \
-    hblock \
-    qbittorrent persepolis \
-    mosh \
-    tor torbrowser-launcher \
-    trayscale \
-    rclone rclone-browser"
+   echo "🢷 Adding RPM-OSTree packages, this may take time - searching for packages"
+   rotPkg+ "boinc-client boinc-client-static brotli cargo clippy code-insiders \
+                           cosmic-app-library cosmic-applets cosmic-comp cosmic-config-fedora cosmic-desktop \
+                           cosmic-edit cosmic-greeter cosmic-idle cosmic-osd cosmic-session cosmic-settings \
+                           cosmic-settings-daemon cosmic-store distcc distcc-server dnf-plugins-core dnf-repo \
+                           dnfdaemon dnfdaemon-selinux etckeeper-dnf featherpad fedora-release-cosmic-atomic \
+                           fedora-repos-ostree fedora-repos-rawhide flatseal gemini-cli gh \
+                           google-chrome-canary greetd hblock host-spawn initial-setup-gui-wayland-cosmic \
+                           inkscape java-latest-openjdk krita krita-libs libei-utils libreoffice \
+                           libvirt-daemon-kvm mcpelauncher-manifest mcpelauncher-ui-manifest mission-center \
+                           mosh msa-manifest nodejs obs-studio obs-studio-libs obs-studio-plugin-browser \
+                           obs-studio-plugin-droidcam obs-studio-plugin-vaapi ollama persepolis plymouth-kcm \
+                           pnpm preload qbittorrent qemu-kvm qemu-kvm-core rocm rust \
+                           rust-zram-generator-devel rustup snapd systemd-swap thunar tor torbrowser-launcher \
+                           trayscale uget uutils-coreutils warp-terminal xdg-desktop-portal-cosmic"
 
 ### Reserved/reference pacakges:
 
@@ -192,4 +171,4 @@ rpm-ostree kargs \
 
 # initramfs
 echo InitRAMFS - Centrally compiled provides an initamfs with reliability, standardization, reduced failure points
-rpm-ostree -q initramfs --disable
+rpm-ostree initramfs --disable
