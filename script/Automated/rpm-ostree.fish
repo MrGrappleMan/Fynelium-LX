@@ -51,7 +51,7 @@ brh rebase bazzite-dx-gnome:latest -y # Great for general purpose development, p
 # PKG ADD
 
 ### Notes:
-### Always update system before installing packages. Avoid 
+### Always update system before installing packages. Avoid layering packages that end up in InactiveRequests
 ### Manually creating systemd unit files in /etc/systemd/system/ can potentially cause an rpm-ostree hardlinking 
 ### file exists error when you try to install the actual packages that provide those same files later. 
 ### Systemd units placed in /etc/systemd/system/ are part of the mutable host configuration, 
@@ -60,11 +60,11 @@ brh rebase bazzite-dx-gnome:latest -y # Great for general purpose development, p
 
    echo "🢷 Adding packages to RPM-OSTree, this may take time. Zero trust upon whatever packages that even the maintainer inserts, for safeguards."
    rotPkg+ "rust-zram-generator-devel systemd-swap preload \
-    kernel-modules-extra uutils-coreutils util-linux \
+    kernel-modules-extra uutils-coreutils \
     boinc-client boinc-client-static \
     \
     snapd \
-    flatseal flatpak-selinux flatpak-session-helper xdg-desktop-portal libportal host-spawn \
+    flatseal libportal host-spawn \
     dnf-plugins-core etckeeper-dnf dnf-repo dnfdaemon dnfdaemon-selinux fedora-repos-rawhide fedora-repos-ostree fedora-gpg-keys \
     \
     mcpelauncher-manifest mcpelauncher-ui-manifest msa-manifest \
@@ -76,7 +76,7 @@ brh rebase bazzite-dx-gnome:latest -y # Great for general purpose development, p
     code-insiders \
     nodejs pnpm \
     rust cargo rustup clippy \
-    git gh \
+    gh \
     distcc distcc-server \
     java-latest-openjdk \
     libvirt-daemon-kvm qemu-kvm qemu-kvm-core \
@@ -93,7 +93,7 @@ brh rebase bazzite-dx-gnome:latest -y # Great for general purpose development, p
     qbittorrent persepolis \
     mosh \
     tor torbrowser-launcher \
-    tailscale trayscale \
+    trayscale \
     rclone rclone-browser"
 
 ### Reserved/reference pacakges:
