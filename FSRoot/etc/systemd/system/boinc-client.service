@@ -28,14 +28,15 @@ ExecReload=/usr/bin/boinccmd --read_cc_config
 ExecStopPost=/usr/bin/rm -f lockfile
 # We want the user to have a good experience. BOINC is non-essential but appreciated to work in the background.
 # This provides a much smoother "QoS" type resource usage distribution.
-IOSchedulingClass=3
+IOSchedulingClass=2
+IOSchedulingPriority=7
 CPUSchedulingPolicy=idle
 Nice=19
 CPUWeight=1
 
 # CommonSnippet - Daemons
 Restart=on-failure
-RestrictRealtime=false
+RestrictRealtime=true
 RestartSec=60
 
 [Install]
