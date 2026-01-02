@@ -125,7 +125,7 @@ rpm-ostree reset
 # Kernel Arguments
 # 🛠️ UNIVERSAL KERNEL ARGUMENT EXPLANATIONS
 # (n) rhgb                   # 🚫 Disabled: Red Hat Graphical Boot hides boot logs; disabling allows visibility into service failures.
-# (n) quiet                  # 🤫 Disabled: Looks more interesting, additional debugging information
+# quiet                      # 🤫 Enabled: Reduces overhead
 # threadirqs                 # 🧵 Enabled: Moves hardware interrupt handlers into threads, allowing the scheduler to prioritize tasks.
 # sysrq_always_enabled=1     # 🔑 Enabled: Provides a low-level interface to rescue a frozen system (e.g., REISUB), regardless of UI state.
 # consoleblank=180           # 🖥️ Enabled: Prevents the physical console (TTY) from causing display burn in and energy efficiency; essential for display longevity
