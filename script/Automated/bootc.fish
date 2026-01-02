@@ -7,4 +7,4 @@ rpm-ostree reset -q
 bootc switch ghcr.io/ublue-os/bazzite-dx-gnome:latest --soft-reboot auto --quiet
 
 # Upgrade
-bootc upgrade
+bootc upgrade --quiet
