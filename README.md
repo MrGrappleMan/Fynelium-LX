@@ -18,11 +18,11 @@
 
 </div>
 
-### 1. Get Bazzite installer ISO 🍓
+### 1. Get the ISO 🍓
 
-- [Regular](https://download.bazzite.gg/bazzite-gnome-stable-amd64.iso)
-- [Nvidia](https://download.bazzite.gg/bazzite-gnome-nvidia-open-stable-amd64.iso)
-- [Nvidia GTX 9xx-10xx Series](https://download.bazzite.gg/bazzite-gnome-nvidia-stable-amd64.iso)
+- [Regular](https://download.bazzite.gg/bazzite-gnome-stable-live-amd64.iso)
+- [Nvidia](https://download.bazzite.gg/bazzite-gnome-nvidia-open-stable-live-amd64.iso)
+- [Nvidia GTX 9xx-10xx Series](https://download.bazzite.gg/bazzite-gnome-nvidia-stable-live-amd64.iso)
 
 ### 2. Setup Ventoy on an external drive 🔌 - **Warning**: data will be wiped!
 - Grab a spare USB drive (minimum 8GB, bigger is better).
@@ -40,14 +40,15 @@
 - Plug the USB into the PC where you want to install Bazzite.
 - Restart your PC and **enter the boot menu / UEFI setup screen** (usually by spamming F1, F12, F10, Esc, or Del – check device splash screen or motherboard OEM details).  
 - Pick your USB drive from the list.  
-- Ventoy will show a menu – select the Bazzite `.iso` and enter.  
+- Ventoy will show a menu – select the `bazzite-ExampleFILEnameHere.iso` and enter.  
 
 ### 5. Installing Bazzite 🛠️
-- Pick Keyboard layout, language, timezone, create a user(choose a single lowercase alphabet for user name, whatever for Full name), etc.
-- **Make it your only OS, recommend ed** Select your main drive and let it format, delete all partitions on it by freeing up space, preserve none ON THAT disk.  
+- Choose keyboard layout and language. The rest is optional but recommended to configure. Special steps below,
+- **Make it your only OS, recommended** Select your main drive and let it format, delete all partitions on it by freeing up space, select preserve none ON THAT SPECIFIC disk.  
 - **Dual-booting with Windows?** Shrink your Windows partition first (in Windows Disk Management), then pick the free space from the installer here.  
-- **Drive Encryption** Turn on **LUKS encryption** – password asked on every boot 🔒  
-- Wait till it installs, keep an eye on its execution
+- 🔒 Enable **LUKS encryption**
+- Keep the username as 'bazzite'. Anything else will result in an improper userspace setup though not mandatory.
+- Proceed with the installation
 
 ### 6. Post install script ✨
 - Once you're on the desktop, open a **Terminal** (search for it in the menu).
