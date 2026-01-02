@@ -1,5 +1,12 @@
 #!/usr/bin/env fish
 
+# NOTICE: rpm-ostree will soon be decaprated in favour of bootc
+# Transitioning to bootc is intended to move system management toward a pure image-based model,
+# which effectively removes the client-side package layering and management functionality that rpm-ostree supports. The core idea is that the entire operating system state is defined by a container image.
+# The entire package management part will be removed, requiring you to shift to userspace components, like Flatpak and Distrobox
+# Highly stable, faster to update and universally standardized.
+# Never layer any packages onto the image and thus, avoid rpm-ostree as much as you can
+
 # 📛 Alias
 alias rpm-ostree "rpm-ostree"
 function rotPkg+ -d "RPM-OSTree add package if present(dependancy checks not implemented yet)"
@@ -41,12 +48,13 @@ alias rotPkg- "rpm-ostree uninstall --allow-inactive --idempotent -y"
 rpm-ostree cancel
 
 # Rebase - to Bazzite GNOME DX
-echo "⎋ Rebase to Bazzite Dev Experience - GNOME desktop base image"
-brh rebase bazzite-dx-gnome:latest -y # Great for general purpose development, productivity and gaming. Most feature packed and well maintained - ignoring the bleeding edge-ness, but you can easily revert.
+#echo "⎋ Rebase to Bazzite Dev Experience - GNOME desktop base image"
+#brh rebase bazzite-dx-gnome:latest -y # Great for general purpose development, productivity and gaming. Most feature packed and well maintained - ignoring the bleeding edge-ness, but you can easily revert.
 #rpm-ostree rebase --experimental ostree-image-signed:docker://ghcr.io/ublue-os/bazzite-dx-gnome:latest # Same outcome, but different method
 #rpm-ostree rebase --experimental fedora:fedora/rawhide/x86_64/cosmic-atomic # Do not use, just for reference
 
-# PKG DEL
+# RESET - for bootc
+rpm-ostree reset
 
 # PKG ADD
 
@@ -60,28 +68,28 @@ brh rebase bazzite-dx-gnome:latest -y # Great for general purpose development, p
 ### file is introduced, the conflict occurs. It it happens, rename the doubtful one to *.bak, do the rpm-ostree operation, rename to original if successful.
 
    echo "🢷 Adding RPM-OSTree packages, this may take time - searching for packages"
-   rotPkg+ "boinc-client boinc-client-static brotli cargo clippy code-insiders \
-                           cosmic-app-library cosmic-applets cosmic-comp cosmic-config-fedora cosmic-desktop \
-                           cosmic-edit cosmic-greeter cosmic-idle cosmic-osd cosmic-session cosmic-settings \
-                           cosmic-settings-daemon cosmic-store distcc distcc-server dnf-plugins-core dnf-repo \
-                           dnfdaemon dnfdaemon-selinux etckeeper-dnf featherpad fedora-release-cosmic-atomic \
-                           fedora-repos-ostree fedora-repos-rawhide flatseal gemini-cli gh \
-                           google-chrome-canary greetd hblock host-spawn initial-setup-gui-wayland-cosmic \
-                           inkscape java-latest-openjdk krita krita-libs libei-utils libreoffice \
-                           libvirt-daemon-kvm mcpelauncher-manifest mcpelauncher-ui-manifest mission-center \
-                           mosh msa-manifest nodejs obs-studio obs-studio-libs obs-studio-plugin-browser \
-                           obs-studio-plugin-droidcam obs-studio-plugin-vaapi ollama persepolis plymouth-kcm \
-                           pnpm preload qbittorrent qemu-kvm qemu-kvm-core rocm rust \
-                           rust-zram-generator-devel rustup snapd systemd-swap thunar tor torbrowser-launcher \
-                           trayscale uget uutils-coreutils warp-terminal xdg-desktop-portal-cosmic"
+   #rotPkg+ "boinc-client boinc-client-static brotli cargo clippy code-insiders \
+    #                       cosmic-app-library cosmic-applets cosmic-comp cosmic-config-fedora cosmic-desktop \
+     #                      cosmic-edit cosmic-greeter cosmic-idle cosmic-osd cosmic-session cosmic-settings \
+      #                     cosmic-settings-daemon cosmic-store distcc distcc-server dnf-plugins-core dnf-repo \
+       #                    dnfdaemon dnfdaemon-selinux etckeeper-dnf featherpad fedora-release-cosmic-atomic \
+        #                   fedora-repos-ostree fedora-repos-rawhide flatseal gemini-cli gh \
+         #                  google-chrome-canary greetd hblock host-spawn initial-setup-gui-wayland-cosmic \
+          #                 inkscape java-latest-openjdk krita krita-libs libei-utils libreoffice \
+           #                libvirt-daemon-kvm mcpelauncher-manifest mcpelauncher-ui-manifest mission-center \
+            #               mosh msa-manifest nodejs obs-studio obs-studio-libs obs-studio-plugin-browser \
+             #              obs-studio-plugin-droidcam obs-studio-plugin-vaapi ollama persepolis plymouth-kcm \
+              #             pnpm preload qbittorrent qemu-kvm qemu-kvm-core rocm rust \
+               #            rust-zram-generator-devel rustup snapd systemd-swap thunar tor torbrowser-launcher \
+                #           trayscale uget uutils-coreutils warp-terminal xdg-desktop-portal-cosmic"
 
 ### Reserved/reference pacakges:
 
 ## REFERENCE ##
-cpp fedora-gpg-keys fedora-repos flatpak-libs flatpak-selinux
-flatpak-session-helper gcc git kernel-modules-extra libei libportal openssh
-openssh-server p7zip p7zip-plugins plymouth plymouth-core-libs plymouth-scripts
-tailscale util-linux vim xdg-desktop-portal
+#cpp fedora-gpg-keys fedora-repos flatpak-libs flatpak-selinux
+#flatpak-session-helper gcc git kernel-modules-extra libei libportal openssh
+#openssh-server p7zip p7zip-plugins plymouth plymouth-core-libs plymouth-scripts
+#tailscale util-linux vim xdg-desktop-portal
 
 ## CONFLICTS ##
 # warp-cli | warp-terminal ( it already includes warp-cli )
