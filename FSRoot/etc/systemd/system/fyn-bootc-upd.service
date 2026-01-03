@@ -1,6 +1,6 @@
 [Unit]
-Description=🔄️ For RPM-OSTree only, Updates the system for having access to the latest changes and potential bug fixes and security patches
-Documentation=man:rpm-ostree(1) man:rpm-ostreed.conf(5) https://coreos.github.io/rpm-ostree/
+Description=🔄️ Updates the BootC system image - makeshift service
+Documentation=https://bootc-dev.github.io/
 ConditionPathExists=/run/ostree-booted
 Wants=network-online.target
 After=network-online.target
@@ -10,7 +10,7 @@ StartLimitIntervalSec=600
 [Service]
 Type=oneshot
 User=root
-ExecStart=/usr/bin/rpm-ostree upgrade -q --trigger-automatic-update-policy --allow-downgrade --bypass-driver
+ExecStart=/usr/bin/bootc upgrade --quiet
 
 # CommonSnippet - Daemons
 IOSchedulingClass=2
