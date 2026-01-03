@@ -41,7 +41,7 @@ function fpkPkg+ -d "Flatpak add packages with additional checks, right now inco
     end
 end
 alias fpkPkg+Adv "flatpak --system install -y --noninteractive --or-update"
-alias fpkPkg- "flatpak --system uninstall -y --noninteractive --force-remove" # Package remove
+alias fpkPkg- "flatpak --system uninstall -y --noninteractive" # Package remove
 
 # REP ( - Removal )
 
@@ -66,15 +66,6 @@ alias fpkPkg- "flatpak --system uninstall -y --noninteractive --force-remove" # 
 
 # PKG ( - Removal )
    flatpak uninstall -u --all -y --noninteractive --force-remove ## System wide Flatpaks standardize location and save storage, yet data stays separate for users.
-   fpkPkg- \
-     org.mozilla.firefox \
-     com.google.Chrome \
-     com.github.tchx84.Flatseal \
-     com.obsproject.Studio \
-     io.missioncenter.MissionCenter
-   
-# Use "app.zen_browser.zen" over "org.mozilla.firefox" - Polished experience
-# Use "com.google.ChromeDev" over "com.google.Chrome" - Faster updates
 
 # PKG ( + Install )
    #fpkPkg+Adv flathub-beta \
@@ -83,9 +74,11 @@ alias fpkPkg- "flatpak --system uninstall -y --noninteractive --force-remove" # 
 
     fpkPkg+Adv flathub \
       org.gnome.Platform org.gnome.Sdk \
-      org.freedesktop.Platform org.freedesktop.Platform.ClInfo org.freedesktop.Platform.codecs-extra org.freedesktop.Platform.ffmpeg-full org.freedesktop.Platform.GL.default org.freedesktop.Platform.GL.mesa-git org.freedesktop.Platform.GL32.default org.freedesktop.Platform.GL32.mesa-git org.freedesktop.Platform.GlxInfo org.freedesktop.Platform.GStreamer.openmpt org.freedesktop.Platform.openh264 org.freedesktop.Platform.VAAPI.Intel org.freedesktop.Platform.VAAPI.nvidia org.freedesktop.Platform.VaInfo org.freedesktop.Platform.VdpauInfo org.freedesktop.Platform.VulkanInfo org.freedesktop.Platform.VulkanLayer.gamescope org.freedesktop.Platform.VulkanLayer.MangoHud org.freedesktop.Platform.VulkanLayer.OBSVkCapture org.freedesktop.Platform.VulkanLayer.vkBasalt \
-      org.kde.Platform org.kde.Sdk
+      org.freedesktop.Platform org.freedesktop.Sdk.Extension.rust-nightly org.freedesktop.Platform.ClInfo org.freedesktop.Platform.codecs-extra org.freedesktop.Platform.ffmpeg-full org.freedesktop.Platform.GL.default org.freedesktop.Platform.GL.mesa-git org.freedesktop.Platform.GL32.default org.freedesktop.Platform.GL32.mesa-git org.freedesktop.Platform.GlxInfo org.freedesktop.Platform.GStreamer.openmpt org.freedesktop.Platform.openh264 org.freedesktop.Platform.VAAPI.Intel org.freedesktop.Platform.VAAPI.nvidia org.freedesktop.Platform.VaInfo org.freedesktop.Platform.VdpauInfo org.freedesktop.Platform.VulkanInfo org.freedesktop.Platform.VulkanLayer.gamescope org.freedesktop.Platform.VulkanLayer.MangoHud org.freedesktop.Platform.VulkanLayer.OBSVkCapture org.freedesktop.Platform.VulkanLayer.vkBasalt \
+      org.kde.Platform org.kde.Sdk org.kde.PlatformTheme.QtSNI org.kde.PlatformTheme.QGnomePlatform
 
+# Use "app.zen_browser.zen" over "org.mozilla.firefox" - Polished experience
+# Use "com.google.ChromeDev" over "com.google.Chrome" - Faster updates
 
   fpkPkg+Adv flathub \
     com.rafaelmardojai.Blanket \
