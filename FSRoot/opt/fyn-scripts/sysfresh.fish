@@ -6,7 +6,6 @@
 ### Except for convenience, some less breakability and ease of use, go ahead with Flatpak
 
 # Fyn-FScomponents
-
 cd /tmp/
 rm -rf /tmp/Fynelium-LX
 mkdir -p /tmp/Fynelium-LX
@@ -19,17 +18,5 @@ cp -r /tmp/Fynelium-LX/FSRoot/opt/* /opt/
 ##cp -r /tmp/Fynelium-LX/FSRoot/root/* /root/
 
 # Systemd
-
 sysctl --system
 systemctl daemon-reload
-
-# RPM-OSTree
-
-rpm-ostree -q reload
-rpm-ostree -q upgrade --trigger-automatic-update-policy --allow-downgrade --bypass-driver
-rpm-ostree apply-live --allow-replacement
-rpm-ostree apply-live
-
-# Flatpak
-
-flatpak --system update -y --force-remove --noninteractive
