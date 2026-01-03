@@ -176,7 +176,3 @@ rpm-ostree kargs \
 # intel_pstate=guided does not exist
 # lz4 > lzo in terms of efficiency and modernity. zstd fine for speed but great for balanced usage. brotli is unsuitable for this, as memory content is dynamic.
 # lz4 overall lowest latency
-
-# initramfs
-echo InitRAMFS - Centrally compiled provides an initamfs with reliability, standardization, reduced failure points
-rpm-ostree initramfs --disable
