@@ -6,8 +6,9 @@ if fish_is_root_user
     exit
 end
 
-echo Insert the password for your user...
+echo Type the password for your user...
 curl "https://raw.githubusercontent.com/MrGrappleMan/Fynelium-LX/refs/heads/main/script/Automated.fish" | pkexec fish
 curl "https://raw.githubusercontent.com/MrGrappleMan/Fynelium-LX/refs/heads/main/script/Automated/ujust.fish" | fish
 curl "https://raw.githubusercontent.com/MrGrappleMan/Fynelium-LX/refs/heads/main/script/Automated/gsettings.fish" | fish
-systemctl reboot
+clear
+echo All set! Reboot your system as soon as you can.
