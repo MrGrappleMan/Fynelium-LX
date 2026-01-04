@@ -44,18 +44,6 @@ end
 alias rotPkg+Adv "rpm-ostree install --allow-inactive --idempotent -y" # Use if you know the package exists and there won't be dependency conflicts
 alias rotPkg- "rpm-ostree uninstall --allow-inactive --idempotent -y"
 
-# Cancel background transactions
-rpm-ostree cancel
-
-# Rebase - to Bazzite GNOME DX
-#echo "⎋ Rebase to Bazzite Dev Experience - GNOME desktop base image"
-#brh rebase bazzite-dx-gnome:latest -y # Great for general purpose development, productivity and gaming. Most feature packed and well maintained - ignoring the bleeding edge-ness, but you can easily revert.
-#rpm-ostree rebase --experimental ostree-image-signed:docker://ghcr.io/ublue-os/bazzite-dx-gnome:latest # Same outcome, but different method
-#rpm-ostree rebase --experimental fedora:fedora/rawhide/x86_64/cosmic-atomic # Do not use, just for reference
-
-# RESET - for bootc
-rpm-ostree reset
-
 # PKG ADD
 
 ### Notes:
@@ -124,17 +112,17 @@ rpm-ostree reset
 
 # Kernel Arguments
 # 🛠️ UNIVERSAL KERNEL ARGUMENT EXPLANATIONS
-# rhgb                       # 🏙 Disabled: Less boot overhead and potential conflicts with drivers, at the cost of UX beauty
+# rhgb                       # 🏙 Disabled: Less boot overhead and less conflicts with drivers, at the cost of UX beauty
 # quiet                      # 🤫 Enabled: Simpler, focused debugging on errors than general stats
 # threadirqs                 # 🧵 Enabled: Moves hardware interrupt handlers into threads, allowing the scheduler to prioritize tasks.
 # sysrq_always_enabled=1     # 🔑 Enabled: Provides a low-level interface to rescue a frozen system (e.g., REISUB), regardless of UI state.
 # consoleblank=180           # 🖥️ Enabled: Prevents TTY from display burn in and efficiency
-# (n) profile                # 🚫 Disabled: Stops the kernel from collecting profiling data, saving a small amount of CPU cycles.
-# bluetooth.disable_ertm=0   # 📶 Enabled: Enables Enhanced Retransmission Mode; required for full compatibility with modern BT peripherals.
+# (n) profile                # 🚫 Disabled: Stops the kernel from collecting profiling data, saving CPU cycles.
+# bluetooth.disable_ertm=0   # 📶 Enabled: Enhanced Retransmission Mode for modern BT peripherals.
 # (n) nomodeset              # 🚫 Disabled: Allows the kernel to use high-performance GPU drivers (KMS) instead of slow VESA fallbacks.
 # loglevel=3                 # 📉 Enabled: Limits logging to 'Error' level; prevents the 'dmesg' buffer from being flooded by minor warnings.
 # preempt=full               # ⚡ Enabled: Allows the kernel to be interrupted more aggressively; improves desktop and audio responsiveness.
-# systemd.zram=0             # 🛑 Disabled: Turns off zram (compressed RAM disk) to avoid conflicts when using zswap.
+# systemd.zram=0             # 🛑 Disabled: Never use with zswap
 # zswap.enabled=1            # 🗜️ Enabled: Intercepts pages moving to swap and compresses them in RAM to reduce physical Disk I/O.
 # zswap.shrinker_enabled=Y   # ♻️ Enabled: Automatically evicts the coldest compressed pages to disk when RAM is needed elsewhere.
 # zswap.zpool=zsmalloc       # 🏗️ Enabled: Uses a highly efficient memory allocator that reduces fragmentation in compressed memory pools.
@@ -151,7 +139,7 @@ rpm-ostree reset
 
 echo "🗣️ Modifying kernel arguments"
 rpm-ostree kargs \
-  --append-if-missing=rhgb \
+  --delete-if-present=rhgb \
   --append-if-missing=quiet \
   --append-if-missing=threadirqs \
   --append-if-missing=sysrq_always_enabled=1 --delete-if-present=sysrq_always_enabled=0 \
