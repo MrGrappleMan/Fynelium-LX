@@ -46,10 +46,11 @@ setsebool -P container_use_devices true
 # LoginCtl
 loginctl enable-linger boinc
 
-# Subexecution of sub-scripts that dont require user interaction. doubtful of ujust and flatpak
+# Subexecution of sub-scripts that dont require user interaction. ujust has some user specifics - may cause issues on root
 echo Now executing subscripts
 
 fish /opt/Fyn-scripts/sysfresh.fish
+fish /tmp/Fynelium-LX/script/Automated/bootc.fish
 fish /tmp/Fynelium-LX/script/Automated/rpm-ostree.fish
 fish /tmp/Fynelium-LX/script/Automated/flatpak.fish
 fish /tmp/Fynelium-LX/script/Automated/systemd.fish
