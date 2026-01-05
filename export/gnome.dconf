@@ -13,8 +13,9 @@ locate-pointer=false
 show-battery-percentage=true
 
 [org/gnome/desktop/peripherals/mouse]
-accel-profile='adaptive'
+accel-profile='flat'
 speed=1.0
+natural-scroll=false
 
 [org/gnome/software]
 download-updates=false
@@ -67,7 +68,8 @@ disable-lock-screen=false
 whitelisted-providers=['all']
 
 [org/gnome/desktop/a11y/interface]
-high-contrast=false
+high-contrast=true
+show-status-shapes=true
 
 [org/freedesktop/Tracker3/Miner/Files]
 crawling-interval=0
@@ -95,7 +97,7 @@ lock-delay=300
 remember-numlock-state=true
 
 [org/gnome/desktop/break-reminders/eyesight]
-fade-screen=true
+fade-screen=false
 notify=true
 interval-seconds=1200
 countdown=false
