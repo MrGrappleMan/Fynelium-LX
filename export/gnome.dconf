@@ -1,13 +1,16 @@
 [org/gnome/desktop/interface]
 clock-show-seconds=false
-enable-animations=true
-cursor-blink=false
+enable-animations=false
+cursor-blink=true
+cursor-blink-time=770
 clock-show-weekday=true
 clock-show-date=true
 font-hinting='full'
 font-antialiasing='grayscale'
+font-rendering='automatic'
 color-scheme='prefer-dark'
 locate-pointer=false
+show-battery-percentage=true
 
 [org/gnome/desktop/peripherals/mouse]
 accel-profile='adaptive'
