@@ -8,7 +8,7 @@ timedatectl set-ntp true --no-ask-password
   systemctl mask \
    systemd-rfkill systemd-rfkill.socket power-profiles-daemon \
    tlp \
-   rpm-ostree-bootstatus.service rpm-ostree-countme.timer rpm-ostreed-automatic.timer rpm-ostree-fix-shadow-mode.service rpm-ostree-countme.service rpm-ostreed-automatic.service rpm-ostreed.service
+   rpm-ostreed-automatic.service rpm-ostreed-automatic.timer
 
 # 🙂 Unmask - allow to run
   systemctl unmask \
@@ -74,11 +74,11 @@ sysdOnPerUnit "boinc-client \
    gdm \
    podman podman.socket podman-auto-update.timer \
    auto-cpufreq \
-   uupd.timer uupd bootc-fetch-apply-updates.timer bootc-fetch-apply-updates fyn-sysfresh.timer podman-auto-update.timer \
-   fstrim.timer beesd@var-home \
+   uupd uupd.timer bootc-fetch-apply-updates bootc-fetch-apply-updates.timer fyn-sysfresh fyn-sysfresh.timer podman-auto-update podman-auto-update.timer rpm-ostree-cou\
+   fstrim fstrim.timer beesd@var-home \
    systemd-bsod \
    sshd tailscaled tor \
-   hblock.timer hblock \
+   hblock hblock.timer \
    preload"
 
 # 🟥 Disable - Do not run at startup
