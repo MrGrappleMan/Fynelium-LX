@@ -1,6 +1,6 @@
 [Unit]
-Description=🔄️ Updates the BootC system image - makeshift service
-Documentation=https://bootc-dev.github.io/
+Description=🔄️ Get BootC updates
+Documentation=https://bootc-dev.github.io/ man:bootc(8)
 ConditionPathExists=/run/ostree-booted
 Wants=network-online.target
 After=network-online.target
@@ -11,6 +11,7 @@ StartLimitIntervalSec=600
 Type=oneshot
 User=root
 ExecStart=/usr/bin/bootc upgrade --quiet
+# Get silently, let user reboot w/o interruption
 
 # CommonSnippet - Daemons
 IOSchedulingClass=2
