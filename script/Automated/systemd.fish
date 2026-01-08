@@ -7,7 +7,8 @@ timedatectl set-ntp true --no-ask-password
 # 🫥 Mask - never run
   systemctl mask \
    systemd-rfkill systemd-rfkill.socket power-profiles-daemon \
-   tlp
+   tlp \
+   rpm-ostree-bootstatus.service rpm-ostree-countme.timer rpm-ostreed-automatic.timer rpm-ostree-fix-shadow-mode.service rpm-ostree-countme.service rpm-ostreed-automatic.service rpm-ostreed.service
 
 # 🙂 Unmask - allow to run
   systemctl unmask \
@@ -73,11 +74,11 @@ sysdOnPerUnit "boinc-client \
    gdm \
    podman podman.socket podman-auto-update.timer \
    auto-cpufreq \
-   uupd.timer fyn-bootc-upd.timer rpm-ostree-countme.timer fyn-sysfresh.timer podman-auto-update.timer \
+   uupd.timer uupd bootc-fetch-apply-updates.timer bootc-fetch-apply-updates fyn-sysfresh.timer podman-auto-update.timer \
    fstrim.timer beesd@var-home \
    systemd-bsod \
    sshd tailscaled tor \
-   hblock.timer \
+   hblock.timer hblock \
    preload"
 
 # 🟥 Disable - Do not run at startup
@@ -118,8 +119,5 @@ function sysdOffPerUnit
 	end
 end
 
-sysdOffPerUnit "uupd fyn-bootc-upd rpm-ostree-countme fyn-sysfresh podman-auto-update \
-   tlp \
-   rpm-ostreed-automatic rpm-ostreed-automatic.timer \
-   docker docker.socket \
-   hblock"
+sysdOffPerUnit "tlp \
+   docker docker.socket"
