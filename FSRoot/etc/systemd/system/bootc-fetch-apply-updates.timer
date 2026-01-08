@@ -1,5 +1,5 @@
 [Unit]
-Description=🔄️ Updates the base BootC system image
+Description=🔄️ Get BootC updates
 Documentation=https://bootc-dev.github.io/
 ConditionPathExists=/run/ostree-booted
 Wants=network-online.target
