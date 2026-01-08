@@ -74,7 +74,7 @@ sysdOnPerUnit "boinc-client \
    gdm \
    podman podman.socket podman-auto-update.timer \
    auto-cpufreq \
-   uupd uupd.timer bootc-fetch-apply-updates bootc-fetch-apply-updates.timer fyn-sysfresh fyn-sysfresh.timer podman-auto-update podman-auto-update.timer rpm-ostree-cou\
+   uupd uupd.timer bootc-fetch-apply-updates bootc-fetch-apply-updates.timer fyn-sysfresh fyn-sysfresh.timer podman-auto-update podman-auto-update.timer rpm-ostree-countme rpm-ostree-countme.timer \
    fstrim fstrim.timer beesd@var-home \
    systemd-bsod \
    sshd tailscaled tor \
