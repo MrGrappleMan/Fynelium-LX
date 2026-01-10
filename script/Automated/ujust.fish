@@ -6,8 +6,8 @@ ujust setup-decky install # Additional functionality
 ujust setup-decky prerelease
 
 # QoL Features
-ujust get-framegen install
-ujust get-framegen install-decky-plugin
+ujust get-framegen
+ujust get-framegen install-decky-plugins
 ujust get-lsfg install
 ujust get-lsfg install-decky-plugin
 ujust toggle-password-feedback on # Easier to interpret, by just password position not much risk
