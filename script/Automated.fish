@@ -5,7 +5,9 @@ clear
 if fish_is_root_user
     echo
 else
-    echo "Run this subscript as root!"
+    echo "Run this subscript as root! Requesting access again in 5 seconds, close the terminal now if you dont want to proceed"
+    sleep 5
+    curl "https://raw.githubusercontent.com/MrGrappleMan/Fynelium-LX/refs/heads/main/script/Automated.fish" | pkexec fish
     exit
 end
 
