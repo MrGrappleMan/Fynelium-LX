@@ -68,14 +68,15 @@ alias fpkPkg- "flatpak --system uninstall -y --noninteractive" # Package remove
    flatpak uninstall -u --all -y --noninteractive --force-remove ## System wide Flatpaks standardize location and save storage, yet data stays separate for users.
 
 # PKG ( + Install )
-   #fpkPkg+Adv flathub-beta \
-   #org.freedesktop.Platform org.gnome.Platform \
-   #org.freedesktop.Sdk org.gnome.Sdk
 
-    fpkPkg+Adv flathub \
+    fpkPkg+Adv \
       org.gnome.Platform org.gnome.Sdk \
-      org.freedesktop.Platform org.freedesktop.Sdk.Extension.rust-nightly org.freedesktop.Platform.ClInfo org.freedesktop.Platform.codecs-extra org.freedesktop.Platform.ffmpeg-full org.freedesktop.Platform.GL.default org.freedesktop.Platform.GL.mesa-git org.freedesktop.Platform.GL32.default org.freedesktop.Platform.GL32.mesa-git org.freedesktop.Platform.GlxInfo org.freedesktop.Platform.GStreamer.openmpt org.freedesktop.Platform.openh264 org.freedesktop.Platform.VAAPI.Intel org.freedesktop.Platform.VAAPI.nvidia org.freedesktop.Platform.VaInfo org.freedesktop.Platform.VdpauInfo org.freedesktop.Platform.VulkanInfo org.freedesktop.Platform.VulkanLayer.gamescope org.freedesktop.Platform.VulkanLayer.MangoHud org.freedesktop.Platform.VulkanLayer.OBSVkCapture org.freedesktop.Platform.VulkanLayer.vkBasalt \
+      org.freedesktop.Platform org.freedesktop.Sdk.Extension.rust-nightly org.freedesktop.Platform.ClInfo org.freedesktop.Platform.codecs-extra org.freedesktop.Platform.ffmpeg-full org.freedesktop.Platform.GL.default org.freedesktop.Platform.GL.mesa-git org.freedesktop.Platform.GL32.default org.freedesktop.Platform.GL32.mesa-git org.freedesktop.Platform.GlxInfo org.freedesktop.Platform.GStreamer.openmpt org.freedesktop.Platform.openh264 org.freedesktop.Platform.VAAPI.Intel org.freedesktop.Platform.VAAPI.nvidia org.freedesktop.Platform.VaInfo org.freedesktop.Platform.VdpauInfo org.freedesktop.Platform.VulkanInfo \
+      org.freedesktop.Platform.VulkanLayer.gamescope org.freedesktop.Platform.VulkanLayer.MangoHud org.freedesktop.Platform.VulkanLayer.OBSVkCapture org.freedesktop.Platform.VulkanLayer.vkBasalt \
       org.kde.Platform org.kde.Sdk org.kde.PlatformTheme.QtSNI org.kde.PlatformTheme.QGnomePlatform
+    
+    fpkPkg+Adv \
+      org.freedesktop.Platform.VulkanLayer.lsfgvk//25.08 org.freedesktop.Platform.VulkanLayer.lsfgvk//24.08
 
 # Use "app.zen_browser.zen" over "org.mozilla.firefox" - Polished experience
 # Use "com.google.ChromeDev" over "com.google.Chrome" - Faster updates
