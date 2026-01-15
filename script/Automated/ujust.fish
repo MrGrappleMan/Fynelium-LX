@@ -11,6 +11,7 @@ ujust get-framegen install-decky-plugins
 ujust get-lsfg install
 ujust get-lsfg install-decky-plugin
 ujust toggle-password-feedback on # Easier to interpret, by just password position not much risk
+ujust ptyxis-transparency 1 # Easiest to read
 ujust toggle-global-fsr4 enable
 ujust toggle-global-fsr4-rdna3 enable
 ujust toggle-wol enable
