@@ -112,9 +112,9 @@ cd
 sudo rm -rf ~
 # PackageInst----------------------------------------------------------------------------------------------------
 
-for pakgis in\
+for pkgs in\
  linux linux-headers
-do paru -Rns --noconfirm $pakgis
+do paru -Rns --noconfirm $pkgs
 done
 sudo bootctl update #SystemD-Boot
 sudo grub-mkconfig -o /boot/grub/grub.cfg #GRUB
